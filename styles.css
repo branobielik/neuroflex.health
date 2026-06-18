@@ -34,6 +34,27 @@ body {
   font-size: 1.2rem;
 }
 
+.brand-neuroflex {
+  align-items: center;
+  display: inline-flex;
+  gap: 10px;
+}
+
+.brand-neuroflex img {
+  display: block;
+  height: 34px;
+  width: 34px;
+}
+
+.brand-neuroflex sup {
+  color: #FBBF24;
+  font-size: 0.58em;
+  line-height: 0;
+  margin-left: 2px;
+  position: relative;
+  top: -0.45em;
+}
+
 .nav a {
   color: #9fb3ff;
   text-decoration: none;
