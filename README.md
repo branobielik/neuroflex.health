@@ -24,9 +24,16 @@ This repository contains only NeuroFlex web content moved from the LifeApps site
 
 ## DNS for `neuroflex.health`
 
-At your domain registrar, add:
+GitHub Pages custom domain, `CNAME` file, and DNS must all match.
 
-### Apex domain (`neuroflex.health`)
+| Layer | Required value |
+|-------|----------------|
+| GitHub Pages → Custom domain | `neuroflex.health` |
+| Repo `CNAME` file | `neuroflex.health` |
+| DNS apex `@` | 4× A records → GitHub Pages IPs (below) |
+| DNS `www` | CNAME → `branobielik.github.io` |
+
+### Apex domain (`neuroflex.health`) — required for GitHub DNS check
 
 | Type | Name | Value |
 |------|------|-------|
@@ -35,13 +42,23 @@ At your domain registrar, add:
 | A | `@` | `185.199.110.153` |
 | A | `@` | `185.199.111.153` |
 
-### Optional `www` subdomain
+**Namecheap:** delete any **URL Redirect Record** on `@` before adding the A records. If apex still resolves to `192.64.119.224`, GitHub will show `NotServedByPagesError` even when the repo is correct.
+
+Verify from your PC:
+
+```powershell
+Resolve-DnsName neuroflex.health -Type A
+```
+
+Expected: four `185.199.x.x` addresses. Wrong: `192.64.119.224` (Namecheap redirect).
+
+### `www` subdomain
 
 | Type | Name | Value |
 |------|------|-------|
-| CNAME | `www` | `<your-github-username>.github.io` |
+| CNAME | `www` | `branobielik.github.io` |
 
-If you use `www`, add `www.neuroflex.health` as an additional custom domain in GitHub Pages and update `CNAME` accordingly.
+After apex DNS is correct: GitHub → Pages → **Check again** → enable **Enforce HTTPS**.
 
 DNS propagation can take from a few minutes up to 24–48 hours.
 
