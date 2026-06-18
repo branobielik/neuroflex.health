@@ -1,0 +1,776 @@
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: Arial, sans-serif;
+  color: #e7ecff;
+  background: #030a22;
+  line-height: 1.45;
+}
+
+.container {
+  width: min(980px, 92%);
+  margin: 0 auto;
+}
+
+.site-header {
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(6px);
+  background: rgba(3,10,34,0.9);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 64px;
+}
+
+.brand {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.nav a {
+  color: #9fb3ff;
+  text-decoration: none;
+  margin-left: 1rem;
+}
+
+.nav a:hover { color: #fff; }
+
+.hero {
+  padding: 72px 0 32px;
+}
+
+.hero h1 {
+  margin: 0 0 12px;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+}
+
+.hero p {
+  margin: 0;
+  color: #aeb9e8;
+  font-size: 1.05rem;
+}
+
+.section {
+  padding: 24px 0 56px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: #202948;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.app-icon {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: #ffffff;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.card h3 { margin-top: 0; }
+.card p { color: #bac3ea; }
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  background: #38c759;
+  color: #081219;
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 1px solid #6472aa;
+  color: #d3dcff;
+}
+
+.site-footer {
+  border-top: 1px solid rgba(255,255,255,0.12);
+  padding: 18px 0;
+  color: #9ba9df;
+}
+
+.content-page {
+  padding: 28px 0 56px;
+}
+
+.content-box {
+  background: #111a36;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.content-box p, .content-box li { color: #d2daf9; }
+.muted { color: #9aa9dc; }
+
+.contact-email {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.contact-email-link {
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.contact-email-link:hover,
+.contact-email-link:focus {
+  text-decoration: underline;
+}
+
+.doc-hero {
+  padding: 56px 0 28px;
+}
+
+.doc-kicker {
+  color: #38c759;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin: 0 0 10px;
+  text-transform: uppercase;
+}
+
+.doc-hero h1 {
+  font-size: clamp(2rem, 5vw, 3.3rem);
+  line-height: 1.05;
+  margin: 0 0 16px;
+  max-width: 820px;
+}
+
+.doc-lead {
+  color: #c7d0f7;
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  max-width: 780px;
+}
+
+.doc-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.doc-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin: 24px 0;
+}
+
+.doc-card {
+  background: #111a36;
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 18px;
+  padding: 20px;
+}
+
+.doc-card h2,
+.doc-card h3 {
+  margin-top: 0;
+}
+
+.doc-card p,
+.doc-card li {
+  color: #d2daf9;
+}
+
+.doc-card-strong {
+  background: #202948;
+}
+
+.doc-strip {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  margin: 24px 0;
+}
+
+.doc-stat {
+  border-top: 1px solid rgba(255,255,255,0.14);
+  padding-top: 12px;
+}
+
+.doc-stat strong {
+  color: #ffffff;
+  display: block;
+  font-size: 1.35rem;
+}
+
+.doc-stat span {
+  color: #9aa9dc;
+  display: block;
+  font-size: 0.92rem;
+}
+
+.doc-section {
+  padding: 18px 0;
+}
+
+.doc-section h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: 12px;
+}
+
+.doc-callout {
+  background: #202948;
+  border-left: 4px solid #38c759;
+  border-radius: 14px;
+  color: #e7ecff;
+  margin: 22px 0;
+  padding: 18px;
+}
+
+.doc-callout p {
+  margin: 0;
+}
+
+.doc-pill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin: 16px 0;
+  padding: 0;
+}
+
+.doc-pill-list li {
+  background: rgba(159,179,255,0.12);
+  border: 1px solid rgba(159,179,255,0.22);
+  border-radius: 999px;
+  color: #d8e0ff;
+  padding: 7px 10px;
+}
+
+.doc-timeline {
+  border-left: 1px solid rgba(255,255,255,0.16);
+  margin: 24px 0;
+  padding-left: 20px;
+}
+
+.doc-step {
+  margin-bottom: 22px;
+  position: relative;
+}
+
+.doc-step:before {
+  background: #38c759;
+  border-radius: 50%;
+  content: "";
+  height: 10px;
+  left: -26px;
+  position: absolute;
+  top: 7px;
+  width: 10px;
+}
+
+.doc-step h3 {
+  margin: 0 0 6px;
+}
+
+.code-sample {
+  background: #050b22;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  color: #d8e0ff;
+  overflow-x: auto;
+  padding: 16px;
+}
+
+.mini-label {
+  color: #9fb3ff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* NeuroFlex premium research pages */
+.neuro-site {
+  background:
+    radial-gradient(circle at 82% 12%, rgba(251,191,36,0.11), transparent 28%),
+    radial-gradient(circle at 18% 28%, rgba(96,165,250,0.12), transparent 30%),
+    linear-gradient(180deg, #050816 0%, #07111F 35%, #081322 100%);
+  color: #CBD5E1;
+  font-family: Inter, Manrope, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+}
+
+.neuro-site .site-header {
+  background: rgba(5,8,22,0.82);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  backdrop-filter: blur(14px);
+  z-index: 10;
+}
+
+.neuro-site .brand,
+.neuro-site h1,
+.neuro-site h2,
+.neuro-site h3 {
+  color: #FFFFFF;
+}
+
+.neuro-site .nav a {
+  color: #CBD5E1;
+}
+
+.neuro-site .nav a:hover {
+  color: #FBBF24;
+}
+
+.neuro-site .btn {
+  background: #FBBF24;
+  color: #0F172A;
+  box-shadow: 0 0 24px rgba(251,191,36,0.22);
+}
+
+.neuro-site .btn:hover {
+  background: #F59E0B;
+}
+
+.neuro-site .btn-secondary {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #FFFFFF;
+  box-shadow: none;
+}
+
+.neuro-hero {
+  align-items: center;
+  display: grid;
+  gap: 48px;
+  grid-template-columns: minmax(0, 0.92fr) minmax(320px, 1.08fr);
+  min-height: calc(100vh - 64px);
+  padding: 92px 0;
+}
+
+.neuro-kicker {
+  color: #FBBF24;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  margin: 0 0 18px;
+  text-transform: uppercase;
+}
+
+.neuro-hero h1 {
+  font-size: clamp(3.3rem, 8vw, 6.8rem);
+  letter-spacing: -0.08em;
+  line-height: 0.9;
+  margin: 0 0 24px;
+  max-width: 760px;
+}
+
+.neuro-highlight {
+  color: #FBBF24;
+  display: block;
+}
+
+.neuro-lead {
+  color: #CBD5E1;
+  font-size: clamp(1.08rem, 2vw, 1.35rem);
+  line-height: 1.65;
+  margin: 0;
+  max-width: 680px;
+}
+
+.neuro-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.neuro-hero-note {
+  color: #94A3B8;
+  font-size: 0.92rem;
+  margin-top: 24px;
+  max-width: 620px;
+}
+
+.neuro-visual {
+  min-height: 520px;
+  position: relative;
+}
+
+.neural-orb {
+  align-items: center;
+  background: rgba(15,23,42,0.72);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 36px;
+  display: flex;
+  inset: 20px;
+  justify-content: center;
+  overflow: hidden;
+  position: absolute;
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 0 80px rgba(96,165,250,0.08), 0 0 60px rgba(251,191,36,0.08);
+}
+
+.neural-orb svg {
+  height: min(520px, 86vw);
+  opacity: 0.94;
+  width: min(520px, 86vw);
+}
+
+.neural-card {
+  background: rgba(15,23,42,0.78);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px;
+  padding: 16px 18px;
+  position: absolute;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.24);
+}
+
+.neural-card strong {
+  color: #FFFFFF;
+  display: block;
+  font-size: 1.05rem;
+}
+
+.neural-card span {
+  color: #94A3B8;
+  font-size: 0.86rem;
+}
+
+.neural-card-one {
+  left: 0;
+  top: 78px;
+}
+
+.neural-card-two {
+  bottom: 82px;
+  right: 0;
+}
+
+.neuro-section {
+  padding: 150px 0;
+}
+
+.neuro-section.alt {
+  background: rgba(255,255,255,0.02);
+}
+
+.neuro-section-header {
+  margin-bottom: 48px;
+  max-width: 780px;
+}
+
+.neuro-section-header h2 {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  letter-spacing: -0.055em;
+  line-height: 1;
+  margin: 0 0 18px;
+}
+
+.neuro-section-header p {
+  color: #CBD5E1;
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+
+.neuro-card-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.neuro-card {
+  background: rgba(15,23,42,0.75);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 24px;
+  padding: 32px;
+  backdrop-filter: blur(10px);
+}
+
+.neuro-card p,
+.neuro-card li {
+  color: #CBD5E1;
+}
+
+.neuro-card h3 {
+  font-size: 1.25rem;
+  margin: 0 0 12px;
+}
+
+.outline-icon {
+  align-items: center;
+  border: 1px solid rgba(251,191,36,0.28);
+  border-radius: 18px;
+  color: #FBBF24;
+  display: flex;
+  height: 54px;
+  justify-content: center;
+  margin-bottom: 22px;
+  width: 54px;
+}
+
+.outline-icon svg {
+  height: 28px;
+  width: 28px;
+}
+
+.dataset-flow {
+  align-items: center;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(5, minmax(120px, 1fr));
+}
+
+.flow-node {
+  align-items: center;
+  background: rgba(15,23,42,0.65);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 999px;
+  color: #CBD5E1;
+  display: flex;
+  font-weight: 800;
+  height: 96px;
+  justify-content: center;
+  padding: 16px;
+  text-align: center;
+  position: relative;
+}
+
+.flow-node:not(:last-child):after {
+  background: linear-gradient(90deg, rgba(251,191,36,0.7), rgba(96,165,250,0.3));
+  content: "";
+  height: 1px;
+  position: absolute;
+  right: -18px;
+  top: 50%;
+  width: 18px;
+}
+
+.flow-node.active {
+  background: #FBBF24;
+  color: #0F172A;
+  box-shadow: 0 0 35px rgba(251,191,36,0.5);
+}
+
+.neuro-timeline {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(4, minmax(180px, 1fr));
+  position: relative;
+}
+
+.phase-card {
+  background: rgba(15,23,42,0.72);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 24px;
+  padding: 28px;
+  position: relative;
+  backdrop-filter: blur(10px);
+}
+
+.phase-dot {
+  background: transparent;
+  border: 2px solid #FBBF24;
+  border-radius: 50%;
+  display: block;
+  height: 18px;
+  margin-bottom: 18px;
+  width: 18px;
+}
+
+.phase-card.active .phase-dot {
+  background: #FBBF24;
+  box-shadow: 0 0 25px rgba(251,191,36,0.5);
+}
+
+.phase-card p {
+  color: #CBD5E1;
+}
+
+.privacy-panel {
+  align-items: center;
+  display: grid;
+  gap: 40px;
+  grid-template-columns: 260px 1fr;
+}
+
+.shield-mark {
+  align-items: center;
+  background: linear-gradient(180deg, #FBBF24, #F59E0B);
+  border-radius: 42px;
+  color: #0F172A;
+  display: flex;
+  height: 220px;
+  justify-content: center;
+  margin: 0 auto;
+  width: 220px;
+  box-shadow: 0 0 60px rgba(251,191,36,0.15);
+}
+
+.shield-mark svg {
+  height: 108px;
+  width: 108px;
+}
+
+.medical-disclaimer {
+  background: rgba(15,23,42,0.78);
+  border: 1px solid rgba(251,191,36,0.18);
+  border-radius: 24px;
+  padding: 32px;
+  backdrop-filter: blur(10px);
+}
+
+.medical-disclaimer p,
+.medical-disclaimer li {
+  color: #CBD5E1;
+}
+
+.neuro-cta {
+  background: #0F172A;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 150px 0;
+  text-align: center;
+}
+
+.neuro-cta h2 {
+  font-size: clamp(2.8rem, 7vw, 5.4rem);
+  letter-spacing: -0.07em;
+  line-height: 0.98;
+  margin: 0 auto 24px;
+  max-width: 940px;
+}
+
+.neuro-cta h2 span {
+  color: #FBBF24;
+  display: block;
+}
+
+.neuro-cta p {
+  color: #CBD5E1;
+  font-size: 1.15rem;
+  margin: 0 auto;
+  max-width: 720px;
+}
+
+.neuro-site .doc-hero {
+  min-height: 72vh;
+  padding: 120px 0 80px;
+}
+
+.neuro-site .doc-kicker,
+.neuro-site .mini-label {
+  color: #FBBF24;
+}
+
+.neuro-site .doc-hero h1 {
+  font-size: clamp(3rem, 7vw, 6rem);
+  letter-spacing: -0.07em;
+  line-height: 0.96;
+  max-width: 1040px;
+}
+
+.neuro-site .doc-lead {
+  color: #CBD5E1;
+  max-width: 860px;
+}
+
+.neuro-site .section,
+.neuro-site .doc-section {
+  padding: 96px 0;
+}
+
+.neuro-site .doc-card,
+.neuro-site .content-box {
+  background: rgba(15,23,42,0.75);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 24px;
+  padding: 32px;
+  backdrop-filter: blur(10px);
+}
+
+.neuro-site .doc-card-strong {
+  background: rgba(31,41,55,0.86);
+  box-shadow: 0 0 38px rgba(251,191,36,0.08);
+}
+
+.neuro-site .doc-callout {
+  background: rgba(15,23,42,0.86);
+  border-left-color: #FBBF24;
+  border-radius: 20px;
+  padding: 26px;
+}
+
+.neuro-site .doc-step:before {
+  background: #FBBF24;
+  box-shadow: 0 0 20px rgba(251,191,36,0.45);
+}
+
+.neuro-site .doc-pill-list li {
+  background: rgba(251,191,36,0.09);
+  border-color: rgba(251,191,36,0.22);
+  color: #FDE68A;
+}
+
+.neuro-site .doc-stat strong {
+  color: #FBBF24;
+}
+
+.neuro-site .code-sample {
+  background: rgba(2,6,23,0.84);
+  border-color: rgba(96,165,250,0.18);
+}
+
+@media (max-width: 860px) {
+  .neuro-hero,
+  .privacy-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .neuro-visual {
+    min-height: 430px;
+  }
+
+  .dataset-flow,
+  .neuro-timeline {
+    grid-template-columns: 1fr;
+  }
+
+  .flow-node:not(:last-child):after {
+    bottom: -18px;
+    height: 18px;
+    left: 50%;
+    right: auto;
+    top: auto;
+    width: 1px;
+  }
+
+  .neuro-section,
+  .neuro-cta {
+    padding: 88px 0;
+  }
+}

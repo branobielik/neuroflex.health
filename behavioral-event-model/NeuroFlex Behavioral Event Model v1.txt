@@ -1,0 +1,1529 @@
+NeuroFlex Behavioral Event Model v1
+===================================
+
+Document purpose
+----------------
+
+This document defines the first version of the NeuroFlex behavioral event model.
+
+The goal is not to turn the MVP into a research platform immediately.
+The goal is to design the MVP so that every activity can later produce structured behavioral data without redesigning the application from scratch.
+
+NeuroFlex Phase 1 may remain:
+- free
+- offline
+- without login
+- without backend
+- without AI
+- without cloud database
+
+However, the app should be designed as if a backend may exist later.
+
+Current MVP:
+saveLocally(event)
+
+Future research platform:
+saveLocally(event)
+syncToCloud(event)
+
+Core product direction
+----------------------
+
+NeuroFlex is not only a brain training app.
+
+The long-term direction is to become a longitudinal behavioral observatory for cognitive health and human behavior.
+
+The app should observe behavior across:
+- cognition
+- memory
+- attention
+- reaction speed
+- emotional state
+- motivation
+- loneliness
+- social connection
+- wellness habits
+- motor function
+- routine adherence
+- avoidance behavior
+- persistence
+- self-perception
+- behavioral change over time
+
+The long-term research objective is not:
+"Diagnose Alzheimer's disease from app usage."
+
+The stronger and safer objective is:
+"Characterize long-term behavioral trajectories and investigate whether specific trajectories are associated with future cognitive outcomes."
+
+Core data philosophy
+--------------------
+
+NeuroFlex should never store only final results.
+
+Weak data:
+score = 84
+
+Useful data:
+- score
+- reaction times
+- time to first action
+- hesitation time
+- corrections
+- mistakes
+- retries
+- abandonment
+- difficulty level
+- session duration
+- interaction sequence
+- change over time
+
+The process may be more valuable than the outcome.
+
+Two users can achieve the same score while showing very different behavioral patterns.
+
+Example:
+User A:
+- fast responses
+- stable reaction times
+- few corrections
+
+User B:
+- same score
+- slower responses
+- more hesitation
+- more corrections
+- higher reaction time variability
+
+For future analysis, these are different behavioral profiles.
+
+General event envelope
+----------------------
+
+Every event should follow the same base structure.
+
+Example:
+
+{
+  "event_id": "uuid",
+  "anonymous_user_id": "uuid",
+  "session_id": "uuid",
+  "timestamp_utc": "2026-06-01T10:00:00Z",
+  "app_version": "2.4",
+  "event_type": "memory_card_selected",
+  "event_category": "cognitive",
+  "screen": "memory_cards",
+  "activity_id": "memory_cards",
+  "sequence_index": 14,
+  "payload": {}
+}
+
+Required fields
+---------------
+
+event_id
+- Unique identifier for the event.
+
+anonymous_user_id
+- Random app-generated user identifier.
+- Not email.
+- Not name.
+- Not phone number.
+- Not device advertising ID.
+
+session_id
+- Unique ID for one app session.
+- New session starts after app open or after a long inactivity window.
+
+timestamp_utc
+- Event time in UTC.
+
+app_version
+- Version of NeuroFlex.
+
+event_type
+- Specific event name.
+
+event_category
+- High-level category such as system, cognitive, emotional, wellness, social, motor, behavioral.
+
+screen
+- Current app screen.
+
+activity_id
+- Activity or feature where event occurred.
+
+sequence_index
+- Incrementing number within the session to reconstruct event order.
+
+payload
+- Event-specific data.
+
+Recommended common payload fields
+---------------------------------
+
+{
+  "local_time": "08:42",
+  "timezone_offset_minutes": 120,
+  "device_orientation": "portrait",
+  "input_method": "touch",
+  "difficulty_level": 2,
+  "is_practice": false,
+  "was_completed": true,
+  "duration_ms": 42000
+}
+
+Privacy principles
+------------------
+
+Do not collect by default:
+- name
+- email
+- phone number
+- precise location
+- contacts
+- microphone recordings
+- camera images
+- medical records
+- free-text health information
+- government IDs
+- identity documents
+
+Optional future research data must require explicit informed consent.
+
+Diagnosis-related data, if ever added, should be:
+- optional
+- user-controlled
+- clearly explained
+- separated from normal wellness usage
+- handled as sensitive research data
+
+Data tiers
+----------
+
+NeuroFlex should separate event collection into tiers.
+
+Tier 1 - Core MVP events
+Always safe and useful.
+Can be stored locally even in offline MVP.
+
+Examples:
+- activity started
+- activity completed
+- activity abandoned
+- score
+- difficulty level
+- reaction time
+- error count
+- duration
+- task completion
+- check-in values
+
+Tier 2 - Detailed behavioral research events
+Useful for future research mode.
+Should be optional or clearly explained.
+
+Examples:
+- full interaction sequence
+- hesitation time per decision
+- time between taps
+- correction frequency
+- navigation path
+- repeated retries
+- detailed notification response behavior
+
+Tier 3 - Advanced motor and high-frequency data
+Potentially valuable but heavier and more sensitive.
+Should only be enabled in explicit research mode.
+
+Examples:
+- full touch paths
+- drawing trajectories
+- tremor-like finger movement
+- line tracing paths
+- spiral drawing raw data
+- high-frequency tap timing
+
+Event categories
+================
+
+Level 0 - System Events
+-----------------------
+
+app_install
+Purpose:
+First known app installation/opening event.
+
+Payload:
+{
+  "install_source": "unknown",
+  "first_app_version": "2.4"
+}
+
+app_open
+Purpose:
+User opens the app.
+
+Payload:
+{
+  "open_source": "launcher|notification|deep_link|unknown"
+}
+
+app_close
+Purpose:
+App is closed or moved to background.
+
+Payload:
+{
+  "session_duration_ms": 120000
+}
+
+session_start
+Purpose:
+Start of a behavioral session.
+
+Payload:
+{
+  "start_reason": "app_open|return_from_background|notification"
+}
+
+session_end
+Purpose:
+End of a behavioral session.
+
+Payload:
+{
+  "duration_ms": 120000,
+  "screens_viewed_count": 4,
+  "activities_started_count": 2,
+  "activities_completed_count": 1
+}
+
+app_inactive_timeout
+Purpose:
+User became inactive for a defined period.
+
+Payload:
+{
+  "inactive_duration_ms": 300000,
+  "last_screen": "home"
+}
+
+app_version_changed
+Purpose:
+App version changed after update.
+
+Payload:
+{
+  "previous_version": "2.3",
+  "new_version": "2.4"
+}
+
+Level 1 - Navigation and Interaction Events
+-------------------------------------------
+
+screen_view
+Purpose:
+User views a screen.
+
+Payload:
+{
+  "screen": "home",
+  "previous_screen": "welcome",
+  "entry_source": "button|notification|back_navigation|auto"
+}
+
+screen_exit
+Purpose:
+User leaves a screen.
+
+Payload:
+{
+  "screen": "home",
+  "duration_ms": 35000,
+  "exit_target": "games",
+  "exit_type": "button|back|app_close|timeout"
+}
+
+button_press
+Purpose:
+User presses a meaningful UI button.
+
+Payload:
+{
+  "button_id": "btnGameMemoryCards",
+  "button_label": "Memory Cards",
+  "time_since_screen_view_ms": 2300
+}
+
+back_navigation
+Purpose:
+User goes back.
+
+Payload:
+{
+  "from_screen": "settings",
+  "to_screen": "home"
+}
+
+menu_opened
+Purpose:
+User opens a menu.
+
+Payload:
+{
+  "menu_id": "top_menu",
+  "screen": "home"
+}
+
+menu_item_selected
+Purpose:
+User selects a menu item.
+
+Payload:
+{
+  "menu_id": "top_menu",
+  "item_id": "permissions"
+}
+
+repeated_tap
+Purpose:
+Detects repeated taps on same area or control.
+
+Payload:
+{
+  "target_id": "submit_button",
+  "tap_count": 3,
+  "window_ms": 1200
+}
+
+invalid_tap
+Purpose:
+Tap outside active target during a task.
+
+Payload:
+{
+  "x": 214,
+  "y": 812,
+  "nearest_target_id": "card_4",
+  "distance_to_target_center_px": 82
+}
+
+Level 2 - Activity Lifecycle Events
+-----------------------------------
+
+activity_start
+Purpose:
+Any game, wellness activity, check-in, or task starts.
+
+Payload:
+{
+  "activity_id": "memory_cards",
+  "activity_category": "train",
+  "difficulty_level": 2
+}
+
+activity_complete
+Purpose:
+Activity is completed.
+
+Payload:
+{
+  "activity_id": "memory_cards",
+  "duration_ms": 65000,
+  "difficulty_level": 2,
+  "completion_rate": 1.0
+}
+
+activity_abandoned
+Purpose:
+Activity started but not completed.
+
+Payload:
+{
+  "activity_id": "memory_cards",
+  "duration_ms": 18000,
+  "progress_percent": 35,
+  "abandon_reason": "back|home|app_close|timeout|unknown"
+}
+
+activity_skipped
+Purpose:
+User intentionally skips activity.
+
+Payload:
+{
+  "activity_id": "daily_checkin",
+  "skip_source": "button",
+  "time_since_prompt_ms": 4300
+}
+
+activity_retry
+Purpose:
+User retries activity.
+
+Payload:
+{
+  "activity_id": "sequence_memory",
+  "retry_count_today": 2,
+  "previous_result": "failed|completed|abandoned"
+}
+
+activity_returned
+Purpose:
+User returns to a previously abandoned activity.
+
+Payload:
+{
+  "activity_id": "number_sequence",
+  "time_since_abandon_ms": 86400000
+}
+
+Level 3 - Cognitive Events
+--------------------------
+
+Memory Cards
+------------
+
+memory_cards_round_start
+Payload:
+{
+  "level": 2,
+  "grid_rows": 4,
+  "grid_columns": 4,
+  "pair_count": 8
+}
+
+memory_card_selected
+Payload:
+{
+  "card_position": 5,
+  "card_symbol_id": "apple",
+  "selection_index": 1,
+  "time_since_round_start_ms": 2200,
+  "time_since_previous_selection_ms": 1300
+}
+
+memory_pair_attempt
+Payload:
+{
+  "first_card_position": 5,
+  "second_card_position": 9,
+  "is_match": false,
+  "time_between_cards_ms": 1800,
+  "hesitation_ms": 1800
+}
+
+memory_pair_matched
+Payload:
+{
+  "pair_symbol_id": "apple",
+  "attempt_count_for_pair": 2,
+  "time_since_round_start_ms": 18000
+}
+
+memory_cards_round_end
+Payload:
+{
+  "level": 2,
+  "completed": true,
+  "duration_ms": 62000,
+  "attempt_count": 14,
+  "wrong_pair_count": 6,
+  "correct_pair_count": 8,
+  "reshuffle_count": 0,
+  "average_pair_decision_ms": 2100,
+  "reaction_time_variability_ms": 620
+}
+
+Sequence Memory
+---------------
+
+sequence_round_start
+Payload:
+{
+  "level": 3,
+  "sequence_length": 5,
+  "button_count": 4
+}
+
+sequence_display_start
+Payload:
+{
+  "sequence_length": 5,
+  "display_speed_ms": 900
+}
+
+sequence_user_input
+Payload:
+{
+  "input_index": 2,
+  "selected_button_id": "blue",
+  "expected_button_id": "red",
+  "is_correct": false,
+  "time_since_input_start_ms": 3400,
+  "time_since_previous_input_ms": 900
+}
+
+sequence_round_end
+Payload:
+{
+  "level": 3,
+  "completed": false,
+  "first_error_position": 2,
+  "correct_prefix_length": 2,
+  "duration_ms": 12000,
+  "retry_count": 1
+}
+
+Missing Item
+------------
+
+missing_item_memorize_start
+Payload:
+{
+  "level": 2,
+  "item_count": 6,
+  "memorize_duration_ms": 7000
+}
+
+missing_item_choice
+Payload:
+{
+  "missing_item_id": "banana",
+  "selected_item_id": "orange",
+  "is_correct": false,
+  "time_to_choice_ms": 3200,
+  "option_count": 3
+}
+
+missing_item_round_end
+Payload:
+{
+  "level": 2,
+  "completed": true,
+  "attempt_count": 2,
+  "duration_ms": 15000
+}
+
+Number Sequence
+---------------
+
+number_sequence_display
+Payload:
+{
+  "level": 2,
+  "sequence_length": 5,
+  "display_duration_ms": 5000
+}
+
+number_sequence_typing_start
+Payload:
+{
+  "time_since_hidden_ms": 1200
+}
+
+number_sequence_input_changed
+Payload:
+{
+  "input_length": 3,
+  "backspace_count": 1,
+  "time_since_typing_start_ms": 2500
+}
+
+number_sequence_submit
+Payload:
+{
+  "sequence_length": 5,
+  "is_correct": false,
+  "error_type": "substitution|omission|insertion|order_swap|unknown",
+  "first_error_position": 3,
+  "typing_duration_ms": 4100,
+  "backspace_count": 2,
+  "submit_latency_ms": 900
+}
+
+Reaction Test
+-------------
+
+reaction_test_start
+Payload:
+{
+  "trial_count": 10,
+  "stimulus_type": "visual"
+}
+
+reaction_trial
+Payload:
+{
+  "trial_index": 4,
+  "reaction_ms": 341,
+  "is_valid": true,
+  "false_start": false
+}
+
+reaction_test_end
+Payload:
+{
+  "trial_count": 10,
+  "valid_trial_count": 9,
+  "average_reaction_ms": 380,
+  "median_reaction_ms": 361,
+  "reaction_variability_ms": 74,
+  "false_start_count": 1
+}
+
+Pattern Matching
+----------------
+
+pattern_task_start
+Payload:
+{
+  "level": 2,
+  "pattern_type": "shape|color|number|mixed",
+  "option_count": 4
+}
+
+pattern_attempt
+Payload:
+{
+  "is_correct": true,
+  "time_to_answer_ms": 2100,
+  "selected_option_id": "option_2",
+  "correct_option_id": "option_2"
+}
+
+Visual Search / Attention
+-------------------------
+
+attention_task_start
+Payload:
+{
+  "target_type": "star",
+  "distractor_count": 18,
+  "target_count": 1
+}
+
+attention_target_tap
+Payload:
+{
+  "is_correct_target": true,
+  "time_to_target_ms": 2900,
+  "distance_from_target_center_px": 12
+}
+
+attention_task_end
+Payload:
+{
+  "duration_ms": 14000,
+  "correct_targets": 5,
+  "missed_targets": 1,
+  "wrong_taps": 2
+}
+
+Recall Tasks
+------------
+
+recall_prompt_shown
+Payload:
+{
+  "prompt_type": "word|image|number|story",
+  "item_count": 4,
+  "delay_ms": 30000
+}
+
+recall_attempt
+Payload:
+{
+  "response_type": "typed|selected|spoken_not_recorded",
+  "is_correct": true,
+  "time_to_first_action_ms": 1800,
+  "response_duration_ms": 4300,
+  "correction_count": 1
+}
+
+Level 4 - Emotional and Self-Assessment Events
+----------------------------------------------
+
+daily_checkin_start
+Payload:
+{
+  "checkin_type": "daily",
+  "prompt_version": "v1"
+}
+
+mood_check
+Payload:
+{
+  "value": "excellent|good|calm|motivated|lonely|stressed|tired|sad",
+  "scale_value": 4,
+  "time_to_answer_ms": 2600
+}
+
+energy_check
+Payload:
+{
+  "value": 3,
+  "scale_min": 1,
+  "scale_max": 5,
+  "time_to_answer_ms": 1700
+}
+
+motivation_check
+Payload:
+{
+  "value": 2,
+  "scale_min": 1,
+  "scale_max": 5
+}
+
+focus_check
+Payload:
+{
+  "value": 4,
+  "scale_min": 1,
+  "scale_max": 5
+}
+
+stress_check
+Payload:
+{
+  "value": 2,
+  "scale_min": 1,
+  "scale_max": 5
+}
+
+loneliness_check
+Payload:
+{
+  "value": 3,
+  "scale_min": 1,
+  "scale_max": 5
+}
+
+confidence_check
+Payload:
+{
+  "activity_id": "memory_cards",
+  "value": 4,
+  "scale_min": 1,
+  "scale_max": 5
+}
+
+perceived_difficulty
+Payload:
+{
+  "activity_id": "sequence_memory",
+  "value": 3,
+  "scale_min": 1,
+  "scale_max": 5
+}
+
+memory_self_rating
+Payload:
+{
+  "value": 3,
+  "scale_min": 1,
+  "scale_max": 5
+}
+
+sleep_quality_check
+Payload:
+{
+  "value": 4,
+  "scale_min": 1,
+  "scale_max": 5
+}
+
+Level 5 - Wellness Pillar Events
+--------------------------------
+
+Train
+-----
+
+train_opened
+Payload:
+{
+  "entry_source": "home|bottom_nav|reminder"
+}
+
+train_activity_selected
+Payload:
+{
+  "activity_id": "memory_cards",
+  "selection_time_ms": 1900
+}
+
+Drink
+-----
+
+drink_reminder_scheduled
+Payload:
+{
+  "scheduled_time": "10:00",
+  "reminder_type": "hydration"
+}
+
+drink_reminder_received
+Payload:
+{
+  "notification_id": "uuid"
+}
+
+drink_completed
+Payload:
+{
+  "amount_ml": 250,
+  "completion_source": "notification|manual|schedule"
+}
+
+drink_skipped
+Payload:
+{
+  "reason": "not_now|dismissed|unknown",
+  "time_since_reminder_ms": 5000
+}
+
+Move
+----
+
+move_activity_start
+Payload:
+{
+  "activity_id": "seated_stretch",
+  "activity_type": "stretching|walking|balance|mobility|custom",
+  "planned_duration_minutes": 5
+}
+
+move_activity_complete
+Payload:
+{
+  "activity_id": "seated_stretch",
+  "actual_duration_minutes": 5,
+  "perceived_difficulty": 2
+}
+
+Eat
+---
+
+eat_activity_logged
+Payload:
+{
+  "activity_type": "healthy_meal|snack|meal_planning|custom",
+  "time_to_log_ms": 2400
+}
+
+healthy_habit_complete
+Payload:
+{
+  "habit_id": "eat_breakfast",
+  "completion_source": "manual|reminder|schedule"
+}
+
+Connect
+-------
+
+connect_prompt_shown
+Payload:
+{
+  "prompt_type": "call_someone|message_someone|visit_someone|gratitude|custom"
+}
+
+connect_completed
+Payload:
+{
+  "prompt_type": "call_someone",
+  "completion_source": "manual",
+  "meaningfulness_rating": 4
+}
+
+connect_skipped
+Payload:
+{
+  "prompt_type": "call_someone",
+  "time_to_skip_ms": 3100
+}
+
+social_contact_logged
+Payload:
+{
+  "contact_type": "call|message|in_person|group|other",
+  "duration_category": "short|medium|long|unknown",
+  "meaningfulness_rating": 4
+}
+
+Relax
+-----
+
+relax_activity_start
+Payload:
+{
+  "activity_id": "breathing_4_4",
+  "activity_type": "breathing|meditation|body_scan|sleep|custom"
+}
+
+relax_activity_complete
+Payload:
+{
+  "activity_id": "breathing_4_4",
+  "duration_ms": 180000,
+  "calm_after_rating": 4
+}
+
+relax_activity_abandoned
+Payload:
+{
+  "activity_id": "breathing_4_4",
+  "duration_ms": 42000,
+  "progress_percent": 25
+}
+
+Level 6 - Schedule, Tasks, and Routine Events
+---------------------------------------------
+
+task_created
+Payload:
+{
+  "task_category": "train|drink|move|eat|connect|relax|custom",
+  "has_reminder": true,
+  "repeat_type": "none|daily|weekly|custom"
+}
+
+task_edited
+Payload:
+{
+  "task_id": "uuid",
+  "changed_fields": ["time", "repeat_type"]
+}
+
+task_deleted
+Payload:
+{
+  "task_id": "uuid",
+  "task_age_days": 12
+}
+
+task_due
+Payload:
+{
+  "task_id": "uuid",
+  "scheduled_time": "09:00"
+}
+
+task_completed
+Payload:
+{
+  "task_id": "uuid",
+  "task_category": "drink",
+  "time_since_due_ms": 600000,
+  "completion_source": "notification|schedule|manual"
+}
+
+task_postponed
+Payload:
+{
+  "task_id": "uuid",
+  "postpone_minutes": 30,
+  "postpone_count_today": 2
+}
+
+task_skipped
+Payload:
+{
+  "task_id": "uuid",
+  "time_since_due_ms": 1200000,
+  "skip_source": "manual|timeout|unknown"
+}
+
+task_ignored
+Payload:
+{
+  "task_id": "uuid",
+  "ignored_duration_ms": 86400000
+}
+
+routine_day_summary
+Payload:
+{
+  "date": "2026-06-01",
+  "planned_task_count": 8,
+  "completed_task_count": 5,
+  "skipped_task_count": 1,
+  "postponed_task_count": 3,
+  "completion_rate": 0.625
+}
+
+Level 7 - Notification Events
+-----------------------------
+
+notification_scheduled
+Payload:
+{
+  "notification_id": "uuid",
+  "notification_type": "drink|move|task|checkin|game|relax",
+  "scheduled_time": "10:00"
+}
+
+notification_received
+Payload:
+{
+  "notification_id": "uuid",
+  "notification_type": "drink",
+  "delivered": true
+}
+
+notification_opened
+Payload:
+{
+  "notification_id": "uuid",
+  "time_since_received_ms": 180000
+}
+
+notification_dismissed
+Payload:
+{
+  "notification_id": "uuid",
+  "time_since_received_ms": 12000
+}
+
+notification_ignored
+Payload:
+{
+  "notification_id": "uuid",
+  "ignored_duration_ms": 3600000
+}
+
+notification_action_selected
+Payload:
+{
+  "notification_id": "uuid",
+  "action_id": "complete|snooze|skip|open"
+}
+
+Level 8 - Behavioral Pattern Events
+-----------------------------------
+
+challenge_avoided
+Purpose:
+User avoids or exits a challenge before meaningful engagement.
+
+Payload:
+{
+  "activity_id": "reaction_test",
+  "time_before_exit_ms": 2800,
+  "previous_failures_count": 2
+}
+
+difficulty_decreased
+Payload:
+{
+  "activity_id": "memory_cards",
+  "previous_level": 4,
+  "new_level": 3,
+  "reason": "user_selected|auto_adjusted"
+}
+
+difficulty_increased
+Payload:
+{
+  "activity_id": "memory_cards",
+  "previous_level": 2,
+  "new_level": 3,
+  "reason": "user_selected|auto_adjusted"
+}
+
+long_pause_detected
+Payload:
+{
+  "activity_id": "number_sequence",
+  "pause_duration_ms": 8000,
+  "pause_context": "before_answer|during_typing|after_error"
+}
+
+return_after_gap
+Payload:
+{
+  "days_since_last_session": 5,
+  "return_source": "manual|notification"
+}
+
+preference_signal
+Payload:
+{
+  "preferred_activity_id": "memory_cards",
+  "avoided_activity_id": "reaction_test",
+  "basis": "selection_frequency|completion_rate|manual_favorite"
+}
+
+Level 9 - Motor and Touch Events
+--------------------------------
+
+These should generally be Tier 2 or Tier 3, not always-on MVP data.
+
+tap_event
+Payload:
+{
+  "x": 120,
+  "y": 620,
+  "target_id": "button_submit",
+  "target_center_x": 132,
+  "target_center_y": 612,
+  "distance_from_target_center_px": 14,
+  "time_to_target_ms": 2100
+}
+
+touch_down
+Payload:
+{
+  "x": 120,
+  "y": 620,
+  "pressure": null,
+  "target_id": "card_4"
+}
+
+touch_up
+Payload:
+{
+  "x": 122,
+  "y": 618,
+  "duration_ms": 120,
+  "target_id": "card_4"
+}
+
+drag_start
+Payload:
+{
+  "x": 180,
+  "y": 700,
+  "target_id": "slider"
+}
+
+drag_end
+Payload:
+{
+  "duration_ms": 1400,
+  "path_point_count": 32,
+  "distance_px": 240,
+  "correction_count": 3
+}
+
+touch_path
+Payload:
+{
+  "activity_id": "line_trace",
+  "points": [
+    {"t": 0, "x": 100, "y": 500},
+    {"t": 16, "x": 104, "y": 502}
+  ],
+  "duration_ms": 3200
+}
+
+hold_still_test
+Payload:
+{
+  "duration_ms": 10000,
+  "movement_radius_avg_px": 4.2,
+  "movement_radius_max_px": 11.7,
+  "stability_score": 0.82
+}
+
+line_trace_task
+Payload:
+{
+  "duration_ms": 12000,
+  "average_deviation_px": 8.4,
+  "max_deviation_px": 32.1,
+  "correction_count": 12,
+  "smoothness_score": 0.76
+}
+
+spiral_drawing_task
+Payload:
+{
+  "duration_ms": 18000,
+  "raw_path_available": true,
+  "average_deviation_px": 9.2,
+  "smoothness_score": 0.71,
+  "tremor_proxy_score": 0.18
+}
+
+Level 10 - Research Consent and Data Governance Events
+------------------------------------------------------
+
+research_consent_shown
+Payload:
+{
+  "consent_version": "research_v1",
+  "language": "en"
+}
+
+research_consent_accepted
+Payload:
+{
+  "consent_version": "research_v1",
+  "accepted_at_utc": "2026-06-01T10:00:00Z"
+}
+
+research_consent_declined
+Payload:
+{
+  "consent_version": "research_v1"
+}
+
+research_consent_revoked
+Payload:
+{
+  "consent_version": "research_v1",
+  "revoked_at_utc": "2026-06-01T10:00:00Z"
+}
+
+data_export_requested
+Payload:
+{
+  "request_source": "settings"
+}
+
+local_data_deleted
+Payload:
+{
+  "delete_source": "settings",
+  "event_count_deleted": 1240
+}
+
+Derived metrics
+===============
+
+The app should collect raw events first.
+Derived metrics can be calculated later.
+
+Potential derived metrics:
+
+Session metrics
+- sessions per day
+- average session duration
+- session fragmentation
+- days active per week
+- longest inactivity gap
+
+Cognitive metrics
+- average reaction time
+- reaction time variability
+- learning curve slope
+- retention curve
+- first-error position
+- correction rate
+- completion time trend
+
+Behavioral metrics
+- task adherence rate
+- postponement frequency
+- skip frequency
+- abandonment rate
+- return-after-abandonment rate
+- challenge avoidance pattern
+
+Emotional metrics
+- mood trend
+- energy trend
+- loneliness trend
+- self-rated memory trend
+- difference between confidence and objective performance
+
+Motor metrics
+- tap precision
+- touch stability
+- tracing deviation
+- movement smoothness
+- correction frequency
+
+Circadian metrics
+- preferred usage time
+- usage time drift
+- routine stability
+- night usage frequency
+- morning engagement frequency
+
+Recommended MVP implementation
+==============================
+
+For the current offline MVP, implement a local event logger with no cloud sync.
+
+Minimum local architecture:
+
+EventLogger.log(eventType, category, screen, activityId, payload)
+
+Storage:
+- local JSON lines file, or
+- local SQLite table, or
+- local Room database
+
+Recommended local fields:
+- event_id
+- anonymous_user_id
+- session_id
+- timestamp_utc
+- app_version
+- event_type
+- event_category
+- screen
+- activity_id
+- sequence_index
+- payload_json
+
+The MVP does not need to expose this data to users immediately.
+However, for testing and development, it may be useful to add:
+- export local event log
+- clear local event log
+- show event count
+
+MVP priority events
+-------------------
+
+If implementation must be limited, start with these:
+
+System:
+- app_open
+- session_start
+- session_end
+- screen_view
+- screen_exit
+
+Activity:
+- activity_start
+- activity_complete
+- activity_abandoned
+- activity_skipped
+
+Games:
+- round_start
+- user_action
+- mistake
+- correction
+- round_end
+
+Tasks:
+- task_created
+- task_completed
+- task_postponed
+- task_skipped
+- task_ignored
+
+Check-ins:
+- mood_check
+- energy_check
+- focus_check
+- stress_check
+- loneliness_check
+- memory_self_rating
+
+Notifications:
+- notification_received
+- notification_opened
+- notification_dismissed
+- notification_action_selected
+
+Design rules for future activities
+==================================
+
+Every new activity should define:
+
+1. Start event
+2. Step/action events
+3. Error events
+4. Correction events
+5. Completion event
+6. Abandonment event
+7. Difficulty metadata
+8. Timing metadata
+9. Optional confidence/difficulty self-rating
+
+Every game should measure:
+- time to first action
+- time between actions
+- response time
+- error count
+- correction count
+- retry count
+- completion time
+- abandonment point
+- difficulty level
+
+Every wellness activity should measure:
+- prompt shown
+- activity opened
+- activity completed
+- activity skipped
+- time between prompt and action
+- perceived difficulty where relevant
+
+Every check-in should measure:
+- value selected
+- time to answer
+- skipped or completed
+- change compared with previous check-ins
+
+Scientific language guidelines
+==============================
+
+Use careful wording.
+
+Avoid:
+- "NeuroFlex diagnoses Alzheimer's."
+- "NeuroFlex predicts dementia."
+- "AI detects disease."
+- "This app prevents Alzheimer's."
+
+Prefer:
+- "NeuroFlex collects behavioral data for future research."
+- "NeuroFlex characterizes behavioral trajectories."
+- "NeuroFlex investigates associations between behavioral patterns and future cognitive outcomes."
+- "NeuroFlex may support research into digital behavioral biomarkers."
+
+Important methodological note
+=============================
+
+Do not frame the future dataset as simply:
+diagnosed vs not diagnosed.
+
+This is scientifically weak because "not diagnosed" does not mean "healthy."
+
+Some users may:
+- have preclinical disease
+- have mild cognitive impairment
+- receive a diagnosis years later
+- have other neurological or psychological factors
+
+The better research approach:
+
+1. Collect broad longitudinal behavioral data.
+2. Identify natural behavioral trajectories and clusters.
+3. Study how these trajectories evolve over time.
+4. Later investigate whether specific trajectories are associated with clinical outcomes.
+
+The initial machine learning objective should be discovery, not prediction.
+
+Potential future ML methods:
+- clustering
+- anomaly detection
+- trajectory modeling
+- latent variable discovery
+- temporal pattern analysis
+- population segmentation
+- resilience modeling
+
+Final principle
+===============
+
+NeuroFlex should collect behavioral signals not because we already know which signals matter, but because we do not yet know which signals may become meaningful after years of observation.
+
+The long-term value of NeuroFlex depends on:
+- breadth of behavioral observation
+- depth of interaction data
+- consistency of event structure
+- duration of longitudinal data
+- scientific caution
+- privacy-first design
+
+Brain games are only one part of NeuroFlex.
+
+The real product is the structured observation of human behavior over time.

@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NeuroFlex Behavioral Event Model</title>
+  <meta name="description" content="NeuroFlex Behavioral Event Model v1 for structured longitudinal event logging." />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body class="neuro-site">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../" class="brand">NeuroFlex</a>
+      <nav class="nav">
+        <a href="../">Home</a>
+        <a href="../white-paper/">White Paper</a>
+        <a href="../eula/">EULA</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="doc-hero">
+      <div class="container">
+        <p class="doc-kicker">NeuroFlex Behavioral Event Model · v1</p>
+        <h1>A structured event architecture for future longitudinal behavioral research.</h1>
+        <p class="doc-lead">The MVP can remain offline and simple, but every activity should be designed to emit consistent behavioral events that can later support research infrastructure.</p>
+        <div class="doc-actions">
+          <a class="btn" href="./NeuroFlex Behavioral Event Model v1.txt">Open raw text model</a>
+          <a class="btn btn-secondary" href="../white-paper/">Read White Paper</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="doc-callout">
+          <p><strong>Core rule:</strong> never store only final scores. Store the process: timing, hesitation, corrections, retries, errors, abandonment, and change over time.</p>
+        </div>
+
+        <section class="doc-section">
+          <h2>Event Envelope</h2>
+          <p class="muted">Every NeuroFlex event should share the same base structure so local MVP data can later map cleanly into a backend or research data pipeline.</p>
+          <pre class="code-sample"><code>{
+  "event_id": "uuid",
+  "anonymous_user_id": "uuid",
+  "session_id": "uuid",
+  "timestamp_utc": "2026-06-01T10:00:00Z",
+  "app_version": "2.4",
+  "event_type": "memory_card_selected",
+  "event_category": "cognitive",
+  "screen": "memory_cards",
+  "activity_id": "memory_cards",
+  "sequence_index": 14,
+  "payload": {}
+}</code></pre>
+        </section>
+
+        <section class="doc-section">
+          <h2>Data Tiers</h2>
+          <div class="doc-grid">
+            <article class="doc-card doc-card-strong">
+              <p class="mini-label">Tier 1</p>
+              <h3>Core MVP Events</h3>
+              <p>Safe and useful local events: activity starts, completions, abandonment, score, difficulty, reaction time, duration, task completion, and check-in values.</p>
+            </article>
+            <article class="doc-card">
+              <p class="mini-label">Tier 2</p>
+              <h3>Research Detail</h3>
+              <p>Interaction sequences, hesitation per decision, navigation paths, correction frequency, detailed notification behavior, and retries.</p>
+            </article>
+            <article class="doc-card">
+              <p class="mini-label">Tier 3</p>
+              <h3>Advanced Motor Data</h3>
+              <p>Full touch paths, drawing trajectories, tracing tasks, finger stability, spiral drawing, and high-frequency tap timing. Research consent required.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="doc-section">
+          <h2>Event Levels</h2>
+          <div class="doc-grid">
+            <article class="doc-card">
+              <h3>0 · System</h3>
+              <p>app_open, app_close, session_start, session_end, app_version_changed.</p>
+            </article>
+            <article class="doc-card">
+              <h3>1 · Navigation</h3>
+              <p>screen_view, screen_exit, button_press, menu_opened, invalid_tap, repeated_tap.</p>
+            </article>
+            <article class="doc-card">
+              <h3>2 · Activity Lifecycle</h3>
+              <p>activity_start, activity_complete, activity_abandoned, activity_skipped, activity_retry.</p>
+            </article>
+            <article class="doc-card">
+              <h3>3 · Cognitive</h3>
+              <p>memory cards, sequence memory, missing item, number sequence, reaction tests, recall, attention, visual search.</p>
+            </article>
+            <article class="doc-card">
+              <h3>4 · Emotional</h3>
+              <p>mood, energy, motivation, focus, stress, loneliness, confidence, perceived difficulty, memory self-rating.</p>
+            </article>
+            <article class="doc-card">
+              <h3>5 · Wellness</h3>
+              <p>train, drink, move, eat, connect, relax events and completion patterns.</p>
+            </article>
+            <article class="doc-card">
+              <h3>6 · Routine</h3>
+              <p>task_created, task_completed, task_postponed, task_skipped, task_ignored, routine_day_summary.</p>
+            </article>
+            <article class="doc-card">
+              <h3>7 · Notifications</h3>
+              <p>notification_scheduled, received, opened, dismissed, ignored, and action_selected.</p>
+            </article>
+            <article class="doc-card">
+              <h3>8 · Behavioral Pattern</h3>
+              <p>challenge_avoided, difficulty changes, long pauses, return after gap, preference signals.</p>
+            </article>
+            <article class="doc-card">
+              <h3>9 · Motor</h3>
+              <p>tap precision, touch paths, drag events, line tracing, hold-still tests, spiral drawing.</p>
+            </article>
+            <article class="doc-card">
+              <h3>10 · Consent</h3>
+              <p>research_consent_shown, accepted, declined, revoked, export requested, local data deleted.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="doc-section">
+          <h2>Example: Memory Cards</h2>
+          <p class="muted">A useful event model captures not only whether the user solved the round, but how they solved it.</p>
+          <pre class="code-sample"><code>{
+  "event_type": "memory_pair_attempt",
+  "event_category": "cognitive",
+  "screen": "memory_cards",
+  "activity_id": "memory_cards",
+  "payload": {
+    "first_card_position": 5,
+    "second_card_position": 9,
+    "is_match": false,
+    "time_between_cards_ms": 1800,
+    "hesitation_ms": 1800
+  }
+}</code></pre>
+        </section>
+
+        <section class="doc-section">
+          <h2>Example: Number Sequence</h2>
+          <p class="muted">Typing behavior may contain signals beyond the final answer.</p>
+          <pre class="code-sample"><code>{
+  "event_type": "number_sequence_submit",
+  "event_category": "cognitive",
+  "payload": {
+    "sequence_length": 5,
+    "is_correct": false,
+    "error_type": "substitution",
+    "first_error_position": 3,
+    "typing_duration_ms": 4100,
+    "backspace_count": 2,
+    "submit_latency_ms": 900
+  }
+}</code></pre>
+        </section>
+
+        <section class="doc-section">
+          <h2>Derived Metrics</h2>
+          <ul class="doc-pill-list">
+            <li>reaction time variability</li>
+            <li>learning curve slope</li>
+            <li>retention curve</li>
+            <li>first-error position</li>
+            <li>correction rate</li>
+            <li>task adherence rate</li>
+            <li>postponement frequency</li>
+            <li>abandonment rate</li>
+            <li>confidence-performance gap</li>
+            <li>usage time drift</li>
+            <li>session fragmentation</li>
+            <li>touch precision</li>
+          </ul>
+        </section>
+
+        <section class="doc-section">
+          <h2>MVP Implementation</h2>
+          <div class="doc-grid">
+            <article class="doc-card">
+              <h3>Local first</h3>
+              <p>Implement local event logging only. The app does not need backend, login, cloud sync, or AI in Phase 1.</p>
+            </article>
+            <article class="doc-card">
+              <h3>Future-ready</h3>
+              <p>Use the same schema that a future backend would expect: event ID, anonymous user ID, session ID, timestamp, type, category, screen, activity, and payload.</p>
+            </article>
+            <article class="doc-card">
+              <h3>Exportable</h3>
+              <p>For development, add a way to export local events, clear local events, and inspect event count.</p>
+            </article>
+          </div>
+          <pre class="code-sample"><code>today:
+saveLocally(event)
+
+future:
+saveLocally(event)
+syncToCloud(event)</code></pre>
+        </section>
+
+        <section class="doc-section">
+          <h2>Privacy Rules</h2>
+          <p>NeuroFlex should minimize personal data and avoid collecting identity by default.</p>
+          <ul class="doc-pill-list">
+            <li>no name by default</li>
+            <li>no email by default</li>
+            <li>no phone number</li>
+            <li>no precise location</li>
+            <li>no contacts</li>
+            <li>no camera images</li>
+            <li>no microphone recordings</li>
+            <li>no medical records by default</li>
+          </ul>
+        </section>
+
+        <section class="doc-section">
+          <h2>Scientific Framing</h2>
+          <div class="doc-callout">
+            <p>NeuroFlex should investigate behavioral trajectories, not claim diagnosis. The initial machine learning objective should be discovery, not prediction.</p>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> NeuroFlex · Cognitive wellness &amp; behavioral research</p>
+      <p class="muted">Developed by <a href="https://www.lifeapps.online/" style="color:#9fb3ff">LifeApps</a></p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
