@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NeuroFlex — Research Programme Architecture</title>
+  <meta name="description" content="Internal working document: NeuroFlex five-phase research programme, modular platform architecture, seven-layer data collection, reporting framework, Research-Oriented UX (Cognitive Friction), and Slovak+international collaboration model." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .doc-body { max-width: 860px; }
+    .section-number { font-size:0.68rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#00cfff; margin-bottom:0.3rem; }
+    h2.section-title { font-size:1.35rem; margin:0 0 0.85rem; }
+    h3.sub { font-size:1.05rem; margin:1.6rem 0 0.5rem; color:#c8dde8; }
+    h4.sub4 { font-size:0.93rem; margin:1rem 0 0.3rem; color:#9ab8cc; }
+    p.body-para { font-size:0.9rem; color:#8a9fb5; line-height:1.72; margin:0 0 0.75rem; }
+    hr.div { border:none; border-top:1px solid rgba(255,255,255,0.07); margin:3rem 0; }
+
+    /* TOC */
+    .toc { background:rgba(0,0,0,0.2); border-radius:12px; padding:1.2rem 1.5rem; margin:1.5rem 0 2.5rem; }
+    .toc .toc-label { font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#00cfff; margin:0 0 0.75rem; }
+    .toc ol { margin:0; padding-left:1.3rem; display:flex; flex-direction:column; gap:0.3rem; }
+    .toc li { font-size:0.88rem; color:#7a9ab5; }
+    .toc a { color:#7ec8d8; text-decoration:none; }
+    .toc a:hover { text-decoration:underline; }
+    .toc ol ol { margin-top:0.2rem; gap:0.15rem; }
+    .toc ol ol li { font-size:0.82rem; color:#5a7a99; }
+
+    /* Insight / warning */
+    .insight { background:rgba(0,207,255,0.05); border-left:3px solid rgba(0,207,255,0.5); border-radius:0 10px 10px 0; padding:0.9rem 1.2rem; margin:1.25rem 0; }
+    .insight p { font-size:0.88rem; color:#8cc8d8; line-height:1.65; margin:0; }
+    .gap-box { background:rgba(255,179,71,0.05); border-left:3px solid rgba(255,179,71,0.5); border-radius:0 10px 10px 0; padding:0.9rem 1.2rem; margin:1.25rem 0; }
+    .gap-box p { font-size:0.88rem; color:#c8a870; line-height:1.65; margin:0; }
+
+    /* Phase cards */
+    .phase-card { display:flex; gap:1rem; margin-bottom:1.25rem; align-items:flex-start; }
+    .phase-num { min-width:2.8rem; height:2.8rem; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.85rem; font-weight:700; color:#fff; flex-shrink:0; margin-top:0.1rem; }
+    .ph1 { background:rgba(0,207,255,0.25); color:#00cfff; }
+    .ph2 { background:rgba(150,100,255,0.25); color:#b08aff; }
+    .ph3 { background:rgba(255,130,80,0.25); color:#ff9060; }
+    .ph4 { background:rgba(255,100,130,0.25); color:#ff80a8; }
+    .ph5 { background:rgba(85,214,138,0.25); color:#55d68a; }
+    .phase-body { flex:1; background:rgba(0,0,0,0.15); border:1px solid rgba(255,255,255,0.06); border-radius:14px; padding:1rem 1.1rem; }
+    .phase-body h4 { margin:0 0 0.3rem; font-size:0.97rem; }
+    .phase-body .ph-meta { display:flex; gap:0.5rem 1rem; flex-wrap:wrap; margin-bottom:0.5rem; }
+    .phase-body .ph-tag { font-size:0.7rem; padding:0.15em 0.55em; border-radius:4px; background:rgba(255,255,255,0.07); color:#7a9ab5; font-weight:600; letter-spacing:0.05em; }
+    .phase-body p { font-size:0.85rem; color:#8a9fb5; line-height:1.65; margin:0 0 0.4rem; }
+    .phase-body p:last-child { margin:0; }
+    .phase-body ul { font-size:0.84rem; color:#7a9ab5; padding-left:1.2rem; margin:0.3rem 0 0; }
+    .phase-body li { margin-bottom:0.2rem; line-height:1.55; }
+
+    /* Layer table */
+    .layer-table { width:100%; border-collapse:collapse; font-size:0.83rem; margin:1rem 0; }
+    .layer-table th { text-align:left; padding:0.5rem 0.65rem; color:#00cfff; border-bottom:1px solid rgba(0,207,255,0.2); font-size:0.72rem; text-transform:uppercase; letter-spacing:0.05em; font-weight:600; }
+    .layer-table td { padding:0.5rem 0.65rem; border-bottom:1px solid rgba(255,255,255,0.04); color:#8a9fb5; vertical-align:top; }
+    .layer-table tr:last-child td { border-bottom:none; }
+    .layer-table td.layer-name { color:#c8dde8; font-weight:600; }
+    .layer-table td.layer-phase { font-size:0.75rem; color:#5ab8cc; font-weight:600; }
+    .layer-table td.layer-hyp { font-style:italic; color:#6a8aa0; font-size:0.8rem; }
+
+    /* Report cards */
+    .report-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.85rem; margin:1rem 0; }
+    @media(max-width:640px){ .report-grid { grid-template-columns:1fr; } }
+    .report-card { background:rgba(0,0,0,0.18); border:1px solid rgba(255,255,255,0.06); border-radius:12px; padding:0.9rem 1rem; }
+    .report-card .rc-label { font-size:0.65rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.4rem; color:#5ab8cc; }
+    .report-card h4 { margin:0 0 0.4rem; font-size:0.93rem; color:#c8dde8; }
+    .report-card p { font-size:0.82rem; color:#7a9ab5; line-height:1.6; margin:0 0 0.4rem; }
+    .report-card ul { font-size:0.8rem; color:#6a8a9a; padding-left:1.1rem; margin:0.25rem 0 0; }
+    .report-card li { margin-bottom:0.15rem; line-height:1.5; }
+
+    /* UX principle */
+    .ux-card { background:rgba(150,100,255,0.05); border:1px solid rgba(150,100,255,0.2); border-radius:14px; padding:1.1rem 1.2rem; margin-bottom:1rem; }
+    .ux-card h4 { margin:0 0 0.4rem; font-size:0.97rem; color:#b08aff; }
+    .ux-card p { font-size:0.87rem; color:#8a9fb5; line-height:1.65; margin:0 0 0.4rem; }
+    .ux-do-dont { display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; margin-top:0.5rem; }
+    @media(max-width:500px){ .ux-do-dont { grid-template-columns:1fr; } }
+    .ux-do { background:rgba(85,214,138,0.06); border-radius:8px; padding:0.6rem 0.75rem; }
+    .ux-dont { background:rgba(255,100,100,0.06); border-radius:8px; padding:0.6rem 0.75rem; }
+    .ux-do p, .ux-dont p { font-size:0.8rem; margin:0 0 0.2rem; }
+    .ux-do strong { color:#55d68a; }
+    .ux-dont strong { color:#ff8080; }
+
+    /* Step list */
+    .step-list { display:flex; flex-direction:column; gap:0.75rem; margin-top:1rem; }
+    .step-item { display:flex; gap:0.85rem; align-items:flex-start; }
+    .step-num { min-width:1.6rem; height:1.6rem; background:rgba(0,207,255,0.12); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.72rem; font-weight:700; color:#00cfff; flex-shrink:0; margin-top:0.15rem; }
+    .step-item p { font-size:0.88rem; color:#8a9fb5; margin:0; line-height:1.65; }
+    .step-item p strong { color:#a8c8d8; }
+
+    /* Architecture diagram text */
+    .arch-diagram { font-family:monospace; font-size:0.82rem; color:#7a9ab5; background:rgba(0,0,0,0.25); border:1px solid rgba(255,255,255,0.07); border-radius:12px; padding:1.1rem 1.3rem; line-height:1.75; margin:1rem 0; white-space:pre; overflow-x:auto; }
+
+    /* Conclusion */
+    .conclusion-box { background:linear-gradient(135deg,rgba(0,207,255,0.07),rgba(120,104,243,0.06)); border:1px solid rgba(0,207,255,0.25); border-radius:16px; padding:1.6rem; margin:1.5rem 0; }
+    .conclusion-box blockquote { font-size:0.97rem; font-style:italic; color:#c8dde8; border-left:3px solid #00cfff; margin:0.75rem 0; padding-left:1.1rem; line-height:1.75; }
+  </style>
+</head>
+<body class="neuro-site">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../" class="brand brand-neuroflex">
+        <img src="../assets/neuroflex-logo.png" alt="" />
+        <span>NeuroFlex<sup>&copy;</sup></span>
+      </a>
+      <nav class="nav">
+        <a href="../">Home</a>
+        <a href="../research-design/">Research Design</a>
+        <a href="../state-of-the-art/">State of the Art</a>
+        <a href="../grant-landscape/">Grants</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="doc-hero">
+      <div class="container">
+        <p class="doc-kicker">Internal Working Document · Unlisted · Version 1.0 · June 2026</p>
+        <h1>Research Programme Architecture</h1>
+        <p class="doc-lead">NeuroFlex as a long-term, multi-phase research programme: five sequential grant-fundable phases, seven-layer data architecture, clinical and personal reporting framework, Research-Oriented UX principles, and the Slovak startup + international cohorts collaboration model.</p>
+        <div class="doc-actions">
+          <a class="btn btn-secondary" href="../research-design/">Research Design</a>
+          <a class="btn btn-secondary" href="../scientific-network/">Scientific Network</a>
+          <a class="btn btn-secondary" href="../grant-landscape/">Grants</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container doc-body">
+
+        <div class="toc">
+          <p class="toc-label">Contents</p>
+          <ol>
+            <li><a href="#s1">From Application to Research Programme</a></li>
+            <li><a href="#s2">Five-Phase Research Programme</a></li>
+            <li><a href="#s3">Modular Platform Architecture</a></li>
+            <li><a href="#s4">Seven-Layer Data Collection</a></li>
+            <li><a href="#s5">Reporting Framework</a>
+              <ol>
+                <li><a href="#s5-1">Personal Baseline as Core Analytical Concept</a></li>
+                <li><a href="#s5-2">Three Report Levels</a></li>
+                <li><a href="#s5-3">Reporting Time Horizons</a></li>
+              </ol>
+            </li>
+            <li><a href="#s6">Research-Oriented UX (RUX) — Cognitive Friction</a></li>
+            <li><a href="#s7">Slovak Startup + International Cohorts Model</a>
+              <ol>
+                <li><a href="#s7-1">Why a Slovak Company Can Conduct International Research</a></li>
+                <li><a href="#s7-2">Why a Slovak Scientific Partner Remains Essential</a></li>
+              </ol>
+            </li>
+            <li><a href="#s8">Questions for the SAV Meeting</a></li>
+          </ol>
+        </div>
+
+        <hr class="div" />
+
+        <!-- S1 -->
+        <section id="s1">
+          <div class="section-number">Section 1</div>
+          <h2 class="section-title">From Application to Research Programme</h2>
+          <p class="body-para">The conceptual framing of NeuroFlex has evolved substantially. It is no longer useful to describe it as a "brain training application" or even as a "digital biomarker platform." The most accurate description is:</p>
+          <div class="conclusion-box">
+            <blockquote>NeuroFlex is a multimodal longitudinal digital phenotyping platform for early detection and monitoring of Alzheimer's disease — designed as a multi-phase research programme in which each phase addresses an independent scientific question, produces independent publishable results, and creates the scientific foundation for the subsequent phase.</blockquote>
+          </div>
+          <p class="body-para">This framing has several critical implications:</p>
+          <div class="step-list">
+            <div class="step-item">
+              <span class="step-num">1</span>
+              <p><strong>Each phase is independently grant-fundable.</strong> You do not need to secure funding for the entire programme before starting. Phase 1 can begin with a modest APVV or MZ SR grant. Phase 3 requires the results of Phase 2. This is both scientifically sound and strategically realistic.</p>
+            </div>
+            <div class="step-item">
+              <span class="step-num">2</span>
+              <p><strong>Failure of any phase is a scientific result, not a project failure.</strong> If Phase 1 reveals that behavioral patterns are not measurable with sufficient reliability, that finding is publishable and informative. The programme does not collapse.</p>
+            </div>
+            <div class="step-item">
+              <span class="step-num">3</span>
+              <p><strong>NeuroFlex is not competing with biomarker research — it is adding a layer to it.</strong> Existing biomarker platforms have CSF, PET, MRI, genetics, and neuropsychological assessments. None has continuous longitudinal behavioral data from daily life. NeuroFlex provides this missing layer.</p>
+            </div>
+            <div class="step-item">
+              <span class="step-num">4</span>
+              <p><strong>The Slovak startup + international cohorts model is standard in European research.</strong> Technology development in Slovakia; clinical ground truth from Sweden, Netherlands, Germany. This is how RADAR-AD, LETHE, and DigiAD all operate.</p>
+            </div>
+          </div>
+        </section>
+
+        <hr class="div" />
+
+        <!-- S2 -->
+        <section id="s2">
+          <div class="section-number">Section 2</div>
+          <h2 class="section-title">Five-Phase Research Programme</h2>
+          <p class="body-para">Each phase is designed as a standalone, grant-fundable research project with its own hypothesis, deliverables, and expected outputs. Phases are sequential and cumulative, but independently publishable.</p>
+
+          <div class="phase-card">
+            <div class="phase-num ph1">1</div>
+            <div class="phase-body">
+              <h4>Phase 1 — Core Platform &amp; Behavioural Feasibility</h4>
+              <div class="ph-meta">
+                <span class="ph-tag">NeuroFlex 1.0</span>
+                <span class="ph-tag">Grant: APVV / MZ SR Prelomové technológie</span>
+                <span class="ph-tag">Budget: €200–300K</span>
+                <span class="ph-tag">Duration: 18–24 months</span>
+              </div>
+              <p><strong>Primary hypothesis:</strong> Longitudinal digital behavioural data collected via a structured daily micro-interaction platform (Pulse, Compass, Wander, Haven + cognitive tasks) can be measured reliably within individuals over time, and shows measurable between-group differences across the four research cohorts.</p>
+              <p><strong>Data layers used:</strong> Layer 1 (Active Behavioral) + Layer 5 (Clinical labels from partner institutions)</p>
+              <ul>
+                <li>Build and validate 4-module daily checkup system</li>
+                <li>Recruit pilot cohort: N=200–400 (Cohorts A, B, D; Cohort C from international partner)</li>
+                <li>Establish personal baseline measurement methodology</li>
+                <li>Develop latent trait derivation algorithm (v1)</li>
+                <li>Publication: "Feasibility of longitudinal digital behavioural phenotyping in cognitively diverse populations"</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="phase-card">
+            <div class="phase-num ph2">2</div>
+            <div class="phase-body">
+              <h4>Phase 2 — Passive Digital Phenotyping Integration</h4>
+              <div class="ph-meta">
+                <span class="ph-tag">NeuroFlex 2.0</span>
+                <span class="ph-tag">Grant: MZ SR / Horizon Europe pilot</span>
+                <span class="ph-tag">Budget: €500K–2M</span>
+                <span class="ph-tag">Duration: 24–36 months</span>
+              </div>
+              <p><strong>Primary hypothesis:</strong> Passive digital signals (mobility, sleep, phone usage patterns, typing dynamics) combined with active behavioural data provide higher sensitivity for early cognitive change detection than active data alone.</p>
+              <p><strong>Data layers added:</strong> Layer 2 (Passive phenotyping) + Layer 3 (Device interaction) + Layer 6 (Longitudinal derived features)</p>
+              <ul>
+                <li>Add passive sensing module (GPS mobility, step count, sleep, app usage) via Health Connect / HealthKit integration</li>
+                <li>Add typing dynamics and touch interaction capture</li>
+                <li>Expand cohort: N=600–1,500 across all four cohorts</li>
+                <li>Multimodal AI model (v2): combines active + passive signals</li>
+                <li>Publication: "Multimodal digital biomarkers in preclinical Alzheimer's disease: combining structured behavioural assessment with passive smartphone sensing"</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="phase-card">
+            <div class="phase-num ph3">3</div>
+            <div class="phase-body">
+              <h4>Phase 3 — Clinical Biomarker Integration</h4>
+              <div class="ph-meta">
+                <span class="ph-tag">NeuroFlex 3.0</span>
+                <span class="ph-tag">Grant: Horizon Europe Health / IHI</span>
+                <span class="ph-tag">Budget: €2–8M</span>
+                <span class="ph-tag">Duration: 36–48 months</span>
+              </div>
+              <p><strong>Primary hypothesis:</strong> Longitudinal changes in NeuroFlex behavioural and digital phenotyping metrics correlate with established biological biomarkers (pTau217, Aβ42/40, NfL, GFAP) and predict future clinical trajectory in biomarker-positive individuals.</p>
+              <p><strong>Data layers added:</strong> Layer 5 (Full clinical data: biomarkers, MRI, PET, neuropsychology) + Layer 7 (AI-derived features)</p>
+              <ul>
+                <li>Formal data-linking agreement with DZNE (DELCODE) and/or Amsterdam UMC</li>
+                <li>Cohort expansion to N=1,500–3,000 with biomarker-stratified groups</li>
+                <li>Cross-validation of NeuroFlex metrics against plasma pTau217 and amyloid PET</li>
+                <li>Publication: "Digital behavioural trajectories in individuals with confirmed pre-symptomatic Alzheimer's pathology: a multicentre longitudinal study"</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="phase-card">
+            <div class="phase-num ph4">4</div>
+            <div class="phase-body">
+              <h4>Phase 4 — Multimodal AI Platform</h4>
+              <div class="ph-meta">
+                <span class="ph-tag">NeuroFlex 4.0</span>
+                <span class="ph-tag">Grant: IHI + pharma partnership</span>
+                <span class="ph-tag">Budget: €5–15M</span>
+                <span class="ph-tag">Duration: 48–60 months</span>
+              </div>
+              <p><strong>Primary hypothesis:</strong> A multimodal AI model trained on the full NeuroFlex data stack (7 layers) can classify individuals by biomarker and clinical status with clinically meaningful accuracy, and predict cognitive trajectory over 2–5 years.</p>
+              <ul>
+                <li>Population-scale dataset: N=10,000+ (Cohort D) + N=1,000+ stratified cohorts</li>
+                <li>Deep learning models: longitudinal trajectory prediction, anomaly detection relative to personal baseline</li>
+                <li>Blind classification study: AI predicts cohort assignment without access to clinical labels</li>
+                <li>Partnership with pharmaceutical companies for digital endpoint development in clinical trials</li>
+                <li>Publications: AI performance validation; prospective outcome prediction study</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="phase-card">
+            <div class="phase-num ph5">5</div>
+            <div class="phase-body">
+              <h4>Phase 5 — Clinical Decision Support</h4>
+              <div class="ph-meta">
+                <span class="ph-tag">NeuroFlex 5.0</span>
+                <span class="ph-tag">Regulatory pathway: CE/FDA SaMD</span>
+                <span class="ph-tag">Revenue: licensing, clinical partnerships</span>
+              </div>
+              <p><strong>Target:</strong> A clinician-facing tool that flags individuals whose digital behavioural trajectory warrants further investigation — not a diagnostic, but a risk stratification and monitoring tool operating within clinical workflows.</p>
+              <ul>
+                <li>Neurologist/GP-facing dashboard with population-adjusted personal baseline deviation alerts</li>
+                <li>Integration with existing EHR systems</li>
+                <li>Regulatory development: Software as a Medical Device (SaMD), CE marking pathway</li>
+                <li>Business model: licensing to memory clinics, clinical trial organisations, insurance providers</li>
+                <li>This phase generates revenue — the first commercial application of NeuroFlex technology</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="insight">
+            <p>For grant applications, never present Phase 5 as the primary goal. Present it as a natural consequence of successful earlier phases. Grant committees fund research, not business development. The scientific value of Phases 1–4 is real and independent of whether Phase 5 ever materialises.</p>
+          </div>
+        </section>
+
+        <hr class="div" />
+
+        <!-- S3 -->
+        <section id="s3">
+          <div class="section-number">Section 3</div>
+          <h2 class="section-title">Modular Platform Architecture</h2>
+          <p class="body-para">NeuroFlex is designed so that each phase adds a module to the existing platform without replacing or rewriting the core. This ensures that Phase 1 data remains valid and comparable when Phase 3 adds clinical biomarker layers.</p>
+
+          <pre class="arch-diagram">
+NeuroFlex Platform Stack
+
+┌─────────────────────────────────────────────────────┐
+│  Phase 5   │  Clinical Decision Support Module       │
+│            │  Clinician dashboard · SaMD pathway     │
+├────────────┼─────────────────────────────────────────┤
+│  Phase 4   │  Multimodal AI Module                   │
+│            │  Deep learning · trajectory prediction  │
+├────────────┼─────────────────────────────────────────┤
+│  Phase 3   │  Clinical Research Module               │
+│            │  Biomarker linking · EHR integration    │
+├────────────┼─────────────────────────────────────────┤
+│  Phase 2   │  Passive Sensing Module                 │
+│            │  GPS · sleep · typing · touch dynamics  │
+├────────────┼─────────────────────────────────────────┤
+│  Phase 1   │  NeuroFlex Core (already exists)        │
+│            │  Pulse · Compass · Wander · Haven       │
+│            │  Cognitive tasks · Personal baseline AI │
+└────────────┴─────────────────────────────────────────┘
+</pre>
+
+          <p class="body-para">Each module is independently deployable. If Phase 3 is never funded, Phases 1 and 2 continue generating scientifically valid longitudinal data. The modular design also allows international partners to deploy only the modules relevant to their clinical protocol.</p>
+        </section>
+
+        <hr class="div" />
+
+        <!-- S4 -->
+        <section id="s4">
+          <div class="section-number">Section 4</div>
+          <h2 class="section-title">Seven-Layer Data Collection Architecture</h2>
+          <p class="body-para">Data collected by NeuroFlex is organised into seven conceptually distinct layers. Every layer must have explicit scientific justification — not "because the phone can do it" but "because this signal addresses a specific hypothesis." Grant committees evaluate data collection scope against stated hypotheses.</p>
+
+          <table class="layer-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Layer</th>
+                <th>Examples</th>
+                <th>Phase</th>
+                <th>Core Hypothesis</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td class="layer-name">Active Behavioral</td>
+                <td>Daily checkups, cognitive tasks, decision latency, completion rate, retry patterns</td>
+                <td class="layer-phase">Phase 1</td>
+                <td class="layer-hyp">Structured daily interactions reveal latent trait trajectories (curiosity, initiative, flexibility, resilience, persistence)</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td class="layer-name">Passive Digital Phenotyping</td>
+                <td>Step count, GPS mobility radius, sleep regularity, phone unlock frequency, daily rhythm entropy</td>
+                <td class="layer-phase">Phase 2</td>
+                <td class="layer-hyp">Naturalistic daily patterns (mobility, sleep, activity) change measurably before clinical symptoms appear</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td class="layer-name">Device Interaction</td>
+                <td>Typing speed, error rate, backspace frequency, touch duration, gesture trajectory, scrolling smoothness</td>
+                <td class="layer-phase">Phase 2</td>
+                <td class="layer-hyp">Fine motor control expressed in smartphone interaction encodes early neuromotor and cognitive signal (established in Parkinson research; extending to AD)</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td class="layer-name">Sensor (Extended)</td>
+                <td>Accelerometer (gait stability), gyroscope (postural control), microphone (speech rhythm) — with explicit consent</td>
+                <td class="layer-phase">Phase 2–3</td>
+                <td class="layer-hyp">Subtle changes in gait and balance measurable via smartphone accelerometry may correlate with neurodegeneration</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td class="layer-name">Clinical (Ground Truth)</td>
+                <td>Age, sex, education, cohort assignment, biomarker status (pTau217, Aβ42/40, NfL), MMSE, MoCA, CDR, MRI volumes, APOE genotype, diagnosis</td>
+                <td class="layer-phase">Phase 1–3</td>
+                <td class="layer-hyp">Clinical labels enable interpretation of behavioral patterns and validation against established biomarker ground truth</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td class="layer-name">Longitudinal Features</td>
+                <td>30/90/365-day rolling averages; trajectory slopes; variability indices; drift from personal baseline; circadian consistency scores</td>
+                <td class="layer-phase">Phase 1–4</td>
+                <td class="layer-hyp">Change over time, not absolute level, carries the meaningful diagnostic signal — within-person deviation is more sensitive than population comparison</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td class="layer-name">AI-Derived Features</td>
+                <td>Behavioral Stability Index, Cognitive Flexibility Score, Decision Variability, Routine Entropy, Social Activation Index, Initiative Ratio, Calibration Index</td>
+                <td class="layer-phase">Phase 1–5</td>
+                <td class="layer-hyp">Latent constructs derived from multiple data sources provide higher-level signal than any individual data point — comparable to psychological factor analysis applied to longitudinal digital data</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="insight">
+            <p><strong>Multimodal hypothesis:</strong> The scientific value of NeuroFlex is not in any single data layer but in their combination. Curiosity measured from Layer 1 (novel content choices) can be enriched by Layer 2 (GPS visit diversity), Layer 3 (response time variance), and Layer 6 (trend over 90 days) into a composite latent trait estimate that no single measurement source could produce. This multimodal approach is what differentiates NeuroFlex from both cognitive testing apps (Layer 1 only) and passive sensing research (Layer 2–3 only).</p>
+          </div>
+        </section>
+
+        <hr class="div" />
+
+        <!-- S5 -->
+        <section id="s5">
+          <div class="section-number">Section 5</div>
+          <h2 class="section-title">Reporting Framework</h2>
+
+          <h3 class="sub" id="s5-1">5.1 Personal Baseline as Core Analytical Concept</h3>
+          <p class="body-para">The foundational analytical principle of NeuroFlex is the personal baseline: every individual is compared against their own historical norm, not against a population distribution. This is a deliberate departure from the dominant paradigm in cognitive assessment.</p>
+          <div class="gap-box">
+            <p><strong>Why population norms are insufficient:</strong> An individual with exceptionally high premorbid cognitive ability may decline 30% in reaction time and curiosity engagement before their scores approach the population average for their age group. The population norm comparison system would classify them as "normal" throughout. Personal baseline modelling detects the 30% decline — precisely the early-stage signal NeuroFlex is designed to identify.</p>
+          </div>
+          <p class="body-para">In clinical reporting to neurologists, this principle translates to: the most meaningful metric is not "this patient scored X" but rather "this patient's score has declined Y% from their own historical baseline over the past 90 days." This is more clinically interpretable and avoids the confounding effect of cognitive reserve differences between individuals.</p>
+
+          <h3 class="sub" id="s5-2">5.2 Three Report Levels</h3>
+          <div class="report-grid">
+            <div class="report-card">
+              <p class="rc-label">Level 1</p>
+              <h4>Personal Report</h4>
+              <p>For the user. Plain language, no diagnostic terminology, no risk framing. Focused on engagement, consistency, and observable trends.</p>
+              <ul>
+                <li>"You were very consistent this month"</li>
+                <li>"Your routine stayed stable"</li>
+                <li>"You completed fewer activities than usual this week"</li>
+                <li>Never: "Your risk is elevated"</li>
+              </ul>
+            </div>
+            <div class="report-card">
+              <p class="rc-label">Level 2</p>
+              <h4>Clinical Report</h4>
+              <p>For the referring clinician. Contains trajectory data, statistical deviation from personal baseline, and trend direction. No diagnostic claim.</p>
+              <ul>
+                <li>30 / 90 / 365 day trend charts</li>
+                <li>Deviation from personal baseline (%)</li>
+                <li>Latent trait trajectory graphs</li>
+                <li>Completion rate and engagement metrics</li>
+                <li>Flagged anomalies (if threshold exceeded)</li>
+              </ul>
+            </div>
+            <div class="report-card">
+              <p class="rc-label">Level 3</p>
+              <h4>Research Dashboard</h4>
+              <p>For scientific partners. Full access to anonymised behavioural data, AI feature importance, cohort-level aggregate statistics, and longitudinal modelling outputs. Users never see this level.</p>
+              <ul>
+                <li>Latent variable trajectories</li>
+                <li>Feature importance by cohort</li>
+                <li>Classifier performance metrics</li>
+                <li>Individual anomaly detection results</li>
+                <li>Cohort comparative analysis</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 class="sub" id="s5-3">5.3 Reporting Time Horizons</h3>
+          <p class="body-para">Different time windows capture different types of signal. Short windows show acute state changes; long windows show gradual drift. Clinical reports should emphasise the 90-day window as the primary comparison period, supplemented by annual trend analysis.</p>
+          <div class="step-list">
+            <div class="step-item"><span class="step-num">W</span><p><strong>Weekly:</strong> Engagement confirmation only. "You completed X activities this week." No interpretive claims. Builds habit.</p></div>
+            <div class="step-item"><span class="step-num">M</span><p><strong>Monthly:</strong> First interpretive report. Compares current month against preceding 3-month rolling average. Identifies acute changes. Sent to user + optionally to clinician.</p></div>
+            <div class="step-item"><span class="step-num">Q</span><p><strong>Quarterly (90 days):</strong> Primary clinical reporting window. AI comparison of Q4 vs Q3, Q4 vs Q2, and Q4 vs Q1 baselines. Most sensitive to gradual drift. Primary vehicle for clinician notification.</p></div>
+            <div class="step-item"><span class="step-num">Y</span><p><strong>Annual:</strong> Comprehensive longitudinal report. Full personal baseline trajectory across all active dimensions. Most relevant for research data extraction and scientific analysis. The longer NeuroFlex runs, the more valuable this report becomes.</p></div>
+          </div>
+        </section>
+
+        <hr class="div" />
+
+        <!-- S6 -->
+        <section id="s6">
+          <div class="section-number">Section 6</div>
+          <h2 class="section-title">Research-Oriented UX (RUX) — Cognitive Friction</h2>
+          <p class="body-para">This is one of NeuroFlex's most methodologically unusual design principles, and one that must be explicitly justified in any scientific publication or grant application. Standard UX design aims to eliminate friction — to make every interaction as automatic, predictable, and effortless as possible. NeuroFlex deliberately violates this principle in the research interaction layer, for a scientifically motivated reason.</p>
+
+          <div class="insight">
+            <p><strong>The habituation problem:</strong> If a user interacts with the same questions in the same order, in the same position, at the same time every day for two years, the interactions become entirely automatic — neurologically equivalent to brushing teeth. Automatic behaviour has minimal cognitive load and produces minimal signal about cognitive flexibility, initiative, or decision-making. NeuroFlex must preserve meaningful cognitive engagement to maintain the scientific validity of its data collection.</p>
+          </div>
+
+          <p class="body-para">The solution is not poor UX — it is <strong>Research-Oriented UX (RUX)</strong>: a design philosophy that strategically introduces controlled, mild variability in the research interaction layer while maintaining full conventional UX standards for all functional aspects of the platform (account management, notifications, navigation, accessibility).</p>
+
+          <h3 class="sub">Cognitive Friction — Definition and Scope</h3>
+          <p class="body-para">Cognitive Friction in NeuroFlex is defined as <em>deliberate, controlled variability in research interaction design that prevents fully automatic habituation while maintaining a positive user experience</em>. It is applied exclusively within the Pulse, Compass, Wander, and Haven checkup modules and cognitive task sequences — never in account settings, onboarding, or accessibility features.</p>
+
+          <div class="ux-card">
+            <h4>Question and Option Ordering</h4>
+            <div class="ux-do-dont">
+              <div class="ux-do"><p><strong>✓ Do:</strong> Rotate answer option order within the same question across different presentation instances. Present equivalent questions in different phrasing across sessions.</p></div>
+              <div class="ux-dont"><p><strong>✗ Don't:</strong> Randomise fundamental navigation elements. Change the location of "Submit" or "Skip" buttons between sessions.</p></div>
+            </div>
+          </div>
+
+          <div class="ux-card">
+            <h4>Task Timing Variability</h4>
+            <div class="ux-do-dont">
+              <div class="ux-do"><p><strong>✓ Do:</strong> Vary reminder times within a ±30 minute window (e.g., Pulse at 8:00–8:30 rather than exactly 8:00). Vary which module appears first within each day's session.</p></div>
+              <div class="ux-dont"><p><strong>✗ Don't:</strong> Send reminders at wildly unpredictable times that disrupt user routine. Deliver intrusive interruptions.</p></div>
+            </div>
+          </div>
+
+          <div class="ux-card">
+            <h4>Cognitive Task Rotation</h4>
+            <div class="ux-do-dont">
+              <div class="ux-do"><p><strong>✓ Do:</strong> Rotate between equivalent cognitive task variants that measure the same construct. Introduce a "novel task" type periodically (e.g., once every two weeks). Vary difficulty adaptively within established ranges.</p></div>
+              <div class="ux-dont"><p><strong>✗ Don't:</strong> Present the same cognitive task in the same format in the same position every single day for 24 months. Remove difficulty levels that users have already mastered.</p></div>
+            </div>
+          </div>
+
+          <div class="ux-card">
+            <h4>Decision Context Variability</h4>
+            <div class="ux-do-dont">
+              <div class="ux-do"><p><strong>✓ Do:</strong> Vary the surface framing of equivalent decision probes (a reward preference question can appear as a financial choice, a time allocation choice, or a social choice while measuring the same underlying trait). Occasionally substitute equivalent probes from the same latent trait category.</p></div>
+              <div class="ux-dont"><p><strong>✗ Don't:</strong> Repeat the exact same question wording in the same weekly slot. Make the mapping between question and trait obvious to the user.</p></div>
+            </div>
+          </div>
+
+          <div class="gap-box">
+            <p><strong>Scientific justification for grant applications:</strong> "NeuroFlex employs a Research-Oriented UX (RUX) design philosophy that deliberately introduces controlled, mild variability into research interaction patterns. This is motivated by the hypothesis that fully automatic, habituated behaviour produces diminished cognitive signal compared to responses requiring genuine situational evaluation. By preventing complete habituation, RUX preserves the sensitivity of behavioral data over multi-year observation periods — a methodological requirement for longitudinal digital phenotyping research."</p>
+          </div>
+        </section>
+
+        <hr class="div" />
+
+        <!-- S7 -->
+        <section id="s7">
+          <div class="section-number">Section 7</div>
+          <h2 class="section-title">Slovak Startup + International Cohorts Model</h2>
+
+          <h3 class="sub" id="s7-1">7.1 Why a Slovak Company Can Conduct International Research</h3>
+          <p class="body-para">The concern raised by Professor Žilka — that Slovak clinical diagnostic infrastructure is insufficient for Cohort C (biomarker-positive, cognitively normal) recruitment — is valid for Slovak-only research, but does not constrain a Slovak company from conducting international research.</p>
+          <p class="body-para">The relevant distinction is between <em>who receives the grant</em> and <em>where the clinical ground truth is collected</em>. Slovak grant programmes (APVV, MZ SR Prelomové technológie) do not require that research participants be Slovak. They require that the research creates scientific, technological, or economic value for Slovakia. A Slovak company developing AI algorithms, behavioral phenotyping methodology, and a research platform — even if the clinical validation cohorts are in Lund and Amsterdam — satisfies this requirement because:</p>
+          <div class="step-list">
+            <div class="step-item"><span class="step-num">1</span><p><strong>The IP stays in Slovakia.</strong> NeuroFlex algorithms, platform code, and research methodology are owned by a Slovak entity.</p></div>
+            <div class="step-item"><span class="step-num">2</span><p><strong>Slovak researchers contribute to publications.</strong> Slovak co-authors on international publications represent Slovak scientific output.</p></div>
+            <div class="step-item"><span class="step-num">3</span><p><strong>The technology can be eventually deployed in Slovakia.</strong> Even if the validation cohorts are international, the resulting tool could be adopted by Slovak memory clinics.</p></div>
+            <div class="step-item"><span class="step-num">4</span><p><strong>This is the standard European research model.</strong> RADAR-AD had partners from UK, Netherlands, France, Germany, Spain — no single partner had all the participants. Each partner contributed what they had. NeuroFlex contributes the platform and AI; Lund contributes the biomarker cohort.</p></div>
+          </div>
+
+          <div class="insight">
+            <p><strong>Question for the SAV meeting:</strong> "Suppose NeuroFlex is a Slovak s.r.o. developing the platform and AI, and the biomarker-stratified cohorts come from Sweden and the Netherlands. Do you see any grant eligibility issue with a Slovak applicant conducting research with foreign clinical cohorts? Or is the key question purely whether the scientific and economic value accrues to Slovakia?"</p>
+          </div>
+
+          <h3 class="sub" id="s7-2">7.2 Why a Slovak Scientific Partner Remains Essential</h3>
+          <p class="body-para">The most common misconception: "If I have Lund as a partner, why do I need Professor Žilka?" This misunderstands the distinct scientific roles involved. The argument for a Slovak scientific partner is not about having local patients — it is about independent scientific oversight, methodological validation, and interpretive credibility.</p>
+
+          <div class="step-list">
+            <div class="step-item">
+              <span class="step-num">1</span>
+              <p><strong>Independent validation of results.</strong> If all biomarker data, all clinical interpretation, and all AI analysis is performed at a single institution (e.g., Lund), any results are subject to the criticism that they reflect that institution's specific cohort, measurement protocols, or interpretive biases. An independent scientific reviewer who can assess whether the findings generalise — and can challenge the methodology — adds fundamental scientific credibility. This is why multicentre studies are standard: not just for numbers, but for independent replication.</p>
+            </div>
+            <div class="step-item">
+              <span class="step-num">2</span>
+              <p><strong>Scientific Co-PI role.</strong> In international grant applications (Horizon Europe, IHI), each partner needs a clear scientific contribution. A Slovak Scientific Co-PI who independently formulates hypotheses, evaluates research design, interprets results, and co-authors publications is not a redundant role relative to a Swedish or Dutch clinical partner — it is a distinct and required role in a multi-site research consortium.</p>
+            </div>
+            <div class="step-item">
+              <span class="step-num">3</span>
+              <p><strong>Biological interpretation of AI outputs.</strong> When the NeuroFlex AI model identifies a specific behavioral pattern — a decline in initiative initiative 18 months before biomarker positivity, for example — someone must interpret whether this finding is biologically plausible in the context of Alzheimer's pathophysiology. A Slovak neuroscientist with expertise in tau biology and neurodegeneration provides this interpretation independently of the clinical partner who provided the biomarker data.</p>
+            </div>
+            <div class="step-item">
+              <span class="step-num">4</span>
+              <p><strong>Network access.</strong> Professor Žilka knows people. A personal introduction from him to a researcher at Lund, Amsterdam, or DZNE has a 30–50% probability of response. A cold email from a small Slovak startup has a 1–2% probability. This alone justifies the partnership.</p>
+            </div>
+            <div class="step-item">
+              <span class="step-num">5</span>
+              <p><strong>Axon Neuroscience — a distinct clinical hypothesis layer.</strong> If NeuroFlex ever finds behavioral patterns that correlate with tau pathology specifically (rather than amyloid), Axon Neuroscience becomes not just a scientific partner but a potential clinical translation partner — as a company already working on tau-targeted diagnostics and therapeutics. NeuroFlex behavioral data could potentially serve as a complementary endpoint in Axon's own clinical programmes.</p>
+            </div>
+          </div>
+
+          <p class="body-para">The argument to make to Professor Žilka: <em>"I am not looking for a local expert who can recruit Slovak patients. I am looking for a Scientific Co-PI who can help formulate the right hypotheses, challenge our interpretations, ensure the research design is biologically sound, and represent NeuroFlex as an independent scientific voice — regardless of where the clinical cohorts are recruited. The foreign clinical partners provide the biological ground truth. You provide the scientific judgment."</em></p>
+        </section>
+
+        <hr class="div" />
+
+        <!-- S8 -->
+        <section id="s8">
+          <div class="section-number">Section 8</div>
+          <h2 class="section-title">Questions for the SAV Meeting</h2>
+          <p class="body-para">Prepared in order of priority. The goal is not to get approvals — it is to get information that shapes the next phase of project design.</p>
+
+          <div class="step-list">
+            <div class="step-item">
+              <span class="step-num">1</span>
+              <p><strong>Ground truth minimum dataset:</strong> "What is the minimum clinical dataset required per participant for the NeuroFlex behavioral data to be scientifically interpretable? Specifically — beyond cohort assignment — which clinical variables are essential for Phase 1 interpretation?"</p>
+            </div>
+            <div class="step-item">
+              <span class="step-num">2</span>
+              <p><strong>Slovak cohort feasibility:</strong> "Are there existing Slovak or Czech memory clinic cohorts — even small ones, N=50–100 — to which NeuroFlex could be attached as a digital behavioral monitoring module? We don't need biomarker-positive individuals for Phase 1 — even an MCI clinic cohort would be valuable."</p>
+            </div>
+            <div class="step-item">
+              <span class="step-num">3</span>
+              <p><strong>International cohort access:</strong> "If NeuroFlex had initial funding, what would the realistic pathway be to establishing a data-linking agreement with an existing biomarker-characterised European cohort? Which institution would you approach first — DELCODE (DZNE), Amsterdam Dementia Cohort, or BioFINDER?"</p>
+            </div>
+            <div class="step-item">
+              <span class="step-num">4</span>
+              <p><strong>Slovak grant eligibility:</strong> "For a Slovak company conducting research with international clinical cohorts — APVV specifically — do you foresee any eligibility constraint, or is the key criterion that the scientific and economic value accrues to Slovakia?"</p>
+            </div>
+            <div class="step-item">
+              <span class="step-num">5</span>
+              <p><strong>Scientific Co-PI interest:</strong> "Would you be willing to discuss a formal scientific advisory or Scientific Co-PI role in NeuroFlex — not to provide patients, but to formulate hypotheses, evaluate research design, interpret results, and co-author publications?"</p>
+            </div>
+            <div class="step-item">
+              <span class="step-num">6</span>
+              <p><strong>Axon Neuroscience synergy:</strong> "In your view, is there a realistic intersection between NeuroFlex behavioral phenotyping and Axon Neuroscience's tau-focused research — specifically, a scenario where NeuroFlex behavioral patterns could serve as a complementary endpoint in Axon's clinical programmes?"</p>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> NeuroFlex · Cognitive wellness &amp; behavioral research</p>
+      <p class="muted">Internal document — not for public distribution. Developed by <a href="https://www.lifeapps.online/" style="color:#9fb3ff">LifeApps</a></p>
+    </div>
+  </footer>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

@@ -9,7 +9,7 @@ This repository contains only NeuroFlex web content moved from the LifeApps site
 - `/` — main landing page
 - `/mission-statement/` — mission statement
 - `/white-paper/` — research white paper
-- `/behavioral-event-model/` — behavioral event model v1
+- `/behavioral-event-model/` — behavioral event model v1 (unlisted: not in nav, `noindex`; reachable only via direct link)
 - `/eula/` — EULA placeholder
 
 ## GitHub Pages setup

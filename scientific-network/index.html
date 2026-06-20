@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NeuroFlex — Scientific Network &amp; Competitor Positioning</title>
+  <meta name="description" content="Internal working document: key researchers to contact for NeuroFlex partnerships (Oskar Hansson, Wiesje van der Flier, Henrik Zetterberg, etc.), institutions, outreach strategy, and competitive positioning against RADAR-AD, LETHE, DIMPLAD, BioCog." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .doc-body { max-width: 860px; }
+    .section-number { font-size:0.68rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#00cfff; margin-bottom:0.3rem; }
+    h2.section-title { font-size:1.35rem; margin:0 0 0.85rem; }
+    h3.sub { font-size:1.05rem; margin:1.6rem 0 0.5rem; color:#c8dde8; }
+    p.body-para { font-size:0.9rem; color:#8a9fb5; line-height:1.72; margin:0 0 0.75rem; }
+    hr.div { border:none; border-top:1px solid rgba(255,255,255,0.07); margin:3rem 0; }
+
+    /* TOC */
+    .toc { background:rgba(0,0,0,0.2); border-radius:12px; padding:1.2rem 1.5rem; margin:1.5rem 0 2.5rem; }
+    .toc .toc-label { font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#00cfff; margin:0 0 0.75rem; }
+    .toc ol { margin:0; padding-left:1.3rem; display:flex; flex-direction:column; gap:0.3rem; }
+    .toc li { font-size:0.88rem; color:#7a9ab5; }
+    .toc a { color:#7ec8d8; text-decoration:none; }
+    .toc a:hover { text-decoration:underline; }
+
+    /* Insight / gap */
+    .insight { background:rgba(0,207,255,0.05); border-left:3px solid rgba(0,207,255,0.5); border-radius:0 10px 10px 0; padding:0.9rem 1.2rem; margin:1.25rem 0; }
+    .insight p { font-size:0.88rem; color:#8cc8d8; line-height:1.65; margin:0; }
+    .gap-box { background:rgba(255,179,71,0.05); border-left:3px solid rgba(255,179,71,0.5); border-radius:0 10px 10px 0; padding:0.9rem 1.2rem; margin:1.25rem 0; }
+    .gap-box p { font-size:0.88rem; color:#c8a870; line-height:1.65; margin:0; }
+
+    /* Researcher card */
+    .researcher-card {
+      background:rgba(0,0,0,0.2);
+      border:1px solid rgba(255,255,255,0.07);
+      border-radius:16px;
+      padding:1.2rem 1.3rem;
+      margin-bottom:1.1rem;
+    }
+    .researcher-card.t1 { border-color:rgba(0,207,255,0.25); }
+    .researcher-card.t2 { border-color:rgba(150,100,255,0.2); }
+    .researcher-card.t3 { border-color:rgba(255,255,255,0.08); }
+    .rc-head { display:flex; align-items:flex-start; gap:0.75rem; margin-bottom:0.65rem; flex-wrap:wrap; }
+    .rc-head h4 { margin:0; font-size:1rem; color:#c8dde8; flex:1; }
+    .tier-tag { font-size:0.65rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:0.15em 0.55em; border-radius:4px; flex-shrink:0; }
+    .tier1 { background:rgba(0,207,255,0.12); color:#00cfff; }
+    .tier2 { background:rgba(150,100,255,0.12); color:#b08aff; }
+    .tier3 { background:rgba(255,255,255,0.07); color:#8a9fb5; }
+    .rc-inst { font-size:0.78rem; color:#5a8a9a; margin-bottom:0.55rem; }
+    .rc-contact { font-size:0.82rem; color:#7ec8d8; font-family:monospace; margin-bottom:0.5rem; }
+    .rc-contact a { color:#7ec8d8; }
+    .researcher-card p { font-size:0.86rem; color:#8a9fb5; line-height:1.65; margin:0 0 0.4rem; }
+    .researcher-card p:last-child { margin:0; }
+    .rc-relevance { font-size:0.82rem; color:#5ab8cc; margin-top:0.5rem; font-style:italic; }
+
+    /* Competitor card */
+    .competitor-card { background:rgba(0,0,0,0.18); border:1px solid rgba(255,255,255,0.06); border-radius:14px; padding:1.1rem 1.2rem; margin-bottom:1rem; }
+    .competitor-card h4 { margin:0 0 0.3rem; font-size:0.97rem; color:#c8dde8; }
+    .cc-meta { display:flex; gap:0.5rem 0.9rem; flex-wrap:wrap; margin-bottom:0.5rem; }
+    .cc-tag { font-size:0.67rem; padding:0.13em 0.5em; border-radius:3px; background:rgba(255,255,255,0.06); color:#7a9ab5; font-weight:600; }
+    .competitor-card p { font-size:0.86rem; color:#8a9fb5; line-height:1.65; margin:0 0 0.4rem; }
+    .cc-position { font-size:0.84rem; color:#55d68a; margin-top:0.5rem; }
+
+    /* Positioning table */
+    .pos-table { width:100%; border-collapse:collapse; font-size:0.8rem; margin:1rem 0; }
+    .pos-table th { text-align:center; padding:0.45rem 0.5rem; color:#00cfff; border-bottom:1px solid rgba(0,207,255,0.2); font-size:0.7rem; text-transform:uppercase; letter-spacing:0.04em; font-weight:600; }
+    .pos-table th.left-th { text-align:left; }
+    .pos-table td { padding:0.4rem 0.5rem; border-bottom:1px solid rgba(255,255,255,0.04); color:#8a9fb5; text-align:center; }
+    .pos-table td.left-td { text-align:left; color:#c8dde8; font-weight:600; font-size:0.82rem; }
+    .pos-table td.nf-col { color:#55d68a; font-weight:700; }
+    .pos-table tr:last-child td { border-bottom:none; }
+    .check { color:#55d68a; }
+    .cross { color:#ff8080; }
+    .partial { color:#ffb347; }
+
+    /* Email template */
+    .email-box { background:rgba(0,0,0,0.25); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1.1rem 1.3rem; margin:1rem 0; font-size:0.85rem; color:#9ab8cc; line-height:1.72; }
+    .email-box .email-label { font-size:0.67rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#00cfff; margin-bottom:0.6rem; }
+    .email-box p { margin:0 0 0.6rem; }
+
+    /* Step list */
+    .step-list { display:flex; flex-direction:column; gap:0.75rem; margin-top:1rem; }
+    .step-item { display:flex; gap:0.85rem; align-items:flex-start; }
+    .step-num { min-width:1.6rem; height:1.6rem; background:rgba(0,207,255,0.12); border-radius:50%; display:flex; align-items:center; justify-content:middle; justify-content:center; font-size:0.72rem; font-weight:700; color:#00cfff; flex-shrink:0; margin-top:0.15rem; }
+    .step-item p { font-size:0.88rem; color:#8a9fb5; margin:0; line-height:1.65; }
+    .step-item p strong { color:#a8c8d8; }
+  </style>
+</head>
+<body class="neuro-site">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../" class="brand brand-neuroflex">
+        <img src="../assets/neuroflex-logo.png" alt="" />
+        <span>NeuroFlex<sup>&copy;</sup></span>
+      </a>
+      <nav class="nav">
+        <a href="../">Home</a>
+        <a href="../research-design/">Research Design</a>
+        <a href="../research-programme/">Programme</a>
+        <a href="../state-of-the-art/">State of the Art</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="doc-hero">
+      <div class="container">
+        <p class="doc-kicker">Internal Working Document · Unlisted · Version 1.0 · June 2026</p>
+        <h1>Scientific Network &amp; Competitor Positioning</h1>
+        <p class="doc-lead">Key researchers to contact for NeuroFlex partnerships — with institutional affiliations, contact details, and specific relevance. Competitive analysis of RADAR-AD, LETHE, DIMPLAD, and BioCog. NeuroFlex positioning as a complementary layer, not a competitor.</p>
+        <div class="doc-actions">
+          <a class="btn btn-secondary" href="../research-programme/">Programme Architecture</a>
+          <a class="btn btn-secondary" href="../state-of-the-art/">State of the Art</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container doc-body">
+
+        <div class="toc">
+          <p class="toc-label">Contents</p>
+          <ol>
+            <li><a href="#s1">Priority Researchers to Contact</a></li>
+            <li><a href="#s2">Slovak Research Partners</a></li>
+            <li><a href="#s3">Competitive Landscape — NeuroFlex Positioning</a></li>
+            <li><a href="#s4">Outreach Strategy</a></li>
+            <li><a href="#s5">Conference &amp; Event Opportunities</a></li>
+          </ol>
+        </div>
+
+        <hr class="div" />
+
+        <!-- S1 -->
+        <section id="s1">
+          <div class="section-number">Section 1</div>
+          <h2 class="section-title">Priority Researchers to Contact — International</h2>
+          <p class="body-para">These are the individuals whose names open doors in the Alzheimer's research community. Knowing them — even by reading their publications — matters. Meeting them at conferences or being introduced through Professor Žilka would be transformative for NeuroFlex. Do not cold-email multiple people simultaneously; sequence outreach strategically.</p>
+
+          <div class="gap-box">
+            <p><strong>Before any outreach:</strong> Read at least 2–3 key publications by each researcher. Reference their work specifically in any email. Generic outreach from unknown entities is ignored; specific, informed engagement gets responses. The list below includes the most relevant publication for context.</p>
+          </div>
+
+          <h3 class="sub">🇸🇪 Sweden — Lund University</h3>
+
+          <div class="researcher-card t1">
+            <div class="rc-head">
+              <h4>Oskar Hansson</h4>
+              <span class="tier-tag tier1">Tier 1 — Priority Contact</span>
+            </div>
+            <p class="rc-inst">Professor, Clinical Memory Research Unit, Lund University / Memory Clinic, Skåne University Hospital, Malmö</p>
+            <p class="rc-contact"><a href="mailto:oskar.hansson@med.lu.se">oskar.hansson@med.lu.se</a></p>
+            <p class="rc-contact"><a href="https://portal.research.lu.se/en/organisations/clinical-memory-research/" target="_blank">portal.research.lu.se — Clinical Memory Research ↗</a></p>
+            <p>World-leading authority on plasma biomarkers (pTau217, Aβ42/40 ratio) and pre-symptomatic Alzheimer's disease. Principal investigator of the BioFINDER cohort — one of the most influential longitudinal biomarker datasets in Alzheimer's research. His group has published the key validation studies establishing plasma pTau217 as a clinical-grade biomarker. This is the gold standard for Cohort C (biomarker-positive, cognitively normal) recruitment infrastructure.</p>
+            <p><strong>Key publication:</strong> Hansson O. et al. "CSF biomarkers of Alzheimer's disease concord with amyloid-β PET and predict clinical progression." <em>Alzheimer's &amp; Dementia</em>, 2018. (BioFINDER reference study)</p>
+            <p class="rc-relevance">→ NeuroFlex relevance: BioFINDER already has biomarker-characterised longitudinal cohorts. NeuroFlex could add a continuous behavioral data layer to existing BioFINDER participants — providing the missing daily life ecological dimension that BioFINDER currently lacks.</p>
+          </div>
+
+          <div class="researcher-card t1">
+            <div class="rc-head">
+              <h4>Niklas Mattsson-Carlgren</h4>
+              <span class="tier-tag tier1">Tier 1</span>
+            </div>
+            <p class="rc-inst">Professor, Clinical Memory Research Unit, Lund University</p>
+            <p class="rc-contact"><a href="https://portal.research.lu.se/en/persons/niklas-mattsson-carlgren" target="_blank">Lund researcher profile ↗</a></p>
+            <p>Specialises in tau biomarker dynamics, longitudinal AD progression modelling, and early biomarker-to-symptom transition. One of the most prolific publishers in longitudinal Alzheimer's biomarker research. Closely collaborates with Oskar Hansson.</p>
+            <p><strong>Key publication:</strong> Mattsson-Carlgren N. et al. "Longitudinal tau aggregation, atrophy, and cognitive decline in Alzheimer's disease." <em>Alzheimer's &amp; Dementia</em>, 2025.</p>
+            <p class="rc-relevance">→ NeuroFlex relevance: His longitudinal modelling expertise is directly applicable to interpreting NeuroFlex behavioral trajectories in relation to tau progression.</p>
+          </div>
+
+          <div class="researcher-card t2">
+            <div class="rc-head">
+              <h4>Henrik Zetterberg</h4>
+              <span class="tier-tag tier2">Tier 2 — Key Authority</span>
+            </div>
+            <p class="rc-inst">Professor, University of Gothenburg / UCL Institute of Neurology, London</p>
+            <p>One of the most cited scientists in Alzheimer's biomarker research globally. Primary expertise: CSF and blood biomarkers (NfL, GFAP, pTau), neurochemical diagnostics, and fluid biomarker validation. Editor and co-author of multiple consensus biomarker frameworks.</p>
+            <p><strong>Key publication:</strong> Zetterberg H. et al. "Plasma phosphorylated tau181 and neurodegeneration in Alzheimer's disease." <em>PMC</em>, 2021.</p>
+            <p class="rc-relevance">→ NeuroFlex relevance: If NeuroFlex identifies behavioral patterns that correlate with NfL or GFAP — biomarkers of neurodegeneration — Zetterberg's group is the natural validation collaborator. Not a primary outreach target; approach after an initial result is available.</p>
+          </div>
+
+          <h3 class="sub">🇳🇱 Netherlands — Amsterdam &amp; Rotterdam</h3>
+
+          <div class="researcher-card t1">
+            <div class="rc-head">
+              <h4>Wiesje van der Flier</h4>
+              <span class="tier-tag tier1">Tier 1 — Priority Contact</span>
+            </div>
+            <p class="rc-inst">Professor, Scientific Director, Alzheimer Center Amsterdam, Amsterdam UMC (VU University Medical Center)</p>
+            <p class="rc-contact"><a href="https://www.amsterdamumc.org/en/research/researchers/wiesje-van-der-flier" target="_blank">amsterdamumc.org — profile ↗</a></p>
+            <p class="rc-contact"><a href="https://www.alzheimercentrum.nl" target="_blank">alzheimercentrum.nl ↗</a></p>
+            <p>Leads the Amsterdam Dementia Cohort — one of Europe's largest memory clinic cohorts with 7,000+ participants, comprehensive phenotyping (MRI, PET, EEG, CSF, genetics, neuropsychology), and a strong data-sharing culture. Her research focus includes early diagnosis, prognosis, personalised medicine, and prevention. She is also a leading figure in Subjective Cognitive Decline research — the population most likely to adopt NeuroFlex.</p>
+            <p><strong>Key publication:</strong> Amsterdam IADL Questionnaire — functional decline detection in early dementia. Multiple publications on digital assessment tools.</p>
+            <p class="rc-relevance">→ NeuroFlex relevance: The Amsterdam Dementia Cohort already has the biomarker ground truth NeuroFlex needs. Van der Flier's interest in digital tools and SCD makes her the most strategically important contact in the Netherlands. A data-linking agreement with Amsterdam UMC would immediately solve NeuroFlex's Cohort C ground truth problem.</p>
+          </div>
+
+          <div class="researcher-card t1">
+            <div class="rc-head">
+              <h4>Pieter Jelle Visser</h4>
+              <span class="tier-tag tier1">Tier 1</span>
+            </div>
+            <p class="rc-inst">Professor, Alzheimer Center Amsterdam, Amsterdam UMC / Maastricht University</p>
+            <p class="rc-contact"><a href="https://www.amsterdamumc.org/en/research/knowledge-centers/alzheimer-center" target="_blank">Alzheimer Center Amsterdam ↗</a></p>
+            <p>Leading expert on MCI, early-stage Alzheimer's disease, and at-risk populations. Directs research on pre-clinical AD cohorts and has published extensively on SCD and biomarker-defined risk groups. His cohort work directly overlaps with NeuroFlex's Cohort C and Cohort B definitions.</p>
+            <p class="rc-relevance">→ NeuroFlex relevance: His SCD and MCI cohort expertise makes him an ideal scientific collaborator for interpreting early-phase NeuroFlex data. Would likely be interested in NeuroFlex as a digital monitoring adjunct to his existing cohort studies.</p>
+          </div>
+
+          <div class="researcher-card t2">
+            <div class="rc-head">
+              <h4>Philip Scheltens</h4>
+              <span class="tier-tag tier2">Tier 2 — Elder Statesman</span>
+            </div>
+            <p class="rc-inst">Founding Director (emeritus), Alzheimer Center Amsterdam</p>
+            <p>One of the founding figures of European Alzheimer's clinical research. His name carries enormous weight in the research community. Not a direct day-to-day researcher — more relevant as a connection point and strategic scientific advisor at a senior level.</p>
+            <p class="rc-relevance">→ NeuroFlex relevance: Mention of familiarity with his work in any outreach signals research community awareness. A direct connection would be most valuable through introduction via van der Flier or Visser.</p>
+          </div>
+
+          <div class="researcher-card t2">
+            <div class="rc-head">
+              <h4>John van Swieten</h4>
+              <span class="tier-tag tier2">Tier 2</span>
+            </div>
+            <p class="rc-inst">Professor, Alzheimer Center Erasmus MC, Rotterdam</p>
+            <p class="rc-contact"><a href="https://www.alzheimercentrumerasmusmc.nl" target="_blank">alzheimercentrumerasmusmc.nl ↗</a></p>
+            <p class="rc-contact">Contact: <a href="mailto:alzheimercentrum@erasmusmc.nl">alzheimercentrum@erasmusmc.nl</a></p>
+            <p>Leading figure at Erasmus MC's Alzheimer Center, specialising in frontotemporal dementia and Alzheimer's genetics. Erasmus MC brings a strong population genetics and longitudinal registry tradition — complementary to Amsterdam UMC's clinical cohort focus.</p>
+            <p class="rc-relevance">→ NeuroFlex relevance: A second Dutch partnership (alongside Amsterdam) would strengthen any Horizon Europe consortium application by adding geographic and methodological diversity.</p>
+          </div>
+
+          <h3 class="sub">🇩🇰 Denmark — Copenhagen</h3>
+
+          <div class="researcher-card t2">
+            <div class="rc-head">
+              <h4>Danish Dementia Research Centre</h4>
+              <span class="tier-tag tier2">Tier 2 — Institution</span>
+            </div>
+            <p class="rc-inst">Rigshospitalet, Copenhagen University Hospital</p>
+            <p class="rc-contact"><a href="https://videnscenterfordemens.dk/en/ddrc" target="_blank">videnscenterfordemens.dk ↗</a></p>
+            <p>Denmark's national dementia research infrastructure with access to national health registries and longitudinal population data. Danish registries are world-class for long-term follow-up studies — if NeuroFlex ever requires large-scale population-level validation (Phase 4), Denmark is uniquely positioned to support this through registry linkage.</p>
+            <p class="rc-relevance">→ NeuroFlex relevance: More relevant for later phases (Phase 3–4) when population-scale longitudinal outcome data is needed. Initial contact less urgent than Amsterdam or Lund.</p>
+          </div>
+
+          <h3 class="sub">🇩🇪 Germany — DZNE / DELCODE</h3>
+
+          <div class="researcher-card t1">
+            <div class="rc-head">
+              <h4>DZNE — DELCODE Study Team</h4>
+              <span class="tier-tag tier1">Tier 1 — Priority Institution</span>
+            </div>
+            <p class="rc-inst">German Centre for Neurodegenerative Diseases (DZNE), multiple sites (Bonn, Berlin, Hamburg, Munich, Magdeburg, Rostock, Göttingen, Tübingen, Witten)</p>
+            <p class="rc-contact"><a href="https://www.dzne.de" target="_blank">dzne.de ↗</a> · <a href="https://www.dzne.de/en/research/studies/clinical-studies/delcode/" target="_blank">DELCODE study ↗</a></p>
+            <p>DELCODE (DZNE Longitudinal Cognitive Impairment and Dementia Study) recruits individuals specifically with subjective cognitive decline — the exactly population most likely to download and use NeuroFlex. Participants undergo comprehensive biomarker phenotyping (CSF, MRI, PET, genetics). DZNE has established ethical and data governance frameworks for collaborative digital research. The DZNE Technology Transfer Office facilitates company partnerships.</p>
+            <p class="rc-relevance">→ NeuroFlex relevance: This is the single most important institutional partnership for Phase 1–2. DELCODE participants are SCD individuals with biomarker ground truth — precisely NeuroFlex's Cohort C and B. A formal data-linking pilot with DZNE (NeuroFlex app deployed to DELCODE participants as a study add-on) would generate the most scientifically valuable dataset possible for Phase 1.</p>
+          </div>
+        </section>
+
+        <hr class="div" />
+
+        <!-- S2 -->
+        <section id="s2">
+          <div class="section-number">Section 2</div>
+          <h2 class="section-title">Slovak Research Partners</h2>
+
+          <div class="researcher-card t1">
+            <div class="rc-head">
+              <h4>Prof. Michal Žilka — SAV Institute of Neuroimmunology</h4>
+              <span class="tier-tag tier1">Scientific Co-PI — Meeting Scheduled</span>
+            </div>
+            <p class="rc-inst">Slovak Academy of Sciences (SAV), Institute of Neuroimmunology / Axon Neuroscience (scientific advisory)</p>
+            <p>Leading Slovak neuroscientist in Alzheimer's disease research, tau biology, and neuroinflammation. Axon Neuroscience connection provides direct relevance to tau-targeted diagnostics. Proposed role: Scientific Co-PI — formulating hypotheses, evaluating research design, interpreting AI outputs in neuroscience context, co-authoring publications, facilitating international introductions.</p>
+            <p class="rc-relevance">→ His value is not patient recruitment. It is scientific judgment, interpretive authority, international network, and grant credibility. See Research Programme Architecture document for exact questions to ask at the SAV meeting.</p>
+          </div>
+
+          <div class="researcher-card t1">
+            <div class="rc-head">
+              <h4>Mária Bieliková — KInIT (Kempelen Institute of Intelligent Technologies)</h4>
+              <span class="tier-tag tier1">AI/ML Partner — Priority</span>
+            </div>
+            <p class="rc-inst">CEO, KInIT, Bratislava</p>
+            <p class="rc-contact"><a href="https://kinit.sk" target="_blank">kinit.sk ↗</a></p>
+            <p>CEO of KInIT, Slovakia's leading independent AI research institute. Expertise in trustworthy AI, explainable AI, human-centred AI, and societal impact of AI systems. KInIT's research agenda aligns closely with NeuroFlex's Phase 2–4 AI requirements. KInIT has existing grant infrastructure and experience with European research funding.</p>
+            <p class="rc-relevance">→ Ideal Phase 2+ partner for NeuroFlex ML model development, explainability requirements (clinical reporting needs explainable AI, not black-box models), and Horizon Europe consortium applications. Initial outreach: exploratory meeting to assess mutual interest before committing to formal partnership structure.</p>
+          </div>
+
+          <div class="researcher-card t2">
+            <div class="rc-head">
+              <h4>Tomáš Vinař — FMFI UK (Comenius University)</h4>
+              <span class="tier-tag tier2">Bioinformatics Partner</span>
+            </div>
+            <p class="rc-inst">Associate Professor, Faculty of Mathematics, Physics and Informatics, Comenius University Bratislava</p>
+            <p>Computational biology and bioinformatics expertise. Relevant for NeuroFlex's statistical modelling layer — particularly for longitudinal data analysis, survival analysis, mixed-effects models for repeated measures, and the statistical methodology required for grant applications and peer-reviewed publications.</p>
+            <p class="rc-relevance">→ Useful for: Phase 1 statistical design, sample size power calculations for grant applications, methodology sections of scientific publications. A Comenius affiliation also provides access to university ethics review infrastructure.</p>
+          </div>
+
+          <div class="researcher-card t2">
+            <div class="rc-head">
+              <h4>SAV — Institute of Informatics / Biomedicínske centrum</h4>
+              <span class="tier-tag tier2">Supporting Partners</span>
+            </div>
+            <p class="rc-inst">Slovak Academy of Sciences, multiple institutes</p>
+            <p class="rc-contact"><a href="https://www.sav.sk" target="_blank">sav.sk ↗</a></p>
+            <p>Two relevant SAV institutes: (1) Institute of Informatics — machine learning, computational modelling, data analysis. (2) Biomedicínske centrum — biomedical data, clinical research infrastructure, animal models (less relevant for NeuroFlex Phase 1–2 but increasingly relevant from Phase 3).</p>
+            <p class="rc-relevance">→ Access facilitated through Prof. Žilka connection. Do not approach cold — let the SAV meeting create the introduction pathway.</p>
+          </div>
+        </section>
+
+        <hr class="div" />
+
+        <!-- S3 -->
+        <section id="s3">
+          <div class="section-number">Section 3</div>
+          <h2 class="section-title">Competitive Landscape — NeuroFlex Positioning</h2>
+          <p class="body-para">The critical strategic insight is that NeuroFlex does not compete with any existing platform in a zero-sum sense. Each existing platform has a structural gap that NeuroFlex is positioned to fill. The correct framing is always: "We add a missing layer to what you already have."</p>
+
+          <div class="competitor-card">
+            <h4>RADAR-AD</h4>
+            <div class="cc-meta">
+              <span class="cc-tag">EU · IMI2</span>
+              <span class="cc-tag">Smartphone + wearable sensing</span>
+              <span class="cc-tag">Closest structural parallel</span>
+            </div>
+            <p>RADAR-AD uses passive smartphone sensing (GPS, accelerometer, call metadata) and active cognitive tasks to generate digital biomarkers in clinically enrolled AD populations. It is the most frequently cited precedent for NeuroFlex-type research. Key difference: RADAR-AD was designed for clinical trial monitoring — enrolled clinical populations, fixed study windows, no consumer wellness engagement layer, no latent trait measurement.</p>
+            <p class="cc-position">→ NeuroFlex position: "RADAR-AD demonstrated that remote digital monitoring is feasible in clinical populations. NeuroFlex extends this approach by (1) operating through a consumer wellness engagement model that enables population-scale reach without clinical enrollment; (2) systematically measuring latent behavioural traits beyond raw sensor data; and (3) using within-person longitudinal baseline modelling rather than cross-sectional population comparison."</p>
+          </div>
+
+          <div class="competitor-card">
+            <h4>LETHE</h4>
+            <div class="cc-meta">
+              <span class="cc-tag">EU · Horizon 2020</span>
+              <span class="cc-tag">AI + passive monitoring + intervention</span>
+              <span class="cc-tag">Dual mission closest parallel</span>
+            </div>
+            <p>LETHE combines wearable sensing, AI, cognitive training, and digital biomarkers for MCI prevention in at-risk older adults. It is structurally similar to NeuroFlex's dual mission (detection + intervention) but operates within a clinically enrolled, supervised research framework. No consumer distribution. No latent trait measurement. No personal baseline modelling.</p>
+            <p class="cc-position">→ NeuroFlex position: "LETHE and NeuroFlex address the same scientific space from opposite directions. LETHE starts with clinical enrollment and adds a digital layer. NeuroFlex starts with consumer engagement and adds a clinical research layer. Together, they support the same scientific hypothesis from complementary methodological directions."</p>
+          </div>
+
+          <div class="competitor-card">
+            <h4>DIMPLAD (TNO, Netherlands)</h4>
+            <div class="cc-meta">
+              <span class="cc-tag">Netherlands · TNO</span>
+              <span class="cc-tag">Smartphone app</span>
+              <span class="cc-tag">Consumer-adjacent</span>
+            </div>
+            <p>DIMPLAD aims to develop a smartphone application for earlier recognition of cognitive decline and navigation of users toward diagnosis. This is the closest structural parallel to NeuroFlex's consumer orientation — a smartphone app designed for general population use. However, DIMPLAD's primary goal is cognitive decline detection and referral, not longitudinal behavioral phenotyping. No latent trait layer. No personal baseline architecture.</p>
+            <p class="cc-position">→ NeuroFlex position: "DIMPLAD and NeuroFlex share a consumer-facing orientation. DIMPLAD focuses on detection and clinical referral. NeuroFlex focuses on longitudinal behavioral characterisation over years — a complementary and potentially deeper research question." If contacted: TNO is also a potential Netherlands network connection point.</p>
+          </div>
+
+          <div class="competitor-card">
+            <h4>BioCog (Lund University / BioFINDER)</h4>
+            <div class="cc-meta">
+              <span class="cc-tag">Sweden · Lund</span>
+              <span class="cc-tag">Digital cognitive testing app</span>
+              <span class="cc-tag">Same institution as Hansson</span>
+            </div>
+            <p>BioCog is a digital cognitive assessment platform from Lund University, available on the App Store. It contains standardised cognitive tests (delayed recall, symbol digit, trail making, orientation) and is used as a pre-screening adjunct before clinical biomarker evaluation. It represents structured cognitive performance assessment in digital form.</p>
+            <p>Key distinction: BioCog asks "How did you score on this test?" NeuroFlex asks "How do you engage with activities in everyday life — and how has that changed?" BioCog is a digital neuropsychological test. NeuroFlex is a longitudinal behavioural observatory.</p>
+            <p class="cc-position">→ NeuroFlex position when approaching Hansson's group: "We are aware of BioCog and its role in your pre-screening workflow. NeuroFlex is designed as a complementary layer — not replacing structured cognitive assessment but capturing the daily behavioural context between assessments. We would be interested in discussing whether NeuroFlex longitudinal data could add ecological validity to BioFINDER participants already being screened with BioCog."</p>
+          </div>
+
+          <h3 class="sub">Competitive Positioning Matrix</h3>
+
+          <table class="pos-table">
+            <thead>
+              <tr>
+                <th class="left-th">Dimension</th>
+                <th>RADAR-AD</th>
+                <th>LETHE</th>
+                <th>DIMPLAD</th>
+                <th>BioCog</th>
+                <th class="nf-col">NeuroFlex</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="left-td">Consumer distribution</td>
+                <td class="cross">✗</td>
+                <td class="cross">✗</td>
+                <td class="partial">~</td>
+                <td class="check">✓</td>
+                <td class="nf-col check">✓</td>
+              </tr>
+              <tr>
+                <td class="left-td">Latent trait measurement</td>
+                <td class="cross">✗</td>
+                <td class="cross">✗</td>
+                <td class="cross">✗</td>
+                <td class="cross">✗</td>
+                <td class="nf-col check">✓</td>
+              </tr>
+              <tr>
+                <td class="left-td">Personal baseline modelling</td>
+                <td class="cross">✗</td>
+                <td class="cross">✗</td>
+                <td class="cross">✗</td>
+                <td class="cross">✗</td>
+                <td class="nf-col check">✓</td>
+              </tr>
+              <tr>
+                <td class="left-td">Daily ecological engagement</td>
+                <td class="partial">~</td>
+                <td class="partial">~</td>
+                <td class="cross">✗</td>
+                <td class="cross">✗</td>
+                <td class="nf-col check">✓</td>
+              </tr>
+              <tr>
+                <td class="left-td">Passive sensing</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="cross">✗</td>
+                <td class="cross">✗</td>
+                <td class="partial">Phase 2</td>
+              </tr>
+              <tr>
+                <td class="left-td">Biomarker-linked cohort</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="cross">✗</td>
+                <td class="check">✓</td>
+                <td class="partial">Phase 3</td>
+              </tr>
+              <tr>
+                <td class="left-td">Dual mission (detect+intervene)</td>
+                <td class="cross">✗</td>
+                <td class="check">✓</td>
+                <td class="cross">✗</td>
+                <td class="cross">✗</td>
+                <td class="nf-col check">✓</td>
+              </tr>
+              <tr>
+                <td class="left-td">Multi-year sustainability</td>
+                <td class="cross">✗ fixed window</td>
+                <td class="cross">✗ fixed window</td>
+                <td class="partial">~</td>
+                <td class="partial">~</td>
+                <td class="nf-col check">✓ continuous</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <hr class="div" />
+
+        <!-- S4 -->
+        <section id="s4">
+          <div class="section-number">Section 4</div>
+          <h2 class="section-title">Outreach Strategy</h2>
+
+          <div class="insight">
+            <p><strong>The fundamental principle:</strong> You are not selling a product. You are proposing a scientific collaboration that may benefit both parties. The researcher's motivation to respond is: access to a new data type their cohort currently lacks; potential co-authorship; scientific interest in the hypothesis. Frame all outreach around what NeuroFlex can contribute to their research, not what you need from them.</p>
+          </div>
+
+          <h3 class="sub">Sequencing</h3>
+          <div class="step-list">
+            <div class="step-item">
+              <span class="step-num">1</span>
+              <p><strong>SAV meeting first.</strong> Before any international outreach, complete the SAV meeting with Professor Žilka. Ask him specifically: "If you were me, who would you contact first at DZNE, Amsterdam UMC, or Lund?" A personal introduction from him multiplies response probability by 10–30x.</p>
+            </div>
+            <div class="step-item">
+              <span class="step-num">2</span>
+              <p><strong>Read before writing.</strong> For any researcher you contact, read 2–3 of their recent papers. Your email should reference their specific work — not generically praise their institution. This demonstrates that you understand the scientific space.</p>
+            </div>
+            <div class="step-item">
+              <span class="step-num">3</span>
+              <p><strong>One outreach at a time per institution.</strong> Do not email Hansson, Mattsson-Carlgren, and a third Lund researcher simultaneously. Pick one entry point and follow through before expanding.</p>
+            </div>
+            <div class="step-item">
+              <span class="step-num">4</span>
+              <p><strong>Conference approach before cold email.</strong> AAIC (Alzheimer's Association International Conference) and CTAD (Clinical Trials on Alzheimer's Disease) are the primary venues where these researchers present. Meeting in person at a poster session or coffee break is more effective than cold email. Consider attending AAIC 2027 as a strategic networking investment.</p>
+            </div>
+          </div>
+
+          <h3 class="sub">First Outreach Email Template</h3>
+
+          <div class="email-box">
+            <p class="email-label">Template — Adapt for each researcher, never send identical emails</p>
+            <p><strong>Subject:</strong> Longitudinal digital behavioural data as complement to [BioFINDER / DELCODE / Amsterdam Dementia Cohort] — exploratory conversation?</p>
+            <p>Dear Professor [Name],</p>
+            <p>I am the founder of NeuroFlex, a digital longitudinal behavioural phenotyping platform currently in development in Slovakia, in collaboration with Professor Michal Žilka at the Slovak Academy of Sciences. I am reaching out with a specific scientific question rather than a general partnership enquiry.</p>
+            <p>Your work on [specific paper — e.g., "plasma pTau217 as a clinical-grade biomarker" / "the Amsterdam Dementia Cohort longitudinal trajectory data"] raises a question that NeuroFlex is designed to investigate: whether individuals with confirmed biomarker pathology show measurable changes in daily-life behavioural patterns — in variables like curiosity engagement, initiative, and decision flexibility — before any clinical cognitive impairment is detectable on standard assessments.</p>
+            <p>NeuroFlex collects this ecological behavioural layer through a structured daily micro-interaction platform. Your cohort [BioFINDER / DELCODE / Amsterdam] has exactly the biomarker ground truth that would make such behavioural data scientifically interpretable.</p>
+            <p>I am not requesting access to your cohort data. I am asking whether there might be scientific interest in discussing whether NeuroFlex could serve as a digital behavioural data layer for a subset of [cohort name] participants — contributing a data type your cohort currently does not capture.</p>
+            <p>Would you be willing to have a 30-minute exploratory conversation at a time convenient to you?</p>
+            <p>With best regards,<br />[Name]<br />NeuroFlex<br />[email] · [LinkedIn or ResearchGate profile if available]</p>
+          </div>
+        </section>
+
+        <hr class="div" />
+
+        <!-- S5 -->
+        <section id="s5">
+          <div class="section-number">Section 5</div>
+          <h2 class="section-title">Conference &amp; Event Opportunities</h2>
+
+          <div class="step-list">
+            <div class="step-item">
+              <span class="step-num">1</span>
+              <p><strong>AAIC — Alzheimer's Association International Conference.</strong> The most important annual conference in Alzheimer's research. All key researchers listed in this document present or attend. Annual, typically July/August, alternates between US and international locations. Strategic investment for Phase 2 networking.</p>
+            </div>
+            <div class="step-item">
+              <span class="step-num">2</span>
+              <p><strong>CTAD — Clinical Trials on Alzheimer's Disease.</strong> Annual conference focused on clinical trial methodology and digital biomarkers. More relevant for Phase 3–4 when NeuroFlex has clinical data to present or pharmaceutical partnerships to explore.</p>
+            </div>
+            <div class="step-item">
+              <span class="step-num">3</span>
+              <p><strong>Alzheimer Europe Conference.</strong> European-specific, smaller, more accessible. The Amsterdam and Lund groups frequently present. Good entry point for European networking before attempting to attend AAIC.</p>
+            </div>
+            <div class="step-item">
+              <span class="step-num">4</span>
+              <p><strong>VAIA / Slovak health innovation events.</strong> Domestic visibility matters for grant applications. Being known at Misia Zdravie events and VAIA innovation forums builds credibility with Slovak funding bodies parallel to international scientific networking.</p>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> NeuroFlex · Cognitive wellness &amp; behavioral research</p>
+      <p class="muted">Internal document — not for public distribution. Developed by <a href="https://www.lifeapps.online/" style="color:#9fb3ff">LifeApps</a></p>
+    </div>
+  </footer>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

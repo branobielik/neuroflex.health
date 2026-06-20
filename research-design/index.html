@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NeuroFlex — Research Design Framework</title>
+  <meta name="description" content="Internal working document: NeuroFlex longitudinal research design — four-cohort structure, ground truth strategy, behavioral measurement framework, latent trait probes, and daily checkup architecture." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .doc-body { max-width: 860px; }
+    .section-number { font-size:0.68rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#00cfff; margin-bottom:0.3rem; }
+    h2.section-title { font-size:1.35rem; margin:0 0 0.85rem; }
+    h3.sub { font-size:1.05rem; margin:1.6rem 0 0.5rem; color:#c8dde8; }
+    h4.sub4 { font-size:0.93rem; margin:1.1rem 0 0.3rem; color:#9ab8cc; }
+    p.body-para { font-size:0.9rem; color:#8a9fb5; line-height:1.72; margin:0 0 0.75rem; }
+    hr.div { border:none; border-top:1px solid rgba(255,255,255,0.07); margin:3rem 0; }
+
+    /* Abstract */
+    .abstract-box { background:rgba(0,0,0,0.25); border:1px solid rgba(0,207,255,0.2); border-radius:14px; padding:1.4rem 1.6rem; margin:1.5rem 0 2rem; }
+    .abstract-box p.label { font-size:0.68rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#00cfff; margin:0 0 0.6rem; }
+    .abstract-box p { font-size:0.88rem; color:#9ab8cc; line-height:1.72; margin:0 0 0.5rem; }
+
+    /* TOC */
+    .toc { background:rgba(0,0,0,0.2); border-radius:12px; padding:1.2rem 1.5rem; margin:1.5rem 0 2.5rem; }
+    .toc .toc-label { font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#00cfff; margin:0 0 0.75rem; }
+    .toc ol { margin:0; padding-left:1.3rem; display:flex; flex-direction:column; gap:0.3rem; }
+    .toc li { font-size:0.88rem; color:#7a9ab5; }
+    .toc a { color:#7ec8d8; text-decoration:none; }
+    .toc a:hover { text-decoration:underline; }
+    .toc ol ol { margin-top:0.2rem; gap:0.15rem; }
+    .toc ol ol li { font-size:0.82rem; color:#5a7a99; }
+
+    /* Insight / gap */
+    .insight { background:rgba(0,207,255,0.05); border-left:3px solid rgba(0,207,255,0.5); border-radius:0 10px 10px 0; padding:0.9rem 1.2rem; margin:1.25rem 0; }
+    .insight p { font-size:0.88rem; color:#8cc8d8; line-height:1.65; margin:0; }
+    .gap-box { background:rgba(255,179,71,0.05); border-left:3px solid rgba(255,179,71,0.5); border-radius:0 10px 10px 0; padding:0.9rem 1.2rem; margin:1.25rem 0; }
+    .gap-box p { font-size:0.88rem; color:#c8a870; line-height:1.65; margin:0; }
+
+    /* Cohort cards */
+    .cohort-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1.25rem 0; }
+    @media(max-width:640px){ .cohort-grid { grid-template-columns:1fr; } }
+    .cohort-card { background:rgba(0,0,0,0.2); border:1px solid rgba(255,255,255,0.07); border-radius:14px; padding:1.1rem 1.2rem; }
+    .cohort-card .ch-label { font-size:0.68rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.4rem; }
+    .ch-a { color:#ff7eb3; }
+    .ch-b { color:#7ec8ff; }
+    .ch-c { color:#55d68a; }
+    .ch-d { color:#ffd166; }
+    .cohort-card h4 { margin:0 0 0.4rem; font-size:0.97rem; color:#c8dde8; }
+    .cohort-card p { font-size:0.84rem; color:#7a9ab5; line-height:1.65; margin:0 0 0.4rem; }
+    .cohort-card p:last-child { margin:0; }
+
+    /* Sample size table */
+    .ss-table { width:100%; border-collapse:collapse; font-size:0.84rem; margin:1rem 0; }
+    .ss-table th { text-align:left; padding:0.5rem 0.75rem; color:#00cfff; border-bottom:1px solid rgba(0,207,255,0.2); font-weight:600; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.05em; }
+    .ss-table td { padding:0.5rem 0.75rem; border-bottom:1px solid rgba(255,255,255,0.04); color:#8a9fb5; }
+    .ss-table td strong { color:#c8dde8; }
+    .ss-table tr:last-child td { border-bottom:none; }
+    .ss-table td.total { color:#00cfff; font-weight:700; }
+
+    /* Checkup module cards */
+    .checkup-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1.25rem 0; }
+    @media(max-width:640px){ .checkup-grid { grid-template-columns:1fr; } }
+    .checkup-card { border-radius:14px; padding:1.1rem 1.2rem; }
+    .pulse-card { background:rgba(255,100,130,0.06); border:1px solid rgba(255,100,130,0.2); }
+    .compass-card { background:rgba(0,207,255,0.05); border:1px solid rgba(0,207,255,0.2); }
+    .wander-card { background:rgba(150,100,255,0.05); border:1px solid rgba(150,100,255,0.2); }
+    .haven-card { background:rgba(80,200,80,0.05); border:1px solid rgba(80,200,80,0.2); }
+    .checkup-card .ck-icon { font-size:1.4rem; margin-bottom:0.4rem; }
+    .checkup-card h4 { margin:0 0 0.3rem; font-size:1rem; }
+    .pulse-card h4 { color:#ff7eb3; }
+    .compass-card h4 { color:#00cfff; }
+    .wander-card h4 { color:#a08aff; }
+    .haven-card h4 { color:#55d68a; }
+    .checkup-card p { font-size:0.83rem; color:#7a9ab5; line-height:1.65; margin:0 0 0.5rem; }
+    .checkup-card .trait-tags { display:flex; flex-wrap:wrap; gap:0.3rem; margin-top:0.5rem; }
+    .trait-tag { font-size:0.67rem; padding:0.15em 0.55em; border-radius:4px; font-weight:600; letter-spacing:0.05em; }
+    .pulse-tag { background:rgba(255,100,130,0.12); color:#ff9ab8; }
+    .compass-tag { background:rgba(0,207,255,0.1); color:#5ab8cc; }
+    .wander-tag { background:rgba(150,100,255,0.1); color:#b0a0ff; }
+    .haven-tag { background:rgba(80,200,80,0.1); color:#80c880; }
+
+    /* Probe block */
+    .probe-block { border:1px solid rgba(255,255,255,0.06); border-radius:12px; padding:1rem 1.1rem; margin-bottom:1rem; }
+    .probe-block .pb-head { display:flex; align-items:flex-start; justify-content:space-between; gap:0.75rem; margin-bottom:0.6rem; flex-wrap:wrap; }
+    .probe-block h4 { margin:0; font-size:0.93rem; color:#c8dde8; }
+    .pb-tags { display:flex; gap:0.3rem; flex-wrap:wrap; }
+    .pb-tag { font-size:0.65rem; padding:0.15em 0.5em; border-radius:3px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; background:rgba(0,207,255,0.1); color:#5ab8cc; }
+    .probe-q { font-size:0.88rem; color:#a8c8d8; font-style:italic; margin:0 0 0.5rem; }
+    .probe-options { display:flex; flex-direction:column; gap:0.2rem; }
+    .probe-options span { font-size:0.82rem; color:#6a8aa0; padding-left:0.5rem; }
+    .probe-backend { margin-top:0.65rem; padding-top:0.65rem; border-top:1px solid rgba(255,255,255,0.05); }
+    .probe-backend code { font-size:0.76rem; color:#7ab8b8; font-family:monospace; }
+
+    /* Step list */
+    .step-list { display:flex; flex-direction:column; gap:0.75rem; margin-top:1rem; }
+    .step-item { display:flex; gap:0.85rem; align-items:flex-start; }
+    .step-num { min-width:1.6rem; height:1.6rem; background:rgba(0,207,255,0.12); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.72rem; font-weight:700; color:#00cfff; flex-shrink:0; margin-top:0.15rem; }
+    .step-item p { font-size:0.88rem; color:#8a9fb5; margin:0; line-height:1.65; }
+    .step-item p strong { color:#a8c8d8; }
+
+    /* Conclusion */
+    .conclusion-box { background:linear-gradient(135deg,rgba(0,207,255,0.07),rgba(120,104,243,0.06)); border:1px solid rgba(0,207,255,0.25); border-radius:16px; padding:1.75rem; margin:1.5rem 0; }
+    .conclusion-box blockquote { font-size:1rem; font-style:italic; color:#c8dde8; border-left:3px solid #00cfff; margin:0.75rem 0; padding-left:1.2rem; line-height:1.75; }
+  </style>
+</head>
+<body class="neuro-site">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../" class="brand brand-neuroflex">
+        <img src="../assets/neuroflex-logo.png" alt="" />
+        <span>NeuroFlex<sup>&copy;</sup></span>
+      </a>
+      <nav class="nav">
+        <a href="../">Home</a>
+        <a href="../white-paper/">White Paper</a>
+        <a href="../state-of-the-art/">State of the Art</a>
+        <a href="../landscape-analysis/">Landscape</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="doc-hero">
+      <div class="container">
+        <p class="doc-kicker">Internal Working Document · Unlisted · Version 1.0 · June 2026</p>
+        <h1>NeuroFlex Research Design Framework</h1>
+        <p class="doc-lead">Four-Cohort Longitudinal Study Architecture, Ground Truth Strategy, Behavioral Measurement Framework, Latent Trait Probe Library, and Daily Checkup Module Design</p>
+        <div class="doc-actions">
+          <a class="btn btn-secondary" href="../state-of-the-art/">State of the Art</a>
+          <a class="btn btn-secondary" href="../methodological-challenges/">Research Risks</a>
+          <a class="btn btn-secondary" href="../grant-landscape/">Grant Landscape</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container doc-body">
+
+        <div class="abstract-box">
+          <p class="label">Executive Summary</p>
+          <p>This document captures the NeuroFlex research design framework as it has evolved through iterative scientific reasoning. The core shift is from a consumer wellness application that might eventually generate research data, to a <strong>digital longitudinal research cohort platform</strong> — a structured study in which the app serves as the data collection instrument for a stratified multi-cohort design.</p>
+          <p>The four-cohort design solves the "ground truth problem" identified by Professor Žilka: without knowing which participants have confirmed pathological changes, behavioral patterns cannot be scientifically interpreted. By recruiting across four stratified groups — diagnosed, family risk, biomarker-positive, and general population — NeuroFlex generates interpretable longitudinal data without waiting decades for outcomes.</p>
+          <p>The behavioral measurement layer translates abstract psychological constructs (curiosity, initiative, flexibility, resilience) into concrete, non-invasive digital interaction patterns, distributed across four daily checkup modules (Pulse, Compass, Wander, Haven). These behavioral probes are designed to be genuinely engaging to users while simultaneously encoding latent trait signals for backend scientific analysis.</p>
+        </div>
+
+        <div class="toc">
+          <p class="toc-label">Contents</p>
+          <ol>
+            <li><a href="#s1">The Ground Truth Problem</a></li>
+            <li><a href="#s2">Four-Cohort Research Design</a>
+              <ol>
+                <li><a href="#s2-1">Cohort A — Early Diagnosed</a></li>
+                <li><a href="#s2-2">Cohort B — Family Members</a></li>
+                <li><a href="#s2-3">Cohort C — Biomarker Positive</a></li>
+                <li><a href="#s2-4">Cohort D — General Population</a></li>
+              </ol>
+            </li>
+            <li><a href="#s3">Research Questions</a></li>
+            <li><a href="#s4">Sample Size Requirements</a></li>
+            <li><a href="#s5">Evidence Thresholds</a></li>
+            <li><a href="#s6">Ground Truth in Practice: Clinical Data and GDPR</a></li>
+            <li><a href="#s7">Behavioral Measurement Framework</a>
+              <ol>
+                <li><a href="#s7-1">Why Proxy Signals</a></li>
+                <li><a href="#s7-2">Twelve Latent Traits</a></li>
+                <li><a href="#s7-3">What Matters: Variability and Trajectory</a></li>
+              </ol>
+            </li>
+            <li><a href="#s8">Daily Checkup Architecture</a>
+              <ol>
+                <li><a href="#s8-1">Pulse — Inner State</a></li>
+                <li><a href="#s8-2">Compass — Decision and Risk</a></li>
+                <li><a href="#s8-3">Wander — Curiosity and Flexibility</a></li>
+                <li><a href="#s8-4">Haven — Social and Resilience</a></li>
+              </ol>
+            </li>
+            <li><a href="#s9">Behavioral Probe Library</a></li>
+            <li><a href="#s10">Slovak Context and International Strategy</a></li>
+          </ol>
+        </div>
+
+        <hr class="div" />
+
+        <!-- S1 -->
+        <section id="s1">
+          <div class="section-number">Section 1</div>
+          <h2 class="section-title">The Ground Truth Problem</h2>
+          <p class="body-para">This is the most important conceptual constraint on NeuroFlex as a research platform, identified in explicit terms by Professor Žilka (Slovak Academy of Sciences) at initial consultation in June 2026.</p>
+          <p class="body-para">The problem can be stated simply: if NeuroFlex collects behavioral data from 50,000 users but does not know which users have confirmed pathological changes, confirmed diagnoses, or confirmed biomarker status, then the platform can identify behavioral clusters and trajectory types — but cannot interpret what those clusters mean in relation to Alzheimer's disease.</p>
+          <div class="gap-box">
+            <p><strong>A pattern without a label is a description, not a biomarker.</strong> To establish that a behavioral pattern is associated with pre-clinical Alzheimer's disease, you need a reference label — biomarker status, clinical diagnosis, or eventual outcome — against which the behavioral data can be evaluated. Without this, you cannot distinguish between "behavioral cluster A = higher risk" and "behavioral cluster A = people who work in physically demanding jobs."</p>
+          </div>
+          <p class="body-para">The four-cohort design solves this problem by recruiting known-status participants through neurological and psychological clinical channels — allowing behavioral data to be correlated against established biomarker and clinical ground truth from day one, rather than waiting decades for population-level outcome data to accumulate.</p>
+        </section>
+
+        <hr class="div" />
+
+        <!-- S2 -->
+        <section id="s2">
+          <div class="section-number">Section 2</div>
+          <h2 class="section-title">Four-Cohort Research Design</h2>
+          <p class="body-para">NeuroFlex is proposed as a stratified longitudinal research platform recruiting across four cohorts with different levels of established Alzheimer's risk or pathology. Crucially, <strong>the application is the same for all cohorts</strong> — the stratification exists in the research backend, not in the product experience. This enables blinded or partially-blinded behavioral analysis and prevents users from being stigmatized or behaviorally altered by knowledge of their research group.</p>
+
+          <div class="cohort-grid">
+            <div class="cohort-card">
+              <p class="ch-label ch-a">Cohort A</p>
+              <h4>Early-Stage Diagnosed</h4>
+              <p>Individuals with confirmed early-stage MCI (Mild Cognitive Impairment) or early Alzheimer's disease diagnosis, referred by neurologists or psychologists. This group serves as the reference anchor: it defines what established cognitive impairment looks like in behavioral trajectory data. The research question for Cohort A is: <em>What behavioral signatures are present in individuals with confirmed disease?</em></p>
+              <p>Recruitment via: memory clinics, neurology departments, dementia family support organizations.</p>
+            </div>
+            <div class="cohort-card">
+              <p class="ch-label ch-b">Cohort B</p>
+              <h4>Family Members</h4>
+              <p>First-degree relatives (children, siblings) of diagnosed individuals, carrying elevated genetic risk without confirmed pathology. This group is scientifically interesting because: (1) they have intrinsic motivation to participate — concern for their own health; (2) they are likely to show high retention; (3) they represent the population in which early behavioral detection would have the highest preventive value. The question: <em>Are their behavioral profiles measurably closer to Cohort A than to Cohort D?</em></p>
+              <p>Recruitment via: neurological practices, family outreach through Cohort A participants.</p>
+            </div>
+            <div class="cohort-card">
+              <p class="ch-label ch-c">Cohort C</p>
+              <h4>Biomarker-Positive, Cognitively Normal</h4>
+              <p>Individuals with confirmed amyloid and/or tau pathology on PET or CSF testing, who currently score within normal ranges on standard cognitive assessment. <strong>This is arguably the most scientifically valuable group.</strong> These individuals have confirmed underlying pathological change but no clinical syndrome — precisely the multi-year pre-symptomatic window during which behavioral signals, if they exist, would first emerge. The question: <em>Do biomarker-positive but cognitively normal individuals show measurable behavioral differences relative to biomarker-negative controls?</em></p>
+              <p>Recruitment via: existing research cohorts (ideally DELCODE, Amsterdam UMC); requires advanced biomarker infrastructure available primarily in Scandinavia, Netherlands, Germany.</p>
+            </div>
+            <div class="cohort-card">
+              <p class="ch-label ch-d">Cohort D</p>
+              <h4>General Population (Control)</h4>
+              <p>App Store / Google Play downloads by general public. Provides normative behavioral baseline data at scale. Essential for establishing what "normal aging behavioral trajectory" looks like, against which cohort-specific deviations can be characterized. Users can voluntarily opt into anonymized research participation. Future architecture: unique user ID + QR code for data persistence across reinstalls.</p>
+              <p>Also enables secondary population-level research on healthy behavioral aging, independent of Alzheimer's disease focus.</p>
+            </div>
+          </div>
+        </section>
+
+        <hr class="div" />
+
+        <!-- S3 -->
+        <section id="s3">
+          <div class="section-number">Section 3</div>
+          <h2 class="section-title">Research Questions — Ordered by Ambition</h2>
+          <p class="body-para">NeuroFlex is not designed to prove a single hypothesis. It is designed as a platform for sequential hypothesis testing, where each level of evidence creates the foundation for the next. The following ordering is both scientifically and strategically appropriate — early publication of lower-ambition results builds credibility for later higher-ambition claims.</p>
+
+          <div class="step-list">
+            <div class="step-item">
+              <span class="step-num">1</span>
+              <p><strong>Feasibility:</strong> Can we measure behavioral patterns in a way that is reliable, stable, and consistent over time within individuals? This is the precondition for everything else. Expected sample: N=300–1,000. Timeline: 6–12 months.</p>
+            </div>
+            <div class="step-item">
+              <span class="step-num">2</span>
+              <p><strong>Cohort differentiation:</strong> Are there measurable behavioral differences between individuals with established cognitive impairment (Cohort A), those at genetic risk (Cohort B), and healthy controls (Cohort D)? Expected sample: N=600–2,400. Timeline: 12–24 months.</p>
+            </div>
+            <div class="step-item">
+              <span class="step-num">3</span>
+              <p><strong>Pre-symptomatic signal:</strong> Do biomarker-positive but cognitively normal individuals (Cohort C) show behavioral differences relative to biomarker-negative controls, prior to any clinical manifestation? This is the primary novel scientific question. Expected sample: N=200–500 in Cohort C. Timeline: 18–36 months.</p>
+            </div>
+            <div class="step-item">
+              <span class="step-num">4</span>
+              <p><strong>Blind classification:</strong> Can an AI model — given only behavioral data without any cohort labels — classify participants into their correct group at better-than-chance accuracy? If yes, this constitutes strong convergent evidence for the existence of behavioral biomarkers. Expected sample: all cohorts pooled. Timeline: 24–48 months.</p>
+            </div>
+            <div class="step-item">
+              <span class="step-num">5</span>
+              <p><strong>Prediction (longitudinal):</strong> Do baseline behavioral patterns predict future diagnostic outcomes — MCI conversion, Alzheimer's diagnosis — in prospective follow-up? This is the most ambitious question and requires multi-year follow-up with a large Cohort D base. Timeline: 5–10 years. This is the "holy grail" — publishable only if sufficient longitudinal depth is achieved.</p>
+            </div>
+          </div>
+
+          <div class="insight">
+            <p>The reformulation of the primary research mission from "predict Alzheimer's" to <strong>"characterise longitudinal behavioural trajectories across populations representing different stages of cognitive health and neurodegenerative risk"</strong> is both scientifically more precise and strategically more defensible. It sets achievable near-term milestones while maintaining a clear long-term ambition trajectory.</p>
+          </div>
+        </section>
+
+        <hr class="div" />
+
+        <!-- S4 -->
+        <section id="s4">
+          <div class="section-number">Section 4</div>
+          <h2 class="section-title">Sample Size Requirements</h2>
+
+          <h3 class="sub">Pilot Study — Publication-grade proof of concept</h3>
+          <table class="ss-table">
+            <thead><tr><th>Cohort</th><th>N</th><th>Purpose</th></tr></thead>
+            <tbody>
+              <tr><td><strong class="ch-a">A — Diagnosed</strong></td><td>100</td><td>Reference anchor for confirmed disease behavioral signatures</td></tr>
+              <tr><td><strong class="ch-b">B — Family</strong></td><td>150</td><td>Risk-elevated group without confirmed pathology</td></tr>
+              <tr><td><strong class="ch-c">C — Biomarker+</strong></td><td>100</td><td>Pre-symptomatic gold standard</td></tr>
+              <tr><td><strong class="ch-d">D — General</strong></td><td>300</td><td>Normative baseline</td></tr>
+              <tr><td class="total" colspan="2">Total: 650</td><td>Sufficient for initial feasibility and cohort differentiation publications</td></tr>
+            </tbody>
+          </table>
+
+          <h3 class="sub">Serious Research — ML-grade, grant-justifiable</h3>
+          <table class="ss-table">
+            <thead><tr><th>Cohort</th><th>N</th></tr></thead>
+            <tbody>
+              <tr><td><strong class="ch-a">A — Diagnosed</strong></td><td>300</td></tr>
+              <tr><td><strong class="ch-b">B — Family</strong></td><td>500</td></tr>
+              <tr><td><strong class="ch-c">C — Biomarker+</strong></td><td>300</td></tr>
+              <tr><td><strong class="ch-d">D — General</strong></td><td>1,000+</td></tr>
+              <tr><td class="total" colspan="2">Total: ~2,100</td></tr>
+            </tbody>
+          </table>
+
+          <h3 class="sub">Longitudinal Outcome Prediction — "Holy grail" tier</h3>
+          <p class="body-para">To detect incident MCI or AD cases within a general population cohort at a statistically meaningful rate, total Cohort D needs to be at minimum 10,000+ participants with 2–5 year follow-up. This generates sufficient outcome events (expected MCI conversion rate ~1–2%/year in age-appropriate populations) for predictive modelling. At 50,000+ participants, this approaches the scale of large biobank studies and enables sub-group analyses.</p>
+          <p class="body-para">For grant applications, use this language: <em>"Initial research objectives — cohort differentiation and pre-symptomatic signal detection — may be achievable with cohorts of several hundred to several thousand stratified participants. Discovery and validation of predictive behavioral biomarkers for future cognitive decline will likely require longitudinal datasets of tens of thousands of participants observed over multiple years."</em></p>
+        </section>
+
+        <hr class="div" />
+
+        <!-- S5 -->
+        <section id="s5">
+          <div class="section-number">Section 5</div>
+          <h2 class="section-title">Evidence Thresholds — What Counts as Success</h2>
+          <p class="body-para">There is no single statistical threshold that "proves" a hypothesis. Evidence accumulates progressively. The following framework defines what different levels of evidence would mean for NeuroFlex.</p>
+
+          <div class="step-list">
+            <div class="step-item">
+              <span class="step-num">L1</span>
+              <p><strong>Measurement reliability established.</strong> Behavioral metrics show acceptable test-retest consistency within individuals over 4+ weeks. This is a precondition, not a result, but publishable as a methods validation paper.</p>
+            </div>
+            <div class="step-item">
+              <span class="step-num">L2</span>
+              <p><strong>Cohort differentiation.</strong> Statistically significant differences in behavioral trajectories between Cohort A and Cohort D, with a meaningful effect size (Cohen's d > 0.4). Requires replication on a second independent dataset. This is a strong, publishable result that would attract significant scientific attention.</p>
+            </div>
+            <div class="step-item">
+              <span class="step-num">L3</span>
+              <p><strong>Pre-symptomatic signal (Cohort C vs D).</strong> Behavioral differences in biomarker-positive but cognitively normal individuals relative to matched biomarker-negative controls. Classifier performance (AUC > 0.70, i.e., well above 0.5 chance level). This would be a landmark result in digital biomarker research.</p>
+            </div>
+            <div class="step-item">
+              <span class="step-num">L4</span>
+              <p><strong>Blind AI classification above chance.</strong> Model trained only on behavioral data (no cohort labels) outperforms chance classification across the full cohort set. Replicated on held-out data from a separate time period or site.</p>
+            </div>
+            <div class="step-item">
+              <span class="step-num">L5</span>
+              <p><strong>Prospective prediction.</strong> Behavioral patterns at baseline predict MCI or AD onset in prospective follow-up, after controlling for known confounders (age, education, genetic risk, depression). This is the definitive longitudinal biomarker claim. Requires 5–10 year follow-up and a large population sample.</p>
+            </div>
+          </div>
+        </section>
+
+        <hr class="div" />
+
+        <!-- S6 -->
+        <section id="s6">
+          <div class="section-number">Section 6</div>
+          <h2 class="section-title">Ground Truth in Practice: Clinical Data and GDPR</h2>
+
+          <h3 class="sub">What clinical minimum data is needed per participant?</h3>
+          <p class="body-para">This is the key question to clarify with Professor Žilka at the SAV meeting. Based on published research methodology in comparable studies, the minimum useful clinical dataset per participant likely includes:</p>
+          <div class="step-list">
+            <div class="step-item"><span class="step-num">1</span><p><strong>Age bracket</strong> (5-year bands sufficient: 55–59, 60–64...)</p></div>
+            <div class="step-item"><span class="step-num">2</span><p><strong>Sex</strong></p></div>
+            <div class="step-item"><span class="step-num">3</span><p><strong>Education level</strong> (years of formal education — proxy for cognitive reserve)</p></div>
+            <div class="step-item"><span class="step-num">4</span><p><strong>Cohort assignment</strong> (A/B/C/D) — does not require name, DOB, or any directly identifiable information</p></div>
+            <div class="step-item"><span class="step-num">5</span><p><strong>For Cohort A/C:</strong> diagnostic category (MCI / early AD / biomarker-positive) — provided by referring clinician, not self-reported</p></div>
+            <div class="step-item"><span class="step-num">6</span><p><strong>Optional for Cohort B:</strong> type of familial relationship to diagnosed person (parent, sibling)</p></div>
+            <div class="step-item"><span class="step-num">7</span><p><strong>Optional future-state:</strong> APOE4 genotype status (requires explicit genetic data consent), biomarker levels at enrollment</p></div>
+          </div>
+
+          <h3 class="sub">Voluntary self-disclosure vs. clinical labeling</h3>
+          <p class="body-para">There is an important distinction between two approaches to ground truth assignment:</p>
+          <p class="body-para"><strong>Clinical pathway (Cohorts A, B, C):</strong> Participants are referred by neurologists or psychologists who know their status. The clinician assigns the cohort label (as an anonymised code, not name-linked) and the participant consents to data sharing. This is standard in clinical research and does not require the app to collect health data directly — the clinician provides the label through a separate research protocol.</p>
+          <p class="body-para"><strong>Self-disclosure pathway (Cohort D future):</strong> General population users can voluntarily indicate, in a clearly research-framed optional survey: "Have you received a diagnosis related to cognitive health since joining NeuroFlex?" This generates prospective outcome labels over time. GDPR-sensitive. Requires: informed consent, explicit opt-in, ethics approval, and clear limitation to research use.</p>
+          <div class="gap-box">
+            <p>In Phase 1 (MVP), collect <strong>no health data</strong>. Behavioural data only. Clinical labeling happens through a parallel research protocol administered by the clinical partner, not through the app. This keeps the app legally simple and focuses development on what matters: the behavioral data collection engine.</p>
+          </div>
+
+          <h3 class="sub">Persistent User Identity (future architecture)</h3>
+          <p class="body-para">For longitudinal research validity, user data must be persistent across reinstalls, device changes, and app updates. Proposed architecture: unique anonymized research ID assigned at registration + QR code for account recovery without requiring personal email or phone number. This maintains longitudinal data integrity while preserving anonymity. Implementation target: Phase 2.</p>
+        </section>
+
+        <hr class="div" />
+
+        <!-- S7 -->
+        <section id="s7">
+          <div class="section-number">Section 7</div>
+          <h2 class="section-title">Behavioral Measurement Framework</h2>
+
+          <h3 class="sub" id="s7-1">7.1 Why Proxy Signals — Not Direct Measurement</h3>
+          <p class="body-para">Abstract traits like curiosity, resilience, or cognitive flexibility cannot be asked about directly — "Rate your curiosity from 0 to 10 today" produces noise, not signal. Instead, NeuroFlex captures <strong>behavioral proxies</strong>: observable interaction patterns from which latent trait states can be inferred by machine learning models.</p>
+          <p class="body-para">This approach is methodologically analogous to how personality psychology operationalises abstract constructs (the Big Five personality traits are not measured by asking "how neurotic are you?" — they are inferred from patterns of responses to seemingly unrelated situational questions). The key difference is that NeuroFlex captures these patterns <em>continuously and in context</em>, rather than in a single cross-sectional questionnaire administration.</p>
+
+          <h3 class="sub" id="s7-2">7.2 Twelve Latent Traits and Their Proxy Signals</h3>
+
+          <div class="probe-block">
+            <div class="pb-head"><h4>1. Curiosity</h4><div class="pb-tags"><span class="pb-tag">wander</span></div></div>
+            <p class="body-para">Proxy signals: novel content engagement rate; feature exploration diversity; optional learning content access; "surprise me" choices; deviation from established activity patterns.</p>
+          </div>
+          <div class="probe-block">
+            <div class="pb-head"><h4>2. Initiative</h4><div class="pb-tags"><span class="pb-tag">compass</span></div></div>
+            <p class="body-para">Proxy signals: ratio of spontaneous (notification-independent) session opens to notification-triggered opens; voluntary task completion beyond required minimum; self-initiated social contact planning; temporal regularity of self-directed engagement.</p>
+          </div>
+          <div class="probe-block">
+            <div class="pb-head"><h4>3. Cognitive Flexibility</h4><div class="pb-tags"><span class="pb-tag">wander</span></div></div>
+            <p class="body-para">Proxy signals: activity type switching frequency; performance consistency across diverse cognitive task formats; adaptation speed after routine disruption; willingness to try new task variants.</p>
+          </div>
+          <div class="probe-block">
+            <div class="pb-head"><h4>4. Persistence</h4><div class="pb-tags"><span class="pb-tag">pulse</span><span class="pb-tag">compass</span></div></div>
+            <p class="body-para">Proxy signals: task completion rate; retry rate following failure; session continuation after first difficulty; sustained engagement on longer-format activities; goal-directed behavior maintenance.</p>
+          </div>
+          <div class="probe-block">
+            <div class="pb-head"><h4>5. Resilience</h4><div class="pb-tags"><span class="pb-tag">haven</span></div></div>
+            <p class="body-para">Proxy signals: engagement recovery speed following low-activity periods; performance restoration rate after detected poor performance; re-engagement pattern after life disruptions; stability of engagement despite setbacks.</p>
+          </div>
+          <div class="probe-block">
+            <div class="pb-head"><h4>6. Courage / Uncertainty Tolerance</h4><div class="pb-tags"><span class="pb-tag">compass</span></div></div>
+            <p class="body-para">Proxy signals: preference for uncertain rewards over guaranteed smaller rewards; novel activity acceptance rate; engagement with unfamiliar task formats; willingness to engage with socially uncertain scenarios.</p>
+          </div>
+          <div class="probe-block">
+            <div class="pb-head"><h4>7. Confidence / Self-Efficacy</h4><div class="pb-tags"><span class="pb-tag">pulse</span></div></div>
+            <p class="body-para">Proxy signals: self-reported certainty ratings after task completion; calibration between confidence and accuracy (overconfidence vs. underconfidence); decision speed; second-guessing patterns.</p>
+          </div>
+          <div class="probe-block">
+            <div class="pb-head"><h4>8. Social Activation</h4><div class="pb-tags"><span class="pb-tag">haven</span></div></div>
+            <p class="body-para">Proxy signals: completion rate of social/Connect module tasks; spontaneous vs. prompted social contact reporting; preference for social vs. solitary activities in binary choices; social interaction quality self-assessment trends.</p>
+          </div>
+          <div class="probe-block">
+            <div class="pb-head"><h4>9. Future Orientation</h4><div class="pb-tags"><span class="pb-tag">compass</span></div></div>
+            <p class="body-para">Proxy signals: planning horizon (today / this week / next month); temporal preference in activity choices; optimism about upcoming period; engagement with goal-setting features.</p>
+          </div>
+          <div class="probe-block">
+            <div class="pb-head"><h4>10. Self-Awareness</h4><div class="pb-tags"><span class="pb-tag">pulse</span></div></div>
+            <p class="body-para">Proxy signals: self-prediction accuracy (morning prediction vs. evening actual report); ability to detect own state changes; accuracy of own performance estimation; self-monitoring engagement quality.</p>
+          </div>
+          <div class="probe-block">
+            <div class="pb-head"><h4>11. Decisiveness</h4><div class="pb-tags"><span class="pb-tag">compass</span></div></div>
+            <p class="body-para">Proxy signals: decision latency (time to choice in binary selection tasks); decision regret indicators; avoidance of choice; delegation to "default" or "random" options.</p>
+          </div>
+          <div class="probe-block">
+            <div class="pb-head"><h4>12. Routine Preference</h4><div class="pb-tags"><span class="pb-tag">pulse</span><span class="pb-tag">wander</span></div></div>
+            <p class="body-para">Proxy signals: consistency of daily engagement timing; preference for familiar vs. novel content when offered equivalent choice; response to unexpected schedule disruption; entropy of daily interaction pattern.</p>
+          </div>
+
+          <h3 class="sub" id="s7-3">7.3 What Matters: Trajectory, Not Absolute Score</h3>
+          <div class="insight">
+            <p>The absolute score on any trait measure is less scientifically interesting than its <strong>trajectory over time</strong>. Two participants with identical average Curiosity scores can have dramatically different trajectories — one stable, one declining. Furthermore, increased <strong>variability</strong> (higher day-to-day inconsistency in trait expression) may itself be a meaningful signal, independent of direction. This is why years of daily data — not a single assessment — are the core scientific asset of NeuroFlex.</p>
+          </div>
+        </section>
+
+        <hr class="div" />
+
+        <!-- S8 -->
+        <section id="s8">
+          <div class="section-number">Section 8</div>
+          <h2 class="section-title">Daily Checkup Architecture — Four Modules</h2>
+          <p class="body-para">The four daily checkup modules are the primary behavioral data collection interface. Each module runs once per day, contains 1–3 questions or micro-tasks, and is presented in a naturalistic, engaging format that does not feel clinical. Questions rotate to prevent habituation and learning effects. Backend tagging maps each question to one or more latent trait domains.</p>
+
+          <div class="checkup-grid">
+            <div class="checkup-card pulse-card">
+              <div class="ck-icon">❤️</div>
+              <h4>Pulse — Inner State</h4>
+              <p>Self-assessment of current mood, energy, focus, and body awareness. The most direct window into subjective wellbeing and self-monitoring capacity.</p>
+              <p>Timing: morning (captures starting state). 2–3 short questions. Includes a visual mood input and one contextual self-prediction question.</p>
+              <div class="trait-tags">
+                <span class="trait-tag pulse-tag">self_awareness</span>
+                <span class="trait-tag pulse-tag">confidence</span>
+                <span class="trait-tag pulse-tag">persistence</span>
+                <span class="trait-tag pulse-tag">routine_preference</span>
+              </div>
+            </div>
+            <div class="checkup-card compass-card">
+              <div class="ck-icon">🧭</div>
+              <h4>Compass — Decision &amp; Risk</h4>
+              <p>Hypothetical decision scenarios and preference questions probing risk tolerance, future orientation, decisiveness, initiative, and uncertainty tolerance.</p>
+              <p>Timing: mid-day. 1–2 scenario questions. No right/wrong answers. Presented as "what would you do?" or "which sounds better?"</p>
+              <div class="trait-tags">
+                <span class="trait-tag compass-tag">initiative</span>
+                <span class="trait-tag compass-tag">courage</span>
+                <span class="trait-tag compass-tag">decisiveness</span>
+                <span class="trait-tag compass-tag">future_orientation</span>
+                <span class="trait-tag compass-tag">persistence</span>
+              </div>
+            </div>
+            <div class="checkup-card wander-card">
+              <div class="ck-icon">🌸</div>
+              <h4>Wander — Curiosity &amp; Flexibility</h4>
+              <p>Novelty-seeking, adaptability, and openness to change. Questions probe how users relate to new experiences, learning, disruption, and routine versus variety.</p>
+              <p>Timing: afternoon. 1–2 questions. May include a micro-exploration task (e.g., "discover one new fact today").</p>
+              <div class="trait-tags">
+                <span class="trait-tag wander-tag">curiosity</span>
+                <span class="trait-tag wander-tag">flexibility</span>
+                <span class="trait-tag wander-tag">persistence</span>
+                <span class="trait-tag wander-tag">routine_preference</span>
+              </div>
+            </div>
+            <div class="checkup-card haven-card">
+              <div class="ck-icon">🌳</div>
+              <h4>Haven — Social &amp; Resilience</h4>
+              <p>Social activation, relationship quality, support-seeking, and resilience. Probes how users navigate interpersonal connection, response to setbacks, and recovery patterns.</p>
+              <p>Timing: evening. 1–2 questions or a brief social micro-task report. May include "Did you connect with someone today?" type prompts.</p>
+              <div class="trait-tags">
+                <span class="trait-tag haven-tag">social_activation</span>
+                <span class="trait-tag haven-tag">resilience</span>
+                <span class="trait-tag haven-tag">persistence</span>
+                <span class="trait-tag haven-tag">self_awareness</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="insight">
+            <p>Questions rotate across modules and are never presented as a battery. The user experiences 4–6 micro-interactions per day across the four modules — each taking under 30 seconds. No day feels identical. Backend tagging links each response to latent traits regardless of which module it appears in. Over 365 days, this generates approximately 1,500–2,000 individual behavioral data points per user, across 12 trait dimensions.</p>
+          </div>
+        </section>
+
+        <hr class="div" />
+
+        <!-- S9 -->
+        <section id="s9">
+          <div class="section-number">Section 9</div>
+          <h2 class="section-title">Behavioral Probe Library — Sample Questions</h2>
+          <p class="body-para">The following examples illustrate the probe design philosophy: questions appear as natural preference or scenario questions; backend tagging encodes the scientific intent. Users are never told which trait is being assessed.</p>
+
+          <div class="probe-block">
+            <div class="pb-head">
+              <h4>Curiosity — Novel Content Choice</h4>
+              <div class="pb-tags"><span class="pb-tag wander-tag">wander</span></div>
+            </div>
+            <p class="probe-q">Which headline would you open?</p>
+            <div class="probe-options">
+              <span>→ "5 things you never knew about the ocean"</span>
+              <span>→ "Today's news summary"</span>
+              <span>→ "Tips for better sleep"</span>
+              <span>→ "I wouldn't open any of these"</span>
+            </div>
+            <div class="probe-backend"><code>latent_traits: [curiosity, novelty_seeking]</code></div>
+          </div>
+
+          <div class="probe-block">
+            <div class="pb-head">
+              <h4>Uncertainty Tolerance — Reward Preference</h4>
+              <div class="pb-tags"><span class="pb-tag compass-tag">compass</span></div>
+            </div>
+            <p class="probe-q">Which would you choose?</p>
+            <div class="probe-options">
+              <span>→ A small reward, guaranteed</span>
+              <span>→ A larger reward, uncertain</span>
+            </div>
+            <div class="probe-backend"><code>latent_traits: [courage, uncertainty_tolerance, decisiveness]</code></div>
+          </div>
+
+          <div class="probe-block">
+            <div class="pb-head">
+              <h4>Persistence — Task Difficulty Response</h4>
+              <div class="pb-tags"><span class="pb-tag pulse-tag">pulse</span><span class="pb-tag compass-tag">compass</span></div>
+            </div>
+            <p class="probe-q">When something becomes harder than expected, you usually:</p>
+            <div class="probe-options">
+              <span>→ Keep going until finished</span>
+              <span>→ Take a short break and continue</span>
+              <span>→ Return to it later</span>
+              <span>→ Leave it unfinished</span>
+            </div>
+            <div class="probe-backend"><code>latent_traits: [persistence, resilience]</code></div>
+          </div>
+
+          <div class="probe-block">
+            <div class="pb-head">
+              <h4>Initiative — Spontaneous Action</h4>
+              <div class="pb-tags"><span class="pb-tag compass-tag">compass</span></div>
+            </div>
+            <p class="probe-q">When you have unexpected free time, you usually:</p>
+            <div class="probe-options">
+              <span>→ Start doing something straightaway</span>
+              <span>→ Wait for something to come up</span>
+              <span>→ Continue a routine activity</span>
+              <span>→ Just rest</span>
+            </div>
+            <div class="probe-backend"><code>latent_traits: [initiative, routine_preference]</code></div>
+          </div>
+
+          <div class="probe-block">
+            <div class="pb-head">
+              <h4>Confidence Calibration — Post-task</h4>
+              <div class="pb-tags"><span class="pb-tag pulse-tag">pulse</span></div>
+            </div>
+            <p class="probe-q">How confident are you in your answer?</p>
+            <div class="probe-options">
+              <span>→ Very confident</span>
+              <span>→ Somewhat confident</span>
+              <span>→ Unsure</span>
+              <span>→ Guessing</span>
+            </div>
+            <div class="probe-backend"><code>latent_traits: [confidence, self_awareness] — compared against actual performance to compute calibration_index</code></div>
+          </div>
+
+          <div class="probe-block">
+            <div class="pb-head">
+              <h4>Flexibility — Disruption Response</h4>
+              <div class="pb-tags"><span class="pb-tag wander-tag">wander</span></div>
+            </div>
+            <p class="probe-q">Your usual plan changes unexpectedly today. You:</p>
+            <div class="probe-options">
+              <span>→ Adapt easily</span>
+              <span>→ Need some time to adjust</span>
+              <span>→ Feel frustrated</span>
+              <span>→ Prefer to cancel the whole thing</span>
+            </div>
+            <div class="probe-backend"><code>latent_traits: [flexibility, resilience, routine_preference]</code></div>
+          </div>
+
+          <div class="probe-block">
+            <div class="pb-head">
+              <h4>Self-Prediction (Morning)</h4>
+              <div class="pb-tags"><span class="pb-tag pulse-tag">pulse</span></div>
+            </div>
+            <p class="probe-q">Do you think you'll exercise today?</p>
+            <div class="probe-options"><span>→ Yes / Maybe / No</span></div>
+            <p class="probe-q" style="margin-top:0.5rem;">[Evening follow-up] Did you exercise today?</p>
+            <div class="probe-options"><span>→ Yes / No / Partially</span></div>
+            <div class="probe-backend"><code>derived_metric: self_prediction_accuracy — tracked longitudinally per user</code></div>
+          </div>
+
+          <div class="probe-block">
+            <div class="pb-head">
+              <h4>Social Activation — Connection Initiative</h4>
+              <div class="pb-tags"><span class="pb-tag haven-tag">haven</span></div>
+            </div>
+            <p class="probe-q">If you think of someone you haven't spoken to in a while, you usually:</p>
+            <div class="probe-options">
+              <span>→ Contact them</span>
+              <span>→ Think about it but don't reach out</span>
+              <span>→ Wait for them to contact you</span>
+              <span>→ Don't think about it much</span>
+            </div>
+            <div class="probe-backend"><code>latent_traits: [social_activation, initiative]</code></div>
+          </div>
+        </section>
+
+        <hr class="div" />
+
+        <!-- S10 -->
+        <section id="s10">
+          <div class="section-number">Section 10</div>
+          <h2 class="section-title">Slovak Context and International Research Strategy</h2>
+
+          <h3 class="sub">Professor Žilka's Key Observation</h3>
+          <p class="body-para">The core constraint identified at the SAV consultation is that Slovak clinical diagnostic infrastructure — particularly for biomarker-positive pre-symptomatic individuals (Cohort C) — is substantially less developed than in Scandinavian countries, the Netherlands, or Germany. PET amyloid scanning, CSF biomarker programs, and systematic pre-symptomatic screening exist at significantly higher rates in countries like Sweden, Finland, Denmark, and the Netherlands. This makes Slovak-only recruitment of Cohort C difficult.</p>
+
+          <div class="insight">
+            <p><strong>This does not prevent NeuroFlex from being a Slovak startup.</strong> It means that the research collaboration strategy must be international from day one. The app is developed in Slovakia; the research cohorts are international. This model is standard in European digital health research — it is exactly the structure used by RADAR-AD, LETHE, and DigiAD, all of which had primary development in one country and clinical recruitment sites across multiple EU countries.</p>
+          </div>
+
+          <h3 class="sub">Recommended Partnership Structure</h3>
+          <div class="step-list">
+            <div class="step-item">
+              <span class="step-num">SK</span>
+              <p><strong>NeuroFlex s.r.o.</strong> — platform development, AI/ML, data infrastructure, project coordination. Slovak Academy of Sciences (SAV) as scientific advisory and local ethics approval partner. KInIT Bratislava as computational research partner. Comenius University neurology/psychology for local Cohort A/B pilot.</p>
+            </div>
+            <div class="step-item">
+              <span class="step-num">EU</span>
+              <p><strong>DZNE / DELCODE</strong> — Cohort C clinical ground truth. German biomarker infrastructure, existing SCD cohort, DZNE ethics framework. Amsterdam UMC (Amsterdam Dementia Cohort) as second Cohort C/A site. FINGER/World Wide FINGERS for multidomain intervention context (Cohort D at scale).</p>
+            </div>
+          </div>
+
+          <div class="conclusion-box">
+            <p style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#00cfff;margin:0 0 0.75rem;">Questions for the SAV Meeting</p>
+            <blockquote>What is the minimum clinical dataset required per participant for the behavioral data to be scientifically interpretable?</blockquote>
+            <blockquote>Are there existing Slovak or Czech cohorts (Memory Clinic Bratislava, Masaryk University Brno, Czech National Cohort) to which NeuroFlex could be attached as a digital behavioral monitoring module?</blockquote>
+            <blockquote>Is SAV's Institute of Neuroimmunology the appropriate scientific partner for a formal collaboration agreement, and what would that process look like?</blockquote>
+            <blockquote>Which specific grant mechanisms does Professor Žilka recommend as the most realistic near-term targets for NeuroFlex? (See the Grant Landscape document for the currently identified options.)</blockquote>
+          </div>
+        </section>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> NeuroFlex · Cognitive wellness &amp; behavioral research</p>
+      <p class="muted">Internal document — not for public distribution. Developed by <a href="https://www.lifeapps.online/" style="color:#9fb3ff">LifeApps</a></p>
+    </div>
+  </footer>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

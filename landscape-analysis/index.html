@@ -1,0 +1,845 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NeuroFlex — Landscape Analysis of Digital Alzheimer's Research Platforms</title>
+  <meta name="description" content="Internal working document: landscape analysis of digital biomarker and Alzheimer's research platforms, competitive positioning, and scientific rationale for NeuroFlex." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    /* ── Typography helpers ── */
+    .doc-version { font-size: 0.78rem; color: #5a7a99; margin-top: 0.25rem; }
+    .tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 0.18em 0.6em;
+      border-radius: 4px;
+      margin-bottom: 0.4rem;
+    }
+    .tag-eu   { background: rgba(0,160,255,0.12); color: #4ab4ff; }
+    .tag-us   { background: rgba(100,200,80,0.12); color: #7dd86a; }
+    .tag-au   { background: rgba(255,180,60,0.12); color: #ffb84a; }
+    .tag-int  { background: rgba(180,120,255,0.12); color: #c49bff; }
+    .tag-de   { background: rgba(255,100,100,0.12); color: #ff8080; }
+    .tag-se   { background: rgba(80,200,200,0.12); color: #5ddede; }
+
+    /* ── Group sections ── */
+    .landscape-group {
+      border-left: 3px solid rgba(0,207,255,0.3);
+      padding-left: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+    .landscape-group h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 0 0 0.15rem;
+    }
+    .landscape-group .group-num {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #00cfff;
+      margin-bottom: 0.3rem;
+    }
+    .landscape-group p { font-size: 0.9rem; color: #a0b8cc; margin: 0.25rem 0 0.75rem; }
+
+    /* ── Platform cards grid ── */
+    .platform-grid {
+      display: grid;
+      gap: 0.85rem;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      margin-top: 0.85rem;
+    }
+    .platform-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 0.9rem 1rem 0.8rem;
+    }
+    .platform-card h4 { margin: 0 0 0.25rem; font-size: 0.92rem; }
+    .platform-card p { margin: 0; font-size: 0.8rem; color: #8a9fb5; line-height: 1.5; }
+
+    /* ── Feature comparison matrix ── */
+    .matrix-wrap { overflow-x: auto; margin-top: 1.25rem; }
+    .matrix-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.83rem;
+      white-space: nowrap;
+    }
+    .matrix-table th {
+      background: rgba(0,207,255,0.07);
+      padding: 0.55rem 0.7rem;
+      text-align: center;
+      color: #7ec8d8;
+      font-weight: 600;
+      border-bottom: 1px solid rgba(0,207,255,0.2);
+    }
+    .matrix-table th.col-platform { text-align: left; min-width: 140px; }
+    .matrix-table td {
+      padding: 0.45rem 0.7rem;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      text-align: center;
+      color: #8a9fb5;
+    }
+    .matrix-table td.col-platform {
+      text-align: left;
+      font-weight: 600;
+      color: #c8dde8;
+    }
+    .matrix-table tr.row-neuroflex td {
+      background: rgba(0,207,255,0.06);
+      color: #d0ecf4;
+    }
+    .matrix-table tr.row-neuroflex td.col-platform {
+      color: #00cfff;
+      font-weight: 700;
+    }
+    .matrix-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .cell-yes  { color: #55d68a; font-weight: 700; }
+    .cell-no   { color: #4a5a6a; }
+    .cell-part { color: #ffb347; }
+    .cell-fut  { color: #7868f3; font-style: italic; }
+    .matrix-legend {
+      display: flex; gap: 1.5rem; flex-wrap: wrap;
+      font-size: 0.78rem; margin-top: 0.75rem; color: #7a9ab5;
+    }
+    .matrix-legend span { display: flex; align-items: center; gap: 0.35rem; }
+
+    /* ── Differentiator cards ── */
+    .diff-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+      margin-top: 1.25rem;
+    }
+    @media (min-width: 640px) { .diff-grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 960px) { .diff-grid { grid-template-columns: 1fr 1fr 1fr; } }
+    .diff-card {
+      background: rgba(0,207,255,0.04);
+      border: 1px solid rgba(0,207,255,0.15);
+      border-radius: 14px;
+      padding: 1.1rem 1.15rem;
+    }
+    .diff-card .diff-num {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #00cfff;
+      margin-bottom: 0.3rem;
+    }
+    .diff-card h3 { margin: 0 0 0.4rem; font-size: 0.97rem; }
+    .diff-card p { margin: 0; font-size: 0.85rem; color: #8aa5b8; line-height: 1.55; }
+    .diff-card .vs-row {
+      display: flex; gap: 0.5rem; margin-top: 0.65rem; font-size: 0.78rem; flex-wrap: wrap;
+    }
+    .vs-row .vs-them { color: #5a7a99; text-decoration: line-through; }
+    .vs-row .vs-us   { color: #00cfff; font-weight: 600; }
+
+    /* ── Research gap box ── */
+    .gap-box {
+      background: linear-gradient(135deg, rgba(0,207,255,0.07), rgba(120,104,243,0.06));
+      border: 1px solid rgba(0,207,255,0.25);
+      border-radius: 16px;
+      padding: 1.75rem 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .gap-box blockquote {
+      font-size: 1rem;
+      font-style: italic;
+      color: #c8dde8;
+      border-left: 3px solid #00cfff;
+      margin: 1rem 0;
+      padding-left: 1.1rem;
+      line-height: 1.7;
+    }
+
+    /* ── Misc ── */
+    hr.sec-divider { border: none; border-top: 1px solid rgba(255,255,255,0.07); margin: 2.75rem 0; }
+    .doc-note { font-size: 0.82rem; color: #5a7a99; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 0.75rem 1rem; margin-top: 0.75rem; }
+    .toc { background: rgba(0,0,0,0.2); border-radius: 12px; padding: 1.1rem 1.4rem; margin: 1.5rem 0; }
+    .toc p { margin: 0 0 0.5rem; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #00cfff; }
+    .toc ol { margin: 0; padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.25rem; }
+    .toc li { font-size: 0.88rem; color: #8aa5b8; }
+    .toc a { color: #7ec8d8; text-decoration: none; }
+    .toc a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body class="neuro-site">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../" class="brand brand-neuroflex">
+        <img src="../assets/neuroflex-logo.png" alt="" />
+        <span>NeuroFlex<sup>&copy;</sup></span>
+      </a>
+      <nav class="nav">
+        <a href="../">Home</a>
+        <a href="../white-paper/">White Paper</a>
+        <a href="../eula/">EULA</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="doc-hero">
+      <div class="container">
+        <p class="doc-kicker">Internal Working Document · Unlisted · June 2026</p>
+        <h1>Landscape Analysis of Digital Alzheimer's Research Platforms</h1>
+        <p class="doc-lead">A systematic review of the current landscape of longitudinal cohort studies, digital biomarker research platforms, clinical assessment tools, passive phenotyping systems, and lifestyle prevention programmes — with a structured analysis of where NeuroFlex is positioned and why it addresses a genuine research gap.</p>
+        <div class="doc-actions">
+          <a class="btn btn-secondary" href="../white-paper/">White Paper</a>
+          <a class="btn btn-secondary" href="../methodological-challenges/">Research Risks</a>
+          <a class="btn btn-secondary" href="../">Back to NeuroFlex</a>
+        </div>
+        <p class="doc-note">This page is not linked from the public site. It is maintained as an internal strategy and scientific positioning document. Intended audience: core NeuroFlex team, research partners, grant reviewers.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+
+        <!-- TOC -->
+        <div class="toc">
+          <p>Contents</p>
+          <ol>
+            <li><a href="#why-another">Why Another Platform? — Positioning Statement</a></li>
+            <li><a href="#group1">Group 1 — Large Longitudinal Research Cohorts</a></li>
+            <li><a href="#group2">Group 2 — Digital Biomarker Research Projects</a></li>
+            <li><a href="#group3">Group 3 — Clinical Digital Assessment Platforms</a></li>
+            <li><a href="#group4">Group 4 — Passive Digital Phenotyping Platforms</a></li>
+            <li><a href="#group5">Group 5 — Lifestyle Multidomain Prevention Studies</a></li>
+            <li><a href="#matrix">Comparative Feature Matrix</a></li>
+            <li><a href="#differentiators">What Differentiates NeuroFlex</a></li>
+            <li><a href="#gap">Research Gap — Conclusion</a></li>
+          </ol>
+        </div>
+
+        <!-- WHY ANOTHER PLATFORM -->
+        <section class="doc-section" id="why-another">
+          <h2>Why Another Platform?</h2>
+          <p class="muted">This is the first question any grant reviewer, clinical collaborator, or ethics board will ask. The answer must not dismiss existing work but must clearly articulate an unaddressed research question.</p>
+
+          <div class="gap-box">
+            <p class="doc-kicker" style="color:#00cfff; font-size:0.75rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.5rem;">Positioning Statement</p>
+            <blockquote>
+              Significant progress has been achieved in Alzheimer's disease biomarker research, particularly through advances in blood- and CSF-based biomarkers, neuroimaging, and digital cognitive assessment. Nevertheless, current approaches primarily focus either on biological pathology or on isolated cognitive performance measured in controlled conditions. There remains limited systematic understanding of how subtle behavioural traits — curiosity, persistence, flexibility, initiative, and resilience — evolve longitudinally during the preclinical stages of the disease, and whether these patterns are detectable within the ecological context of everyday digital life. NeuroFlex is designed to investigate this underexplored area by combining structured behavioural assessments, adaptive digital tasks, continuous ecological monitoring, and within-person longitudinal modelling within a single accessible research platform.
+            </blockquote>
+            <p style="font-size:0.88rem; color:#8aa5b8;">This framing does not claim that existing platforms are insufficient. It identifies a complementary dimension that they do not primarily target — and that is the correct scientific posture.</p>
+          </div>
+        </section>
+
+        <hr class="sec-divider" />
+
+        <!-- GROUP 1 -->
+        <section class="doc-section" id="group1">
+          <h2>Group 1 — Large Longitudinal Research Cohorts</h2>
+          <p>These are foundational scientific programmes, not consumer applications. They define the gold standard for longitudinal Alzheimer's research and provide the biomarker-positive ground truth that platforms like NeuroFlex will ultimately need for outcome validation. They are not competitors — they are the validation infrastructure NeuroFlex must eventually integrate with.</p>
+
+          <div class="landscape-group">
+            <div class="group-num">Group 1 · Overview</div>
+            <p>Characteristics: biomarker-heavy (amyloid PET, tau PET, CSF, MRI), episodic assessment (annual or biannual), institutional access only, no consumer product, expensive per-participant cost. Most generate publicly accessible datasets (ADNI, OASIS) that the broader research community can leverage.</p>
+          </div>
+
+          <div class="platform-grid">
+            <div class="platform-card">
+              <span class="tag tag-us">US · NIH</span>
+              <h4>ADNI</h4>
+              <p>Alzheimer's Disease Neuroimaging Initiative. Largest North American longitudinal cohort. Multimodal biomarkers, cognitive batteries, genetics. Publicly available dataset. Ongoing since 2004.</p>
+            </div>
+            <div class="platform-card">
+              <span class="tag tag-se">Sweden · Lund</span>
+              <h4>BioFINDER</h4>
+              <p>Swedish BioFinder Study. Focus on plasma and CSF biomarkers, tau/amyloid PET, longitudinal cognitive change. Highly influential in defining early-stage AD biomarker thresholds.</p>
+            </div>
+            <div class="platform-card">
+              <span class="tag tag-eu">EU · IMI</span>
+              <h4>EPAD</h4>
+              <p>European Prevention of Alzheimer's Dementia. Platform trial for secondary prevention. Enriched with risk-positive pre-screened participants. Pan-European infrastructure.</p>
+            </div>
+            <div class="platform-card">
+              <span class="tag tag-au">Australia</span>
+              <h4>AIBL</h4>
+              <p>Australian Imaging, Biomarkers and Lifestyle Study. Longitudinal cohort examining biomarkers, lifestyle, and cognitive trajectories. Public dataset.</p>
+            </div>
+            <div class="platform-card">
+              <span class="tag tag-us">US · Open</span>
+              <h4>OASIS</h4>
+              <p>Open Access Series of Imaging Studies. Cross-sectional and longitudinal MRI datasets for dementia research. Widely used for model development and benchmarking.</p>
+            </div>
+            <div class="platform-card">
+              <span class="tag tag-us">US · Mayo</span>
+              <h4>MCSA</h4>
+              <p>Mayo Clinic Study of Aging. Population-based cohort in Olmsted County, Minnesota. Tracks MCI, dementia incidence, cognitive change, and risk factors over decades.</p>
+            </div>
+            <div class="platform-card">
+              <span class="tag tag-int">UK · NHS</span>
+              <h4>UK Biobank</h4>
+              <p>500,000-participant population cohort with imaging, genetics, and health data. Dementia sub-cohorts and linked health record follow-up enable large-scale retrospective association studies.</p>
+            </div>
+            <div class="platform-card">
+              <span class="tag tag-int">EU · Pan-EU</span>
+              <h4>PREVENT Dementia</h4>
+              <p>UK-based prevention study focusing on midlife risk factors. MRI, blood biomarkers, and cognitive assessment in individuals 40–60 years old with family history of late-onset AD.</p>
+            </div>
+            <div class="platform-card">
+              <span class="tag tag-de">Germany · DZNE</span>
+              <h4>DELCODE</h4>
+              <p>DZNE Longitudinal Cognitive Impairment and Dementia Study. Multisite German cohort with SCD, MCI, and AD participants. Focuses on subjective cognitive decline as an early risk marker.</p>
+            </div>
+            <div class="platform-card">
+              <span class="tag tag-int">Netherlands</span>
+              <h4>Amsterdam Dementia Cohort</h4>
+              <p>Memory clinic-based longitudinal cohort. Comprehensive phenotyping including neuropsychology, CSF, imaging, and genetics. Open-access data sharing.</p>
+            </div>
+            <div class="platform-card">
+              <span class="tag tag-int">International</span>
+              <h4>World Wide FINGERS</h4>
+              <p>Global network of multimodal risk reduction trials coordinated from the Karolinska Institute. Adapts the FINGER intervention protocol across diverse populations and health systems.</p>
+            </div>
+          </div>
+
+          <p class="doc-note" style="margin-top:1rem;"><strong>NeuroFlex relationship:</strong> These cohorts generate the ground-truth clinical outcomes that NeuroFlex longitudinal data could eventually be correlated against. The ideal long-term research design involves linking NeuroFlex behavioral trajectories to participants enrolled in biomarker studies. ADNI and OASIS data can support pre-training of NeuroFlex baseline models.</p>
+        </section>
+
+        <hr class="sec-divider" />
+
+        <!-- GROUP 2 -->
+        <section class="doc-section" id="group2">
+          <h2>Group 2 — Digital Biomarker Research Projects</h2>
+          <p>This is the most directly relevant competitive landscape for NeuroFlex. These projects explicitly investigate whether digital signals — from apps, wearables, or smartphones — can serve as biomarkers for neurodegenerative or cognitive conditions.</p>
+
+          <div class="landscape-group">
+            <div class="group-num">Group 2 · Overview</div>
+            <p>Characteristics: research-initiated, not consumer products; typically built on passive sensing or structured digital tasks; most require clinical enrollment and do not scale to mass consumer adoption; data access is researcher-restricted; most are project-funded with a defined study window. Key limitation: they are not designed for long-term engagement at population scale.</p>
+          </div>
+
+          <div class="platform-grid">
+            <div class="platform-card">
+              <span class="tag tag-eu">EU · IMI2</span>
+              <h4>RADAR-AD</h4>
+              <p>Remote Assessment of Disease and Relapse — Alzheimer's Disease. EU Innovative Medicines Initiative project. Combines passive smartphone sensing (GPS, actigraphy, call patterns) with digital cognitive tasks. One of the most relevant directly comparable platforms.</p>
+            </div>
+            <div class="platform-card">
+              <span class="tag tag-eu">EU · IMI2</span>
+              <h4>RADAR-CNS</h4>
+              <p>Parent platform to RADAR-AD. Focuses on remote monitoring across CNS disorders (depression, epilepsy, MS). Developed the RADAR-base open-source infrastructure for passive digital data collection.</p>
+            </div>
+            <div class="platform-card">
+              <span class="tag tag-de">Germany · BMBF</span>
+              <h4>BioCog</h4>
+              <p>Biomarker Development for Postoperative Cognitive Impairment in the Elderly. Digital cognitive assessment battery for pre- and post-surgical cognitive monitoring in older adults.</p>
+            </div>
+            <div class="platform-card">
+              <span class="tag tag-eu">EU · Horizon</span>
+              <h4>LETHE</h4>
+              <p>Personalized health platform integrating wearables, cognitive training, and digital biomarkers for MCI prevention. Targets at-risk older adults with multimodal digital monitoring.</p>
+            </div>
+            <div class="platform-card">
+              <span class="tag tag-eu">EU · Horizon</span>
+              <h4>DigiAD</h4>
+              <p>Digital biomarkers for Alzheimer's disease. Investigates smartphone and wearable signals as adjunct to clinical AD trials. Partners include pharmaceutical companies and academic medical centres.</p>
+            </div>
+            <div class="platform-card">
+              <span class="tag tag-us">US · NSF</span>
+              <h4>MindCrowd</h4>
+              <p>University of Arizona. Large-scale online cognitive study. Simple reaction-time task administered to hundreds of thousands of participants. Focuses on population-level normative data rather than individual longitudinal tracking.</p>
+            </div>
+            <div class="platform-card">
+              <span class="tag tag-eu">Multi</span>
+              <h4>MyCog</h4>
+              <p>Mobile cognitive assessment platform developed within European research consortia. Targets subjective cognitive decline and MCI populations with app-based neuropsychological tasks.</p>
+            </div>
+            <div class="platform-card">
+              <span class="tag tag-au">Australia · NHMRC</span>
+              <h4>CogDrisk</h4>
+              <p>Digital dementia risk assessment tool. Screens for modifiable risk factors across vascular, lifestyle, and cognitive domains. Designed for primary care deployment.</p>
+            </div>
+            <div class="platform-card">
+              <span class="tag tag-us">US · NIH</span>
+              <h4>Healthy Brain Study</h4>
+              <p>Digital longitudinal cohort studying cognitive aging in midlife adults. Combines online surveys, app-based tasks, and optional biomarker integration for early-stage research.</p>
+            </div>
+          </div>
+
+          <p class="doc-note"><strong>Key observation:</strong> None of these projects combine the consumer wellness onboarding model with behavioural trait measurement (latent traits: curiosity, persistence, flexibility) and within-person longitudinal baseline modelling. Most require clinical enrollment or use passive sensing without the structured behavioural layer NeuroFlex provides.</p>
+        </section>
+
+        <hr class="sec-divider" />
+
+        <!-- GROUP 3 -->
+        <section class="doc-section" id="group3">
+          <h2>Group 3 — Clinical Digital Assessment Platforms</h2>
+          <p>These are commercial or semi-commercial digital tools designed to assist clinicians in cognitive assessment. They are more product-oriented than the research cohorts, but they are positioned for clinical or regulated use — not for consumer longitudinal research.</p>
+
+          <div class="landscape-group">
+            <div class="group-num">Group 3 · Overview</div>
+            <p>Characteristics: validated against clinical populations, often seeking or holding FDA 510(k) or CE mark, sold to healthcare systems or clinical trial operators, not designed for long-term community engagement, typically assess at a single point in time or with infrequent intervals, no continuous ecological observation.</p>
+          </div>
+
+          <div class="platform-grid">
+            <div class="platform-card">
+              <span class="tag tag-us">US · FDA Breakthrough</span>
+              <h4>Altoida</h4>
+              <p>Augmented reality spatial navigation task on iPad measuring multiple cognitive domains simultaneously. FDA Breakthrough Device designation. Validated against MCI and AD populations. Strong on single-session multidimensional assessment but limited longitudinal ecological tracking.</p>
+            </div>
+            <div class="platform-card">
+              <span class="tag tag-us">US</span>
+              <h4>Linus Health</h4>
+              <p>DCTclock — digital version of the Clock Drawing Test administered by primary care clinicians. Analyses motor, executive, and visuospatial function. Focuses on clinical workflow integration rather than consumer longitudinal data.</p>
+            </div>
+            <div class="platform-card">
+              <span class="tag tag-au">Australia · Global</span>
+              <h4>Cogstate</h4>
+              <p>Brief computerized cognitive battery widely used in clinical trials. Validated across many neurological conditions. Strong in clinical trial efficiency; not designed for consumer engagement or behavioural ecology.</p>
+            </div>
+            <div class="platform-card">
+              <span class="tag tag-int">UK · Cambridge</span>
+              <h4>CANTAB</h4>
+              <p>Cambridge Neuropsychological Test Automated Battery. Gold-standard computerized cognitive assessment. Touch-screen paradigms for memory, attention, executive function. Widely licensed to research and clinical institutions. Not consumer-facing.</p>
+            </div>
+            <div class="platform-card">
+              <span class="tag tag-int">Canada</span>
+              <h4>Winterlight Labs</h4>
+              <p>Speech and language analysis for cognitive assessment. AI models trained on spontaneous speech samples to detect mild cognitive impairment and dementia. Unique modality; does not capture behavioural ecology.</p>
+            </div>
+            <div class="platform-card">
+              <span class="tag tag-us">US</span>
+              <h4>Neurotrack</h4>
+              <p>Eye-tracking based cognitive assessment using webcam. Detects hippocampal dysfunction through paired-associate eye movement tasks. Remote assessment capability; single-session paradigm.</p>
+            </div>
+            <div class="platform-card">
+              <span class="tag tag-de">Germany</span>
+              <h4>Neotiv</h4>
+              <p>Digital memory clinic targeting subjective cognitive decline and MCI. App-based episodic memory assessment with longitudinal tracking. Closest to consumer-facing among clinical platforms, but clinically enrolled and physician-supervised.</p>
+            </div>
+            <div class="platform-card">
+              <span class="tag tag-us">US</span>
+              <h4>Savonix</h4>
+              <p>Mobile app cognitive battery for clinical and consumer use. Covers 11 cognitive domains. Consumer-accessible but positioned primarily as a clinical screening tool, not a longitudinal behavioural research platform.</p>
+            </div>
+            <div class="platform-card">
+              <span class="tag tag-int">UK · Creyos</span>
+              <h4>Creyos (Cambridge Brain Sciences)</h4>
+              <p>Online cognitive assessment used by healthcare providers and researchers. Game-like tasks measuring memory, attention, reasoning, and verbal ability. B2B model; not a consumer longitudinal platform.</p>
+            </div>
+          </div>
+        </section>
+
+        <hr class="sec-divider" />
+
+        <!-- GROUP 4 -->
+        <section class="doc-section" id="group4">
+          <h2>Group 4 — Passive Digital Phenotyping Platforms</h2>
+          <p>These are research infrastructure platforms designed to collect continuous passive data from personal smartphones — GPS, accelerometer, screen usage, call/SMS metadata, Bluetooth proximity, sleep patterns. They are technically capable but research-restricted and ethically demanding, as they capture intimate behavioural data without active user engagement.</p>
+
+          <div class="landscape-group">
+            <div class="group-num">Group 4 · Overview</div>
+            <p>Characteristics: passive sensing only (no active tasks), high data granularity, researcher-facing platforms, require ethics board approval and explicit informed consent for each data stream, not commercially deployed as consumer products, poor user engagement (users simply install and forget), difficult to sustain participation over years.</p>
+          </div>
+
+          <div class="platform-grid">
+            <div class="platform-card">
+              <span class="tag tag-us">Harvard · NIH</span>
+              <h4>Beiwe</h4>
+              <p>Open-source research platform from Harvard. Collects GPS, accelerometer, call logs, SMS metadata, audio features, and app usage. Widely adopted in psychiatric and neurological research. No structured cognitive tasks.</p>
+            </div>
+            <div class="platform-card">
+              <span class="tag tag-eu">EU · RADAR</span>
+              <h4>RADAR-base</h4>
+              <p>Open-source remote monitoring platform developed by the RADAR-CNS/AD consortium. Supports wearable and smartphone data ingestion, secure storage, and researcher dashboards. Infrastructure layer, not an end-user app.</p>
+            </div>
+            <div class="platform-card">
+              <span class="tag tag-us">Harvard · BIDMC</span>
+              <h4>MindLAMP</h4>
+              <p>Digital phenotyping platform from Harvard/Beth Israel. Combines passive sensing with active surveys and cognitive tasks. Closest to NeuroFlex's dual approach among phenotyping tools; primarily deployed in psychiatric research contexts.</p>
+            </div>
+            <div class="platform-card">
+              <span class="tag tag-us">Dartmouth</span>
+              <h4>EARS</h4>
+              <p>Ecological Assessment in Real-world Settings. Passive smartphone sensing for mental health and behaviour research. Campus-based studies; not designed for aging populations.</p>
+            </div>
+            <div class="platform-card">
+              <span class="tag tag-int">Open Source</span>
+              <h4>AWARE Framework</h4>
+              <p>Open-source mobile context instrumentation framework. Academic tool for behavioural sensing research. Developer-facing; requires custom app build for each study.</p>
+            </div>
+          </div>
+
+          <p class="doc-note"><strong>Key observation:</strong> Passive phenotyping platforms capture real-world behaviour at high resolution, but they lack the structured cognitive task layer that generates interpretable signals related to memory, attention, and executive function. They also face a fundamental engagement problem: without active user motivation, long-term participation rates are very poor. NeuroFlex's wellness-first consumer model solves this participation challenge.</p>
+        </section>
+
+        <hr class="sec-divider" />
+
+        <!-- GROUP 5 -->
+        <section class="doc-section" id="group5">
+          <h2>Group 5 — Lifestyle Multidomain Prevention Studies</h2>
+          <p>These are clinical trials investigating whether structured multidomain interventions (diet, exercise, cognitive training, social engagement, vascular risk management) can prevent or delay cognitive decline. They are the most direct evidence base for the hypothesis that behavioural lifestyle change has protective cognitive effects — which is directly relevant to NeuroFlex's intervention hypothesis.</p>
+
+          <div class="landscape-group">
+            <div class="group-num">Group 5 · Overview</div>
+            <p>Characteristics: randomised controlled trial design, defined intervention protocols, short to medium intervention windows (1–5 years), measure cognitive outcomes and some biomarkers, do not generate continuous digital behavioral data, institutional recruitment, no consumer scalability.</p>
+          </div>
+
+          <div class="platform-grid">
+            <div class="platform-card">
+              <span class="tag tag-int">Finland · Karolinska</span>
+              <h4>FINGER</h4>
+              <p>Finnish Geriatric Intervention Study to Prevent Cognitive Impairment and Disability. Landmark RCT demonstrating that a multidomain lifestyle intervention (diet, exercise, cognitive training, vascular monitoring) significantly slows cognitive decline. Prototype for World Wide FINGERS.</p>
+            </div>
+            <div class="platform-card">
+              <span class="tag tag-eu">France · INSERM</span>
+              <h4>MAPT</h4>
+              <p>Multidomain Alzheimer Preventive Trial. Multi-arm trial testing cognitive and physical training, omega-3 supplementation, and combinations in adults 70+. Evidence for multidomain benefit in at-risk populations.</p>
+            </div>
+            <div class="platform-card">
+              <span class="tag tag-us">US · NIA</span>
+              <h4>US POINTER</h4>
+              <p>U.S. Study to Protect Brain Health Through Lifestyle Intervention to Reduce Risk. Two-year RCT adapting FINGER protocol to American population. Primary outcome: cognitive composite score. NIA-funded, 2,000 participants.</p>
+            </div>
+            <div class="platform-card">
+              <span class="tag tag-eu">Netherlands · EU</span>
+              <h4>HATICE</h4>
+              <p>Healthy Ageing Through Internet Counselling in the Elderly. Online platform for cardiovascular and cognitive risk factor self-management. Digital delivery of multidomain intervention at scale — methodologically relevant to NeuroFlex Phase 2.</p>
+            </div>
+            <div class="platform-card">
+              <span class="tag tag-au">Australia</span>
+              <h4>Maintain Your Brain</h4>
+              <p>Large online RCT (6,000+ participants) testing digitally delivered multidomain intervention. Four modules: physical activity, cognitive training, diet, mental health. Evidence for scalable digital prevention — directly relevant to NeuroFlex's consumer delivery model.</p>
+            </div>
+            <div class="platform-card">
+              <span class="tag tag-us">US · NIA</span>
+              <h4>SMARRT</h4>
+              <p>Systematic Multi-domain Alzheimer's Risk Reduction Trial. Personalised risk reduction trial targeting individuals with subjective cognitive concerns. Adaptive intervention based on individual risk profile.</p>
+            </div>
+          </div>
+
+          <p class="doc-note"><strong>Key observation:</strong> These studies demonstrate that multidomain lifestyle intervention works — the effect is real. However, they do not generate continuous behavioural data that allows within-person trajectory modelling, and they are not designed to detect early cognitive signals. NeuroFlex sits at the intersection of the prevention studies (lifestyle engagement) and the digital biomarker projects (longitudinal behavioral measurement).</p>
+        </section>
+
+        <hr class="sec-divider" />
+
+        <!-- MATRIX -->
+        <section class="doc-section" id="matrix">
+          <h2>Comparative Feature Matrix</h2>
+          <p>A structured comparison of selected representative platforms across the dimensions most relevant to the NeuroFlex research mission. This matrix is not exhaustive — it is designed to communicate differentiation clearly.</p>
+
+          <div class="matrix-wrap">
+            <table class="matrix-table">
+              <thead>
+                <tr>
+                  <th class="col-platform">Platform</th>
+                  <th>Cognitive Tasks</th>
+                  <th>Passive Data</th>
+                  <th>Latent Traits</th>
+                  <th>Personal Baseline</th>
+                  <th>Longitudinal</th>
+                  <th>Consumer Scale</th>
+                  <th>AI / ML</th>
+                  <th>Biomarkers</th>
+                  <th>Ecological Validity</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="col-platform">ADNI</td>
+                  <td class="cell-part">Limited</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-yes">✓</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-part">Limited</td>
+                  <td class="cell-yes">✓</td>
+                  <td class="cell-no">✗</td>
+                </tr>
+                <tr>
+                  <td class="col-platform">BioFINDER</td>
+                  <td class="cell-part">Limited</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-yes">✓</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-part">Limited</td>
+                  <td class="cell-yes">✓</td>
+                  <td class="cell-no">✗</td>
+                </tr>
+                <tr>
+                  <td class="col-platform">RADAR-AD</td>
+                  <td class="cell-part">Limited</td>
+                  <td class="cell-yes">✓</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-yes">✓</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-part">Partial</td>
+                  <td class="cell-yes">✓</td>
+                  <td class="cell-part">Partial</td>
+                </tr>
+                <tr>
+                  <td class="col-platform">MindLAMP</td>
+                  <td class="cell-part">Limited</td>
+                  <td class="cell-yes">✓</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-yes">✓</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-part">Partial</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-part">Partial</td>
+                </tr>
+                <tr>
+                  <td class="col-platform">Altoida</td>
+                  <td class="cell-yes">✓</td>
+                  <td class="cell-part">Partial</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-part">Partial</td>
+                  <td class="cell-part">Limited</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-yes">✓</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-part">Partial</td>
+                </tr>
+                <tr>
+                  <td class="col-platform">CANTAB</td>
+                  <td class="cell-yes">✓</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-part">Limited</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-part">Limited</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-no">✗</td>
+                </tr>
+                <tr>
+                  <td class="col-platform">Cogstate</td>
+                  <td class="cell-yes">✓</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-part">Limited</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-part">Limited</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-no">✗</td>
+                </tr>
+                <tr>
+                  <td class="col-platform">Neotiv</td>
+                  <td class="cell-yes">✓</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-part">Partial</td>
+                  <td class="cell-yes">✓</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-part">Partial</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-no">✗</td>
+                </tr>
+                <tr>
+                  <td class="col-platform">Beiwe</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-yes">✓</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-yes">✓</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-part">Partial</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-yes">✓</td>
+                </tr>
+                <tr>
+                  <td class="col-platform">FINGER/MAPT</td>
+                  <td class="cell-yes">✓</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-yes">✓</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-part">Partial</td>
+                  <td class="cell-no">✗</td>
+                </tr>
+                <tr>
+                  <td class="col-platform">Maintain Your Brain</td>
+                  <td class="cell-yes">✓</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-yes">✓</td>
+                  <td class="cell-yes">✓</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-no">✗</td>
+                  <td class="cell-part">Partial</td>
+                </tr>
+                <tr class="row-neuroflex">
+                  <td class="col-platform">NeuroFlex</td>
+                  <td class="cell-yes">✓</td>
+                  <td class="cell-fut">planned</td>
+                  <td class="cell-yes">✓</td>
+                  <td class="cell-yes">✓</td>
+                  <td class="cell-yes">✓</td>
+                  <td class="cell-yes">✓</td>
+                  <td class="cell-yes">✓</td>
+                  <td class="cell-fut">integration</td>
+                  <td class="cell-yes">✓</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="matrix-legend">
+            <span><span class="cell-yes">✓ Yes</span></span>
+            <span><span class="cell-no">✗ No</span></span>
+            <span><span class="cell-part">◑ Partial / Limited</span></span>
+            <span><span class="cell-fut">◈ Planned / Future</span></span>
+          </div>
+          <p class="doc-note" style="margin-top:0.85rem;"><strong>Reading this table:</strong> NeuroFlex is the only platform that combines cognitive task performance, latent behavioural trait measurement, within-person personal baseline modelling, continuous longitudinal observation, consumer-scale deployment, and ecological validity in a single platform. No current platform addresses all seven dimensions simultaneously.</p>
+        </section>
+
+        <hr class="sec-divider" />
+
+        <!-- DIFFERENTIATORS -->
+        <section class="doc-section" id="differentiators">
+          <h2>What Differentiates NeuroFlex</h2>
+          <p>The following differentiators are stated conservatively. They describe genuine distinctions in approach and design philosophy — not superiority claims.</p>
+
+          <div class="diff-grid">
+
+            <div class="diff-card">
+              <div class="diff-num">Differentiator 01</div>
+              <h3>Personal Baseline Modelling</h3>
+              <p>NeuroFlex does not compare users against a population norm. It constructs an individual longitudinal baseline for each user and detects deviation from that person's own historical pattern. This within-person approach is substantially more sensitive to early change than cross-sectional population comparison.</p>
+              <div class="vs-row">
+                <span class="vs-them">Population comparison</span>
+                <span>→</span>
+                <span class="vs-us">Within-person trajectory</span>
+              </div>
+            </div>
+
+            <div class="diff-card">
+              <div class="diff-num">Differentiator 02</div>
+              <h3>Behaviour-First Approach</h3>
+              <p>Most platforms assess cognitive performance outcomes: did the user get the right answer, and how fast? NeuroFlex is designed to observe the process — hesitation, correction, avoidance, retry patterns, navigation choices — before any outcome is reached. Behavioural process data is richer than outcome data for trajectory modelling.</p>
+              <div class="vs-row">
+                <span class="vs-them">Cognitive outcomes</span>
+                <span>→</span>
+                <span class="vs-us">Behavioural process signals</span>
+              </div>
+            </div>
+
+            <div class="diff-card">
+              <div class="diff-num">Differentiator 03</div>
+              <h3>Latent Behavioural Traits</h3>
+              <p>NeuroFlex is designed to derive latent trait estimates — curiosity, persistence, initiative, cognitive flexibility, resilience — from observed interaction patterns. These trait signals may reveal early changes in behavioural disposition that precede measurable cognitive performance decline. No existing platform targets latent traits as primary research variables.</p>
+              <div class="vs-row">
+                <span class="vs-them">Task score</span>
+                <span>→</span>
+                <span class="vs-us">Latent trait trajectory</span>
+              </div>
+            </div>
+
+            <div class="diff-card">
+              <div class="diff-num">Differentiator 04</div>
+              <h3>Continuous Digital Ecology</h3>
+              <p>Clinical platforms assess users episodically — once a month, once a quarter, once a year. NeuroFlex is designed for daily low-friction interactions that generate continuous micro-observations across cognitive, emotional, social, wellness, and routine domains. This temporal density is not achievable in clinical settings.</p>
+              <div class="vs-row">
+                <span class="vs-them">Episodic clinical assessment</span>
+                <span>→</span>
+                <span class="vs-us">Continuous daily ecology</span>
+              </div>
+            </div>
+
+            <div class="diff-card">
+              <div class="diff-num">Differentiator 05</div>
+              <h3>Consumer Scale Without Clinical Enrollment</h3>
+              <p>Research cohorts and clinical platforms require institutional recruitment, which limits scale, increases cost, and skews population selection. NeuroFlex is a consumer wellness app first — it acquires participants through normal app distribution channels, enabling a scale of participation that is structurally inaccessible to clinical research platforms.</p>
+              <div class="vs-row">
+                <span class="vs-them">Clinical enrollment</span>
+                <span>→</span>
+                <span class="vs-us">Consumer-scale participation</span>
+              </div>
+            </div>
+
+            <div class="diff-card">
+              <div class="diff-num">Differentiator 06</div>
+              <h3>Ecological Validity</h3>
+              <p>Lab-based or clinician-supervised cognitive tests are performed under conditions that do not reflect daily-life cognitive demands. NeuroFlex observes users in their natural digital environment — at home, at their own pace, without supervision — which provides behavioural data with substantially higher ecological validity than controlled-condition assessment.</p>
+              <div class="vs-row">
+                <span class="vs-them">Laboratory conditions</span>
+                <span>→</span>
+                <span class="vs-us">Real-world ecological context</span>
+              </div>
+            </div>
+
+            <div class="diff-card">
+              <div class="diff-num">Differentiator 07</div>
+              <h3>Dual Research Mission</h3>
+              <p>NeuroFlex is simultaneously an observational platform (does digital behaviour predict future cognitive change?) and a potential intervention platform (does structured digital engagement protect cognitive health?). No existing platform is explicitly designed to investigate both questions concurrently with the same participant population and dataset.</p>
+              <div class="vs-row">
+                <span class="vs-them">Observation only</span>
+                <span>→</span>
+                <span class="vs-us">Detection + intervention</span>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <hr class="sec-divider" />
+
+        <!-- RESEARCH GAP -->
+        <section class="doc-section" id="gap">
+          <h2>Research Gap — Conclusion</h2>
+          <p>Across all five groups reviewed, no existing platform simultaneously provides:</p>
+
+          <ul class="doc-pill-list">
+            <li>consumer-scale longitudinal participation without clinical enrollment</li>
+            <li>daily ecologically valid behavioural observation across multiple life domains</li>
+            <li>structured cognitive task performance with behavioural process capture</li>
+            <li>latent behavioural trait derivation (curiosity, persistence, flexibility, resilience)</li>
+            <li>within-person baseline modelling as the primary analytical unit</li>
+            <li>simultaneous investigation of both detection and intervention hypotheses</li>
+          </ul>
+
+          <div class="gap-box" style="margin-top:1.5rem;">
+            <p class="doc-kicker" style="color:#00cfff; font-size:0.75rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.5rem;">Conclusion</p>
+            <blockquote>The existing landscape has advanced significantly in biomarker-based detection and in structured cognitive assessment. What remains systematically underexplored is the longitudinal evolution of everyday digital behavioural patterns — not as isolated task performance metrics, but as continuous ecological signals reflecting the full complexity of an individual's cognitive, emotional, social, and habitual life. NeuroFlex is designed to occupy this space: a long-term behavioural observatory that is indistinguishable, from the user's perspective, from a wellness companion.</blockquote>
+          </div>
+
+          <div class="doc-grid" style="margin-top:1.5rem;">
+            <article class="doc-card doc-card-strong">
+              <p class="mini-label">Expanded Document — Available</p>
+              <h3>State of the Art &amp; Competitive Landscape Analysis</h3>
+              <p>The full 15–20 page document is now available — covering deep-dive platform analyses, critical gap table, personal baseline and latent trait scientific rationale, validation partner action plans (DZNE, Amsterdam UMC, World Wide FINGERS, KInIT), full funding landscape (IHI, Horizon Europe, APVV), and a formal research gap statement for grant applications.</p>
+              <a href="../state-of-the-art/" style="display:inline-block;margin-top:0.75rem;font-size:0.83rem;color:#00cfff;text-decoration:none;">→ Open State of the Art document</a>
+            </article>
+            <article class="doc-card">
+              <p class="mini-label">Key Validation Partners</p>
+              <h3>Research Integration Targets</h3>
+              <p>DZNE DELCODE (SCD biomarker cohort), Amsterdam Dementia Cohort (Amsterdam UMC), World Wide FINGERS (Karolinska), KInIT Bratislava (AI/ML). IMI/IHI and Horizon Europe as primary grant mechanisms. Full action steps in the State of the Art document.</p>
+            </article>
+          </div>
+        </section>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> NeuroFlex · Cognitive wellness &amp; behavioral research</p>
+      <p class="muted">Internal document — not for public distribution. Developed by <a href="https://www.lifeapps.online/" style="color:#9fb3ff">LifeApps</a></p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

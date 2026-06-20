@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NeuroFlex — Grant &amp; Funding Landscape</title>
+  <meta name="description" content="Internal working document: Slovak and EU grant programs accessible to companies (s.r.o.) for digital health and AI research relevant to NeuroFlex. Programs, eligibility, amounts, deadlines, strategy." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .doc-body { max-width: 860px; }
+    h2.section-title { font-size:1.35rem; margin:0 0 0.85rem; }
+    h3.sub { font-size:1.05rem; margin:1.6rem 0 0.5rem; color:#c8dde8; }
+    p.body-para { font-size:0.9rem; color:#8a9fb5; line-height:1.72; margin:0 0 0.75rem; }
+    .section-number { font-size:0.68rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#00cfff; margin-bottom:0.3rem; }
+    hr.div { border:none; border-top:1px solid rgba(255,255,255,0.07); margin:3rem 0; }
+
+    /* Grant card */
+    .grant-card {
+      background: rgba(0,0,0,0.2);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      padding: 1.25rem 1.35rem;
+      margin-bottom: 1.25rem;
+    }
+    .grant-card.open { border-color: rgba(85,214,138,0.3); }
+    .grant-card.planned { border-color: rgba(0,207,255,0.25); }
+    .grant-card.closed { border-color: rgba(255,255,255,0.05); opacity: 0.65; }
+
+    .grant-card .gc-head { display:flex; align-items:flex-start; gap:0.75rem; margin-bottom:0.75rem; flex-wrap:wrap; }
+    .grant-card h3 { margin:0; font-size:1rem; color:#c8dde8; flex:1; min-width:0; }
+    .status-tag { font-size:0.67rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:0.18em 0.6em; border-radius:4px; flex-shrink:0; }
+    .status-open { background:rgba(85,214,138,0.12); color:#55d68a; }
+    .status-planned { background:rgba(0,207,255,0.1); color:#00cfff; }
+    .status-closed { background:rgba(255,255,255,0.06); color:#6a8a9a; }
+
+    .gc-meta { display:flex; flex-wrap:wrap; gap:0.5rem 1.2rem; margin-bottom:0.75rem; }
+    .gc-meta-item { font-size:0.8rem; color:#6a8aa0; }
+    .gc-meta-item strong { color:#9ab8c8; }
+
+    .grant-card p { font-size:0.87rem; color:#8a9fb5; line-height:1.68; margin:0 0 0.5rem; }
+    .grant-card p:last-child { margin:0; }
+    .grant-card .gc-action { font-size:0.84rem; color:#00cfff; margin-top:0.6rem; }
+    .grant-card .gc-link { color:#7ec8d8; text-decoration:none; font-size:0.82rem; }
+    .grant-card .gc-link:hover { text-decoration:underline; }
+
+    /* Priority tag */
+    .priority { font-size:0.65rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; padding:0.15em 0.55em; border-radius:3px; margin-left:0.4rem; }
+    .p1 { background:rgba(255,100,130,0.12); color:#ff9ab8; }
+    .p2 { background:rgba(255,179,71,0.12); color:#ffb347; }
+    .p3 { background:rgba(150,150,150,0.12); color:#909090; }
+
+    /* Insight / warning */
+    .insight { background:rgba(0,207,255,0.05); border-left:3px solid rgba(0,207,255,0.5); border-radius:0 10px 10px 0; padding:0.9rem 1.2rem; margin:1.25rem 0; }
+    .insight p { font-size:0.88rem; color:#8cc8d8; line-height:1.65; margin:0; }
+    .gap-box { background:rgba(255,179,71,0.05); border-left:3px solid rgba(255,179,71,0.5); border-radius:0 10px 10px 0; padding:0.9rem 1.2rem; margin:1.25rem 0; }
+    .gap-box p { font-size:0.88rem; color:#c8a870; line-height:1.65; margin:0; }
+
+    /* Summary table */
+    .sum-table { width:100%; border-collapse:collapse; font-size:0.82rem; margin:1rem 0; }
+    .sum-table th { text-align:left; padding:0.5rem 0.65rem; color:#00cfff; border-bottom:1px solid rgba(0,207,255,0.2); font-size:0.72rem; text-transform:uppercase; letter-spacing:0.05em; font-weight:600; }
+    .sum-table td { padding:0.45rem 0.65rem; border-bottom:1px solid rgba(255,255,255,0.04); color:#8a9fb5; vertical-align:top; }
+    .sum-table tr:last-child td { border-bottom:none; }
+    .sum-table td.program { color:#c8dde8; font-weight:600; }
+    .sum-table td.open-td { color:#55d68a; font-weight:600; }
+    .sum-table td.planned-td { color:#00cfff; }
+    .sum-table td.closed-td { color:#5a7a90; }
+
+    /* Strategy box */
+    .strategy-box { background:linear-gradient(135deg,rgba(0,207,255,0.07),rgba(120,104,243,0.06)); border:1px solid rgba(0,207,255,0.25); border-radius:16px; padding:1.6rem; margin:1.5rem 0; }
+    .strategy-box blockquote { font-size:0.95rem; font-style:italic; color:#c8dde8; border-left:3px solid #00cfff; margin:0.75rem 0; padding-left:1.1rem; line-height:1.75; }
+
+    /* Step list */
+    .step-list { display:flex; flex-direction:column; gap:0.75rem; margin-top:1rem; }
+    .step-item { display:flex; gap:0.85rem; align-items:flex-start; }
+    .step-num { min-width:1.6rem; height:1.6rem; background:rgba(0,207,255,0.12); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.72rem; font-weight:700; color:#00cfff; flex-shrink:0; margin-top:0.15rem; }
+    .step-item p { font-size:0.88rem; color:#8a9fb5; margin:0; line-height:1.65; }
+    .step-item p strong { color:#a8c8d8; }
+
+    /* TOC */
+    .toc { background:rgba(0,0,0,0.2); border-radius:12px; padding:1.2rem 1.5rem; margin:1.5rem 0 2.5rem; }
+    .toc .toc-label { font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#00cfff; margin:0 0 0.75rem; }
+    .toc ol { margin:0; padding-left:1.3rem; display:flex; flex-direction:column; gap:0.3rem; }
+    .toc li { font-size:0.88rem; color:#7a9ab5; }
+    .toc a { color:#7ec8d8; text-decoration:none; }
+    .toc a:hover { text-decoration:underline; }
+  </style>
+</head>
+<body class="neuro-site">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../" class="brand brand-neuroflex">
+        <img src="../assets/neuroflex-logo.png" alt="" />
+        <span>NeuroFlex<sup>&copy;</sup></span>
+      </a>
+      <nav class="nav">
+        <a href="../">Home</a>
+        <a href="../white-paper/">White Paper</a>
+        <a href="../state-of-the-art/">State of the Art</a>
+        <a href="../research-design/">Research Design</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="doc-hero">
+      <div class="container">
+        <p class="doc-kicker">Internal Working Document · Unlisted · Version 1.0 · June 2026 · Updated from live government sources</p>
+        <h1>Grant &amp; Funding Landscape</h1>
+        <p class="doc-lead">Slovak and EU funding programs accessible to companies (s.r.o.) for digital health, AI, and cognitive research. Program details, eligibility, amounts, deadlines, and recommended application strategy for NeuroFlex.</p>
+        <div class="doc-actions">
+          <a class="btn btn-secondary" href="https://vvi.gov.sk/vyhladavac-podpory" target="_blank" rel="noopener">VVI — Support Finder</a>
+          <a class="btn btn-secondary" href="https://vaia.gov.sk" target="_blank" rel="noopener">VAIA</a>
+          <a class="btn btn-secondary" href="https://www.apvv.sk" target="_blank" rel="noopener">APVV</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container doc-body">
+
+        <div class="toc">
+          <p class="toc-label">Contents</p>
+          <ol>
+            <li><a href="#s1">Quick Reference — All Programs</a></li>
+            <li><a href="#s2">Slovak National Programs</a></li>
+            <li><a href="#s3">Program Slovensko (EU Structural Funds)</a></li>
+            <li><a href="#s4">Plán Obnovy (Recovery and Resilience Facility)</a></li>
+            <li><a href="#s5">EU-Level Programs</a></li>
+            <li><a href="#s6">Application Strategy for NeuroFlex</a></li>
+            <li><a href="#s7">Key Contacts and Portals</a></li>
+          </ol>
+        </div>
+
+        <div class="gap-box">
+          <p><strong>Important context:</strong> The "half billion euros by 2028" referenced by Professor Žilka likely refers to the combined allocation across Program Slovensko, Plán Obnovy, and national R&amp;D funding for research and innovation in Slovakia — which in aggregate does run to several hundred million euros for the 2021–2027 programming period. Individual grant programs accessible to companies range from €300K (APVV) to €15M (large health innovation calls). Companies can apply directly — no requirement to route through a university, though university/SAV partnerships significantly increase competitiveness.</p>
+        </div>
+
+        <hr class="div" />
+
+        <!-- S1 -->
+        <section id="s1">
+          <div class="section-number">Overview</div>
+          <h2 class="section-title">Quick Reference — All Programs</h2>
+
+          <table class="sum-table">
+            <thead>
+              <tr>
+                <th>Program</th>
+                <th>Amount per project</th>
+                <th>Eligible</th>
+                <th>Status</th>
+                <th>Priority for NeuroFlex</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="program">APVV VV 2025</td>
+                <td>up to €300K</td>
+                <td>Companies ✓</td>
+                <td class="open-td">Open — deadline 11. 2. 2026</td>
+                <td>High (near-term)</td>
+              </tr>
+              <tr>
+                <td class="program">MZ SR — Zdravá spoločnosť infraštruktúra</td>
+                <td>up to €6M</td>
+                <td>Companies + partners ✓</td>
+                <td class="open-td">Open (PSK-MZ-010-2024)</td>
+                <td>High (requires consortium)</td>
+              </tr>
+              <tr>
+                <td class="program">MZ SR — Prelomové technológie</td>
+                <td>up to €3M</td>
+                <td>Companies ✓</td>
+                <td class="planned-td">Planned — opens 2026</td>
+                <td>Very High (directly aligned)</td>
+              </tr>
+              <tr>
+                <td class="program">MZ SR — Neuro/Onko/Kardio (Misia Zdravie)</td>
+                <td>up to €52M total</td>
+                <td>Companies + partners ✓</td>
+                <td class="planned-td">Planned — open Q1–Q2 2025 (reassess)</td>
+                <td>High (neurology focus)</td>
+              </tr>
+              <tr>
+                <td class="program">TEF-Health (AI testing)</td>
+                <td>services / infra access</td>
+                <td>SMEs ✓</td>
+                <td class="open-td">Open</td>
+                <td>Medium (R&amp;D infrastructure)</td>
+              </tr>
+              <tr>
+                <td class="program">VAIA — Finančný nástroj (loan)</td>
+                <td>loan + up to 30% forgiven</td>
+                <td>Companies ✓</td>
+                <td class="open-td">Open</td>
+                <td>Medium (complement to grants)</td>
+              </tr>
+              <tr>
+                <td class="program">POO — Digitálna transformácia 2 (MIRRI)</td>
+                <td>€5–45M total pool</td>
+                <td>Companies ✓</td>
+                <td class="closed-td">Closed (watch for V06)</td>
+                <td>High when re-opened</td>
+              </tr>
+              <tr>
+                <td class="program">Horizon Europe — Health Cluster 1</td>
+                <td>€2–8M typical</td>
+                <td>Consortia ✓</td>
+                <td class="planned-td">Rolling calls</td>
+                <td>High (Phase 2)</td>
+              </tr>
+              <tr>
+                <td class="program">IHI (IMI successor)</td>
+                <td>€5–30M</td>
+                <td>Consortia + pharma ✓</td>
+                <td class="planned-td">Rolling calls</td>
+                <td>Very High (Phase 3)</td>
+              </tr>
+              <tr>
+                <td class="program">Alzheimer's Association (US)</td>
+                <td>USD 100K–500K</td>
+                <td>Research teams ✓</td>
+                <td class="planned-td">Annual cycles</td>
+                <td>Medium (academic credential)</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <hr class="div" />
+
+        <!-- S2 -->
+        <section id="s2">
+          <div class="section-number">Section 2</div>
+          <h2 class="section-title">Slovak National Programs</h2>
+
+          <div class="grant-card open">
+            <div class="gc-head">
+              <h3>APVV VV 2025 — Verejná výzva na výskum a vývoj <span class="priority p1">Priority 1</span></h3>
+              <span class="status-tag status-open">Open</span>
+            </div>
+            <div class="gc-meta">
+              <div class="gc-meta-item"><strong>Provider:</strong> APVV (Agentúra na podporu výskumu a vývoja)</div>
+              <div class="gc-meta-item"><strong>Amount:</strong> up to €301,800 per project</div>
+              <div class="gc-meta-item"><strong>Total pool:</strong> €45M</div>
+              <div class="gc-meta-item"><strong>Deadline:</strong> 11. February 2026, 12:00</div>
+              <div class="gc-meta-item"><strong>Who can apply:</strong> Slovak legal entities incl. s.r.o., fyzické osoby–podnikatelia, universities, SAV</div>
+            </div>
+            <p>The most immediately accessible Slovak grant for NeuroFlex. Covers all scientific domains, including applied research in digital health and AI. Companies (podnikateľské subjekty) are eligible. Maximum funding per project is €300K; the budget covers salaries, services, materials, travel. Companies receive funding under state aid scheme SA.109803, which may reduce intensity slightly (typically 25–50% co-financing required vs 100% for academic applicants).</p>
+            <p>For NeuroFlex Phase 1, this grant is ideal for funding: behavioral probe development and validation; pilot study with local Cohort A/B recruitment through Comenius University or SAV; personal baseline algorithm development; initial latent trait measurement methodology.</p>
+            <p><strong>Application requires:</strong> Electronic submission through APVV's new information system; Vecný zámer (project description, max 15 pages); evidence of R&amp;D activity as part of company business activities.</p>
+            <p class="gc-action">→ Recommended: apply for Phase 1 feasibility study (N=200–300, 12 months) in partnership with SAV Institute of Neuroimmunology as co-applicant. SAV partnership increases funding rate and scientific credibility.</p>
+            <p><a href="https://www.apvv.sk/grant-schemes/general-call/vv-2025.html" class="gc-link" target="_blank">apvv.sk — VV 2025 ↗</a></p>
+          </div>
+
+          <div class="grant-card open">
+            <div class="gc-head">
+              <h3>PSK-MZ-010-2024 — Dobudovanie infraštruktúr, od myšlienky k produktu (MZ SR) <span class="priority p1">Priority 1</span></h3>
+              <span class="status-tag status-open">Open</span>
+            </div>
+            <div class="gc-meta">
+              <div class="gc-meta-item"><strong>Provider:</strong> Ministerstvo zdravotníctva SR / VAIA</div>
+              <div class="gc-meta-item"><strong>Amount:</strong> up to €6M per project</div>
+              <div class="gc-meta-item"><strong>Total pool:</strong> €50M</div>
+              <div class="gc-meta-item"><strong>Opened:</strong> 16. December 2024</div>
+              <div class="gc-meta-item"><strong>Deadline:</strong> not yet determined — check vvia.gov.sk</div>
+              <div class="gc-meta-item"><strong>Who can apply:</strong> Legal entities incl. SMEs, SAV, universities, non-profits — all sectors</div>
+            </div>
+            <p>This is the largest currently-open Slovak health research grant directly accessible to companies. It funds the development of research and innovation consortia in the "Zdravá spoločnosť" (Healthy Society) domain of SK RIS3 2021+. Projects must go from idea to product — exactly the NeuroFlex Phase 1–2 trajectory. The call explicitly includes: innovative diagnostic software, medical technology, AI-based health solutions.</p>
+            <p>NeuroFlex relevance: the call supports consortia between companies, universities, and SAV. A NeuroFlex consortium (NeuroFlex s.r.o. + SAV + Comenius University + clinical partner) is a plausible applicant. The "from idea to product" framing aligns with NeuroFlex's development stage.</p>
+            <p><strong>Important constraint:</strong> This call likely requires a research consortium lead, not a solo company application. The most strategic structure would be: SAV or Comenius University as lead applicant, NeuroFlex s.r.o. as a partner and platform developer. The grant funds personnel, infrastructure, and R&amp;D costs for all partners.</p>
+            <p class="gc-action">→ Raise this call at the SAV meeting. Ask Professor Žilka whether SAV Institute of Neuroimmunology could serve as consortium lead, with NeuroFlex as technical/platform partner.</p>
+            <p><a href="https://vvi.gov.sk/vyhladavac-podpory/aplikovany-vyskum-a-vyvoja-od-myslienky-k-produktu-v-domene-zdrava-spolocnost" class="gc-link" target="_blank">vvi.gov.sk — PSK-MZ-010-2024 ↗</a></p>
+          </div>
+
+          <div class="grant-card planned">
+            <div class="gc-head">
+              <h3>MZ SR — Prelomové technológie a inovácie v zdravotníctve <span class="priority p1">Priority 1</span></h3>
+              <span class="status-tag status-planned">Planned 2026</span>
+            </div>
+            <div class="gc-meta">
+              <div class="gc-meta-item"><strong>Provider:</strong> Ministerstvo zdravotníctva SR</div>
+              <div class="gc-meta-item"><strong>Amount:</strong> up to €3M per project</div>
+              <div class="gc-meta-item"><strong>Total pool:</strong> €43M</div>
+              <div class="gc-meta-item"><strong>Expected opening:</strong> 2026</div>
+              <div class="gc-meta-item"><strong>Who can apply:</strong> All sectors including companies</div>
+            </div>
+            <p>This planned call is the most directly aligned with NeuroFlex of all Slovak programs. It explicitly funds: "inovatívne prostriedky zdravotníckej techniky, vrátane software" (innovative medical technology including software) and "inovatívne diagnostické a terapeutické postupy" (innovative diagnostic procedures). The call targets TRL advancement — from early concept to market-ready prototype.</p>
+            <p>NeuroFlex can position itself precisely in this call as: a digital behavioral monitoring platform for early detection of cognitive decline — a software medical device (SaMD) on the development pathway to CE/FDA marking. The call's emphasis on TRL progression aligns with NeuroFlex's Phase 2 validation objectives.</p>
+            <p class="gc-action">→ Monitor for opening announcement from MZ SR. Prepare a project concept (2–3 pages) in advance so that a full application can be submitted within 4–6 weeks of call opening. This is the highest-value near-term Slovak grant for NeuroFlex as a standalone company applicant.</p>
+            <p><a href="https://vvi.gov.sk/vyhladavac-podpory/prelomove-technologie-a-inovacie-v-zdravotnictve" class="gc-link" target="_blank">vvi.gov.sk — Prelomové technológie ↗</a></p>
+          </div>
+
+          <div class="grant-card planned">
+            <div class="gc-head">
+              <h3>MZ SR — Neuro, Onko, Kardio (Misia Zdravie) <span class="priority p2">Priority 2</span></h3>
+              <span class="status-tag status-planned">Planned</span>
+            </div>
+            <div class="gc-meta">
+              <div class="gc-meta-item"><strong>Provider:</strong> Ministerstvo zdravotníctva SR</div>
+              <div class="gc-meta-item"><strong>Total pool:</strong> €52M</div>
+              <div class="gc-meta-item"><strong>Domains:</strong> Oncology, Neurology, Cardiology, Paediatrics</div>
+              <div class="gc-meta-item"><strong>Who can apply:</strong> All sectors including companies</div>
+            </div>
+            <p>Misia Zdravie is the Slovak government's flagship health innovation initiative. 83 project concepts were submitted by January 2025, covering AI-powered diagnostics, screening programmes, and specialist care networks. The neurology domain is directly relevant to NeuroFlex.</p>
+            <p>The initiative is creating a framework for selecting pilot projects that address systemic gaps in Slovak healthcare. If NeuroFlex submits a project concept through Misia Zdravie — framed as "digital early detection in cognitive neurology" — it could gain both funding and institutional visibility within the Slovak health system.</p>
+            <p class="gc-action">→ Check misiazdravie.gov.sk for the status of the 83 submitted concepts and whether a new submission window is opening. Consider submitting a NeuroFlex project concept as an unsolicited expression of interest if no formal call is open yet.</p>
+            <p><a href="https://misiazdravie.gov.sk" class="gc-link" target="_blank">misiazdravie.gov.sk ↗</a></p>
+          </div>
+        </section>
+
+        <hr class="div" />
+
+        <!-- S3 -->
+        <section id="s3">
+          <div class="section-number">Section 3</div>
+          <h2 class="section-title">Program Slovensko 2021–2027 (EU Structural Funds)</h2>
+
+          <div class="grant-card open">
+            <div class="gc-head">
+              <h3>TEF-Health — AI Testing for SMEs in Healthcare <span class="priority p2">Priority 2</span></h3>
+              <span class="status-tag status-open">Open</span>
+            </div>
+            <div class="gc-meta">
+              <div class="gc-meta-item"><strong>Provider:</strong> MIRRI SR (Program Slovensko RSO1.2)</div>
+              <div class="gc-meta-item"><strong>Support type:</strong> Access to AI testing infrastructure, not direct cash grant</div>
+              <div class="gc-meta-item"><strong>Who can apply:</strong> SMEs only (micro, malé, stredné podniky)</div>
+            </div>
+            <p>TEF-Health provides small and medium enterprises with access to testing environments, datasets, and expert consultation for developing and validating AI solutions in healthcare — specifically for testing and experimenting in real-world healthcare scenarios. This is not a cash grant but access to infrastructure worth several hundred thousand euros.</p>
+            <p>Relevance: NeuroFlex Phase 2 will need AI validation infrastructure. TEF-Health could provide access to healthcare datasets, expert AI reviewers, and possibly a clinical test environment. More importantly, TEF-Health participation demonstrates technical readiness (TRL advancement) useful for subsequent grant applications.</p>
+            <p class="gc-action">→ Investigate current TEF-Health operators in Slovakia (the scheme runs through designated "Centres of Excellence in Testing"). Contact MIRRI SR for the list of current TEF operators and onboarding process.</p>
+          </div>
+
+          <div class="grant-card open">
+            <div class="gc-head">
+              <h3>VAIA — Finančný nástroj (Slovak Investment Holding) <span class="priority p3">Priority 3</span></h3>
+              <span class="status-tag status-open">Open</span>
+            </div>
+            <div class="gc-meta">
+              <div class="gc-meta-item"><strong>Provider:</strong> Slovak Investment Holding / VAIA (Component 9, Plán obnovy)</div>
+              <div class="gc-meta-item"><strong>Type:</strong> Subsidised loan, up to 30% principal forgiveness</div>
+              <div class="gc-meta-item"><strong>Total pool:</strong> €28M</div>
+              <div class="gc-meta-item"><strong>Who can apply:</strong> Companies and research institutions</div>
+            </div>
+            <p>Not a grant — a subsidised bank loan for innovation and digitalisation projects, with up to 30% of the principal potentially forgiven depending on project type, region, and applicant category. Useful for capital expenditure (server infrastructure, development costs) not easily covered by research grants. Lower barrier to entry than competitive grant calls.</p>
+            <p class="gc-action">→ Use as a complement to grant funding if NeuroFlex needs rapid capital deployment before grant approval. Contact Slovak Investment Holding (sih.gov.sk) for current bank partner list and application procedure.</p>
+            <p><a href="https://vaia.gov.sk/sk/2025/02/ziskate-financny-nastroj-na-digitalizaciu-a-inovacie/" class="gc-link" target="_blank">vaia.gov.sk — finančný nástroj ↗</a></p>
+          </div>
+        </section>
+
+        <hr class="div" />
+
+        <!-- S4 -->
+        <section id="s4">
+          <div class="section-number">Section 4</div>
+          <h2 class="section-title">Plán Obnovy (Recovery and Resilience Facility)</h2>
+
+          <div class="grant-card closed">
+            <div class="gc-head">
+              <h3>09I05-03-V04 — Inovatívne digitálne riešenia (VAIA)</h3>
+              <span class="status-tag status-closed">Closed (Oct–Dec 2024)</span>
+            </div>
+            <div class="gc-meta">
+              <div class="gc-meta-item"><strong>Amount:</strong> €200K–€1M per project</div>
+              <div class="gc-meta-item"><strong>Total pool:</strong> €38.9M</div>
+              <div class="gc-meta-item"><strong>Who was eligible:</strong> Companies ✓</div>
+            </div>
+            <p>This call explicitly funded: "systémy umelej inteligencie, systémy na zber a spracovanie údajov" (AI systems, data collection and processing systems). AI in healthcare was an explicit target domain. A similar call (V05 or V06) is expected to be announced — monitor VAIA's website for the successor.</p>
+            <p class="gc-action">→ Watch for the next round (expected 2026). Prepare project description in advance: NeuroFlex as an "AI-based behavioral biomarker platform" fits this call's scope precisely.</p>
+            <p><a href="https://vaia.gov.sk/sk/2024/10/podpora-vyvoja-inovativnych-digitalnych-rieseni-c-2/" class="gc-link" target="_blank">vaia.gov.sk — archív výzvy ↗</a></p>
+          </div>
+
+          <div class="grant-card closed">
+            <div class="gc-head">
+              <h3>17I04-04-V05 — Digitálna transformácia Slovenska 2 (MIRRI)</h3>
+              <span class="status-tag status-closed">Closed (Aug 2025)</span>
+            </div>
+            <div class="gc-meta">
+              <div class="gc-meta-item"><strong>Total pool:</strong> €45M</div>
+              <div class="gc-meta-item"><strong>Who was eligible:</strong> Companies, research institutes ✓</div>
+            </div>
+            <p>Covered AI, superpočítače, virtual/augmented reality, big data applications in the economy. SK RIS3 domain 3: Digitálna transformácia Slovenska. Healthcare AI was in scope. Successor call expected from MIRRI.</p>
+            <p class="gc-action">→ Monitor MIRRI SR (mirri.gov.sk) for successor call. This mechanism may re-open under a different code.</p>
+          </div>
+
+          <div class="insight">
+            <p><strong>POO timing note:</strong> The Slovak Recovery Plan (Plán obnovy) must disburse all funds by mid-2026 to meet EU deadlines. Some calls that closed in late 2024 or 2025 may not have successor rounds under the same POO mechanism. However, unspent or returned funds may be recycled through Program Slovensko calls (EFRR/ESF) in 2026–2027. The shift from POO to Program Slovensko as the primary funding vehicle is expected in 2026.</p>
+          </div>
+        </section>
+
+        <hr class="div" />
+
+        <!-- S5 -->
+        <section id="s5">
+          <div class="section-number">Section 5</div>
+          <h2 class="section-title">EU-Level Programs (Phase 2–3)</h2>
+
+          <div class="grant-card planned">
+            <div class="gc-head">
+              <h3>Innovative Health Initiative (IHI) — IMI Successor <span class="priority p1">Priority 1 · Phase 3</span></h3>
+              <span class="status-tag status-planned">Rolling calls</span>
+            </div>
+            <div class="gc-meta">
+              <div class="gc-meta-item"><strong>Provider:</strong> EU Joint Undertaking (industry + EU Commission)</div>
+              <div class="gc-meta-item"><strong>Typical budget:</strong> €5–30M per project over 5 years</div>
+              <div class="gc-meta-item"><strong>Who can apply:</strong> Consortia including: universities, companies, hospitals + at least 1 EFPIA pharma partner</div>
+            </div>
+            <p>IHI is the successor to IMI2, which funded RADAR-AD, DigiAD, LETHE, and other digital biomarker projects. IHI specifically targets digital health, AI in medicine, and prevention. A NeuroFlex consortium application (NeuroFlex s.r.o. + SAV + DZNE + Amsterdam UMC + pharmaceutical partner such as Roche, Biogen, or Lilly + FINGERS/Karolinska) would be a very strong fit for an IHI call on digital behavioral biomarkers in neurodegeneration.</p>
+            <p>IHI requires an industry co-applicant from the European pharmaceutical or medical device industry. The pharma partner does not need to be a shareholder in NeuroFlex — they participate as a project partner with a complementary scientific interest (e.g., digital endpoints for their clinical trials).</p>
+            <p class="gc-action">→ Horizon for Phase 3 (3–5 years). Prerequisite: at least one peer-reviewed publication and established clinical partnerships (DZNE, Amsterdam UMC). Begin conversations with potential pharma partners at AAIC or CTAD conference. Track IHI calls at ihi.europa.eu.</p>
+            <p><a href="https://www.ihi.europa.eu" class="gc-link" target="_blank">ihi.europa.eu ↗</a></p>
+          </div>
+
+          <div class="grant-card planned">
+            <div class="gc-head">
+              <h3>Horizon Europe — Health Cluster 1 <span class="priority p1">Priority 1 · Phase 2</span></h3>
+              <span class="status-tag status-planned">Rolling annual calls</span>
+            </div>
+            <div class="gc-meta">
+              <div class="gc-meta-item"><strong>Provider:</strong> European Commission (EISMEA, REA)</div>
+              <div class="gc-meta-item"><strong>Typical budget:</strong> €2–8M per consortium over 3–4 years</div>
+              <div class="gc-meta-item"><strong>Who can apply:</strong> Consortia of 4–8 partners from ≥3 EU member states, incl. companies</div>
+            </div>
+            <p>Horizon Europe Health Cluster calls relevant to NeuroFlex appear under: "Personalised medicine and digital health"; "Brain health and neurodegeneration"; "AI in clinical decision support"; "Remote monitoring in neurology". Work programmes for 2025–2027 include explicit calls for digital biomarkers in neurodegenerative diseases.</p>
+            <p>A typical NeuroFlex consortium for a Horizon application: NeuroFlex s.r.o. (Slovakia, platform and AI) + SAV (Slovakia, neuroscience) + DZNE (Germany, clinical cohort) + Amsterdam UMC (Netherlands, clinical cohort) + Karolinska/FINGERS (Sweden, prevention intervention) + 1–2 additional partners (e.g., KInIT for ML, clinical hospital for patient recruitment).</p>
+            <p class="gc-action">→ Horizon Phase 2 (2–3 years). Prerequisite: pilot study results (even N=100–300) to demonstrate feasibility. Submit Expression of Interest to potential consortium partners after the SAV meeting. Use the APVV VV 2025 grant to fund the pilot that makes you eligible for Horizon.</p>
+            <p><a href="https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/programmes/horizon" class="gc-link" target="_blank">Horizon Europe portal ↗</a></p>
+          </div>
+
+          <div class="grant-card planned">
+            <div class="gc-head">
+              <h3>Alzheimer's Association — International Research Grant <span class="priority p2">Priority 2 · Phase 2</span></h3>
+              <span class="status-tag status-planned">Annual cycle</span>
+            </div>
+            <div class="gc-meta">
+              <div class="gc-meta-item"><strong>Provider:</strong> Alzheimer's Association (USA)</div>
+              <div class="gc-meta-item"><strong>Amount:</strong> USD 100K–500K (varies by grant type)</div>
+              <div class="gc-meta-item"><strong>Who can apply:</strong> International researchers; institutional affiliation required</div>
+            </div>
+            <p>The Alzheimer's Association funds international research through several mechanisms: Part the Cloud (translational research), Zenith Award (distinguished scientists), New Investigator Research Grant (early career), and targeted pilot grants for digital biomarker research. Requires institutional affiliation — a NeuroFlex application would need to be submitted through SAV or a university partner.</p>
+            <p>Strategic value beyond funding: an Alzheimer's Association grant is a scientific credential recognized globally in the Alzheimer's research community. It signals that the research has been peer-reviewed by the leading disease-specific scientific body. This is useful for subsequent IHI or Horizon applications.</p>
+            <p class="gc-action">→ Consider submitting under the Pilot Grant for Technologies to Advance Alzheimer's Research mechanism, jointly with SAV, following completion of the initial APVV-funded pilot study. Typical award: USD 100–150K for 1–2 years.</p>
+            <p><a href="https://www.alz.org/research/for_researchers/grants_for_alzheimers_researchers" class="gc-link" target="_blank">alz.org — grants for researchers ↗</a></p>
+          </div>
+        </section>
+
+        <hr class="div" />
+
+        <!-- S6 -->
+        <section id="s6">
+          <div class="section-number">Section 6</div>
+          <h2 class="section-title">Application Strategy for NeuroFlex</h2>
+
+          <div class="strategy-box">
+            <p style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#00cfff;margin:0 0 0.75rem;">Strategic Principle</p>
+            <blockquote>Each grant builds the evidence base for the next. APVV funds the pilot that makes you eligible for Horizon. Horizon funds the validation study that enables an IHI consortium. Do not wait for the perfect large grant — apply for the next accessible grant immediately.</blockquote>
+          </div>
+
+          <div class="step-list">
+            <div class="step-item">
+              <span class="step-num">1</span>
+              <p><strong>Immediate (before Feb 11, 2026):</strong> Submit APVV VV 2025 application. Feasibility study: behavioral probe validation, personal baseline algorithm development, pilot recruitment N=100–200 (Cohort A + D) with SAV as co-applicant. Budget: €200–300K. Duration: 24 months. This is the foundational step — even a small successful grant establishes NeuroFlex as a recognized research entity in the Slovak system.</p>
+            </div>
+            <div class="step-item">
+              <span class="step-num">2</span>
+              <p><strong>Q1 2026:</strong> Raise PSK-MZ-010-2024 at the SAV meeting. Explore whether SAV can serve as consortium lead for a €2–4M application under this call, with NeuroFlex as platform partner. This would fund Phase 1–2 infrastructure development at a scale APVV cannot reach.</p>
+            </div>
+            <div class="step-item">
+              <span class="step-num">3</span>
+              <p><strong>2026 (when opened):</strong> Apply to MZ SR Prelomové technológie grant as primary applicant (company). Up to €3M. This is the highest-priority standalone company grant. Prepare the application concept now: NeuroFlex as "inovatívny diagnostický software" for behavioral monitoring in cognitive neurology, targeting TRL 4→6.</p>
+            </div>
+            <div class="step-item">
+              <span class="step-num">4</span>
+              <p><strong>2027 (after pilot results):</strong> Submit Horizon Europe Health Cluster application with consortium (NeuroFlex + SAV + DZNE + Amsterdam UMC + Karolinska). Requires: pilot publication, established clinical partnerships, letters of collaboration from DZNE and Amsterdam. Budget: €4–8M over 4 years.</p>
+            </div>
+            <div class="step-item">
+              <span class="step-num">5</span>
+              <p><strong>2028+ (after Horizon Phase 2):</strong> IHI consortium application with pharmaceutical industry partner. Budget: €10–25M. This is the pathway to clinical validation and regulatory development (SaMD, CE marking pathway).</p>
+            </div>
+          </div>
+
+          <div class="gap-box">
+            <p><strong>Company structure note:</strong> To maximize grant competitiveness, consider registering NeuroFlex s.r.o. as a company that formally engages in "výskum a vývoj" (research and development) — this may require registering R&amp;D activities with the Slovak Statistical Office (SO SR) and maintaining basic records of R&amp;D expenditure. This is not operationally burdensome but is a formal requirement for some grant eligibility criteria. Verify with a grant consultant or legal advisor before submitting.</p>
+          </div>
+        </section>
+
+        <hr class="div" />
+
+        <!-- S7 -->
+        <section id="s7">
+          <div class="section-number">Section 7</div>
+          <h2 class="section-title">Key Contacts and Portals</h2>
+
+          <div class="doc-grid">
+            <article class="doc-card">
+              <p class="mini-label">Primary portal</p>
+              <h3>VVI — Výskumno-inovačný portál</h3>
+              <p>Aggregated search for all Slovak research funding calls across all providers. Filter by "podnikateľský sektor" to show company-eligible calls only.</p>
+              <a href="https://vvi.gov.sk/vyhladavac-podpory" class="gc-link" target="_blank">vvi.gov.sk/vyhladavac-podpory ↗</a>
+            </article>
+            <article class="doc-card">
+              <p class="mini-label">National grants</p>
+              <h3>APVV</h3>
+              <p>Slovak Research and Development Agency. VV 2025 call closes 11. 2. 2026. New system for electronic submission.</p>
+              <a href="https://www.apvv.sk" class="gc-link" target="_blank">apvv.sk ↗</a>
+            </article>
+            <article class="doc-card">
+              <p class="mini-label">Innovation authority</p>
+              <h3>VAIA</h3>
+              <p>Výskumná a inovačná autorita. Manages health domain calls (Zdravá spoločnosť), innovation vouchers, and coordinates SK RIS3 strategy.</p>
+              <a href="https://vaia.gov.sk" class="gc-link" target="_blank">vaia.gov.sk ↗</a>
+            </article>
+            <article class="doc-card">
+              <p class="mini-label">Misia Zdravie</p>
+              <h3>Health Innovation Mission</h3>
+              <p>Slovak government's flagship health innovation initiative. Neurology is one of four priority domains. Track for project concept submission windows.</p>
+              <a href="https://misiazdravie.gov.sk" class="gc-link" target="_blank">misiazdravie.gov.sk ↗</a>
+            </article>
+            <article class="doc-card">
+              <p class="mini-label">EU grants</p>
+              <h3>Horizon Europe Portal</h3>
+              <p>European Commission funding portal. Filter by "Health" topic. Use "Find Partners" tool to identify potential consortium members.</p>
+              <a href="https://ec.europa.eu/info/funding-tenders/opportunities/portal" class="gc-link" target="_blank">EC Funding Portal ↗</a>
+            </article>
+            <article class="doc-card">
+              <p class="mini-label">IHI</p>
+              <h3>Innovative Health Initiative</h3>
+              <p>IMI successor for pharma-academia-SME health research consortia. Digital biomarkers in neurodegeneration is a recurring topic.</p>
+              <a href="https://www.ihi.europa.eu/apply-funding/open-calls" class="gc-link" target="_blank">ihi.europa.eu/apply-funding ↗</a>
+            </article>
+          </div>
+        </section>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> NeuroFlex · Cognitive wellness &amp; behavioral research</p>
+      <p class="muted">Internal document — not for public distribution. Developed by <a href="https://www.lifeapps.online/" style="color:#9fb3ff">LifeApps</a></p>
+    </div>
+  </footer>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

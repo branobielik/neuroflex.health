@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NeuroFlex — State of the Art &amp; Competitive Landscape Analysis</title>
+  <meta name="description" content="Internal working document: State of the Art in digital biomarker research for Alzheimer's disease, competitive landscape, research gaps, and NeuroFlex positioning for grant applications and research partnerships." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    /* ── Layout ── */
+    .doc-body { max-width: 860px; }
+    .section-number {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #00cfff; margin-bottom: 0.3rem;
+    }
+    h2.section-title { font-size: 1.35rem; margin: 0 0 0.85rem; }
+    h3.subsection { font-size: 1.05rem; margin: 1.5rem 0 0.5rem; color: #c8dde8; }
+    h4.sub4 { font-size: 0.93rem; margin: 1.1rem 0 0.3rem; color: #9ab8cc; }
+    p.lead-para { font-size: 0.97rem; color: #a0b8cc; line-height: 1.75; margin-bottom: 1rem; }
+    p.body-para { font-size: 0.9rem; color: #8a9fb5; line-height: 1.72; margin: 0 0 0.75rem; }
+
+    /* ── Abstract box ── */
+    .abstract-box {
+      background: rgba(0,0,0,0.25);
+      border: 1px solid rgba(0,207,255,0.2);
+      border-radius: 14px;
+      padding: 1.4rem 1.6rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .abstract-box p.abstract-label {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #00cfff; margin: 0 0 0.6rem;
+    }
+    .abstract-box p { font-size: 0.88rem; color: #9ab8cc; line-height: 1.72; margin: 0 0 0.5rem; }
+    .abstract-box p:last-child { margin: 0; }
+
+    /* ── TOC ── */
+    .toc {
+      background: rgba(0,0,0,0.2); border-radius: 12px;
+      padding: 1.2rem 1.5rem; margin: 1.5rem 0 2.5rem;
+    }
+    .toc .toc-label {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #00cfff; margin: 0 0 0.75rem;
+    }
+    .toc ol { margin: 0; padding-left: 1.3rem; display: flex; flex-direction: column; gap: 0.3rem; }
+    .toc li { font-size: 0.88rem; color: #7a9ab5; }
+    .toc a { color: #7ec8d8; text-decoration: none; }
+    .toc a:hover { text-decoration: underline; }
+    .toc ol ol { margin-top: 0.2rem; gap: 0.2rem; }
+    .toc ol ol li { font-size: 0.82rem; color: #5a7a99; }
+
+    /* ── Section divider ── */
+    hr.div { border: none; border-top: 1px solid rgba(255,255,255,0.07); margin: 3rem 0; }
+
+    /* ── Key insight box ── */
+    .insight {
+      background: rgba(0,207,255,0.05);
+      border-left: 3px solid rgba(0,207,255,0.5);
+      border-radius: 0 10px 10px 0;
+      padding: 0.9rem 1.2rem;
+      margin: 1.25rem 0;
+    }
+    .insight p { font-size: 0.88rem; color: #8cc8d8; line-height: 1.65; margin: 0; }
+    .insight strong { color: #00cfff; }
+
+    /* ── Warning / gap box ── */
+    .gap-box {
+      background: rgba(255,179,71,0.05);
+      border-left: 3px solid rgba(255,179,71,0.5);
+      border-radius: 0 10px 10px 0;
+      padding: 0.9rem 1.2rem;
+      margin: 1.25rem 0;
+    }
+    .gap-box p { font-size: 0.88rem; color: #c8a870; line-height: 1.65; margin: 0; }
+
+    /* ── Platform entry ── */
+    .platform-entry {
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding: 1rem 0;
+    }
+    .platform-entry:last-child { border-bottom: none; }
+    .platform-entry h4 { margin: 0 0 0.3rem; font-size: 0.95rem; color: #c8dde8; }
+    .platform-entry p { margin: 0 0 0.3rem; font-size: 0.84rem; color: #7a9ab5; line-height: 1.65; }
+    .platform-entry .pe-meta {
+      display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 0.4rem;
+    }
+    .pe-tag {
+      font-size: 0.67rem; font-weight: 700; letter-spacing: 0.07em;
+      text-transform: uppercase; padding: 0.18em 0.55em;
+      border-radius: 4px; background: rgba(0,207,255,0.1); color: #5ab8cc;
+    }
+    .pe-tag.red { background: rgba(255,100,100,0.1); color: #cc8080; }
+    .pe-tag.gold { background: rgba(255,179,71,0.1); color: #cca060; }
+    .pe-tag.green { background: rgba(80,200,80,0.1); color: #80c880; }
+
+    /* ── Gap table ── */
+    .gap-table { width: 100%; border-collapse: collapse; font-size: 0.84rem; margin-top: 1rem; }
+    .gap-table th {
+      text-align: left; padding: 0.5rem 0.75rem;
+      color: #00cfff; border-bottom: 1px solid rgba(0,207,255,0.2);
+      font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .gap-table td {
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      color: #8a9fb5; vertical-align: top;
+    }
+    .gap-table tr:last-child td { border-bottom: none; }
+    .gap-table td.td-gap { color: #ffb347; font-weight: 600; }
+    .gap-table td.td-nf  { color: #55d68a; }
+
+    /* ── Partner cards ── */
+    .partner-card {
+      background: rgba(0,207,255,0.04);
+      border: 1px solid rgba(0,207,255,0.15);
+      border-radius: 14px;
+      padding: 1.2rem 1.3rem;
+      margin-bottom: 1.1rem;
+    }
+    .partner-card .pc-head {
+      display: flex; align-items: flex-start; gap: 0.75rem;
+      margin-bottom: 0.6rem; flex-wrap: wrap;
+    }
+    .partner-card h4 { margin: 0; font-size: 1rem; color: #c8dde8; }
+    .partner-card p { font-size: 0.87rem; color: #8a9fb5; line-height: 1.65; margin: 0 0 0.5rem; }
+    .partner-card p:last-child { margin: 0; }
+    .partner-card .pc-action { font-size: 0.84rem; color: #00cfff; margin-top: 0.5rem; }
+
+    /* ── Conclusion box ── */
+    .conclusion-box {
+      background: linear-gradient(135deg, rgba(0,207,255,0.07), rgba(120,104,243,0.06));
+      border: 1px solid rgba(0,207,255,0.25);
+      border-radius: 16px;
+      padding: 1.75rem 1.75rem;
+      margin: 1.5rem 0;
+    }
+    .conclusion-box blockquote {
+      font-size: 1rem; font-style: italic; color: #c8dde8;
+      border-left: 3px solid #00cfff;
+      margin: 0.75rem 0; padding-left: 1.2rem; line-height: 1.75;
+    }
+
+    /* ── Numbered step list ── */
+    .step-list { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1rem; }
+    .step-item { display: flex; gap: 0.85rem; align-items: flex-start; }
+    .step-num {
+      min-width: 1.6rem; height: 1.6rem;
+      background: rgba(0,207,255,0.12); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.72rem; font-weight: 700; color: #00cfff; flex-shrink: 0; margin-top: 0.15rem;
+    }
+    .step-item p { font-size: 0.88rem; color: #8a9fb5; margin: 0; line-height: 1.65; }
+    .step-item p strong { color: #a8c8d8; }
+
+    /* ── Keywords ── */
+    .keywords {
+      display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem;
+    }
+    .kw {
+      font-size: 0.72rem; padding: 0.2em 0.65em;
+      border: 1px solid rgba(0,207,255,0.2);
+      border-radius: 4px; color: #5a8a9a;
+    }
+  </style>
+</head>
+<body class="neuro-site">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../" class="brand brand-neuroflex">
+        <img src="../assets/neuroflex-logo.png" alt="" />
+        <span>NeuroFlex<sup>&copy;</sup></span>
+      </a>
+      <nav class="nav">
+        <a href="../">Home</a>
+        <a href="../white-paper/">White Paper</a>
+        <a href="../landscape-analysis/">Landscape</a>
+        <a href="../methodological-challenges/">Risks</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="doc-hero">
+      <div class="container">
+        <p class="doc-kicker">Internal Working Document · Unlisted · Version 1.0 · June 2026</p>
+        <h1>State of the Art &amp; Competitive Landscape Analysis</h1>
+        <p class="doc-lead">Digital Biomarker Research for Alzheimer's Disease: Current Landscape, Research Gaps, and the Scientific Rationale for NeuroFlex as a Longitudinal Behavioural Observatory</p>
+        <div class="doc-actions">
+          <a class="btn btn-secondary" href="../landscape-analysis/">Landscape Overview</a>
+          <a class="btn btn-secondary" href="../methodological-challenges/">Research Risks</a>
+          <a class="btn btn-secondary" href="../white-paper/">White Paper</a>
+        </div>
+
+        <div class="keywords" style="margin-top:1.25rem;">
+          <span class="kw">Alzheimer's disease</span>
+          <span class="kw">digital biomarkers</span>
+          <span class="kw">longitudinal behavioural research</span>
+          <span class="kw">cognitive health</span>
+          <span class="kw">passive sensing</span>
+          <span class="kw">latent trait modelling</span>
+          <span class="kw">personal baseline</span>
+          <span class="kw">ecological momentary assessment</span>
+          <span class="kw">digital phenotyping</span>
+          <span class="kw">preclinical AD</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container doc-body">
+
+        <!-- ABSTRACT -->
+        <div class="abstract-box">
+          <p class="abstract-label">Abstract</p>
+          <p>Alzheimer's disease (AD) represents one of the most significant public health challenges of the 21st century, with an estimated 55 million people currently affected worldwide and projections indicating a threefold increase by 2050. Despite decades of biomarker research and therapeutic development, no disease-modifying treatment has yet achieved broad clinical approval, and the vast majority of patients receive diagnosis at a stage when pathological changes have already been present for a decade or longer.</p>
+          <p>Recent advances in blood-based biomarkers (plasma phospho-tau217, Aβ42/40 ratio) and digital cognitive assessment have significantly expanded the horizon of early detection. However, a critical gap remains: the systematic, longitudinal characterisation of everyday behavioural patterns during the preclinical phase of AD, observed within the ecological context of daily life rather than in controlled clinical settings.</p>
+          <p>This document reviews the current state of the art across five categories of relevant platforms and initiatives, identifies the structural gaps in existing approaches, and articulates the scientific rationale for NeuroFlex as a longitudinal behavioural observatory that addresses these gaps through consumer-scale deployment, within-person baseline modelling, and the measurement of latent behavioural traits.</p>
+        </div>
+
+        <!-- TOC -->
+        <div class="toc">
+          <p class="toc-label">Contents</p>
+          <ol>
+            <li><a href="#s1">The Research Context</a>
+              <ol>
+                <li><a href="#s1-1">Epidemiology and Public Health Burden</a></li>
+                <li><a href="#s1-2">The Preclinical Window</a></li>
+                <li><a href="#s1-3">Limitations of Current Clinical Assessment</a></li>
+              </ol>
+            </li>
+            <li><a href="#s2">State of the Art in Digital Approaches</a>
+              <ol>
+                <li><a href="#s2-1">Large Longitudinal Research Cohorts</a></li>
+                <li><a href="#s2-2">Digital Biomarker Research Projects</a></li>
+                <li><a href="#s2-3">Clinical Digital Assessment Platforms</a></li>
+                <li><a href="#s2-4">Passive Digital Phenotyping</a></li>
+                <li><a href="#s2-5">Lifestyle Multidomain Prevention Studies</a></li>
+              </ol>
+            </li>
+            <li><a href="#s3">Critical Analysis: Structural Gaps</a></li>
+            <li><a href="#s4">NeuroFlex: Scientific Rationale and Positioning</a>
+              <ol>
+                <li><a href="#s4-1">Core Design Principles</a></li>
+                <li><a href="#s4-2">Personal Baseline Modelling</a></li>
+                <li><a href="#s4-3">Latent Behavioural Trait Measurement</a></li>
+                <li><a href="#s4-4">Dual Research Mission</a></li>
+              </ol>
+            </li>
+            <li><a href="#s5">Proposed Validation Partners and Research Path</a></li>
+            <li><a href="#s6">Funding Landscape</a></li>
+            <li><a href="#s7">Conclusion and Research Gap Statement</a></li>
+          </ol>
+        </div>
+
+        <hr class="div" />
+
+        <!-- SECTION 1 -->
+        <section id="s1">
+          <div class="section-number">Section 1</div>
+          <h2 class="section-title">The Research Context</h2>
+
+          <h3 class="subsection" id="s1-1">1.1 Epidemiology and Public Health Burden</h3>
+          <p class="body-para">Alzheimer's disease is the most prevalent neurodegenerative disorder worldwide and the leading cause of dementia, accounting for 60–70% of all dementia cases. Approximately 55 million individuals are currently living with dementia globally, with an estimated 10 million new cases diagnosed annually. The economic cost of dementia is estimated at USD 1.3 trillion per year and is projected to reach USD 2.8 trillion by 2030, driven primarily by informal care costs and loss of productive capacity (World Alzheimer Report, 2023).</p>
+          <p class="body-para">Despite this scale, the disease remains without a broadly effective disease-modifying therapy, though recent approvals of anti-amyloid immunotherapies (lecanemab, donanemab) in the United States represent a significant milestone. These treatments are effective only in the earliest symptomatic stages of the disease, reinforcing the urgency of earlier detection and the establishment of robust preclinical identification methods.</p>
+
+          <h3 class="subsection" id="s1-2">1.2 The Preclinical Window</h3>
+          <p class="body-para">The current scientific consensus, established through the Jack et al. (2010, 2018) biomarker cascade model and subsequent revisions, holds that the pathophysiological process of Alzheimer's disease begins 15–20 years before the emergence of clinical symptoms. During this preclinical phase, amyloid-β accumulation, tau pathology, and neurodegeneration progress in the absence of detectable cognitive impairment using standard clinical tools.</p>
+
+          <div class="insight">
+            <p>The preclinical window represents the optimal target for both early detection and preventive intervention. Any research platform that operates only at the point of clinical diagnosis — or at mild cognitive impairment (MCI) — is already observing individuals who have likely been accumulating pathological changes for a decade or more.</p>
+          </div>
+
+          <p class="body-para">Subjective cognitive decline (SCD) — the experience of self-perceived memory or cognitive difficulties in the absence of objective impairment on standard tests — has emerged as an important intermediate research construct. Individuals with SCD show elevated rates of biomarker positivity, accelerated cognitive decline on sensitive measures, and enriched conversion to MCI compared to cognitively unimpaired individuals without SCD. SCD therefore represents a high-priority population for longitudinal digital monitoring.</p>
+
+          <h3 class="subsection" id="s1-3">1.3 Limitations of Current Clinical Assessment</h3>
+          <p class="body-para">Standard neuropsychological assessment (MMSE, MoCA, ADAS-Cog, neuropsychological test batteries) has several well-documented limitations that constrain its utility in early detection:</p>
+          <p class="body-para"><strong>Ceiling effects:</strong> Standard assessments are calibrated to detect impairment at or near the MCI-to-dementia boundary and lack sensitivity to the subtle performance differences present during the preclinical phase. Highly educated or cognitively high-functioning individuals may retain sufficient reserve to score within normal limits despite measurable underlying pathology.</p>
+          <p class="body-para"><strong>Assessment frequency:</strong> Clinical visits occur annually or biannually at best, and more typically every 2–5 years in population studies. This episodic sampling misses the micro-scale fluctuations and longitudinal drift that continuous digital monitoring could in principle detect.</p>
+          <p class="body-para"><strong>Controlled conditions:</strong> Neuropsychological tests are performed in clinical environments, under supervision, at scheduled times, with brief duration and examiner-patient interaction. These conditions systematically differ from the conditions under which cognitive demands are experienced in daily life — reducing ecological validity and potentially masking real-world functional changes.</p>
+          <p class="body-para"><strong>Test-retest learning:</strong> Repeated administration of standard assessments induces practice effects that mask genuine performance change, limiting longitudinal sensitivity even when tests are administered frequently.</p>
+          <p class="body-para"><strong>Behavioral context:</strong> Standard assessments measure cognitive performance outcomes but do not characterise the behavioural process by which those outcomes are achieved — the hesitation patterns, error correction strategies, avoidance behaviours, and engagement styles that may carry additional diagnostic signal.</p>
+        </section>
+
+        <hr class="div" />
+
+        <!-- SECTION 2 -->
+        <section id="s2">
+          <div class="section-number">Section 2</div>
+          <h2 class="section-title">State of the Art in Digital Approaches</h2>
+
+          <h3 class="subsection" id="s2-1">2.1 Large Longitudinal Research Cohorts</h3>
+          <p class="body-para">The gold standard for longitudinal Alzheimer's research is represented by large multi-modal cohort studies. These programmes define the biomarker and clinical reference framework against which all other approaches must eventually be validated.</p>
+
+          <div class="platform-entry">
+            <div class="pe-meta"><span class="pe-tag">US · NIH · Since 2004</span><span class="pe-tag green">Public Dataset</span></div>
+            <h4>ADNI — Alzheimer's Disease Neuroimaging Initiative</h4>
+            <p>The most widely used reference dataset in Alzheimer's research. ADNI has enrolled more than 2,000 participants across cognitively unimpaired, MCI, and AD groups with multimodal assessment including structural and functional MRI, PET imaging (amyloid, tau, FDG), CSF biomarkers, plasma biomarkers, genetic profiling, and standardised neuropsychological batteries. ADNI data is publicly available through the Laboratory of Neuro Imaging (LONI) and has enabled hundreds of peer-reviewed publications. Key limitations: no digital ecological monitoring, episodic assessment windows, no continuous behavioural data.</p>
+          </div>
+
+          <div class="platform-entry">
+            <div class="pe-meta"><span class="pe-tag">Sweden · Lund University</span></div>
+            <h4>BioFINDER — Swedish BioFinder Study</h4>
+            <p>Swedish multisite longitudinal cohort notable for its contribution to plasma biomarker validation, particularly plasma phospho-tau217 and the Aβ42/40 ratio. BioFINDER has been instrumental in establishing the performance characteristics of blood-based biomarkers relative to CSF and PET gold standards. Cognitive batteries include ADAS-Cog, MMSE, Trail Making Test, and selected neuropsychological measures. No digital ecological monitoring component.</p>
+          </div>
+
+          <div class="platform-entry">
+            <div class="pe-meta"><span class="pe-tag">EU · IMI · Pan-European</span></div>
+            <h4>EPAD — European Prevention of Alzheimer's Dementia</h4>
+            <p>Platform trial infrastructure funded by the Innovative Medicines Initiative. Designed to support secondary prevention trials through a standing registry of at-risk individuals pre-screened with biomarkers. EPAD's contribution is primarily infrastructure: a reusable trial-ready cohort that reduces recruitment timelines for prevention trials. Cognitive assessment is clinical and neuropsychological; no consumer digital platform component.</p>
+          </div>
+
+          <div class="platform-entry">
+            <div class="pe-meta"><span class="pe-tag">Germany · DZNE</span><span class="pe-tag green">Key Partner Candidate</span></div>
+            <h4>DELCODE — DZNE Longitudinal Cognitive Impairment and Dementia Study</h4>
+            <p>Multisite German cohort study focused specifically on subjective cognitive decline as a risk marker and prodromal AD stage. DELCODE is particularly relevant to NeuroFlex because its primary recruitment target — individuals with SCD who are aware of their own cognitive concerns but perform within normal limits on standard tests — represents the population most likely to adopt a consumer wellness application like NeuroFlex. DELCODE participants undergo comprehensive phenotyping (CSF, MRI, PET, genetics, neuropsychology) creating the biomarker ground truth that NeuroFlex longitudinal behavioral data could be linked against. The DZNE infrastructure also includes computational expertise relevant to behavioral data analysis.</p>
+          </div>
+
+          <div class="platform-entry">
+            <div class="pe-meta"><span class="pe-tag">International · Karolinska</span><span class="pe-tag green">Key Partner Candidate</span></div>
+            <h4>World Wide FINGERS</h4>
+            <p>Global network of multidomain lifestyle intervention trials coordinated through the Karolinska Institute, extending the Finnish FINGER protocol to over 25 countries and diverse healthcare contexts. World Wide FINGERS is structurally relevant to NeuroFlex because: (1) it demonstrates that multidomain lifestyle intervention has measurable cognitive protective effects, directly supporting NeuroFlex's intervention hypothesis; (2) it operates across diverse cultural and health system contexts, suggesting potential for NeuroFlex to serve as a digital data collection layer within FINGERS sub-studies; (3) the network's principal investigators (Prof. Miia Kivipelto and collaborators) are among the most relevant potential scientific partners for NeuroFlex Phase 2.</p>
+          </div>
+
+          <h3 class="subsection" id="s2-2">2.2 Digital Biomarker Research Projects</h3>
+          <p class="body-para">These projects represent the most directly comparable scientific landscape for NeuroFlex — research initiatives explicitly investigating whether digital signals can serve as biomarkers for cognitive decline.</p>
+
+          <div class="platform-entry">
+            <div class="pe-meta"><span class="pe-tag">EU · IMI2 · 2019–2024</span></div>
+            <h4>RADAR-AD</h4>
+            <p>Remote Assessment of Disease and Relapse — Alzheimer's Disease. Funded by the Innovative Medicines Initiative, RADAR-AD is the most directly comparable research initiative to NeuroFlex at the infrastructure level. The project investigated whether passive smartphone sensing (GPS, accelerometer, call and app usage metadata) and active digital cognitive tasks could serve as remote monitoring tools in AD clinical trials, with the goal of reducing the burden on participants and sites. Key contributions: validated a digital biomarker collection platform for clinical trial use; demonstrated feasibility of remote longitudinal monitoring in MCI and early AD populations; published sensitivity and specificity estimates for selected digital measures. Key limitations: participant populations were clinically enrolled; no consumer engagement model; passive sensing without structured behavioural process capture; no latent trait measurement; no personal baseline approach.</p>
+          </div>
+
+          <div class="platform-entry">
+            <div class="pe-meta"><span class="pe-tag">EU · Horizon 2020</span></div>
+            <h4>LETHE</h4>
+            <p>Personalised Connected Care for Improved Alzheimer's Disease Risk Assessment, Monitoring, Prevention and Treatment. Horizon 2020 project combining wearable sensing, cognitive training, diet monitoring, and digital biomarker collection for MCI prevention in at-risk older adults. LETHE is one of the few projects that combines intervention (cognitive and lifestyle) with digital monitoring — the closest structural parallel to NeuroFlex's dual mission — but operates within a clinically enrolled, supervised research framework rather than a consumer deployment model.</p>
+          </div>
+
+          <div class="platform-entry">
+            <div class="pe-meta"><span class="pe-tag">EU · IMI2</span></div>
+            <h4>DigiAD</h4>
+            <p>Digital biomarkers for Alzheimer's disease in clinical trials. Investigates the use of smartphone-derived and wearable digital endpoints as adjuncts to conventional clinical trial outcome measures in AD studies. Industry-academia partnership involving pharmaceutical companies (Biogen, Roche, Lilly), academic medical centres, and digital health developers. DigiAD's endpoint validation work is directly relevant to NeuroFlex's Phase 3 strategy: any NeuroFlex-derived digital measure would ultimately require the type of clinical validation that DigiAD is establishing methodological standards for.</p>
+          </div>
+
+          <div class="gap-box">
+            <p><strong>Structural observation across Group 2:</strong> All existing digital biomarker research projects share a common architectural constraint — they are designed for clinically enrolled populations and operate within defined study windows. None is designed to recruit participants through consumer product distribution, sustain multi-year engagement through genuine user value, or collect data at population scale without institutional mediation. This is the architectural gap that NeuroFlex is positioned to address.</p>
+          </div>
+
+          <h3 class="subsection" id="s2-3">2.3 Clinical Digital Assessment Platforms</h3>
+          <p class="body-para">These are commercial or regulatory-tracked platforms designed to bring cognitive assessment out of the neuropsychologist's office and into clinical workflow or remote settings. They represent a different value proposition from NeuroFlex — point-in-time assessment rather than longitudinal ecological monitoring.</p>
+
+          <div class="platform-entry">
+            <div class="pe-meta"><span class="pe-tag">US · FDA Breakthrough Device</span></div>
+            <h4>Altoida</h4>
+            <p>Augmented reality task-based platform that measures multiple cognitive domains simultaneously through a 10-minute iPad assessment involving spatial navigation, object placement, and recall under augmented reality conditions. The platform captures 800+ digital biomarkers per session and has received FDA Breakthrough Device designation for MCI detection. Altoida represents the state of the art in structured single-session multidimensional digital cognitive assessment. Its key limitation for longitudinal ecological research is its assessment-session model: Altoida is designed to produce a diagnostic-grade output from a single supervised session, not to characterise behavioural change over years of unsupervised natural interaction.</p>
+          </div>
+
+          <div class="platform-entry">
+            <div class="pe-meta"><span class="pe-tag">Germany · Clinical</span></div>
+            <h4>Neotiv</h4>
+            <p>Digital memory clinic developed from academic research at the University of Magdeburg. Neotiv is the most clinically realistic consumer-adjacent platform among Group 3 platforms — it is prescribed by physicians, used at home, and targets SCD and MCI populations with episodic memory tasks derived from validated paradigms. Neotiv is notable for its longitudinal tracking capability within clinical care pathways. Key limitation: physician prescription model limits scale to medically engaged populations; no wellness engagement layer for consumer retention; no latent trait measurement or behavioural process capture.</p>
+          </div>
+
+          <div class="platform-entry">
+            <div class="pe-meta"><span class="pe-tag">Canada · AI</span></div>
+            <h4>Winterlight Labs</h4>
+            <p>Speech and language analysis platform extracting cognitive biomarkers from spontaneous speech samples. AI models trained on connected speech capture lexical, syntactic, semantic, and acoustic features associated with MCI and AD. Winterlight represents a distinct and complementary modality that does not overlap with NeuroFlex's approach. It is notable as an example of implicit signal extraction — similar in principle to NeuroFlex's latent trait measurement — applied to a different signal domain.</p>
+          </div>
+
+          <h3 class="subsection" id="s2-4">2.4 Passive Digital Phenotyping Platforms</h3>
+          <p class="body-para">Passive digital phenotyping platforms collect continuous smartphone sensor data without requiring active user participation. They represent the extreme end of ecological validity — data collected in entirely naturalistic conditions — but at the cost of interpretive clarity and user engagement.</p>
+
+          <div class="platform-entry">
+            <div class="pe-meta"><span class="pe-tag">US · Harvard · Open Source</span></div>
+            <h4>Beiwe Research Platform</h4>
+            <p>Open-source smartphone research platform developed at Harvard T.H. Chan School of Public Health. Beiwe collects GPS trajectories, accelerometer data, call and SMS metadata, audio features, and screen-on/off events with high temporal resolution. The platform has been used extensively in psychiatric research (schizophrenia, depression, PTSD) and increasingly in neurological research. Beiwe data is rich in mobility, social, and circadian signal — all potentially relevant to AD — but the platform collects no structured cognitive task data and has no consumer engagement model. Participant attrition in Beiwe studies is high because users have no intrinsic motivation to remain installed.</p>
+          </div>
+
+          <div class="platform-entry">
+            <div class="pe-meta"><span class="pe-tag">US · Harvard · BIDMC</span></div>
+            <h4>MindLAMP</h4>
+            <p>Digital phenotyping platform from Harvard Medical School and Beth Israel Deaconess Medical Center. MindLAMP combines passive sensing with active surveys and cognitive tasks — a hybrid approach structurally similar to NeuroFlex's dual data collection model. The platform has been deployed primarily in psychiatric populations (schizophrenia, bipolar disorder, major depressive disorder) and is beginning to be used in neurological research. MindLAMP is perhaps the most technically analogous existing platform to NeuroFlex's intended Phase 2 research infrastructure. Key distinction: MindLAMP is a research tool requiring clinician deployment; it is not a consumer wellness product and does not solve the participant acquisition and retention problem that NeuroFlex's wellness-first model addresses.</p>
+          </div>
+
+          <div class="insight">
+            <p><strong>The passive phenotyping limitation:</strong> Passive sensing without active engagement solves the surveillance problem but creates a participation problem. Research consistently shows that participants enrolled in passive-sensing studies show rapidly declining data completeness after the first few weeks of enrollment. Without a reason to keep the app installed and active, participants uninstall or cease charging their phones. NeuroFlex's wellness engagement model is not merely a user experience consideration — it is the core mechanism for solving long-term participation in longitudinal research.</p>
+          </div>
+
+          <h3 class="subsection" id="s2-5">2.5 Lifestyle Multidomain Prevention Studies</h3>
+          <p class="body-para">This group provides the strongest evidence base for NeuroFlex's intervention hypothesis — the claim that structured multidomain behavioural engagement can delay or modify cognitive decline.</p>
+
+          <div class="platform-entry">
+            <div class="pe-meta"><span class="pe-tag">Finland · Karolinska · RCT</span></div>
+            <h4>FINGER — Finnish Geriatric Intervention Study</h4>
+            <p>Landmark randomised controlled trial demonstrating that a 2-year multidomain lifestyle intervention (diet, exercise, cognitive training, and vascular risk management) significantly slows cognitive decline in older adults at risk of dementia (Ngandu et al., Lancet 2015). FINGER is the most cited evidence for the preventive efficacy of the multidomain approach and forms the prototype for World Wide FINGERS. Direct relevance to NeuroFlex: the four domains of FINGER intervention map directly onto NeuroFlex's wellness pillars (Train, Move, Eat, Connect). NeuroFlex can be conceptualised as a digital implementation of the FINGER philosophy at consumer scale.</p>
+          </div>
+
+          <div class="platform-entry">
+            <div class="pe-meta"><span class="pe-tag">Australia · NHMRC · 6,000 participants</span></div>
+            <h4>Maintain Your Brain</h4>
+            <p>The largest online multidomain prevention trial to date (N=6,000+). Maintains Your Brain delivers a four-module digital intervention (physical activity, cognitive training, diet, mental health) through an online platform to adults aged 55–77. The study demonstrates that a digitally delivered multidomain intervention can achieve sufficient engagement at population scale to test efficacy hypotheses. This is the most structurally relevant precedent for NeuroFlex Phase 2: a consumer-facing digital platform collecting longitudinal intervention data at scale. Key distinction: Maintain Your Brain is a defined RCT with a fixed study window and outcome assessment; it is not designed as an indefinitely extensible longitudinal observatory.</p>
+          </div>
+
+          <div class="platform-entry">
+            <div class="pe-meta"><span class="pe-tag">EU · Netherlands · RCT</span></div>
+            <h4>HATICE — Healthy Ageing Through Internet Counselling</h4>
+            <p>Online platform-based RCT for cardiovascular and cognitive risk factor self-management in older adults across the Netherlands, France, and Finland. HATICE is methodologically relevant to NeuroFlex as an example of a digitally delivered health platform operating across multiple European health systems — demonstrating feasibility for the cross-border regulatory and data governance model that NeuroFlex would require in Phase 2.</p>
+          </div>
+        </section>
+
+        <hr class="div" />
+
+        <!-- SECTION 3 -->
+        <section id="s3">
+          <div class="section-number">Section 3</div>
+          <h2 class="section-title">Critical Analysis: Structural Gaps in Existing Approaches</h2>
+
+          <p class="body-para">Reviewing the landscape systematically, the following structural gaps emerge. These are not criticisms of individual projects — each operates within appropriate constraints for its design purpose — but rather characterisations of what the existing landscape, taken as a whole, does not yet address.</p>
+
+          <table class="gap-table">
+            <thead>
+              <tr>
+                <th>Gap</th>
+                <th>Where it appears</th>
+                <th>NeuroFlex approach</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="td-gap">Consumer-scale longitudinal participation without clinical enrollment</td>
+                <td>All clinical platforms and cohorts require institutional recruitment, limiting sample size and population representativeness</td>
+                <td class="td-nf">Consumer wellness app as primary participant acquisition channel; no enrollment gate required</td>
+              </tr>
+              <tr>
+                <td class="td-gap">Within-person longitudinal baseline modelling</td>
+                <td>All existing platforms compare against population norms; none constructs an individual-specific longitudinal baseline as the primary analytical unit</td>
+                <td class="td-nf">Personal baseline established from continuous daily interaction; deviation from own historical pattern as primary detection signal</td>
+              </tr>
+              <tr>
+                <td class="td-gap">Latent behavioural trait measurement</td>
+                <td>No existing platform systematically measures derived constructs (curiosity, persistence, flexibility, resilience, initiative) from digital interaction patterns</td>
+                <td class="td-nf">Latent trait derivation from behavioural process data across cognitive, social, wellness, and routine domains</td>
+              </tr>
+              <tr>
+                <td class="td-gap">Behavioural process capture (not just outcome)</td>
+                <td>All cognitive assessment platforms capture performance outcomes; none systematically captures the process by which outcomes are achieved</td>
+                <td class="td-nf">Event-level behavioural data: hesitation, correction, abandonment, retry, navigation — before any outcome is recorded</td>
+              </tr>
+              <tr>
+                <td class="td-gap">Sustained multi-year engagement at individual level</td>
+                <td>Passive phenotyping studies show rapid attrition; clinical studies have fixed enrollment windows; wellness apps without research purpose lack retention mechanisms</td>
+                <td class="td-nf">Genuine wellness value as intrinsic retention mechanism; users remain for health benefit, generating longitudinal research data as a secondary outcome</td>
+              </tr>
+              <tr>
+                <td class="td-gap">Simultaneous detection and intervention investigation</td>
+                <td>Studies are designed as either observational (cohorts, passive sensing) or interventional (RCTs, clinical platforms); none investigates both within the same platform and population</td>
+                <td class="td-nf">Dual research mission: behavioural detection hypothesis + digital intervention hypothesis, studied in parallel with same participants and dataset</td>
+              </tr>
+              <tr>
+                <td class="td-gap">Ecological validity at individual resolution</td>
+                <td>High ecological validity platforms (Beiwe, AWARE) collect naturalistic data but lack structured cognitive signal; structured cognitive platforms (CANTAB, Cogstate) have poor ecological validity</td>
+                <td class="td-nf">Structured cognitive tasks embedded in daily wellness context; naturalistic timing, self-directed engagement, real-world setting</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <hr class="div" />
+
+        <!-- SECTION 4 -->
+        <section id="s4">
+          <div class="section-number">Section 4</div>
+          <h2 class="section-title">NeuroFlex: Scientific Rationale and Positioning</h2>
+
+          <h3 class="subsection" id="s4-1">4.1 Core Design Principles</h3>
+          <p class="body-para">NeuroFlex is designed around three principles that are individually present in elements of the existing landscape but that have not been combined in a single platform:</p>
+
+          <div class="step-list">
+            <div class="step-item">
+              <span class="step-num">1</span>
+              <p><strong>Wellness as the engagement mechanism.</strong> The platform must provide genuine, experienced value to users — cognitive stimulation, healthy habit formation, social connection, emotional support — so that participation in the research programme is a natural consequence of behaviour that users already choose for their own benefit. This solves the attrition problem that afflicts passive sensing research.</p>
+            </div>
+            <div class="step-item">
+              <span class="step-num">2</span>
+              <p><strong>Individual-level longitudinal depth over cross-sectional population breadth.</strong> The primary analytical unit is the individual trajectory — how this person changes relative to their own established pattern — rather than how this person compares to a population distribution at a single point in time. This requires months to years of data per participant and fundamentally shapes both the research design and the product design.</p>
+            </div>
+            <div class="step-item">
+              <span class="step-num">3</span>
+              <p><strong>Behavioural process before cognitive outcome.</strong> Every interaction generates behavioural process data — the sequence, timing, hesitation, and correction patterns that precede any performance outcome — which is captured as a first-class research signal. The final score matters; the path to that score may matter more.</p>
+            </div>
+          </div>
+
+          <h3 class="subsection" id="s4-2">4.2 Personal Baseline Modelling</h3>
+          <p class="body-para">The personal baseline represents a departure from the dominant paradigm in cognitive assessment, which is population norm comparison. In the norm comparison model, an individual's performance is evaluated against a reference distribution derived from age-, education-, and sex-matched healthy controls. This approach is appropriate for detecting impairment that has progressed to the point of producing a measurable performance gap relative to peers — but it is poorly suited to detecting the early, subtle drift that characterises preclinical AD.</p>
+
+          <div class="insight">
+            <p>An individual with exceptionally high premorbid cognitive ability may show a clinically significant performance decline of 20–30% while remaining well within the normal range for their demographic group. The population norm comparison model cannot detect this change. Personal baseline modelling, by contrast, is specifically designed to detect it.</p>
+          </div>
+
+          <p class="body-para">In practice, personal baseline modelling requires a sufficient density of repeated observations from a single individual to construct a stable performance distribution across multiple cognitive and behavioural domains. This stabilisation period — typically 6–12 weeks of regular engagement — produces an individualised reference profile that captures time-of-day effects, day-of-week effects, task-specific learning curves, and individual performance variability. Once established, statistically significant deviation from this profile — in any single domain or across multiple domains simultaneously — constitutes a meaningful detection signal that is independent of population norms.</p>
+
+          <p class="body-para">This approach is directly analogous to the methodology used in industrial anomaly detection and financial fraud detection, where a stable baseline is constructed from normal operation and deviations are flagged — a methodologically established framework that has not yet been systematically applied to cognitive health monitoring in a consumer ecological context.</p>
+
+          <h3 class="subsection" id="s4-3">4.3 Latent Behavioural Trait Measurement</h3>
+          <p class="body-para">Latent behavioural traits are dispositional characteristics — stable individual differences in how a person engages with challenges, novelty, failure, and routine — that cannot be directly observed but must be inferred from patterns of observable behaviour over time. In the context of longitudinal digital interaction data, the following traits are proposed as primary research constructs for NeuroFlex:</p>
+
+          <h4 class="sub4">Curiosity</h4>
+          <p class="body-para">Operationalised as the propensity to engage with novel content, explore unfamiliar features, read contextual information, and deviate from established routines to investigate alternatives. Measured from navigation diversity metrics, feature exploration patterns, and voluntary content engagement beyond minimum task requirements.</p>
+
+          <h4 class="sub4">Persistence</h4>
+          <p class="body-para">Operationalised as the probability of re-engaging with a task or activity following a failure or suboptimal outcome. Measured from retry rates, session re-entry patterns after abandonment, and the relationship between task difficulty and continued engagement.</p>
+
+          <h4 class="sub4">Cognitive Flexibility</h4>
+          <p class="body-para">Operationalised as the ability to maintain performance across diverse cognitive task types without domain-specific overspecialisation. Measured from performance correlation matrices across cognitive domains and the degree to which performance in one domain predicts — or fails to predict — performance in others.</p>
+
+          <h4 class="sub4">Initiative</h4>
+          <p class="body-para">Operationalised as the propensity to engage with the platform in the absence of external prompting. Measured from the ratio of organic (self-initiated) to notification-triggered session openings, and from temporal regularity of engagement patterns relative to habitual usage windows.</p>
+
+          <h4 class="sub4">Resilience</h4>
+          <p class="body-para">Operationalised as the recovery trajectory following disruption — whether from a period of poor performance, reduced engagement, or an external life event. Measured from engagement restoration patterns following detected low-activity periods and the rate at which performance metrics return to baseline following perturbation.</p>
+
+          <div class="gap-box">
+            <p><strong>Research hypothesis:</strong> Changes in latent trait estimates — particularly reductions in curiosity, persistence, and initiative — may precede detectable changes in cognitive performance outcomes by weeks or months. If confirmed, this would represent a qualitatively new class of digital biomarker with significant translational potential.</p>
+          </div>
+
+          <h3 class="subsection" id="s4-4">4.4 Dual Research Mission</h3>
+          <p class="body-para">NeuroFlex is designed to simultaneously pursue two complementary research questions that the existing landscape has not yet investigated within the same platform: whether long-term behavioural patterns can detect early cognitive change (detection mission) and whether sustained digital wellness engagement can delay the manifestation of that change (intervention mission). See the Methodological Challenges document for a full analysis of the Prevention–Detection Paradox that this dual design creates, and for the proposed three-cohort design (biomarker-positive + NeuroFlex; biomarker-positive control; healthy control + NeuroFlex) that addresses it.</p>
+        </section>
+
+        <hr class="div" />
+
+        <!-- SECTION 5 -->
+        <section id="s5">
+          <div class="section-number">Section 5</div>
+          <h2 class="section-title">Proposed Validation Partners and Research Path</h2>
+          <p class="body-para">The following research partnerships are prioritised based on scientific complementarity, geographic accessibility, and strategic alignment with NeuroFlex's research mission. Each partnership addresses a specific gap in NeuroFlex's current capability.</p>
+
+          <div class="partner-card">
+            <div class="pc-head">
+              <span class="pe-tag green">Priority 1 · Phase 2</span>
+              <h4>DZNE — German Centre for Neurodegenerative Diseases</h4>
+            </div>
+            <p><strong>Relevant study:</strong> DELCODE (DZNE Longitudinal Cognitive Impairment and Dementia Study)</p>
+            <p>DELCODE is the strongest near-term partnership candidate for NeuroFlex. The study recruits individuals with subjective cognitive decline — the precise population most likely to use a consumer cognitive wellness application — and phenotypes them comprehensively with CSF, MRI, PET, and neuropsychology. A formal data-linking arrangement would allow NeuroFlex behavioural trajectories to be correlated against DELCODE biomarker and clinical outcome data for participants who consent to both programmes. The DZNE operates across nine major German research centres and has established data governance and ethics frameworks suitable for this type of partnership.</p>
+            <p class="pc-action">→ Propose a data-linking feasibility study with DZNE Bonn or DZNE Berlin in Year 1 of Phase 2. Initial contact through the DZNE Technology Transfer Office or directly through the DELCODE principal investigators.</p>
+          </div>
+
+          <div class="partner-card">
+            <div class="pc-head">
+              <span class="pe-tag green">Priority 2 · Phase 2</span>
+              <h4>Amsterdam Dementia Cohort — Amsterdam UMC</h4>
+            </div>
+            <p><strong>Relevant infrastructure:</strong> Amsterdam UMC, Department of Neurology and Neuropsychology (principal investigator: Prof. Wiesje van der Flier)</p>
+            <p>The Amsterdam Dementia Cohort is one of Europe's largest memory clinic cohorts with comprehensive phenotyping and an established data-sharing culture (publicly available datasets, extensive international collaboration history). The group has been at the forefront of subjective cognitive decline research in Europe and has specific expertise in digital and remote assessment that aligns with NeuroFlex's research approach. Amsterdam UMC has also been involved in EPAD and several EU digital health consortia, providing existing familiarity with the regulatory and ethical frameworks relevant to NeuroFlex Phase 2.</p>
+            <p class="pc-action">→ Approach through the Amsterdam UMC research collaboration office. Target a joint publication exploring digital ecological monitoring in the SCD population as a first step.</p>
+          </div>
+
+          <div class="partner-card">
+            <div class="pc-head">
+              <span class="pe-tag">Priority 3 · Phase 3</span>
+              <h4>World Wide FINGERS Network — Karolinska Institute</h4>
+            </div>
+            <p><strong>Relevant contact:</strong> Prof. Miia Kivipelto (Karolinska Institute); national FINGERS coordinators across 25+ countries</p>
+            <p>World Wide FINGERS is the most strategically significant long-term partnership for NeuroFlex. The network already has the participant population (at-risk older adults enrolled in multidomain lifestyle interventions), the scientific framework (multidomain prevention as a protective factor), and the international infrastructure that NeuroFlex would need to test its intervention hypothesis at scale. The ideal arrangement would be for NeuroFlex to serve as the digital data collection and engagement platform within a FINGERS sub-study or extension — contributing engagement infrastructure while receiving access to the network's biomarker and clinical outcome framework. This partnership would also significantly strengthen any grant application to IMI, Horizon Europe, or national health research councils.</p>
+            <p class="pc-action">→ Initial contact at the Alzheimer's Association International Conference (AAIC) or through the World Wide FINGERS secretariat at Karolinska. Frame the approach as a digital arm of an existing or planned FINGERS national study.</p>
+          </div>
+
+          <div class="partner-card">
+            <div class="pc-head">
+              <span class="pe-tag">Priority 4 · Phase 2–3</span>
+              <h4>Slovak / Czech Academic Partners — KInIT and Regional Universities</h4>
+            </div>
+            <p>Local academic partners provide critical advantages in the early phases: faster ethics approval timelines, established institutional relationships, shared language and cultural context for study design, and lower coordination overhead. The Kempelen Institute of Intelligent Technologies (KInIT, Bratislava) has declared expertise in AI and machine learning applicable to NeuroFlex's Phase 2 analytical infrastructure. Regional neurology and psychiatry departments (Comenius University Bratislava, Charles University Prague, Slovak Academy of Sciences) represent potential sites for initial clinical validation pilots — recruiting small cohorts for correlation of NeuroFlex behavioral data against neuropsychological assessment outcomes as a proof-of-concept for the personal baseline and latent trait approaches.</p>
+            <p class="pc-action">→ Initiate academic partnership discussion with KInIT for Phase 2 ML/AI collaboration. Approach Comenius University neurology/psychiatry for a local pilot recruitment agreement.</p>
+          </div>
+        </section>
+
+        <hr class="div" />
+
+        <!-- SECTION 6 -->
+        <section id="s6">
+          <div class="section-number">Section 6</div>
+          <h2 class="section-title">Funding Landscape</h2>
+          <p class="body-para">The following funding mechanisms are relevant to NeuroFlex Phase 2 and beyond. Each has specific eligibility requirements, typical project sizes, and expected partnership configurations.</p>
+
+          <h3 class="subsection">Innovative Medicines Initiative 3 / IMI Successor (Europe)</h3>
+          <p class="body-para">The Innovative Medicines Initiative (IMI) and its successor under Horizon Europe (the Innovative Health Initiative, IHI) are the primary EU mechanisms for funding large-scale digital health research in partnership with pharmaceutical industry and academic institutions. RADAR-AD, DigiAD, and LETHE were all funded through IMI2. A NeuroFlex-based consortium application to IHI would be the highest-impact but also highest-complexity funding route — requiring partnership with at least one EFPIA (pharmaceutical industry) member and typically involving budgets of €10–30M over 5 years. The most relevant call categories are digital health biomarkers, remote clinical trial endpoints, and prevention of cognitive decline.</p>
+
+          <h3 class="subsection">Horizon Europe — Health Cluster</h3>
+          <p class="body-para">Horizon Europe Health Cluster calls (Cluster 1) include specific funding lines for digital health, neurodegeneration research, and personalised medicine. Relevant recent and planned calls include: digital biomarkers for neurodegenerative diseases; AI and big data for brain health; remote monitoring in neurology. Standard academic partnership projects are €3–8M over 3–4 years. A NeuroFlex Phase 2 consortium application (4–6 academic partners, 1–2 SME/industry partners) would be feasible under these calls once a proof-of-concept publication or pilot study is available.</p>
+
+          <h3 class="subsection">Alzheimer's Association — Part the Cloud / Zenith Award</h3>
+          <p class="body-para">The Alzheimer's Association (US) funds international research through its grant programmes. Part the Cloud specifically targets translational research with a pathway to clinical impact. A NeuroFlex grant application to the Alzheimer's Association would need to demonstrate a clear link between the digital platform outputs and clinically validated biomarker or cognitive assessment endpoints — achievable through a DELCODE or Amsterdam Dementia Cohort pilot correlation study.</p>
+
+          <h3 class="subsection">National Health Research Agencies (Slovakia / Czech Republic)</h3>
+          <p class="body-para">APVV (Slovak Research and Development Agency) and the Czech Health Research Council (AZV) fund national health research projects with budgets of €200K–€1.5M. These are the most accessible near-term funding sources for a Phase 1 pilot study demonstrating NeuroFlex feasibility in a small local cohort. APVV calls for digital health and preventive medicine are the most relevant category.</p>
+        </section>
+
+        <hr class="div" />
+
+        <!-- SECTION 7 -->
+        <section id="s7">
+          <div class="section-number">Section 7</div>
+          <h2 class="section-title">Conclusion and Research Gap Statement</h2>
+
+          <p class="body-para">The field of digital biomarker research for Alzheimer's disease has matured substantially over the past decade. Large longitudinal cohorts have established the biomarker cascade framework and generated publicly accessible datasets that underpin much of the current computational research. Digital biomarker projects funded through IMI and Horizon Europe have demonstrated the feasibility of remote digital monitoring in clinical populations. Clinical assessment platforms have brought validated cognitive batteries out of neuropsychologist offices and into scalable digital formats. Passive digital phenotyping has demonstrated the richness of naturalistic smartphone data as a behavioural observatory.</p>
+          <p class="body-para">Each of these advances is significant. Each also operates within structural constraints — clinical enrollment, episodic assessment, population norm comparison, single-modality focus, or defined study windows — that limit its ability to characterise the longitudinal evolution of everyday behavioural patterns during the decade-long preclinical phase of Alzheimer's disease at population scale.</p>
+
+          <div class="conclusion-box">
+            <p style="font-size:0.78rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#00cfff; margin:0 0 0.75rem;">Research Gap Statement</p>
+            <blockquote>
+              Despite significant progress in biomarker-based detection and digital cognitive assessment, there remains no longitudinal research platform capable of characterising the continuous evolution of everyday behavioural patterns — including latent behavioural traits such as curiosity, persistence, cognitive flexibility, initiative, and resilience — within the ecological context of daily life, at consumer scale, and over the multi-year time horizons necessary to investigate the preclinical phase of Alzheimer's disease. Furthermore, no existing platform simultaneously investigates both the detection and the intervention hypothesis — whether digital wellness engagement can delay the very behavioural changes it is designed to detect — within a single participant population and dataset.
+            </blockquote>
+            <p style="font-size:0.88rem; color:#8aa5b8; margin:0.75rem 0 0;">NeuroFlex is designed to address this gap. It does not compete with existing biomarker research — it provides the continuous ecological behavioural layer that existing biomarker studies lack, and the consumer-scale reach that existing research platforms cannot achieve. Its long-term scientific value depends on eventual integration with the biomarker and clinical outcome infrastructure that the existing landscape has already built.</p>
+          </div>
+
+          <div class="doc-grid" style="margin-top:1.5rem;">
+            <article class="doc-card">
+              <p class="mini-label">Immediate Priority</p>
+              <h3>Proof-of-Concept Pilot</h3>
+              <p>Local academic partnership (KInIT, Comenius University) for a 6-month pilot study correlating NeuroFlex behavioral trajectories against neuropsychological assessment outcomes in a small community cohort (N=50–100). Primary output: a peer-reviewed publication demonstrating the personal baseline and latent trait approach.</p>
+            </article>
+            <article class="doc-card">
+              <p class="mini-label">12-Month Target</p>
+              <h3>International Partnership</h3>
+              <p>Establish a formal research collaboration agreement with DZNE (DELCODE) or Amsterdam UMC for a data-linking study. Begin preparation of a Horizon Europe or IHI consortium application with 4–6 partners.</p>
+            </article>
+            <article class="doc-card">
+              <p class="mini-label">24-Month Target</p>
+              <h3>Grant Application</h3>
+              <p>Submit a coordinated Horizon Europe Health Cluster application (Cluster 1) with academic partners, a pharmaceutical industry partner, and World Wide FINGERS network affiliation. Target budget €4–8M over 4 years.</p>
+            </article>
+          </div>
+        </section>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> NeuroFlex · Cognitive wellness &amp; behavioral research</p>
+      <p class="muted">Internal document — not for public distribution. Developed by <a href="https://www.lifeapps.online/" style="color:#9fb3ff">LifeApps</a></p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
