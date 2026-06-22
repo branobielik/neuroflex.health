@@ -37,7 +37,9 @@ body {
 .brand-neuroflex {
   align-items: center;
   display: inline-flex;
+  flex-shrink: 0;
   gap: 10px;
+  white-space: nowrap;
 }
 
 .brand-neuroflex img {
@@ -46,13 +48,53 @@ body {
   width: 34px;
 }
 
+/* © is part of the wordmark: a small superscript that stays attached to the
+   "NeuroFlex" text and is never clipped or pushed under the nav on small screens. */
+.brand-neuroflex span {
+  display: inline-flex;
+  align-items: flex-start;
+}
+
 .brand-neuroflex sup {
   color: #FBBF24;
-  font-size: 0.58em;
-  line-height: 0;
+  font-size: 0.5em;
+  font-weight: 700;
+  line-height: 1;
   margin-left: 2px;
-  position: relative;
-  top: -0.45em;
+  vertical-align: super;
+}
+
+@media (max-width: 560px) {
+  .header-inner {
+    gap: 8px;
+    min-height: 56px;
+  }
+  .brand-neuroflex {
+    font-size: 1.05rem;
+  }
+  .brand-neuroflex img {
+    height: 28px;
+    width: 28px;
+  }
+  .nav {
+    flex-shrink: 1;
+    text-align: right;
+  }
+  .nav a {
+    font-size: 0.9rem;
+    margin-left: 0.65rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .brand-neuroflex {
+    font-size: 0.98rem;
+    gap: 7px;
+  }
+  .nav a {
+    font-size: 0.82rem;
+    margin-left: 0.5rem;
+  }
 }
 
 .nav a {
