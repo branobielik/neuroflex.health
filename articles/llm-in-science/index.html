@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Large Language Models as Research Infrastructure — NeuroFlex</title>
+  <meta name="description" content="Why the next scientific breakthrough may depend on human–AI collaboration. An essay on LLMs as a new kind of research infrastructure for small scientific teams in medicine and neuroscience." />
+  <link rel="stylesheet" href="../../styles.css" />
+  <style>
+    /* ── Article Light Theme ──────────────────────────────────────────────── */
+    html, body {
+      background: #F1F5F9;
+      color: #1E293B;
+    }
+
+    .site-header {
+      background: rgba(3, 10, 34, 0.96);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Article layout */
+    .article-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 20px 80px;
+    }
+
+    /* Hero */
+    .art-hero {
+      padding: 72px 0 48px;
+      border-bottom: 1px solid #E2E8F0;
+      margin-bottom: 48px;
+    }
+
+    .art-category {
+      color: #2563EB;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin: 0 0 16px;
+    }
+
+    .art-hero h1 {
+      font-size: clamp(1.9rem, 4.5vw, 2.9rem);
+      line-height: 1.1;
+      color: #0F172A;
+      margin: 0 0 20px;
+      font-weight: 800;
+    }
+
+    .art-lead {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: #475569;
+      margin: 0 0 28px;
+    }
+
+    .art-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .art-meta-item {
+      font-size: 0.85rem;
+      color: #64748B;
+    }
+
+    .art-meta-label {
+      font-weight: 700;
+      color: #334155;
+    }
+
+    .art-tag {
+      display: inline-block;
+      background: #EFF6FF;
+      border: 1px solid #BFDBFE;
+      border-radius: 999px;
+      color: #1D4ED8;
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      letter-spacing: 0.04em;
+    }
+
+    /* Body typography */
+    .art-body {
+      font-size: 1.04rem;
+      line-height: 1.82;
+      color: #1E293B;
+    }
+
+    .art-body h2 {
+      font-size: 1.52rem;
+      font-weight: 800;
+      color: #0F172A;
+      margin: 52px 0 14px;
+      padding-top: 0;
+    }
+
+    .art-body h3 {
+      font-size: 1.14rem;
+      font-weight: 700;
+      color: #1E293B;
+      margin: 30px 0 10px;
+    }
+
+    .art-body p {
+      margin: 0 0 22px;
+    }
+
+    .art-body a {
+      color: #2563EB;
+      text-decoration: underline;
+    }
+
+    .art-body ul, .art-body ol {
+      margin: 0 0 22px;
+      padding-left: 1.6em;
+    }
+
+    .art-body li {
+      margin-bottom: 8px;
+    }
+
+    /* Pull quote */
+    .art-quote {
+      border-left: 4px solid #2563EB;
+      background: #EFF6FF;
+      border-radius: 0 12px 12px 0;
+      padding: 20px 24px;
+      margin: 36px 0;
+    }
+
+    .art-quote p {
+      font-size: 1.2rem;
+      font-style: italic;
+      color: #1E40AF;
+      margin: 0;
+      line-height: 1.65;
+    }
+
+    /* Callout box */
+    .art-callout {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin: 36px 0;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+    }
+
+    .art-callout-label {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #2563EB;
+      margin: 0 0 10px;
+    }
+
+    .art-callout p {
+      color: #334155;
+      margin: 0;
+      font-size: 0.97rem;
+    }
+
+    /* Hypothesis box */
+    .art-hypothesis {
+      background: #FFFBEB;
+      border: 1px solid #FDE68A;
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin: 36px 0;
+    }
+
+    .art-hypothesis-label {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #92400E;
+      margin: 0 0 10px;
+    }
+
+    .art-hypothesis p {
+      color: #78350F;
+      margin: 0;
+      font-size: 0.97rem;
+      line-height: 1.7;
+    }
+
+    /* Separator */
+    .art-divider {
+      border: none;
+      border-top: 1px solid #E2E8F0;
+      margin: 52px 0;
+    }
+
+    /* References */
+    .art-references {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 16px;
+      padding: 28px;
+      margin-top: 52px;
+    }
+
+    .art-references h2 {
+      font-size: 1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #475569;
+      margin: 0 0 20px;
+    }
+
+    .art-references ol {
+      margin: 0;
+      padding-left: 1.4em;
+      font-size: 0.88rem;
+      color: #475569;
+      line-height: 1.7;
+    }
+
+    .art-references li {
+      margin-bottom: 10px;
+    }
+
+    .art-references a {
+      color: #2563EB;
+    }
+
+    /* Footer note */
+    .art-footer-note {
+      margin-top: 48px;
+      padding-top: 28px;
+      border-top: 1px solid #E2E8F0;
+      font-size: 0.86rem;
+      color: #94A3B8;
+      line-height: 1.65;
+    }
+
+    /* Read more section */
+    .art-readmore {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 20px;
+      padding: 32px;
+      margin-top: 52px;
+    }
+
+    .art-readmore h3 {
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #64748B;
+      margin: 0 0 20px;
+    }
+
+    .art-readmore-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .art-readmore-link {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      text-decoration: none;
+      padding: 12px;
+      border-radius: 12px;
+      transition: background 0.15s;
+    }
+
+    .art-readmore-link:hover {
+      background: #F1F5F9;
+    }
+
+    .art-readmore-link-icon {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: #EFF6FF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .art-readmore-link-text strong {
+      display: block;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #1E293B;
+      margin-bottom: 2px;
+    }
+
+    .art-readmore-link-text span {
+      font-size: 0.81rem;
+      color: #64748B;
+    }
+
+    /* Site footer override */
+    .site-footer {
+      background: #0F172A;
+      color: #94A3B8;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .site-footer a {
+      color: #94A3B8;
+      text-decoration: none;
+    }
+
+    @media (max-width: 640px) {
+      .art-hero { padding: 48px 0 36px; }
+      .art-body h2 { font-size: 1.3rem; margin-top: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../../" class="brand brand-neuroflex">
+        <img src="../../img/neuroflex-logo.png" alt="NeuroFlex" />
+        <span>NeuroFlex<sup>©</sup></span>
+      </a>
+      <nav class="nav">
+        <a href="../../">Home</a>
+        <a href="../../research-programme/">Research</a>
+        <a href="../../contact/">Contact</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="article-wrap">
+
+      <header class="art-hero">
+        <p class="art-category">Research Article &nbsp;·&nbsp; Artificial Intelligence</p>
+        <h1>Large Language Models as Research Infrastructure: Why the Next Scientific Breakthrough May Depend on Human–AI Collaboration</h1>
+        <p class="art-lead">
+          For two decades, the defining challenge of biomedical research has not been the absence of ideas — it has been the inability to process the data those ideas produce. A new class of tools is beginning to change that. Not by replacing scientists, but by acting as something closer to research infrastructure.
+        </p>
+        <div class="art-meta">
+          <span class="art-meta-item"><span class="art-meta-label">Published</span> · June 2026</span>
+          <span class="art-meta-item"><span class="art-meta-label">Reading time</span> · ~12 min</span>
+          <span class="art-tag">Unlisted · Internal</span>
+        </div>
+      </header>
+
+      <article class="art-body">
+
+        <p>
+          The conversation about large language models has, until recently, orbited productivity. Can they write? Can they code? Can they replace a customer service agent? These are reasonable questions. But they miss the more consequential shift happening at a quieter frequency — the emergence of LLMs as a structural layer in scientific research, particularly in medicine and the life sciences.
+        </p>
+
+        <p>
+          This article does not argue that language models are ready to do science. They are not. It argues something more specific and, in the long run, more important: that LLMs are beginning to function as a new kind of <em>research infrastructure</em> — the kind that determines not just what scientists can do, but who gets to do serious science at all.
+        </p>
+
+        <h2>The Problem Is Not Ignorance. It Is Volume.</h2>
+
+        <p>
+          Consider the informational landscape of modern neurology. A researcher studying the early progression of Alzheimer's disease must navigate simultaneously across neuroimaging findings, genetic risk profiles, wearable-derived behavioural data, digital cognitive assessments, longitudinal biomarker studies, and a literature base that grows by thousands of papers per year. No individual — regardless of discipline or intellect — can hold all of it coherently.
+        </p>
+
+        <p>
+          This is not a problem of intelligence. It is a problem of volume. The knowledge required for frontier biomedical research has outpaced the bandwidth of individual researchers, and most institutions respond by building larger teams. Biochemists collaborate with bioinformaticians who collaborate with statisticians who collaborate with neurologists. This works — for large institutions with access to all of those people.
+        </p>
+
+        <div class="art-quote">
+          <p>
+            "The knowledge required for frontier biomedical research has outpaced the bandwidth of individual researchers. LLMs are not the solution to that problem. They are, potentially, a new instrument for navigating it."
+          </p>
+        </div>
+
+        <p>
+          For everyone else, the gap is structural. A small research team working on a novel hypothesis about cognitive decline does not have a bioinformatician on call. It does not have a literature analyst who can surface every relevant study from the last eight years. It runs on the same curiosity that animates all good science, constrained by a fundamental asymmetry in access to analytical capacity.
+        </p>
+
+        <h2>What LLMs Can Actually Do in a Scientific Context</h2>
+
+        <p>
+          The risk of overselling artificial intelligence in medicine is well-documented. Every decade produces its own wave of optimism — expert systems in the 1980s, neural networks in the 2000s — followed by a quieter period of recalibration. The appropriate response to this history is not scepticism about AI in general but precision about which specific capabilities are genuinely novel and which are familiar claims in new clothing.
+        </p>
+
+        <p>
+          With that caution in place: language models exhibit at least three capabilities that have no clear precedent in earlier AI tools, and all three are directly relevant to scientific research.
+        </p>
+
+        <div class="art-callout">
+          <p class="art-callout-label">Three Genuinely Novel Capabilities</p>
+          <p>
+            <strong>1. Cross-domain synthesis.</strong> LLMs can hold and operate across multiple scientific disciplines simultaneously — connecting findings in genetics, neuropsychology, and wearable sensing in ways that previously required a multidisciplinary team.<br><br>
+            <strong>2. Literature navigation at scale.</strong> When integrated with retrieval systems, they can surface, relate, and summarise bodies of literature that would take a human researcher months to review.<br><br>
+            <strong>3. Hypothesis articulation.</strong> They can receive partial observations and suggest formalised hypotheses — not as conclusions, but as structured starting points for experimental design.
+          </p>
+        </div>
+
+        <p>
+          None of these replace human judgement. A language model cannot design a clinical trial with appropriate controls, cannot evaluate the ethical dimensions of an intervention, and cannot catch the smell of something being subtly wrong in the way an experienced scientist can. What they can do is compress the time between a nascent research intuition and a structured, testable proposition.
+        </p>
+
+        <h2>The Democratisation Argument</h2>
+
+        <p>
+          The most important implication of LLMs as research infrastructure may not be what they do for established institutions. It may be what they make possible for small teams.
+        </p>
+
+        <p>
+          A large pharmaceutical company has, among its assets, hundreds of researchers, dedicated bioinformatics units, clinical data management teams, and decades of proprietary knowledge encoded in institutional memory. A two-person research group has a shared interest in a problem and, if they are fortunate, access to a dataset.
+        </p>
+
+        <p>
+          The traditional response to this asymmetry has been academic collaboration — joining forces with university departments, applying for infrastructure grants, or forming consortia. These mechanisms work, but they operate on timescales that are mismatched with the pace at which promising hypotheses need to be either pursued or abandoned.
+        </p>
+
+        <div class="art-quote">
+          <p>
+            "LLMs will not close the resource gap between a startup and a pharmaceutical company. But they may compress a specific kind of gap — the gap between having a good question and being able to think rigorously about it."
+          </p>
+        </div>
+
+        <p>
+          Language models do not solve the funding problem. They do not grant access to cohort data, ethics approvals, or laboratory equipment. But they can provide something that has historically required institutional scale: sustained analytical companionship across disciplines. A small team working on a neurodegenerative disease hypothesis can, with the right tooling, engage with the literature, stress-test assumptions, and iterate on experimental designs in a way that was not previously accessible outside of well-resourced environments.
+        </p>
+
+        <h2>Digital Biomarkers and the Coming Data Wave</h2>
+
+        <p>
+          Nowhere is the need for this kind of infrastructure more acute than in the emerging field of digital biomarkers.
+        </p>
+
+        <p>
+          Traditional biomarkers — blood proteins, imaging findings, genetic variants — are collected at discrete moments: a hospital visit, a scheduled assessment. Digital biomarkers, by contrast, are generated continuously: from smartphone accelerometers, sleep monitors, typing patterns, speech cadence, gait analysis, and any number of other passive sensors that individuals carry or wear in the course of ordinary life. The data they produce is not a snapshot. It is a stream.
+        </p>
+
+        <p>
+          The promise of continuous digital biomarkers is substantial. Neurodegenerative conditions, for instance, may manifest in behavioural and functional signatures years before they appear in clinical presentation. Early detection — meaningful early detection — may depend not on finding a single definitive marker but on identifying patterns in longitudinal multidimensional data that human observation alone is too slow to catch.
+        </p>
+
+        <div class="art-hypothesis">
+          <p class="art-hypothesis-label">Illustrative Example</p>
+          <p>
+            Consider a hypothetical research platform collecting longitudinal digital biomarkers related to cognition, behaviour, and lifestyle in individuals at risk of neurodegenerative disease. Such a platform would generate data at a density and granularity that no clinical team, reviewing case notes at a scheduled appointment, could fully analyse. The analytical infrastructure required to find meaningful signal in that data — to distinguish adaptive behavioural change from compensatory cognitive decline — is precisely the kind of infrastructure that language models, embedded in the right workflow, could help provide.
+          </p>
+        </div>
+
+        <p>
+          This is not science fiction. The architectural questions are real and immediate: What does it mean to build a research pipeline around continuous data? How do you maintain rigour when the variable space is vast and the ground truth is delayed by years? And crucially — how do you do this with a small team?
+        </p>
+
+        <h2>The Question of Model Quality and Specificity</h2>
+
+        <p>
+          It would be convenient to treat all large language models as interchangeable. The evidence suggests otherwise.
+        </p>
+
+        <p>
+          Models differ significantly in their ability to reason about specialised domains, maintain factual accuracy across long contexts, and navigate the specific conventions of scientific literature. A model that performs well on general reasoning benchmarks may behave quite differently when asked to analyse a differential diagnosis or trace the conceptual lineage of a methodological choice in longitudinal study design.
+        </p>
+
+        <p>
+          This matters because the selection of a language model is not merely a procurement decision. It is, in a research context, an epistemological one. A model with well-documented tendencies to confabulate, or one that lacks adequate training data in a specific medical domain, is not simply less useful — it may actively mislead.
+        </p>
+
+        <p>
+          The implication is that researchers need to evaluate models with the same methodological discipline they apply to any other analytical tool. This is not the norm today. It should become one.
+        </p>
+
+        <h2>National AI Ecosystems and Biomedical Research</h2>
+
+        <p>
+          A parallel development deserves attention, though it is less often connected to the scientific research context in which it is most relevant.
+        </p>
+
+        <p>
+          Several countries are investing significantly in developing sovereign language model capabilities — models trained on local language data, aligned to local regulatory and cultural norms, and not dependent on external infrastructure. The stated motivations are primarily economic and strategic: reducing dependence on foreign technology providers, enabling domestic industrial applications, preserving linguistic and cultural heritage in the age of machine-mediated communication.
+        </p>
+
+        <p>
+          These are legitimate motivations. But they have an underappreciated corollary.
+        </p>
+
+        <div class="art-callout">
+          <p class="art-callout-label">An Overlooked Corollary</p>
+          <p>
+            Countries investing in sovereign AI capabilities may unintentionally create a new foundation for scientific research. Locally trained language models with strong multilingual capabilities — particularly in languages historically underrepresented in global scientific publishing — could become strategic assets not only for industry but also for biomedical research conducted in those languages and cultural contexts.
+          </p>
+        </div>
+
+        <p>
+          Clinical research produces documentation in local languages. Patient records, case notes, qualitative interview transcripts, and observational data are often not English-language texts that global models have seen in abundance. A model with genuine competence in Slovak, Czech, Hungarian, or Finnish medical language is not simply a convenience — it is access to a body of evidence that would otherwise remain analytically inaccessible.
+        </p>
+
+        <p>
+          This suggests an opportunity for alignment between national AI infrastructure investments and the needs of biomedical research institutions that may not yet have articulated it clearly. The collaboration between research organisations and teams building language model capabilities is not just commercially interesting. It is, in a specific and meaningful sense, scientifically interesting.
+        </p>
+
+        <h2>The Problem of Trust and Transparency</h2>
+
+        <p>
+          No honest account of LLMs in scientific research can omit the problems. They are real, and in a medical context, they carry consequences.
+        </p>
+
+        <p>
+          Language models produce fluent text. Fluency is not accuracy. A model asked about the neurobiological mechanisms of a rare syndrome may produce a coherent, well-structured, and completely incorrect account — and do so with no visible hesitation. For a researcher who lacks domain expertise in that specific area, the error may not be apparent.
+        </p>
+
+        <p>
+          This is not a reason to avoid language models in research. It is a reason to treat them as instruments rather than authorities. The same logic applies to any analytical tool: statistical software can produce a precisely wrong regression coefficient; imaging analysis algorithms can produce plausible-looking artefacts. The appropriate response is methodological discipline, not abstinence.
+        </p>
+
+        <p>
+          What methodological discipline looks like in the context of LLM use in research is an open question — one that the scientific community has not yet answered systematically. Reasonable starting principles include: verifying specific factual claims independently; being explicit in publications about where AI tools were used and in what capacity; and treating LLM outputs as hypotheses to be tested rather than conclusions to be reported.
+        </p>
+
+        <h2>Human–AI Collaboration as a Research Modality</h2>
+
+        <p>
+          The framing that has dominated public discourse — AI replacing human scientists — is almost certainly wrong in both directions. It overstates what AI can do and understates what experienced human researchers provide.
+        </p>
+
+        <p>
+          The more useful frame is collaboration. Not in the aspirational, diffuse sense in which the word is often used in technology contexts, but in a specific, operational sense: a human researcher who has deep domain expertise and a language model that has broad cross-domain knowledge, working together on a structured problem, each compensating for the limitations of the other.
+        </p>
+
+        <p>
+          This kind of collaboration requires design. It does not happen by simply giving a researcher access to a chat interface. It requires workflows that support it, tools that make the interaction traceable, and norms that govern how AI contributions are distinguished from human contributions in the research record.
+        </p>
+
+        <p>
+          We do not yet have those norms. Building them — before they are urgently needed — is one of the more important tasks facing the scientific community in the immediate term.
+        </p>
+
+        <hr class="art-divider" />
+
+        <div class="art-quote">
+          <p>
+            "The future of medical AI may not belong to the largest models. It may belong to the best collaborations."
+          </p>
+        </div>
+
+        <p>
+          What will distinguish the research teams that use this technology well from those that do not is unlikely to be access to the most capable model. It will be the quality of the judgment surrounding it — the ability to know when to trust, when to verify, when to discard, and when to follow an unexpected output into territory that turns out to be genuinely new.
+        </p>
+
+        <p>
+          That is, in the end, a description of what good scientific thinking has always required. The instrument changes. The thinking does not.
+        </p>
+
+        <hr class="art-divider" />
+
+        <div class="art-references">
+          <h2>Selected References</h2>
+          <ol>
+            <li>
+              Thirunavukarasu, A. J., Ting, D. S. J., Elangovan, K., Gutierrez, L., Tan, T. F., &amp; Ting, D. S. W. (2023). Large language models in medicine. <em>Nature Medicine</em>, 29, 1930–1940. <a href="https://doi.org/10.1038/s41591-023-02448-8" target="_blank" rel="noopener">doi:10.1038/s41591-023-02448-8</a>
+            </li>
+            <li>
+              Moor, M., Banerjee, O., Abad, Z. S. H., Krumholz, H. M., Leskovec, J., Topol, E. J., &amp; Rajpurkar, P. (2023). Foundation models for generalist medical artificial intelligence. <em>Nature</em>, 616, 259–265.
+            </li>
+            <li>
+              Topol, E. J. (2019). High-performance medicine: the convergence of human and artificial intelligence. <em>Nature Medicine</em>, 25, 44–56.
+            </li>
+            <li>
+              Makin, J. G., Moses, D. A., &amp; Chang, E. F. (2020). Machine translation of cortical activity to text with an encoder–decoder framework. <em>Nature Neuroscience</em>, 23, 575–582.
+            </li>
+            <li>
+              Bokura, H., Kobayashi, S., &amp; Yamaguchi, S. (2005). Electrophysiological correlates for response inhibition in patients with mild cognitive impairment. <em>European Journal of Neuroscience</em>, 22(6), 1525–1532.
+            </li>
+            <li>
+              Bhatt, P., &amp; Bhatt, D. L. (2022). Artificial intelligence in cardiology: opportunities and challenges. <em>Nature Reviews Cardiology</em>, 19, 738–740.
+            </li>
+            <li>
+              Wainberg, M., Merico, D., Delong, A., &amp; Frey, B. J. (2018). Deep learning in biomedicine. <em>Nature Biotechnology</em>, 36, 829–838.
+            </li>
+            <li>
+              European Commission. (2023). <em>European AI Act: Regulatory Framework for Artificial Intelligence</em>. Official Journal of the European Union.
+            </li>
+          </ol>
+        </div>
+
+        <div class="art-footer-note">
+          <strong>Disclosure.</strong> This article reflects independent editorial analysis. No external funding was received. The hypothetical platform described in Section IV is illustrative and does not refer to any specific organisation, product, or study. Views expressed are those of the author and do not constitute medical or clinical advice.
+        </div>
+
+        <div class="art-readmore">
+          <h3>Related Research</h3>
+          <div class="art-readmore-links">
+            <a href="../../dynamic-cognitive-reserve/" class="art-readmore-link">
+              <div class="art-readmore-link-icon">🧠</div>
+              <div class="art-readmore-link-text">
+                <strong>The Dynamic Cognitive Reserve Hypothesis</strong>
+                <span>Scientific Hypothesis · NeuroFlex Research</span>
+              </div>
+            </a>
+            <a href="../../multisensory-integration-hypothesis/" class="art-readmore-link">
+              <div class="art-readmore-link-icon">🔬</div>
+              <div class="art-readmore-link-text">
+                <strong>Subclinical Multisensory Integration Decline as an Early Biomarker in Alzheimer's Disease</strong>
+                <span>Scientific Hypothesis · NeuroFlex Research</span>
+              </div>
+            </a>
+            <a href="../../research-programme/" class="art-readmore-link">
+              <div class="art-readmore-link-icon">📋</div>
+              <div class="art-readmore-link-text">
+                <strong>NeuroFlex Research Programme</strong>
+                <span>Overview of active research directions</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+      </article>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p style="margin:0; font-size:0.88rem;">
+      © 2026 NeuroFlex<sup style="font-size:0.6em; color:#FBBF24;">©</sup> · Internal Article · Not for public distribution
+      &ensp;·&ensp;
+      <a href="../../privacy/">Privacy</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
