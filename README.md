@@ -9,7 +9,16 @@ This repository contains only NeuroFlex web content moved from the LifeApps site
 - `/` — main landing page
 - `/mission-statement/` — mission statement
 - `/white-paper/` — research white paper
-- `/behavioral-event-model/` — behavioral event model v1 (unlisted: not in nav, `noindex`; reachable only via direct link)
+- `/behavioral-event-model/` — behavioral event model v1 (unlisted)
+- `/state-of-the-art/` — state of the art & competitive landscape (unlisted)
+- `/grant-landscape/` — grant landscape analysis (unlisted)
+- `/landscape-analysis/` — landscape analysis (unlisted)
+- `/methodological-challenges/` — methodological challenges (unlisted)
+- `/mission-statement/` — mission statement (unlisted)
+- `/research-design/` — research design (unlisted)
+- `/research-programme/` — research programme (unlisted)
+- `/scientific-network/` — scientific network (unlisted)
+- `/dynamic-cognitive-reserve/` — **The Dynamic Cognitive Reserve Hypothesis** — hypothesis paper (unlisted)
 - `/eula/` — EULA placeholder
 
 ## GitHub Pages setup

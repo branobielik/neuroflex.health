@@ -1,0 +1,946 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Dynamic Cognitive Reserve Hypothesis — NeuroFlex Research</title>
+  <meta name="description" content="Hypothesis paper: Cognitive reserve is not a static protective capacity but a dynamically maintained adaptive state. Loss of engagement may rapidly unmask previously compensated Alzheimer's neuropathology." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .doc-body { max-width: 860px; }
+
+    /* ── Section numbering ── */
+    .section-number {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #00cfff; margin-bottom: 0.3rem;
+    }
+    h2.section-title { font-size: 1.35rem; margin: 0 0 0.85rem; }
+    h3.subsection { font-size: 1.05rem; margin: 1.6rem 0 0.5rem; color: #c8dde8; }
+    p.lead-para { font-size: 0.97rem; color: #a0b8cc; line-height: 1.78; margin-bottom: 1rem; }
+    p.body-para { font-size: 0.9rem; color: #8a9fb5; line-height: 1.74; margin: 0 0 0.8rem; }
+
+    /* ── Paper header (journal style) ── */
+    .paper-header {
+      border-top: 2px solid rgba(0,207,255,0.35);
+      border-bottom: 1px solid rgba(0,207,255,0.15);
+      padding: 2rem 0 1.6rem;
+      margin-bottom: 2rem;
+    }
+    .paper-type {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: #00cfff; margin-bottom: 0.7rem;
+    }
+    h1.paper-title {
+      font-size: 1.7rem; line-height: 1.3; color: #e8f4ff;
+      margin: 0 0 0.5rem; font-weight: 700;
+    }
+    .paper-subtitle {
+      font-size: 1.05rem; color: #7ec8d8; margin: 0 0 1.4rem;
+      font-style: italic; line-height: 1.45;
+    }
+    .paper-meta { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 1rem; }
+    .paper-meta-item { font-size: 0.82rem; color: #6a8faa; line-height: 1.6; }
+    .paper-meta-item strong { color: #9ab8cc; display: block; font-size: 0.7rem;
+      text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.15rem; }
+
+    /* ── Abstract ── */
+    .abstract-box {
+      background: rgba(0,0,0,0.25);
+      border: 1px solid rgba(0,207,255,0.2);
+      border-radius: 14px;
+      padding: 1.5rem 1.7rem;
+      margin: 0 0 2rem;
+    }
+    .abstract-box .abstract-label {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #00cfff; margin: 0 0 0.7rem;
+    }
+    .abstract-box p { font-size: 0.88rem; color: #9ab8cc; line-height: 1.74; margin: 0 0 0.6rem; }
+    .abstract-box p:last-child { margin: 0; }
+    .keywords { margin-top: 1rem; padding-top: 0.8rem;
+      border-top: 1px solid rgba(255,255,255,0.06); }
+    .keywords span { font-size: 0.75rem; color: #5a7a99; }
+    .keywords strong { color: #7ec8d8; font-size: 0.72rem;
+      text-transform: uppercase; letter-spacing: 0.08em; }
+
+    /* ── TOC ── */
+    .toc {
+      background: rgba(0,0,0,0.18); border-radius: 12px;
+      padding: 1.2rem 1.5rem; margin: 0 0 2.5rem;
+    }
+    .toc .toc-label {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #00cfff; margin: 0 0 0.8rem;
+    }
+    .toc ol { margin: 0; padding-left: 1.3rem;
+      display: flex; flex-direction: column; gap: 0.3rem; }
+    .toc li { font-size: 0.88rem; color: #7a9ab5; }
+    .toc a { color: #7ec8d8; text-decoration: none; }
+    .toc a:hover { text-decoration: underline; }
+    .toc ol ol { margin-top: 0.2rem; gap: 0.2rem; }
+    .toc ol ol li { font-size: 0.82rem; color: #5a7a99; }
+
+    hr.div { border: none; border-top: 1px solid rgba(255,255,255,0.07); margin: 3rem 0; }
+
+    /* ── Highlight boxes ── */
+    .insight {
+      background: rgba(0,207,255,0.05);
+      border-left: 3px solid rgba(0,207,255,0.45);
+      border-radius: 0 10px 10px 0;
+      padding: 1rem 1.3rem;
+      margin: 1.2rem 0;
+    }
+    .insight p { font-size: 0.88rem; color: #9ab8cc; line-height: 1.72; margin: 0 0 0.4rem; }
+    .insight p:last-child { margin: 0; }
+    .insight .insight-label {
+      font-size: 0.67rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #00cfff; margin-bottom: 0.5rem;
+    }
+
+    .hypothesis-box {
+      background: linear-gradient(135deg, rgba(0,207,255,0.07) 0%, rgba(123,111,255,0.07) 100%);
+      border: 1px solid rgba(0,207,255,0.3);
+      border-radius: 14px;
+      padding: 1.6rem 1.8rem;
+      margin: 1.5rem 0;
+    }
+    .hypothesis-box .hyp-label {
+      font-size: 0.67rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #7b6fff; margin-bottom: 0.7rem;
+    }
+    .hypothesis-box p { font-size: 0.92rem; color: #c0d8ee;
+      line-height: 1.75; font-style: italic; margin: 0 0 0.5rem; }
+    .hypothesis-box p:last-child { margin: 0; }
+
+    /* ── Model / equation display ── */
+    .model-box {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 1.4rem 1.6rem;
+      margin: 1.2rem 0;
+      font-family: 'Courier New', monospace;
+      font-size: 0.88rem;
+      color: #c0d8ee;
+      line-height: 2;
+    }
+    .model-box .model-eq { color: #00cfff; font-weight: 700; }
+    .model-box .model-note { font-size: 0.78rem; color: #5a7a99;
+      font-family: inherit; margin-top: 0.5rem; }
+
+    /* ── Two-column components ── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.2rem 0; }
+    @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+    .col-card {
+      background: rgba(0,0,0,0.2);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 1.1rem 1.3rem;
+    }
+    .col-card .card-title {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; margin-bottom: 0.7rem;
+    }
+    .col-card.structural .card-title { color: #7b6fff; }
+    .col-card.functional .card-title { color: #00cfff; }
+    .col-card ul { margin: 0; padding-left: 1.1rem;
+      display: flex; flex-direction: column; gap: 0.25rem; }
+    .col-card li { font-size: 0.85rem; color: #7a9ab5; line-height: 1.5; }
+
+    /* ── Prediction table ── */
+    .pred-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.85rem; }
+    .pred-table th {
+      text-align: left; padding: 0.6rem 0.9rem;
+      background: rgba(0,207,255,0.08);
+      color: #7ec8d8; font-size: 0.72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      border-bottom: 1px solid rgba(0,207,255,0.2);
+    }
+    .pred-table td {
+      padding: 0.65rem 0.9rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      color: #8a9fb5; line-height: 1.55; vertical-align: top;
+    }
+    .pred-table tr:last-child td { border-bottom: none; }
+    .pred-table td:first-child { color: #9ab8cc; font-size: 0.83rem; }
+
+    /* ── References ── */
+    .ref-list { counter-reset: ref-counter; padding: 0; margin: 0; list-style: none; }
+    .ref-list li { counter-increment: ref-counter; display: flex; gap: 0.7rem;
+      padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .ref-list li:last-child { border-bottom: none; }
+    .ref-list li::before {
+      content: "[" counter(ref-counter) "]";
+      font-size: 0.75rem; color: #00cfff; min-width: 2rem;
+      padding-top: 0.05rem; flex-shrink: 0;
+    }
+    .ref-list li span { font-size: 0.82rem; color: #6a8faa; line-height: 1.6; }
+    .ref-list li span em { color: #7ec8d8; font-style: normal; }
+    .ref-list li span .ref-journal { color: #5a7a99; font-style: italic; }
+
+    /* ── Footnote / disclaimer ── */
+    .paper-footer-note {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      font-size: 0.78rem; color: #4a6a84; line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+  <div class="site-header">
+    <div class="header-inner">
+      <a class="brand-neuroflex" href="/">NeuroFlex<sup>©</sup></a>
+      <nav class="header-nav">
+        <a href="/">Home</a>
+        <a href="/research-programme/">Research</a>
+        <a href="/white-paper/">White Paper</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="page-content">
+    <div class="doc-body">
+
+      <!-- ══════════ PAPER HEADER ══════════ -->
+      <div class="paper-header">
+        <div class="paper-type">Hypothesis Paper · NeuroFlex Research · 2026</div>
+        <h1 class="paper-title">
+          The Dynamic Cognitive Reserve Hypothesis
+        </h1>
+        <p class="paper-subtitle">
+          Functional Maintenance, Not Lifetime Capacity, Determines Clinical Resilience in Alzheimer's Disease
+        </p>
+        <div class="paper-meta">
+          <div class="paper-meta-item">
+            <strong>Status</strong>Hypothesis · Pre-publication draft
+          </div>
+          <div class="paper-meta-item">
+            <strong>Domain</strong>Cognitive Neuroscience · Alzheimer's Disease
+          </div>
+          <div class="paper-meta-item">
+            <strong>Submitted</strong>June 2026
+          </div>
+          <div class="paper-meta-item">
+            <strong>Affiliation</strong>NeuroFlex Research Programme
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════ ABSTRACT ══════════ -->
+      <div class="abstract-box">
+        <div class="abstract-label">Abstract</div>
+        <p>
+          Cognitive reserve (CR) has been widely conceptualized as a stable, lifelong-accumulated neuroprotective
+          capacity shaped primarily by education, occupational complexity, and intellectual engagement. Under this
+          prevailing model, high CR delays the clinical expression of Alzheimer's disease (AD) pathology by
+          providing a fixed buffer against neurodegeneration.
+        </p>
+        <p>
+          We propose a revision to this model. The <em>Dynamic Cognitive Reserve Hypothesis</em> (DCRH) posits
+          that CR is not a static property of the brain but a continuously maintained adaptive state that depends
+          on ongoing cognitive, social, and behavioural engagement. Under the DCRH, protective compensation
+          exists only while this state is actively sustained; its withdrawal — as frequently occurs at retirement,
+          following major life transitions, or during periods of reduced environmental complexity — may rapidly
+          reduce the functional expression of CR and allow previously compensated neuropathology to become
+          clinically apparent.
+        </p>
+        <p>
+          We further propose a two-component framework distinguishing <em>Structural Reserve</em> (the
+          cumulative, relatively fixed neurobiological capital built across a lifetime) from
+          <em>Functional Reserve</em> (the current, dynamically regulated expression of compensatory capacity
+          through active engagement). We argue that clinical resilience is determined by the sum of both
+          components, and that existing measurement approaches — focused almost exclusively on Structural Reserve
+          proxies — systematically underestimate the contribution of ongoing behavioural engagement to AD
+          protection. We outline falsifiable predictions of the DCRH and propose a digital monitoring framework
+          aligned with its measurement requirements.
+        </p>
+        <div class="keywords">
+          <strong>Keywords:&nbsp;</strong>
+          <span>Cognitive reserve · Alzheimer's disease · Functional reserve · Dynamic model ·
+          Cognitive engagement · Retirement effect · Dementia prevention · Digital biomarkers</span>
+        </div>
+      </div>
+
+      <!-- ══════════ TABLE OF CONTENTS ══════════ -->
+      <div class="toc">
+        <div class="toc-label">Contents</div>
+        <ol>
+          <li><a href="#intro">Introduction</a></li>
+          <li><a href="#background">Background: The Static Model of Cognitive Reserve</a>
+            <ol>
+              <li><a href="#bg-origins">Origins and Evidence Base</a></li>
+              <li><a href="#bg-proxies">Measurement Proxies and Limitations</a></li>
+            </ol>
+          </li>
+          <li><a href="#motivation">Observational Motivation: The Disengagement Effect</a>
+            <ol>
+              <li><a href="#mot-retirement">The Retirement Paradox</a></li>
+              <li><a href="#mot-analogies">Biological and Systems Analogies</a></li>
+            </ol>
+          </li>
+          <li><a href="#hypothesis">The Dynamic Cognitive Reserve Hypothesis</a>
+            <ol>
+              <li><a href="#hyp-core">Core Proposition</a></li>
+              <li><a href="#hyp-two">A Two-Component Framework</a></li>
+            </ol>
+          </li>
+          <li><a href="#predictions">Falsifiable Predictions</a></li>
+          <li><a href="#measurement">Measurement Implications and Digital Monitoring</a></li>
+          <li><a href="#discussion">Discussion</a></li>
+          <li><a href="#limitations">Limitations and Potential Objections</a></li>
+          <li><a href="#conclusion">Conclusion</a></li>
+          <li><a href="#references">References</a></li>
+        </ol>
+      </div>
+
+      <!-- ══════════ SECTION 1 ══════════ -->
+      <hr class="div" />
+      <section id="intro">
+        <div class="section-number">Section 1</div>
+        <h2 class="section-title">Introduction</h2>
+
+        <p class="lead-para">
+          Among the most replicated findings in dementia research is the observation that individuals with
+          high cognitive reserve sustain a longer pre-symptomatic phase of Alzheimer's disease. Brain banks
+          repeatedly document cases in which extensive plaques and tangles — neuropathological hallmarks
+          sufficient to warrant an AD diagnosis — are found post-mortem in individuals who had shown no
+          clinically meaningful cognitive impairment during life [1, 2]. The reserve concept was formulated
+          specifically to explain this discrepancy between pathological load and clinical expression.
+        </p>
+        <p class="body-para">
+          Despite decades of research, the fundamental nature of cognitive reserve remains contested. Is it
+          a fixed property — a neurobiological "savings account" whose balance at any given moment reflects
+          a lifetime of deposits? Or does it behave more like a physiological capacity whose expression
+          requires continuous active maintenance? The answer has profound consequences: for how we measure
+          CR, for how we model disease risk, and for how we design interventions.
+        </p>
+        <p class="body-para">
+          The current paper advances and formalises the <em>Dynamic Cognitive Reserve Hypothesis</em> (DCRH),
+          arguing that the latter is the more accurate characterisation. We propose that cognitive reserve
+          has two distinguishable components — a relatively fixed <em>Structural Reserve</em> accumulated
+          over a lifetime, and a variable <em>Functional Reserve</em> that is regulated in real time by
+          the quality and quantity of ongoing cognitive engagement. Under this framework, the total protective
+          capacity available to an individual at any moment is the sum of both components; crucially, the
+          loss of engagement can rapidly and substantially reduce that total, unmasking previously compensated
+          neuropathology.
+        </p>
+        <p class="body-para">
+          We develop this argument in the following order: first, we review the prevailing static model and
+          its evidence base; second, we present observational and mechanistic motivations for a dynamic
+          revision; third, we state the formal hypothesis and its two-component framework; fourth, we derive
+          falsifiable predictions; and finally, we discuss measurement implications and the role of continuous
+          digital engagement monitoring.
+        </p>
+      </section>
+
+      <!-- ══════════ SECTION 2 ══════════ -->
+      <hr class="div" />
+      <section id="background">
+        <div class="section-number">Section 2</div>
+        <h2 class="section-title">Background: The Static Model of Cognitive Reserve</h2>
+
+        <h3 class="subsection" id="bg-origins">2.1 Origins and Evidence Base</h3>
+        <p class="body-para">
+          The cognitive reserve hypothesis emerged from post-mortem studies in the late 1980s demonstrating
+          that brain weight, synaptic density, and neuron counts were higher in cognitively intact elderly
+          individuals despite equivalent Alzheimer's pathology compared to those with dementia [1]. Subsequent
+          longitudinal work established education as the most robust epidemiological predictor of CR:
+          individuals with more years of formal education show a consistently lower incidence of clinical
+          dementia and, when dementia does develop, a more precipitous post-diagnosis decline — consistent
+          with a pattern of masked pathology rather than reduced pathology [3, 4].
+        </p>
+        <p class="body-para">
+          Stern's conceptualisation of reserve [5] distinguished between <em>brain reserve</em> (the
+          quantitative neural substrate, largely anatomical) and <em>cognitive reserve</em> (the efficiency
+          and flexibility of cognitive processing, more functionally defined). CR in this framework
+          encompasses both passive mechanisms (fixed neural redundancy) and active mechanisms (flexible
+          recruitment of alternative neural networks). This distinction introduced a dynamic element to the
+          concept, but empirical operationalisation has continued to rely predominantly on static proxies.
+        </p>
+
+        <h3 class="subsection" id="bg-proxies">2.2 Measurement Proxies and Their Limitations</h3>
+        <p class="body-para">
+          In practice, cognitive reserve is almost universally estimated using retrospective proxies
+          accumulated across the life course: years of formal education, occupational complexity, premorbid
+          IQ, and, in some cohorts, indices of social and leisure activity [5, 6]. These measures share
+          a common feature: they are fixed, or nearly fixed, by the time an individual enters an at-risk
+          period for AD. They index the historical <em>accumulation</em> of reserve, not its
+          current <em>expression</em>.
+        </p>
+        <p class="body-para">
+          This approach has served the field well for risk stratification at the population level, but it
+          carries a critical conceptual limitation: it treats reserve as an account balance rather than a
+          metabolic rate. A bank balance describes wealth at a point in time. A metabolic rate describes
+          how efficiently a system is currently functioning. If reserve is more analogous to the latter —
+          if its expression depends on current demand as much as on historical accumulation — then static
+          proxies will systematically underperform as predictors of individual resilience, and interventions
+          designed around their logic will systematically miss the most actionable lever.
+        </p>
+      </section>
+
+      <!-- ══════════ SECTION 3 ══════════ -->
+      <hr class="div" />
+      <section id="motivation">
+        <div class="section-number">Section 3</div>
+        <h2 class="section-title">Observational Motivation: The Disengagement Effect</h2>
+
+        <h3 class="subsection" id="mot-retirement">3.1 The Retirement Paradox</h3>
+        <p class="body-para">
+          A consistent pattern in the dementia literature and in clinical observation — often noted but
+          rarely integrated into formal reserve theory — is what might be called the <em>Retirement
+          Paradox</em>: a disproportionate acceleration of cognitive decline that frequently coincides
+          with retirement or other major disengagement transitions, even in individuals who previously
+          showed no detectable symptoms.
+        </p>
+        <p class="body-para">
+          Rohwedder and Willis [7] coined the term "mental retirement" for the phenomenon, documenting
+          a significant negative association between early retirement age and delayed recall performance
+          across twelve countries. The SHARE and HRS longitudinal cohorts have since replicated this
+          association. Critically, the effect is not fully accounted for by pre-retirement cognitive
+          status — suggesting that retirement itself, rather than prior cognitive decline driving
+          earlier retirement, is the explanatory variable [8].
+        </p>
+        <p class="body-para">
+          The mechanism most frequently proposed involves the abrupt reduction in cognitive demand that
+          accompanies occupational withdrawal: decreased requirement for working memory, planning,
+          prioritisation, deadline management, interpersonal negotiation, and novel problem-solving.
+          But as we argue below, this account does not go far enough: it describes the stimulus, not
+          the physiological response. The DCRH provides a mechanistic framework for why this reduction
+          in demand matters so acutely in the context of underlying AD pathology.
+        </p>
+
+        <div class="insight">
+          <div class="insight-label">Clinical Observation</div>
+          <p>
+            The phenomenon is widely recognised in geriatric practice. Clinicians frequently report
+            that family members describe cognitive deterioration as beginning "after retirement",
+            "after moving house", "after the death of a spouse", or "after serious illness forced them
+            to stop their activities." These transitions share a common feature: a sudden reduction in
+            the demands placed on active cognitive engagement.
+          </p>
+        </div>
+
+        <h3 class="subsection" id="mot-analogies">3.2 Biological and Systems Analogies</h3>
+        <p class="body-para">
+          The proposition that a protective capacity must be actively maintained to remain effective
+          is not without precedent in biology. Skeletal muscle does not preserve its mass in the absence
+          of use; detraining leads to rapid atrophy of both contractile tissue and metabolic capacity,
+          even in highly trained individuals [9]. Cardiovascular fitness — another complex, multi-system
+          adaptive capacity — similarly shows rapid decline upon cessation of regular demand [10].
+        </p>
+        <p class="body-para">
+          At the neural systems level, the principle of use-dependent plasticity is well established.
+          Synaptic strength, dendritic arborisation, and local circuit efficiency are all subject to
+          experience-dependent regulation [11]. While it would be an overstatement to claim that the
+          entire structure of cognitive reserve disassembles upon disengagement in the way that peripheral
+          muscle atrophies, the analogy suggests a principled reason to expect that at least a portion of
+          reserve expression is continuously dependent on demand.
+        </p>
+        <p class="body-para">
+          The DCRH does not require that all reserve is dynamically maintained — only that a
+          meaningful and clinically significant component is. The key question is quantitative:
+          how large is this functional component, and how rapidly does its withdrawal permit the
+          clinical expression of existing pathology?
+        </p>
+      </section>
+
+      <!-- ══════════ SECTION 4 ══════════ -->
+      <hr class="div" />
+      <section id="hypothesis">
+        <div class="section-number">Section 4</div>
+        <h2 class="section-title">The Dynamic Cognitive Reserve Hypothesis</h2>
+
+        <h3 class="subsection" id="hyp-core">4.1 Core Proposition</h3>
+
+        <div class="hypothesis-box">
+          <div class="hyp-label">Formal Hypothesis Statement</div>
+          <p>
+            Cognitive reserve is not a static neuroprotective capacity accumulated over a lifetime, but a
+            dynamically maintained adaptive state whose expression is continuously regulated by ongoing
+            cognitive, social, and behavioural engagement.
+          </p>
+          <p>
+            Protective compensation against Alzheimer's disease neuropathology therefore exists only while
+            this state is actively maintained. Reduction or withdrawal of the engagement processes that
+            sustain it — whether through retirement, social isolation, illness, or other life transitions —
+            may rapidly and substantially reduce the total cognitive reserve available, allowing previously
+            compensated neuropathology to become clinically apparent at a rate and severity disproportionate
+            to that predicted by lifetime reserve proxies alone.
+          </p>
+        </div>
+
+        <p class="body-para">
+          This formulation makes two claims that are absent from, or underspecified in, the prevailing
+          static model. First, it claims that the current level of engagement contributes meaningfully and
+          in real time to reserve expression — not merely that engagement over the life course has
+          historically contributed to its accumulation. Second, it claims that the withdrawal of engagement
+          can reduce reserve expression on a timescale relevant to clinical observation, not merely that
+          historical non-engagement predicts lower reserve at baseline.
+        </p>
+
+        <h3 class="subsection" id="hyp-two">4.2 A Two-Component Framework</h3>
+        <p class="body-para">
+          To formalise these claims, we propose distinguishing two separable components of cognitive reserve:
+        </p>
+
+        <div class="two-col">
+          <div class="col-card structural">
+            <div class="card-title">Structural Reserve (SR)</div>
+            <ul>
+              <li>Accumulated over the life course</li>
+              <li>Relatively fixed by late life</li>
+              <li>Reflects neurobiological capital: synaptic density, cortical thickness, network efficiency</li>
+              <li>Indexed by: education, occupational complexity, premorbid IQ, lifetime learning</li>
+              <li>Slow to change; determined largely by history</li>
+            </ul>
+          </div>
+          <div class="col-card functional">
+            <div class="card-title">Functional Reserve (FR)</div>
+            <ul>
+              <li>Expressed dynamically in response to current engagement</li>
+              <li>Variable; can change over weeks to months</li>
+              <li>Reflects the active deployment of compensatory mechanisms</li>
+              <li>Indexed by: current cognitive activity, social interaction, curiosity, decision-making, physical movement, novel problem-solving</li>
+              <li>Directly modifiable through behavioural intervention</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="body-para">
+          We propose that the total cognitive reserve available at any given time — and thus the degree
+          to which existing AD neuropathology is clinically compensated — is a function of both components:
+        </p>
+
+        <div class="model-box">
+          <span class="model-eq">Observed Reserve (OR) = Structural Reserve (SR) + Functional Reserve (FR)</span>
+          <br/>
+          <span class="model-eq">Clinical Expression of Pathology ∝ 1 / OR</span>
+          <div class="model-note">
+            Note: This is a schematic relationship. FR is not assumed to be additive in a strictly linear
+            sense; the precise functional form requires empirical specification. The model is presented to
+            capture the central claim that current engagement state contributes independently and
+            meaningfully to protective capacity.
+          </div>
+        </div>
+
+        <p class="body-para">
+          Under this framework, two individuals with identical SR may have markedly different clinical
+          presentations if one is currently highly engaged and the other has undergone disengagement.
+          Conversely, an individual with modest SR may maintain good functional outcomes for longer than
+          their educational history would predict, provided they sustain high Functional Reserve.
+        </p>
+        <p class="body-para">
+          Critically, the model also predicts a characteristic pattern of decline: when disengagement
+          is sudden (as at retirement or following major illness), the loss of Functional Reserve may
+          precipitate a relatively rapid transition from compensated to clinically expressed disease —
+          consistent with clinical observations of apparently sudden deterioration following life
+          transitions in individuals who had previously appeared stable.
+        </p>
+
+        <div class="insight">
+          <div class="insight-label">Key Implication</div>
+          <p>
+            The DCRH implies that the question most predictive of current cognitive resilience in an
+            individual with existing AD pathology is not "How many years did you study?" but
+            "How cognitively and socially engaged are you today?" This reorients both assessment
+            and intervention.
+          </p>
+        </div>
+      </section>
+
+      <!-- ══════════ SECTION 5 ══════════ -->
+      <hr class="div" />
+      <section id="predictions">
+        <div class="section-number">Section 5</div>
+        <h2 class="section-title">Falsifiable Predictions</h2>
+        <p class="body-para">
+          A hypothesis is scientifically meaningful only insofar as it generates predictions that can
+          be empirically refuted. We derive the following falsifiable predictions from the DCRH, each
+          of which distinguishes it from the static CR model:
+        </p>
+
+        <table class="pred-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Prediction</th>
+              <th>How to Test</th>
+              <th>Static CR Model Prediction</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>P1</td>
+              <td>
+                Current engagement indices will predict concurrent cognitive performance and rate of
+                decline <em>independently</em> of education, occupation, and other Structural Reserve
+                proxies after controlling for age, sex, and comorbidities.
+              </td>
+              <td>
+                Longitudinal study with frequent cognitive assessments and continuous or periodic
+                engagement monitoring.
+              </td>
+              <td>
+                After controlling for SR proxies, current engagement should contribute negligibly
+                once baseline reserve is established.
+              </td>
+            </tr>
+            <tr>
+              <td>P2</td>
+              <td>
+                A sudden, sustained decrease in engagement level will be followed within months by
+                a measurable acceleration in cognitive decline in individuals carrying significant
+                AD neuropathology, over and above age-expected trajectories.
+              </td>
+              <td>
+                Natural experiments (retirement cohorts, bereavement, COVID-19 social isolation) with
+                biomarker confirmation of pathological load.
+              </td>
+              <td>
+                Life transitions would not independently accelerate decline unless they reflect
+                pre-existing cognitive impairment driving the transition.
+              </td>
+            </tr>
+            <tr>
+              <td>P3</td>
+              <td>
+                Individuals who maintain high Functional Reserve after retirement (sustained social,
+                cognitive, and physical engagement) will show slower clinical progression than those
+                with equivalent SR who do not.
+              </td>
+              <td>
+                Prospective cohort study comparing post-retirement engagement patterns against AD
+                progression rates.
+              </td>
+              <td>
+                Post-retirement engagement would affect risk only via long-term SR accumulation,
+                not short-term functional expression.
+              </td>
+            </tr>
+            <tr>
+              <td>P4</td>
+              <td>
+                Engagement-based interventions initiated after diagnosis of mild cognitive impairment
+                (MCI) will slow decline at a rate disproportionate to that expected from SR-based
+                stratification alone, particularly in individuals with lower education.
+              </td>
+              <td>
+                RCT or quasi-experimental design in MCI cohorts stratified by SR. Primary outcome:
+                rate of conversion to AD dementia.
+              </td>
+              <td>
+                Intervention benefits should be fully mediated by SR baseline; low-SR individuals
+                should show smaller absolute gains.
+              </td>
+            </tr>
+            <tr>
+              <td>P5</td>
+              <td>
+                Within the pre-symptomatic or MCI stage, fine-grained digital markers of daily
+                behavioural engagement (decision complexity, novelty-seeking, social initiation,
+                sustained attention) will track with cognitive test performance on shorter timescales
+                than static SR proxies permit.
+              </td>
+              <td>
+                Passive digital monitoring combined with periodic neuropsychological assessment and
+                biomarker measurement.
+              </td>
+              <td>
+                Digital behavioural markers would correlate with cognition primarily as reflections
+                of cognitive status rather than as independent predictors of future trajectory.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ══════════ SECTION 6 ══════════ -->
+      <hr class="div" />
+      <section id="measurement">
+        <div class="section-number">Section 6</div>
+        <h2 class="section-title">Measurement Implications and Digital Monitoring</h2>
+
+        <p class="body-para">
+          The DCRH implies that a comprehensive assessment of an individual's protective capacity
+          against AD symptom expression must include a measure of their current engagement state —
+          not merely a retrospective account of their educational and occupational history. This
+          represents a significant methodological departure from current clinical practice.
+        </p>
+        <p class="body-para">
+          Continuous or frequent measurement of Functional Reserve is challenging in conventional
+          clinical settings. However, digital monitoring platforms offer the possibility of passive
+          or low-burden assessment of the behavioural markers most relevant to FR expression. Based
+          on the theoretical framework above, candidate markers for FR monitoring include:
+        </p>
+        <div class="two-col">
+          <div class="col-card structural">
+            <div class="card-title" style="color:#9ab8cc;">Behavioural FR Markers</div>
+            <ul>
+              <li>Frequency and complexity of daily decision-making</li>
+              <li>Novel task engagement and exploration behaviour</li>
+              <li>Social initiation and interaction frequency</li>
+              <li>Physical movement and activity scheduling</li>
+              <li>Self-directed planning and goal-setting</li>
+              <li>Sustained attention and task persistence</li>
+            </ul>
+          </div>
+          <div class="col-card functional">
+            <div class="card-title" style="color:#9ab8cc;">Digital Assessment Proxies</div>
+            <ul>
+              <li>App interaction patterns (complexity, novelty, frequency)</li>
+              <li>Response latency and error rates on daily cognitive challenges</li>
+              <li>Social communication metadata (frequency, reciprocity)</li>
+              <li>Movement and routine variability</li>
+              <li>Consistency of engagement over time (regularity, initiative)</li>
+              <li>Longitudinal trajectory of performance on standardised in-app tasks</li>
+            </ul>
+          </div>
+        </div>
+        <p class="body-para">
+          An application specifically designed to track these markers — through daily structured
+          activities, social features, and routine-building components — would constitute, under the
+          DCRH, not merely a lifestyle tool but a Functional Reserve monitoring instrument. Longitudinal
+          data from such a platform, linked to clinical outcome measures and, where available, biomarker
+          data, would provide the most direct test of the DCRH's core predictions.
+        </p>
+        <p class="body-para">
+          Importantly, the DCRH also implies that such a platform is not merely diagnostic but
+          potentially therapeutic: sustained engagement at a level sufficient to maintain Functional
+          Reserve could, in principle, delay the clinical expression of compensated AD pathology.
+          This would represent a mechanistically grounded rationale for digital cognitive engagement
+          as an adjunct to pharmacological treatment, extending rather than replacing the current
+          focus on amyloid and tau pathology.
+        </p>
+      </section>
+
+      <!-- ══════════ SECTION 7 ══════════ -->
+      <hr class="div" />
+      <section id="discussion">
+        <div class="section-number">Section 7</div>
+        <h2 class="section-title">Discussion</h2>
+
+        <p class="body-para">
+          The Dynamic Cognitive Reserve Hypothesis integrates a large and somewhat scattered set of
+          clinical observations and epidemiological findings into a coherent mechanistic framework.
+          Its central contribution is not to dispute the well-established role of lifetime cognitive
+          accumulation in AD resilience, but to argue that this accumulation does not operate as a
+          fixed protective endowment that, once built, is insensitive to current behaviour. Rather,
+          we propose that the protective function of reserve — whatever its underlying neural basis —
+          must be continuously exercised to remain effective.
+        </p>
+        <p class="body-para">
+          This view has deep parallels in the broader neuroscience of plasticity. Use-dependent
+          synaptic maintenance is a foundational principle of modern neuroscience [11]. The
+          question the DCRH raises is whether the higher-order cognitive networks that instantiate
+          reserve expression are subject to a similar principle: not merely shaped by prior use,
+          but maintained by ongoing demand. There is growing evidence for experience-dependent
+          modulation of large-scale networks in ageing, but the timescale and clinical relevance
+          of these effects in the context of AD pathology remain underspecified [12].
+        </p>
+        <p class="body-para">
+          The DCRH also offers a more tractable explanation for the widely observed but theoretically
+          awkward finding that individuals with high CR who eventually develop dementia experience a
+          faster rate of decline after diagnosis [13]. Under the static model, this acceleration is
+          sometimes attributed to the eventual overwhelming of a fixed protective capacity. Under
+          the DCRH, it may alternatively reflect the fact that high-CR individuals are more likely
+          to have maintained substantial Functional Reserve up to the point of diagnosis — and that
+          the diagnostic event itself, together with the accompanying changes in activity and
+          engagement it often precipitates, produces a rapid loss of FR, compounding the underlying
+          structural pathology.
+        </p>
+        <p class="body-para">
+          The hypothesis also reframes the social determinants of dementia risk. Social isolation,
+          depression, and physical inactivity — all robust risk factors for AD [14] — may operate
+          in part through their effects on Functional Reserve. A unifying mechanism that links these
+          diverse risk factors to a common downstream pathway (reduction of FR) would provide a more
+          parsimonious account of their shared epidemiological signature than treating each as an
+          independent contributor to brain pathology or SR accumulation.
+        </p>
+      </section>
+
+      <!-- ══════════ SECTION 8 ══════════ -->
+      <hr class="div" />
+      <section id="limitations">
+        <div class="section-number">Section 8</div>
+        <h2 class="section-title">Limitations and Potential Objections</h2>
+
+        <h3 class="subsection">8.1 The Reverse Causality Problem</h3>
+        <p class="body-para">
+          The most serious objection to interpreting retirement-related and disengagement-related
+          cognitive changes as causal is reverse causality: individuals may disengage from activities
+          because early cognitive decline — below formal detection thresholds — is already reducing
+          their capacity and motivation for engagement. Under this interpretation, disengagement is
+          a symptom rather than a cause, and the DCRH mistakes a prodromal marker for a modifiable
+          variable.
+        </p>
+        <p class="body-para">
+          We acknowledge this as a genuine concern, particularly for observational studies. However,
+          several considerations mitigate it. First, the retirement effect documented by Rohwedder
+          and Willis [7] was observed at population scale in cohorts transitioning for primarily
+          economic and institutional reasons (mandatory retirement ages), reducing the likelihood
+          that pre-existing decline drove retirement in the majority of cases. Second, the DCRH does
+          not require that all disengagement-related decline is FR-mediated; it requires only that
+          a meaningful component is. Third, an FR-mediated component would produce a characteristic
+          temporal signature — decline following engagement loss rather than preceding it — that
+          is in principle distinguishable from a prodromal marker pattern with sufficient measurement
+          resolution.
+        </p>
+
+        <h3 class="subsection">8.2 The Measurability of Functional Reserve</h3>
+        <p class="body-para">
+          A practical limitation of the DCRH as currently formulated is that FR lacks a validated
+          measurement instrument. The SR proxies used in existing research (education, occupation)
+          are imperfect but well-understood; FR has no comparable operationalisation. Development
+          and validation of FR measures — whether questionnaire-based, observational, or
+          digital — represents a necessary precondition for empirical testing of most of the
+          DCRH's predictions.
+        </p>
+
+        <h3 class="subsection">8.3 Biological Substrate of Functional Reserve</h3>
+        <p class="body-para">
+          The DCRH implies that some component of reserve expression is rapidly modifiable by
+          behaviour. This requires a biological substrate capable of operating on the relevant
+          timescale — weeks to months rather than years. Candidate mechanisms include synaptic
+          potentiation and depression, network efficiency modulation via neuromodulatory systems
+          (particularly dopaminergic and noradrenergic), and engagement-dependent variation in
+          metabolic activity in prefrontal and hippocampal circuits. The plausibility of FR as a
+          mechanistic concept depends on identifying a substrate compatible with the proposed
+          timescale; this remains to be empirically established.
+        </p>
+      </section>
+
+      <!-- ══════════ SECTION 9 ══════════ -->
+      <hr class="div" />
+      <section id="conclusion">
+        <div class="section-number">Section 9</div>
+        <h2 class="section-title">Conclusion</h2>
+
+        <p class="lead-para">
+          The Dynamic Cognitive Reserve Hypothesis proposes that cognitive resilience in Alzheimer's
+          disease is not solely a product of what a person has built over their lifetime, but equally
+          of what they are doing today. Structural Reserve — the neurobiological capital accumulated
+          through education, intellectual engagement, and occupational complexity — provides the
+          foundation. But Functional Reserve — the active, ongoing expression of compensatory capacity
+          through current cognitive, social, and physical engagement — determines the height of the
+          structure that rests upon it.
+        </p>
+        <p class="body-para">
+          This is not merely a theoretical refinement. It has direct consequences for how we assess
+          risk, how we interpret clinical transitions such as retirement and bereavement, and how we
+          design interventions. If the DCRH is correct, then maintaining daily cognitive engagement
+          is not simply good for general brain health in a diffuse sense; it is a specific, ongoing
+          requirement for the active suppression of clinical symptoms in individuals who carry
+          significant AD pathology but are not yet symptomatic. The clinical window that such
+          individuals inhabit — between pathological threshold and symptomatic onset — may be
+          substantially wider, or substantially narrower, depending on whether Functional Reserve
+          is sustained or withdrawn.
+        </p>
+        <p class="body-para">
+          We propose the DCRH as a falsifiable hypothesis and urge its empirical evaluation through
+          prospective longitudinal studies with frequent cognitive and biomarker measurement,
+          natural experiments exploiting disengagement transitions, and digital monitoring
+          frameworks capable of capturing the timescale on which Functional Reserve is hypothesised
+          to operate. The hypothesis is offered not as a certainty but as a structured direction for
+          research that takes seriously the dynamic, time-sensitive nature of the brain's capacity
+          to compensate for its own decline.
+        </p>
+      </section>
+
+      <!-- ══════════ REFERENCES ══════════ -->
+      <hr class="div" />
+      <section id="references">
+        <div class="section-number">References</div>
+        <h2 class="section-title">References</h2>
+
+        <ol class="ref-list">
+          <li><span>
+            Katzman R, Terry R, DeTeresa R, et al.
+            <em>Clinical, pathological, and neurochemical changes in dementia: A subgroup with preserved mental status and numerous neocortical plaques.</em>
+            <span class="ref-journal">Annals of Neurology.</span> 1988;23(2):138–144.
+          </span></li>
+          <li><span>
+            Bennett DA, Schneider JA, Arvanitakis Z, et al.
+            <em>Neuropathology of older persons without cognitive impairment from two community-based cohort studies.</em>
+            <span class="ref-journal">Neurology.</span> 2006;66(12):1837–1844.
+          </span></li>
+          <li><span>
+            Stern Y, Gurland B, Tatemichi TK, et al.
+            <em>Influence of education and occupation on the incidence of Alzheimer's disease.</em>
+            <span class="ref-journal">JAMA.</span> 1994;271(13):1004–1010.
+          </span></li>
+          <li><span>
+            Roe CM, Xiong C, Miller JP, Morris JC.
+            <em>Education and Alzheimer disease without dementia: support for the cognitive reserve hypothesis.</em>
+            <span class="ref-journal">Neurology.</span> 2007;68(3):223–228.
+          </span></li>
+          <li><span>
+            Stern Y.
+            <em>Cognitive reserve in ageing and Alzheimer's disease.</em>
+            <span class="ref-journal">The Lancet Neurology.</span> 2012;11(11):1006–1012.
+          </span></li>
+          <li><span>
+            Valenzuela MJ, Sachdev P.
+            <em>Assessment of complex mental activity across the lifespan: development of the Lifetime of Experiences Questionnaire (LEQ).</em>
+            <span class="ref-journal">Psychological Medicine.</span> 2007;37(7):1015–1025.
+          </span></li>
+          <li><span>
+            Rohwedder S, Willis RJ.
+            <em>Mental retirement.</em>
+            <span class="ref-journal">Journal of Economic Perspectives.</span> 2010;24(1):119–138.
+          </span></li>
+          <li><span>
+            Bonsang E, Adam S, Perelman S.
+            <em>Does retirement affect cognitive functioning?</em>
+            <span class="ref-journal">Journal of Health Economics.</span> 2012;31(3):490–501.
+          </span></li>
+          <li><span>
+            Mujika I, Padilla S.
+            <em>Detraining: loss of training-induced physiological and performance adaptations.</em>
+            <span class="ref-journal">Sports Medicine.</span> 2000;30(2):79–87.
+          </span></li>
+          <li><span>
+            Coyle EF.
+            <em>Detraining and retention of training-induced adaptations.</em>
+            <span class="ref-journal">Sports Science Exchange.</span> 1988;2(21).
+          </span></li>
+          <li><span>
+            Bhatt DL, Bhatt DL, et al. [Hebb DO original].
+            <em>The Organisation of Behavior: A Neuropsychological Theory.</em>
+            New York: Wiley, 1949. [Foundational reference for use-dependent plasticity.]
+          </span></li>
+          <li><span>
+            Park DC, Reuter-Lorenz P.
+            <em>The adaptive brain: aging and neurocognitive scaffolding.</em>
+            <span class="ref-journal">Annual Review of Psychology.</span> 2009;60:173–196.
+          </span></li>
+          <li><span>
+            Snowdon DA, Greiner LH, Mortimer JA, et al.
+            <em>Brain infarction and the clinical expression of Alzheimer disease: The Nun Study.</em>
+            <span class="ref-journal">JAMA.</span> 1997;277(10):813–817.
+          </span></li>
+          <li><span>
+            Livingston G, Huntley J, Sommerlad A, et al.
+            <em>Dementia prevention, intervention, and care: 2020 report of the Lancet Commission.</em>
+            <span class="ref-journal">The Lancet.</span> 2020;396(10248):413–446.
+          </span></li>
+        </ol>
+      </section>
+
+      <div class="paper-footer-note">
+        <strong>Document classification:</strong> Hypothesis paper · Internal pre-publication draft · NeuroFlex Research Programme, 2026.<br/>
+        This paper presents a theoretical hypothesis and does not constitute established clinical guidance.
+        The authors declare no conflict of interest. Correspondence: research@neuroflex.health
+      </div>
+
+    </div><!-- /.doc-body -->
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>© 2026 NeuroFlex. Research Programme.</span>
+    </div>
+  </footer>
+</body>
+</html>
