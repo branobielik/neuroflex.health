@@ -246,49 +246,39 @@
     }
   </style>
 </head>
-<body>
-  <div class="site-header">
-    <div class="header-inner">
-      <a class="brand-neuroflex" href="/">NeuroFlex<sup>©</sup></a>
-      <nav class="header-nav">
-        <a href="/">Home</a>
-        <a href="/research-programme/">Research</a>
-        <a href="/white-paper/">White Paper</a>
+<body class="neuro-site">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../" class="brand brand-neuroflex">
+        <img src="../assets/neuroflex-logo.png" alt="" />
+        <span>NeuroFlex<sup>&copy;</sup></span>
+      </a>
+      <nav class="nav">
+        <a href="../">Home</a>
+        <a href="../research-design/">Research Design</a>
+        <a href="../state-of-the-art/">State of the Art</a>
+        <a href="../grant-landscape/">Grants</a>
       </nav>
     </div>
-  </div>
+  </header>
 
-  <main class="page-content">
-    <div class="doc-body">
-
-      <!-- ══════════ PAPER HEADER ══════════ -->
-      <div class="paper-header">
-        <div class="paper-type">Hypothesis Paper · NeuroFlex Research · 2026</div>
-        <div class="paper-series">
-          Part of the NeuroFlex Research Series. See also:
-          <a href="/dynamic-cognitive-reserve/">Paper I — The Dynamic Cognitive Reserve Hypothesis</a>
-        </div>
-        <h1 class="paper-title">
-          Subclinical Multisensory Integration Decline as an Early Biomarker in Alzheimer's Disease
-        </h1>
-        <p class="paper-subtitle">
-          The Sensory Integration Reserve Hypothesis and Its Implications for Digital Assessment
-        </p>
-        <div class="paper-meta">
-          <div class="paper-meta-item">
-            <strong>Status</strong>Hypothesis · Pre-publication draft
-          </div>
-          <div class="paper-meta-item">
-            <strong>Domain</strong>Sensory Neuroscience · Alzheimer's Disease · Digital Biomarkers
-          </div>
-          <div class="paper-meta-item">
-            <strong>Submitted</strong>June 2026
-          </div>
-          <div class="paper-meta-item">
-            <strong>Affiliation</strong>NeuroFlex Research Programme
-          </div>
+  <main>
+    <section class="doc-hero">
+      <div class="container">
+        <p class="doc-kicker">Hypothesis Paper · Unlisted · Version 1.0 · June 2026</p>
+        <h1>Subclinical Multisensory Integration Decline as an Early Biomarker in Alzheimer's Disease</h1>
+        <p class="doc-lead">The Sensory Integration Reserve Hypothesis and Its Implications for Digital Assessment.</p>
+        <p class="body-para" style="margin-top:0.9rem;">Part of the NeuroFlex Research Series. See also <a href="/dynamic-cognitive-reserve/">Paper I — The Dynamic Cognitive Reserve Hypothesis</a>. Status: pre-publication draft. Domain: Sensory Neuroscience · Alzheimer's Disease · Digital Biomarkers.</p>
+        <div class="doc-actions">
+          <a class="btn btn-secondary" href="/dynamic-cognitive-reserve/">Paper I</a>
+          <a class="btn btn-secondary" href="../research-programme/">Research Programme</a>
+          <a class="btn btn-secondary" href="../white-paper/">White Paper</a>
         </div>
       </div>
+    </section>
+
+    <section class="section">
+      <div class="container doc-body">
 
       <!-- ══════════ ABSTRACT ══════════ -->
       <div class="abstract-box">
@@ -1195,13 +1185,16 @@
         The authors declare no conflict of interest. Correspondence: research@neuroflex.health
       </div>
 
-    </div><!-- /.doc-body -->
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
-    <div class="footer-inner">
-      <span>© 2026 NeuroFlex. Research Programme.</span>
+    <div class="container">
+      <p>&copy; <span id="year"></span> NeuroFlex · Cognitive wellness &amp; behavioral research</p>
+      <p class="muted">Internal document — not for public distribution. Developed by NeuroFlex<sup>©</sup></p>
     </div>
   </footer>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>
