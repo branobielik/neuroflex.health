@@ -18,7 +18,8 @@ This repository contains only NeuroFlex web content moved from the LifeApps site
 - `/research-design/` — research design (unlisted)
 - `/research-programme/` — research programme (unlisted)
 - `/scientific-network/` — scientific network (unlisted)
-- `/dynamic-cognitive-reserve/` — **The Dynamic Cognitive Reserve Hypothesis** — hypothesis paper (unlisted)
+- `/dynamic-cognitive-reserve/` — **Paper I: The Dynamic Cognitive Reserve Hypothesis** — hypothesis paper (unlisted)
+- `/multisensory-integration-hypothesis/` — **Paper II: The Sensory Integration Reserve Hypothesis** — hypothesis paper (unlisted)
 - `/eula/` — EULA placeholder
 
 ## GitHub Pages setup

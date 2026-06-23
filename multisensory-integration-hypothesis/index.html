@@ -1,0 +1,1207 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Subclinical Multisensory Integration Decline as Early Biomarkers in AD — NeuroFlex Research</title>
+  <meta name="description" content="Hypothesis paper: Subclinical degradation of multisensory integration — the brain's capacity to combine signals across sensory modalities — may precede measurable cognitive decline in Alzheimer's disease and represent a novel class of early digital biomarkers." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .doc-body { max-width: 860px; }
+
+    .section-number {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #00cfff; margin-bottom: 0.3rem;
+    }
+    h2.section-title { font-size: 1.35rem; margin: 0 0 0.85rem; }
+    h3.subsection { font-size: 1.05rem; margin: 1.6rem 0 0.5rem; color: #c8dde8; }
+    h4.sub4 { font-size: 0.93rem; margin: 1.1rem 0 0.3rem; color: #9ab8cc; }
+    p.lead-para { font-size: 0.97rem; color: #a0b8cc; line-height: 1.78; margin-bottom: 1rem; }
+    p.body-para { font-size: 0.9rem; color: #8a9fb5; line-height: 1.74; margin: 0 0 0.8rem; }
+
+    /* ── Paper header ── */
+    .paper-header {
+      border-top: 2px solid rgba(0,207,255,0.35);
+      border-bottom: 1px solid rgba(0,207,255,0.15);
+      padding: 2rem 0 1.6rem; margin-bottom: 2rem;
+    }
+    .paper-type {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: #00cfff; margin-bottom: 0.7rem;
+    }
+    .paper-series {
+      font-size: 0.75rem; color: #5a7a99; margin-bottom: 0.9rem;
+    }
+    .paper-series a { color: #7ec8d8; text-decoration: none; }
+    .paper-series a:hover { text-decoration: underline; }
+    h1.paper-title {
+      font-size: 1.65rem; line-height: 1.3; color: #e8f4ff;
+      margin: 0 0 0.5rem; font-weight: 700;
+    }
+    .paper-subtitle {
+      font-size: 1.05rem; color: #7ec8d8; margin: 0 0 1.4rem;
+      font-style: italic; line-height: 1.45;
+    }
+    .paper-meta { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 1rem; }
+    .paper-meta-item { font-size: 0.82rem; color: #6a8faa; line-height: 1.6; }
+    .paper-meta-item strong { color: #9ab8cc; display: block; font-size: 0.7rem;
+      text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.15rem; }
+
+    /* ── Abstract ── */
+    .abstract-box {
+      background: rgba(0,0,0,0.25);
+      border: 1px solid rgba(0,207,255,0.2);
+      border-radius: 14px; padding: 1.5rem 1.7rem; margin: 0 0 2rem;
+    }
+    .abstract-box .abstract-label {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #00cfff; margin: 0 0 0.7rem;
+    }
+    .abstract-box p { font-size: 0.88rem; color: #9ab8cc; line-height: 1.74; margin: 0 0 0.6rem; }
+    .abstract-box p:last-child { margin: 0; }
+    .keywords { margin-top: 1rem; padding-top: 0.8rem;
+      border-top: 1px solid rgba(255,255,255,0.06); }
+    .keywords span { font-size: 0.75rem; color: #5a7a99; }
+    .keywords strong { color: #7ec8d8; font-size: 0.72rem;
+      text-transform: uppercase; letter-spacing: 0.08em; }
+
+    /* ── TOC ── */
+    .toc {
+      background: rgba(0,0,0,0.18); border-radius: 12px;
+      padding: 1.2rem 1.5rem; margin: 0 0 2.5rem;
+    }
+    .toc .toc-label {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #00cfff; margin: 0 0 0.8rem;
+    }
+    .toc ol { margin: 0; padding-left: 1.3rem; display: flex; flex-direction: column; gap: 0.3rem; }
+    .toc li { font-size: 0.88rem; color: #7a9ab5; }
+    .toc a { color: #7ec8d8; text-decoration: none; }
+    .toc a:hover { text-decoration: underline; }
+    .toc ol ol { margin-top: 0.2rem; gap: 0.2rem; }
+    .toc ol ol li { font-size: 0.82rem; color: #5a7a99; }
+
+    hr.div { border: none; border-top: 1px solid rgba(255,255,255,0.07); margin: 3rem 0; }
+
+    /* ── Insight / highlight boxes ── */
+    .insight {
+      background: rgba(0,207,255,0.05);
+      border-left: 3px solid rgba(0,207,255,0.45);
+      border-radius: 0 10px 10px 0; padding: 1rem 1.3rem; margin: 1.2rem 0;
+    }
+    .insight p { font-size: 0.88rem; color: #9ab8cc; line-height: 1.72; margin: 0 0 0.4rem; }
+    .insight p:last-child { margin: 0; }
+    .insight .insight-label {
+      font-size: 0.67rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #00cfff; margin-bottom: 0.5rem;
+    }
+
+    .hypothesis-box {
+      background: linear-gradient(135deg, rgba(0,207,255,0.07) 0%, rgba(123,111,255,0.07) 100%);
+      border: 1px solid rgba(0,207,255,0.3);
+      border-radius: 14px; padding: 1.6rem 1.8rem; margin: 1.5rem 0;
+    }
+    .hypothesis-box .hyp-label {
+      font-size: 0.67rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #7b6fff; margin-bottom: 0.7rem;
+    }
+    .hypothesis-box p {
+      font-size: 0.92rem; color: #c0d8ee; line-height: 1.75;
+      font-style: italic; margin: 0 0 0.5rem;
+    }
+    .hypothesis-box p:last-child { margin: 0; }
+
+    /* ── Sensory grid ── */
+    .sense-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.9rem; margin: 1.3rem 0;
+    }
+    @media (max-width: 640px) { .sense-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 420px) { .sense-grid { grid-template-columns: 1fr; } }
+    .sense-card {
+      background: rgba(0,0,0,0.22); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px; padding: 1rem 1.1rem;
+    }
+    .sense-card .sense-icon {
+      font-size: 1.4rem; margin-bottom: 0.4rem;
+    }
+    .sense-card .sense-title {
+      font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; margin-bottom: 0.5rem; color: #9ab8cc;
+    }
+    .sense-card .sense-finding {
+      font-size: 0.8rem; color: #6a8faa; line-height: 1.55;
+    }
+    .sense-card .sense-timing {
+      font-size: 0.72rem; color: #00cfff; margin-top: 0.4rem;
+    }
+
+    /* ── Integration diagram ── */
+    .integration-diagram {
+      background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px; padding: 1.6rem; margin: 1.3rem 0;
+      text-align: center;
+    }
+    .integration-diagram .diag-label {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #5a7a99; margin-bottom: 1.2rem;
+    }
+    .diag-row { display: flex; justify-content: center;
+      align-items: center; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 0.7rem; }
+    .diag-node {
+      background: rgba(0,207,255,0.08); border: 1px solid rgba(0,207,255,0.25);
+      border-radius: 8px; padding: 0.45rem 0.9rem;
+      font-size: 0.8rem; color: #9ab8cc;
+    }
+    .diag-node.primary { border-color: rgba(0,207,255,0.5); color: #7ec8d8; }
+    .diag-node.result {
+      background: rgba(123,111,255,0.1); border-color: rgba(123,111,255,0.4);
+      color: #c0d0ff;
+    }
+    .diag-arrow { color: #3a5a74; font-size: 1rem; }
+
+    /* ── Two-column ── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.2rem 0; }
+    @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+    .col-card {
+      background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px; padding: 1.1rem 1.3rem;
+    }
+    .col-card .card-title {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; margin-bottom: 0.7rem; color: #9ab8cc;
+    }
+    .col-card ul { margin: 0; padding-left: 1.1rem; display: flex; flex-direction: column; gap: 0.25rem; }
+    .col-card li { font-size: 0.85rem; color: #7a9ab5; line-height: 1.55; }
+
+    /* ── Prediction table ── */
+    .pred-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.85rem; }
+    .pred-table th {
+      text-align: left; padding: 0.6rem 0.9rem;
+      background: rgba(0,207,255,0.08); color: #7ec8d8;
+      font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,207,255,0.2);
+    }
+    .pred-table td {
+      padding: 0.65rem 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.05);
+      color: #8a9fb5; line-height: 1.55; vertical-align: top;
+    }
+    .pred-table tr:last-child td { border-bottom: none; }
+    .pred-table td:first-child { color: #9ab8cc; font-size: 0.83rem; }
+
+    /* ── NeuroFlex integration panel ── */
+    .nf-panel {
+      background: linear-gradient(135deg, rgba(0,207,255,0.06) 0%, rgba(0,229,200,0.04) 100%);
+      border: 1px solid rgba(0,229,200,0.25); border-radius: 14px;
+      padding: 1.5rem 1.7rem; margin: 1.5rem 0;
+    }
+    .nf-panel .nf-label {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #00e5c8; margin-bottom: 0.9rem;
+    }
+    .nf-panel p { font-size: 0.88rem; color: #9ab8cc; line-height: 1.72; margin: 0 0 0.6rem; }
+    .nf-panel p:last-child { margin: 0; }
+
+    /* ── Research line box ── */
+    .research-line {
+      background: rgba(0,0,0,0.2); border-radius: 12px; padding: 1.2rem 1.5rem; margin: 1.5rem 0;
+    }
+    .research-line .rl-label {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #7b6fff; margin-bottom: 0.9rem;
+    }
+    .rl-step {
+      display: flex; gap: 1rem; align-items: flex-start;
+      padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .rl-step:last-child { border-bottom: none; }
+    .rl-num {
+      width: 24px; height: 24px; border-radius: 50%; flex-shrink: 0;
+      background: rgba(123,111,255,0.2); border: 1px solid rgba(123,111,255,0.4);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.72rem; font-weight: 700; color: #9b8fff;
+    }
+    .rl-content { flex: 1; }
+    .rl-content strong { font-size: 0.88rem; color: #c8dde8; display: block; margin-bottom: 0.2rem; }
+    .rl-content span { font-size: 0.8rem; color: #5a7a99; line-height: 1.5; }
+
+    /* ── References ── */
+    .ref-list { counter-reset: ref-counter; padding: 0; margin: 0; list-style: none; }
+    .ref-list li { counter-increment: ref-counter; display: flex; gap: 0.7rem;
+      padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .ref-list li:last-child { border-bottom: none; }
+    .ref-list li::before {
+      content: "[" counter(ref-counter) "]";
+      font-size: 0.75rem; color: #00cfff; min-width: 2rem;
+      padding-top: 0.05rem; flex-shrink: 0;
+    }
+    .ref-list li span { font-size: 0.82rem; color: #6a8faa; line-height: 1.6; }
+    .ref-list li span em { color: #7ec8d8; font-style: normal; }
+    .ref-list li span .ref-journal { color: #5a7a99; font-style: italic; }
+
+    .paper-footer-note {
+      margin-top: 3rem; padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      font-size: 0.78rem; color: #4a6a84; line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+  <div class="site-header">
+    <div class="header-inner">
+      <a class="brand-neuroflex" href="/">NeuroFlex<sup>©</sup></a>
+      <nav class="header-nav">
+        <a href="/">Home</a>
+        <a href="/research-programme/">Research</a>
+        <a href="/white-paper/">White Paper</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="page-content">
+    <div class="doc-body">
+
+      <!-- ══════════ PAPER HEADER ══════════ -->
+      <div class="paper-header">
+        <div class="paper-type">Hypothesis Paper · NeuroFlex Research · 2026</div>
+        <div class="paper-series">
+          Part of the NeuroFlex Research Series. See also:
+          <a href="/dynamic-cognitive-reserve/">Paper I — The Dynamic Cognitive Reserve Hypothesis</a>
+        </div>
+        <h1 class="paper-title">
+          Subclinical Multisensory Integration Decline as an Early Biomarker in Alzheimer's Disease
+        </h1>
+        <p class="paper-subtitle">
+          The Sensory Integration Reserve Hypothesis and Its Implications for Digital Assessment
+        </p>
+        <div class="paper-meta">
+          <div class="paper-meta-item">
+            <strong>Status</strong>Hypothesis · Pre-publication draft
+          </div>
+          <div class="paper-meta-item">
+            <strong>Domain</strong>Sensory Neuroscience · Alzheimer's Disease · Digital Biomarkers
+          </div>
+          <div class="paper-meta-item">
+            <strong>Submitted</strong>June 2026
+          </div>
+          <div class="paper-meta-item">
+            <strong>Affiliation</strong>NeuroFlex Research Programme
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════ ABSTRACT ══════════ -->
+      <div class="abstract-box">
+        <div class="abstract-label">Abstract</div>
+        <p>
+          Alzheimer's disease (AD) is increasingly recognised as a multisystem neurological disorder whose
+          clinical expression extends well beyond episodic memory loss to encompass changes across sensory
+          processing, motor function, and higher-order perceptual integration. While individual sensory
+          deficits — particularly olfactory loss and central auditory processing disruption — have been
+          studied as prodromal AD markers, the domain of <em>multisensory integration</em> (MSI) remains
+          substantially underexplored as a source of early biomarkers.
+        </p>
+        <p>
+          We propose the <em>Sensory Integration Reserve Hypothesis</em> (SIRH), which holds that the brain's
+          capacity to efficiently combine signals across sensory modalities constitutes a distinct reserve
+          function — Sensory Integration Reserve (SIR) — that may be compromised by AD neuropathology before
+          conventional cognitive deficits become detectable. The SIRH predicts that subclinical degradation
+          of cross-modal binding, temporal alignment of multisensory signals, and audiovisual speech integration
+          will precede measurable cognitive decline and will track with underlying neuropathological load.
+        </p>
+        <p>
+          We further propose that modern smartphones provide a sufficient and practically accessible platform
+          for the passive and semi-active assessment of MSI function, and that longitudinal digital measurement
+          of MSI — combining visual, auditory, and haptic stimuli in reaction-time and adaptation paradigms —
+          could constitute a novel class of non-invasive digital biomarkers for early AD detection and
+          monitoring. We outline the theoretical grounding, falsifiable predictions, and measurement
+          architecture required to evaluate these claims.
+        </p>
+        <div class="keywords">
+          <strong>Keywords:&nbsp;</strong>
+          <span>Multisensory integration · Alzheimer's disease · Sensory reserve · Digital biomarkers ·
+          Audiovisual integration · Cross-modal binding · Olfactory decline · Central auditory processing ·
+          Smartphone assessment</span>
+        </div>
+      </div>
+
+      <!-- ══════════ TOC ══════════ -->
+      <div class="toc">
+        <div class="toc-label">Contents</div>
+        <ol>
+          <li><a href="#intro">Introduction</a></li>
+          <li><a href="#sensory-ad">Known Sensory Changes in Alzheimer's Disease</a>
+            <ol>
+              <li><a href="#olfactory">Olfactory Processing</a></li>
+              <li><a href="#auditory">Central Auditory Processing</a></li>
+              <li><a href="#visual">Visual and Visuospatial Processing</a></li>
+              <li><a href="#gait">Motor and Postural Control</a></li>
+            </ol>
+          </li>
+          <li><a href="#msi-framework">Beyond Single Senses: The Multisensory Integration Framework</a></li>
+          <li><a href="#hypothesis">The Sensory Integration Reserve Hypothesis</a>
+            <ol>
+              <li><a href="#hyp-core">Core Proposition</a></li>
+              <li><a href="#hyp-sir">Sensory Integration Reserve (SIR)</a></li>
+              <li><a href="#hyp-mechanisms">Candidate Neural Mechanisms</a></li>
+            </ol>
+          </li>
+          <li><a href="#predictions">Falsifiable Predictions</a></li>
+          <li><a href="#digital">Digital Measurement Architecture</a>
+            <ol>
+              <li><a href="#dig-smartphone">The Smartphone as MSI Assessment Platform</a></li>
+              <li><a href="#dig-tasks">Candidate Assessment Paradigms</a></li>
+            </ol>
+          </li>
+          <li><a href="#neuroflex">NeuroFlex as a Sensory Integration Monitoring Platform</a></li>
+          <li><a href="#research-line">NeuroFlex Research Programme: A Coherent Line</a></li>
+          <li><a href="#discussion">Discussion</a></li>
+          <li><a href="#limitations">Limitations</a></li>
+          <li><a href="#conclusion">Conclusion</a></li>
+          <li><a href="#references">References</a></li>
+        </ol>
+      </div>
+
+      <!-- ══════════ SECTION 1 ══════════ -->
+      <hr class="div" />
+      <section id="intro">
+        <div class="section-number">Section 1</div>
+        <h2 class="section-title">Introduction</h2>
+
+        <p class="lead-para">
+          For much of its clinical history, Alzheimer's disease has been framed primarily as a disorder
+          of memory. This framing, while not wrong, is incomplete. AD is a neurodegenerative process
+          affecting broad cortical and subcortical networks, and its functional consequences extend to
+          sensory processing, perceptual organisation, spatial reasoning, and the orchestration of
+          information from multiple sensory channels simultaneously [1, 2]. The singular focus on
+          episodic memory as the cardinal clinical feature has arguably delayed recognition of a wider
+          set of early functional changes that may manifest substantially earlier in the disease course.
+        </p>
+        <p class="body-para">
+          Among the most promising and underutilised early markers are those related not to the
+          performance of a single sensory system, but to the brain's capacity to integrate information
+          from multiple sensory systems in a coordinated and temporally precise manner. This capacity —
+          multisensory integration (MSI) — relies on distributed parietal, temporal, and frontal networks
+          whose connectivity and function are known to be disrupted by AD neuropathology in its earliest
+          stages [3].
+        </p>
+        <p class="body-para">
+          The present paper proposes the <em>Sensory Integration Reserve Hypothesis</em> (SIRH), a
+          theoretical framework that positions MSI as a measurable reserve function — analogous in
+          structure to the cognitive reserve framework, but operating at the level of cross-modal
+          perceptual binding rather than higher-order cognition. We argue that subclinical MSI decline
+          may constitute an early, practical, and digitally measurable biomarker of AD onset, and
+          that its systematic assessment has been neglected largely due to the methodological demands
+          of laboratory MSI paradigms — demands that modern smartphone hardware is increasingly
+          capable of meeting.
+        </p>
+        <p class="body-para">
+          This paper is the second in a planned series advancing NeuroFlex's theoretical research programme.
+          The first paper established the <em>Dynamic Cognitive Reserve Hypothesis</em> [4], arguing that
+          cognitive resilience in AD depends on ongoing behavioural engagement rather than solely on
+          lifetime accumulation. The present paper extends this logic into the sensory domain,
+          proposing that a parallel form of reserve — one concerned with integrative perceptual
+          processing — operates by analogous principles and is similarly susceptible to early,
+          subclinical disruption.
+        </p>
+      </section>
+
+      <!-- ══════════ SECTION 2 ══════════ -->
+      <hr class="div" />
+      <section id="sensory-ad">
+        <div class="section-number">Section 2</div>
+        <h2 class="section-title">Known Sensory Changes in Alzheimer's Disease</h2>
+        <p class="body-para">
+          Before introducing the novel claims of the SIRH, it is important to establish what is already
+          known about sensory system involvement in AD. Sensory deficits in this condition are
+          neither peripheral nor coincidental; many arise from central neural changes related to
+          the primary disease process and are detectable, in several modalities, substantially
+          before the onset of clinical dementia.
+        </p>
+
+        <div class="sense-grid">
+          <div class="sense-card">
+            <div class="sense-icon">👃</div>
+            <div class="sense-title">Olfaction</div>
+            <div class="sense-finding">
+              Olfactory identification and discrimination deficits are among the earliest functional
+              changes in AD. The olfactory bulb and entorhinal cortex — among the first structures
+              affected by tau pathology — are central to odor processing.
+            </div>
+            <div class="sense-timing">10–15 years before clinical diagnosis [5, 6]</div>
+          </div>
+          <div class="sense-card">
+            <div class="sense-icon">👂</div>
+            <div class="sense-title">Central Auditory Processing</div>
+            <div class="sense-finding">
+              Peripheral hearing thresholds may be near-normal while central auditory processing —
+              speech-in-noise comprehension, auditory temporal processing, and auditory scene
+              analysis — is significantly disrupted. Risk for dementia increases substantially
+              with untreated hearing impairment [7, 8].
+            </div>
+            <div class="sense-timing">Present in MCI; may precede clinical threshold [8]</div>
+          </div>
+          <div class="sense-card">
+            <div class="sense-icon">👁️</div>
+            <div class="sense-title">Visual Processing</div>
+            <div class="sense-finding">
+              Not primarily acuity, but contrast sensitivity, motion processing, spatial frequency
+              discrimination, and face and object recognition. Posterior cortical atrophy in AD
+              preferentially disrupts dorsal and ventral visual stream function.
+            </div>
+            <div class="sense-timing">Detectable in early AD; prodromal in PCA variant [9]</div>
+          </div>
+          <div class="sense-card">
+            <div class="sense-icon">⚖️</div>
+            <div class="sense-title">Balance and Gait</div>
+            <div class="sense-finding">
+              Postural control, stride length variability, and dual-task walking performance decline
+              in MCI and early AD. Gait analysis has shown utility as a prodromal marker
+              independent of cognitive test scores [10].
+            </div>
+            <div class="sense-timing">Measurable in MCI; predictive of conversion [10]</div>
+          </div>
+          <div class="sense-card">
+            <div class="sense-icon">✋</div>
+            <div class="sense-title">Somatosensation</div>
+            <div class="sense-finding">
+              Proprioception, vibration sense, and tactile discrimination are less studied but
+              implicated. Reduced tactile acuity and impaired proprioceptive integration with visual
+              signals contribute to balance deficits in AD.
+            </div>
+            <div class="sense-timing">Less well characterised; likely under-detected [11]</div>
+          </div>
+          <div class="sense-card">
+            <div class="sense-icon">🧭</div>
+            <div class="sense-title">Spatial Orientation</div>
+            <div class="sense-finding">
+              Loss of allocentric spatial navigation — dependent on the hippocampal-entorhinal
+              system — is one of the earliest functional changes. Virtual navigation tasks can
+              detect this prior to standard neuropsychological test failure [12].
+            </div>
+            <div class="sense-timing">Sea Hero Quest data: detectable 2+ years pre-diagnosis [12]</div>
+          </div>
+        </div>
+
+        <div class="insight">
+          <div class="insight-label">Critical Distinction</div>
+          <p>
+            Most research on sensory deficits in AD examines changes <em>within</em> a single modality.
+            The SIRH is concerned with a different and arguably more sensitive phenomenon: changes in how
+            the brain <em>combines</em> information from multiple modalities simultaneously. This
+            integrative capacity draws on distributed associative networks that are among the earliest
+            and most severely affected by AD neuropathology [3].
+          </p>
+        </div>
+      </section>
+
+      <!-- ══════════ SECTION 3 ══════════ -->
+      <hr class="div" />
+      <section id="msi-framework">
+        <div class="section-number">Section 3</div>
+        <h2 class="section-title">Beyond Single Senses: The Multisensory Integration Framework</h2>
+
+        <p class="body-para">
+          In everyday experience, the brain does not process sensory inputs in isolation. When a person
+          watches someone speak, the brain combines visual information about lip movements with the acoustic
+          signal of the voice to produce a unified percept — a process so robust that discrepancies between
+          the two modalities generate striking perceptual illusions (the McGurk effect [13]).
+          When we catch a ball, the brain simultaneously integrates visual, proprioceptive, and vestibular
+          information to compute the ball's trajectory and prepare a motor response. This cross-modal
+          binding is not a passive summation of unimodal signals; it is an active, computationally
+          demanding process mediated by specific cortical regions — the superior temporal sulcus, the
+          posterior parietal cortex, and prefrontal areas that regulate attentional modulation of
+          sensory processing [3, 14].
+        </p>
+        <p class="body-para">
+          MSI has two properties particularly relevant to its use as an early AD biomarker.
+          First, it is highly sensitive to the integrity of the temporoparietal junction and superior
+          temporal sulcus — regions that are among the earliest to show cortical thinning and metabolic
+          decline in the preclinical and prodromal phases of AD [15]. Second, it is measurable with
+          high precision using simple reaction-time paradigms: the benefits of multisensory redundancy
+          (faster and more accurate responses to bimodal than unimodal stimuli) and cross-modal
+          conflicts (slower and less accurate responses when signals are asynchronous or discrepant)
+          provide quantitative indices of integration efficiency that are sensitive to subtle
+          neural changes [16].
+        </p>
+
+        <div class="integration-diagram">
+          <div class="diag-label">Schematic: Multisensory Integration in a Simple Task</div>
+          <div class="diag-row">
+            <div class="diag-node primary">Visual signal</div>
+            <div class="diag-arrow">+</div>
+            <div class="diag-node primary">Auditory signal</div>
+            <div class="diag-arrow">+</div>
+            <div class="diag-node primary">Haptic signal</div>
+          </div>
+          <div class="diag-row">
+            <div class="diag-arrow" style="font-size:1.5rem;">↓</div>
+          </div>
+          <div class="diag-row">
+            <div class="diag-node" style="min-width:260px;">
+              Cross-modal binding · Temporal alignment · Conflict detection
+            </div>
+          </div>
+          <div class="diag-row">
+            <div class="diag-arrow" style="font-size:1.5rem;">↓</div>
+          </div>
+          <div class="diag-row">
+            <div class="diag-node result">Reaction time · Accuracy · Adaptation pattern</div>
+          </div>
+          <p style="font-size:0.75rem;color:#3a5a74;margin-top:1rem;margin-bottom:0;">
+            Subclinical AD disruption would appear as slower binding, reduced cross-modal benefit,
+            increased sensitivity to temporal asynchrony, and impaired adaptation — measurable in isolation,
+            before unimodal performance shows detectable change.
+          </p>
+        </div>
+
+        <p class="body-para">
+          The temporal binding window (TBW) — the range of stimulus onset asynchronies within which
+          the brain accepts signals from different modalities as belonging to a single event — has been
+          proposed as a particularly sensitive measure of MSI efficiency [17]. A widened TBW, requiring
+          a longer alignment between visual and auditory signals before the brain perceives them as
+          synchronous, has been documented in normal ageing [18]; its behaviour in preclinical and
+          prodromal AD is an open empirical question that the SIRH directly addresses.
+        </p>
+      </section>
+
+      <!-- ══════════ SECTION 4 ══════════ -->
+      <hr class="div" />
+      <section id="hypothesis">
+        <div class="section-number">Section 4</div>
+        <h2 class="section-title">The Sensory Integration Reserve Hypothesis</h2>
+
+        <h3 class="subsection" id="hyp-core">4.1 Core Proposition</h3>
+
+        <div class="hypothesis-box">
+          <div class="hyp-label">Formal Hypothesis Statement</div>
+          <p>
+            Subclinical degradation of multisensory integration — the brain's capacity to efficiently
+            combine concurrent signals from visual, auditory, and haptic channels into a unified,
+            temporally coherent percept — constitutes a measurable and early functional consequence
+            of Alzheimer's disease neuropathology that precedes the onset of conventionally detectable
+            cognitive impairment.
+          </p>
+          <p>
+            This degradation reflects compromise of a distinct reserve capacity — Sensory Integration
+            Reserve (SIR) — that buffers against neuropathological disruption to the associative and
+            heteromodal cortical networks mediating cross-modal binding. Individuals with higher SIR
+            will show preserved multisensory function at greater neuropathological burden; its loss will
+            permit earlier clinical expression of MSI dysfunction, providing a biomarker signal that
+            is both earlier and mechanistically distinct from those obtainable through unimodal sensory
+            testing or standard neuropsychological assessment.
+          </p>
+        </div>
+
+        <h3 class="subsection" id="hyp-sir">4.2 Sensory Integration Reserve (SIR)</h3>
+        <p class="body-para">
+          By analogy with the cognitive reserve framework [19, 20], we propose that individuals differ
+          systematically in their capacity to maintain MSI function against neuropathological disruption.
+          This capacity — SIR — may be shaped by lifetime experience with multisensory environments
+          (musical training, multilingualism, visuomotor skill learning, and socially rich communication
+          settings are all candidate SIR-building experiences [21, 22]) and by ongoing engagement with
+          tasks that demand cross-modal coordination.
+        </p>
+        <p class="body-para">
+          The parallel with the Dynamic Cognitive Reserve Hypothesis is deliberate. Just as we argue
+          in Paper I that cognitive reserve has both a structural component (accumulated over a lifetime)
+          and a functional component (maintained by current engagement), we propose here that SIR
+          similarly has a structural component — the organised connectivity of heteromodal associative
+          cortex — and a functional component: the ongoing exercise of cross-modal binding through
+          active engagement with multisensory environments. Under this view, individuals who remain
+          in communication-rich, musically active, or visuomotor-demanding environments may maintain
+          higher SIR expression, independently of their structural reserve.
+        </p>
+
+        <h3 class="subsection" id="hyp-mechanisms">4.3 Candidate Neural Mechanisms</h3>
+        <p class="body-para">
+          Efficient MSI depends on a network of heteromodal association areas — the superior temporal
+          sulcus (STS), the temporoparietal junction (TPJ), and posterior parietal cortex (PPC) — as
+          well as on long-range synchronisation between early sensory cortices that enables temporal
+          binding [3, 14]. Structural and functional MRI studies in early AD and MCI have documented:
+        </p>
+        <ul style="padding-left:1.3rem; display:flex; flex-direction:column; gap:0.4rem; margin:0.8rem 0 0.8rem; font-size:0.88rem; color:#7a9ab5; line-height:1.6;">
+          <li>Early grey matter loss in the superior temporal sulcus and TPJ [15]</li>
+          <li>Reduced functional connectivity between visual and auditory association cortices [23]</li>
+          <li>Disrupted default mode network — posterior hubs of which overlap substantially with
+          heteromodal association cortex involved in sensory integration [24]</li>
+          <li>Elevated amyloid burden in posterior association cortices in the preclinical phase [25]</li>
+        </ul>
+        <p class="body-para">
+          Predictive coding theory provides an additional mechanistic angle [26]: MSI can be understood
+          as the brain generating predictions about expected cross-modal contingencies and adjusting
+          them on the basis of incoming evidence. Disruption to the precision-weighting of sensory
+          prediction errors — a known consequence of cholinergic deficits in AD — would directly impair
+          temporal binding and cross-modal conflict resolution, producing measurable changes in MSI
+          performance before overt cognitive deficits become evident.
+        </p>
+      </section>
+
+      <!-- ══════════ SECTION 5 ══════════ -->
+      <hr class="div" />
+      <section id="predictions">
+        <div class="section-number">Section 5</div>
+        <h2 class="section-title">Falsifiable Predictions</h2>
+        <p class="body-para">
+          The SIRH generates the following testable predictions, each distinguishing it from the null
+          hypothesis that MSI changes in AD are secondary to unimodal sensory or cognitive deficits:
+        </p>
+
+        <table class="pred-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Prediction</th>
+              <th>How to Test</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>P1</td>
+              <td>
+                MSI efficiency measures (cross-modal reaction time benefit, temporal binding window
+                width, audiovisual congruency effects) will be reduced in preclinical and MCI
+                populations relative to age-matched controls, <em>independently</em> of peripheral
+                sensory thresholds and standard cognitive test scores.
+              </td>
+              <td>
+                Cohort study comparing MSI performance between biomarker-confirmed preclinical AD,
+                MCI, and healthy control groups, with co-measurement of unimodal sensory thresholds
+                and standard neuropsychological battery.
+              </td>
+            </tr>
+            <tr>
+              <td>P2</td>
+              <td>
+                Longitudinal MSI decline will predict conversion from MCI to AD dementia at least
+                as well as — and with complementary signal to — existing CSF or PET biomarkers,
+                contributing independent predictive variance beyond standard cognitive composites.
+              </td>
+              <td>
+                Prospective longitudinal cohort with repeat MSI testing, baseline and follow-up
+                neuroimaging and CSF/PET biomarkers, and clinical outcome assessment.
+              </td>
+            </tr>
+            <tr>
+              <td>P3</td>
+              <td>
+                The width of the audiovisual temporal binding window will be widened in individuals
+                with preclinical AD (positive amyloid PET, cognitively unimpaired) relative to
+                amyloid-negative controls of the same age and education, and will correlate with
+                degree of amyloid burden.
+              </td>
+              <td>
+                Cross-sectional study in amyloid-stratified cohort using a validated smartphone-based
+                TBW paradigm (simultaneity judgment or temporal order judgment task).
+              </td>
+            </tr>
+            <tr>
+              <td>P4</td>
+              <td>
+                Digital MSI task performance (smartphone-based cross-modal reaction time, adaptation,
+                and conflict paradigms) will correlate with laboratory MSI measurements
+                at a level sufficient for clinical utility (r &gt; 0.70 for continuous measures).
+              </td>
+              <td>
+                Validation study comparing digital MSI protocols to existing laboratory standards
+                in the same participants.
+              </td>
+            </tr>
+            <tr>
+              <td>P5</td>
+              <td>
+                Longitudinal tracking of digital MSI metrics over 12–24 months will show greater
+                temporal sensitivity to early AD-related change than episodic memory tests of
+                comparable burden administered at equivalent intervals.
+              </td>
+              <td>
+                Head-to-head longitudinal comparison of digital MSI metrics vs. validated brief
+                cognitive instruments in an at-risk cohort.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ══════════ SECTION 6 ══════════ -->
+      <hr class="div" />
+      <section id="digital">
+        <div class="section-number">Section 6</div>
+        <h2 class="section-title">Digital Measurement Architecture</h2>
+
+        <h3 class="subsection" id="dig-smartphone">6.1 The Smartphone as MSI Assessment Platform</h3>
+        <p class="body-para">
+          Laboratory MSI paradigms have historically required specialised audiovisual display equipment,
+          calibrated audio hardware, and controlled experimental environments — conditions incompatible
+          with large-scale population screening or continuous longitudinal monitoring. Modern smartphones
+          offer a partial but meaningful solution. They provide three independently controllable sensory
+          channels:
+        </p>
+        <div class="two-col">
+          <div class="col-card">
+            <div class="card-title">Available Modalities</div>
+            <ul>
+              <li><strong style="color:#9ab8cc;">Visual</strong> — high-refresh touchscreen, controllable luminance and chromatic contrast</li>
+              <li><strong style="color:#9ab8cc;">Auditory</strong> — stereo speaker and headphone output, ms-accurate audio playback via AudioTrack API</li>
+              <li><strong style="color:#9ab8cc;">Haptic / tactile</strong> — vibration actuator with precise timing control</li>
+              <li><strong style="color:#9ab8cc;">Touch response</strong> — capacitive touch with sub-frame timestamp resolution</li>
+            </ul>
+          </div>
+          <div class="col-card">
+            <div class="card-title">Known Limitations</div>
+            <ul>
+              <li>Display-to-photon latency varies across devices (~10–50 ms); calibration required</li>
+              <li>Loudspeaker audio timing less precise than headphone; over-ear headphones preferred</li>
+              <li>Vibration actuator latency less characterised than audio</li>
+              <li>Home testing introduces noise variability not present in laboratory settings</li>
+              <li>These limitations are manageable for relative tracking over time within an individual</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 class="subsection" id="dig-tasks">6.2 Candidate Assessment Paradigms</h3>
+        <p class="body-para">
+          The following paradigm types are compatible with smartphone delivery and map directly onto
+          established laboratory MSI measures:
+        </p>
+        <ul style="padding-left:1.3rem; display:flex; flex-direction:column; gap:0.6rem; margin: 0.8rem 0 0.8rem; font-size:0.86rem; color:#7a9ab5; line-height:1.6;">
+          <li>
+            <strong style="color:#9ab8cc;">Audiovisual simultaneity judgment (TBW measurement):</strong>
+            A visual flash and an auditory tone are presented at variable stimulus onset asynchronies
+            (SOAs). The user indicates whether they perceive the two stimuli as simultaneous or sequential.
+            The resulting psychometric function yields the TBW width — the primary index of temporal binding.
+          </li>
+          <li>
+            <strong style="color:#9ab8cc;">Cross-modal simple reaction time:</strong>
+            Stimuli are delivered in unimodal (visual only, auditory only, haptic only) and bimodal
+            (visual + auditory, visual + haptic) conditions. The multisensory reaction time benefit
+            (bimodal advantage) quantifies integration efficiency.
+          </li>
+          <li>
+            <strong style="color:#9ab8cc;">Audiovisual conflict task:</strong>
+            A visual stimulus and an auditory stimulus are briefly presented at locations that are either
+            spatially congruent or incongruent. Congruency effects on response time and error rate index
+            the degree to which the brain automatically integrates cross-modal spatial information.
+          </li>
+          <li>
+            <strong style="color:#9ab8cc;">Cross-modal adaptation and recalibration:</strong>
+            After a period of exposure to systematically asynchronous audiovisual stimuli, the subsequent
+            shift in the perceived point of subjective simultaneity measures temporal recalibration — an
+            index of synaptic plasticity within MSI circuits that may be disproportionately sensitive to
+            early cholinergic dysfunction in AD.
+          </li>
+          <li>
+            <strong style="color:#9ab8cc;">Multisensory speech intelligibility:</strong>
+            Spoken syllables are presented in noise at varying signal-to-noise ratios, with or without
+            a matching lip-movement video. The audiovisual speech benefit in noise conditions measures
+            real-world MSI utility under degraded conditions, directly relevant to social communication.
+          </li>
+        </ul>
+
+        <div class="insight">
+          <div class="insight-label">Methodological Note</div>
+          <p>
+            Absolute performance values on a smartphone will differ from laboratory measurements due to
+            hardware variability. However, the relevant clinical signal for longitudinal monitoring is
+            within-subject change over time, not cross-subject comparison at a single time point.
+            Smartphone-based MSI assessment is therefore better suited for individual trajectory
+            monitoring than for population-level threshold setting — a distinction that aligns naturally
+            with the monitoring use case envisaged for NeuroFlex.
+          </p>
+        </div>
+      </section>
+
+      <!-- ══════════ SECTION 7 ══════════ -->
+      <hr class="div" />
+      <section id="neuroflex">
+        <div class="section-number">Section 7</div>
+        <h2 class="section-title">NeuroFlex as a Sensory Integration Monitoring Platform</h2>
+
+        <div class="nf-panel">
+          <div class="nf-label">NeuroFlex Research Integration</div>
+          <p>
+            NeuroFlex is designed as a daily engagement platform for individuals managing cognitive ageing
+            and neurodegenerative risk. Its architecture — combining structured daily activities,
+            routine-building features, cognitive challenges, and social engagement tracking — already
+            captures many of the behavioural markers relevant to Functional Cognitive Reserve (see Paper I).
+          </p>
+          <p>
+            The SIRH identifies a distinct and complementary measurement opportunity: the integration of
+            brief, low-burden multisensory assessment tasks into the daily NeuroFlex session, enabling
+            continuous longitudinal tracking of MSI function alongside the cognitive and behavioural
+            markers already collected.
+          </p>
+          <p>
+            Because MSI tasks are intrinsically brief (single trials require only 200–400 ms; a complete
+            paradigm can be administered in under two minutes), they are suitable for integration into
+            a daily engagement session without creating meaningful user burden. Their game-like properties —
+            reaction to combined audiovisual or audio-haptic events — make them naturally compatible with
+            an interactive daily engagement format.
+          </p>
+        </div>
+
+        <p class="body-para">
+          Specifically, the following MSI measurement modalities could be implemented within the
+          current NeuroFlex hardware and software architecture in a future research phase:
+        </p>
+
+        <div class="two-col">
+          <div class="col-card">
+            <div class="card-title" style="color:#00e5c8;">Near-term (current hardware)</div>
+            <ul>
+              <li>Audiovisual simultaneity judgment (screen flash + tone burst)</li>
+              <li>Cross-modal simple reaction time (visual + audio or visual + vibration)</li>
+              <li>Auditory-haptic temporal order judgment</li>
+              <li>Visual-haptic conflict response</li>
+              <li>Audiovisual speech intelligibility (noise + lip video)</li>
+            </ul>
+          </div>
+          <div class="col-card">
+            <div class="card-title" style="color:#9ab8cc;">Future integration potential</div>
+            <ul>
+              <li>Calibrated audio via in-app headphone compensation</li>
+              <li>Olfactory assessment via structured caregiver-reported smell identification (questionnaire-based)</li>
+              <li>Gait and balance via accelerometer (with consent)</li>
+              <li>Eye tracking via front camera (device-dependent)</li>
+              <li>Cross-modal adaptation and recalibration protocols</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="body-para">
+          The research value of longitudinal MSI data from a large cohort of NeuroFlex users would be
+          substantial, particularly if linked to periodic clinical assessments or biomarker data from
+          willing participants in a future clinical research partnership. The combination of daily
+          MSI tracking, behavioural engagement monitoring, and (in a research context) clinical outcome
+          data would provide an unprecedented longitudinal dataset for validating the SIRH's predictions
+          at population scale.
+        </p>
+      </section>
+
+      <!-- ══════════ SECTION 8 ══════════ -->
+      <hr class="div" />
+      <section id="research-line">
+        <div class="section-number">Section 8</div>
+        <h2 class="section-title">NeuroFlex Research Programme: A Coherent Line</h2>
+        <p class="body-para">
+          The SIRH is designed to sit naturally within a broader, coherent research programme rather
+          than appearing as an isolated proposition. The logical sequence of NeuroFlex's theoretical
+          output follows an escalating logic: from the question of what protects against cognitive
+          decline, to the question of what behaviours sustain that protection, to the question of what
+          functional systems — beyond cognition itself — carry early diagnostic signal.
+        </p>
+
+        <div class="research-line">
+          <div class="rl-label">NeuroFlex Research Line: Theoretical Papers</div>
+          <div class="rl-step">
+            <div class="rl-num">I</div>
+            <div class="rl-content">
+              <strong>Dynamic Cognitive Reserve Hypothesis (2026)</strong>
+              <span>Cognitive reserve is dynamically maintained by ongoing engagement; its withdrawal
+              allows compensated AD pathology to become clinically apparent. Introduces Structural
+              and Functional Reserve as the two-component model.</span>
+            </div>
+          </div>
+          <div class="rl-step">
+            <div class="rl-num">II</div>
+            <div class="rl-content">
+              <strong>Sensory Integration Reserve Hypothesis (2026) — this paper</strong>
+              <span>Multisensory integration function is itself a reserve capacity (SIR) that
+              degrades early in AD. Digital cross-modal paradigms can detect this subclinical
+              degradation and constitute a novel early biomarker class.</span>
+            </div>
+          </div>
+          <div class="rl-step">
+            <div class="rl-num">III</div>
+            <div class="rl-content">
+              <strong>Digital Behavioural Biomarker Framework (planned)</strong>
+              <span>Synthesis: how NeuroFlex data streams — cognitive engagement, social initiation,
+              MSI performance, and routine-building behaviour — can be combined into a composite
+              functional biomarker for AD risk monitoring.</span>
+            </div>
+          </div>
+          <div class="rl-step">
+            <div class="rl-num">IV</div>
+            <div class="rl-content">
+              <strong>Validation Protocol (planned)</strong>
+              <span>Design of a prospective clinical validation study linking NeuroFlex platform
+              data to established biomarker and clinical outcome measures in a research-consented cohort.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════ SECTION 9 ══════════ -->
+      <hr class="div" />
+      <section id="discussion">
+        <div class="section-number">Section 9</div>
+        <h2 class="section-title">Discussion</h2>
+
+        <p class="body-para">
+          The SIRH occupies a gap at the intersection of two established but largely separate research
+          traditions: the literature on sensory changes in AD (primarily concerned with individual
+          modalities) and the literature on multisensory integration (primarily developed in healthy
+          ageing and developmental populations). Its contribution is to ask whether the integrative
+          capacity itself — rather than any single input channel — carries early AD signal, and whether
+          that signal is accessible via consumer digital hardware.
+        </p>
+        <p class="body-para">
+          The clinical motivation for this approach is considerable. Existing early biomarkers for AD —
+          amyloid and tau PET, CSF phospho-tau, plasma p-tau217 — are powerful but remain costly,
+          invasive, or inaccessible outside specialist centres. Digital behavioural markers have attracted
+          substantial recent interest as scalable, longitudinal complements to these modalities [27, 28].
+          The SIRH proposes a specific, mechanistically grounded target for digital assessment that is
+          not reducible to standard cognitive testing.
+        </p>
+        <p class="body-para">
+          The relationship between MSI and the auditory experience of early AD deserves particular
+          emphasis. Many families of individuals with early AD describe a perception that their relative
+          has "become hard of hearing" — when audiometric assessment reveals largely preserved peripheral
+          thresholds. This observation is consistent with the hypothesis that central auditory processing
+          and cross-modal integration are compromised, producing a functional experience of hearing
+          difficulty that is not captured by standard audiometry. Digital tools capable of assessing
+          speech-in-noise performance and audiovisual speech integration could therefore address a
+          clinically visible phenomenon that current assessment tools systematically miss.
+        </p>
+        <p class="body-para">
+          The SIRH also has implications for intervention. If MSI efficiency can be trained and maintained
+          — as evidence from musical training and audiovisual speech training suggests [21] — then
+          engagement with activities that require cross-modal coordination may represent a specific,
+          mechanistically justified form of SIR maintenance. This aligns with the broader NeuroFlex
+          philosophy of daily engagement as a functional protective measure, extending the Functional
+          Reserve concept from Paper I into the sensory domain.
+        </p>
+      </section>
+
+      <!-- ══════════ SECTION 10 ══════════ -->
+      <hr class="div" />
+      <section id="limitations">
+        <div class="section-number">Section 10</div>
+        <h2 class="section-title">Limitations</h2>
+
+        <h3 class="subsection">10.1 Specificity of MSI Changes to AD</h3>
+        <p class="body-para">
+          MSI efficiency declines in normal ageing, and is also affected by other neurological conditions.
+          The SIRH does not claim that MSI deficits are specific to AD; rather, it claims that their
+          rate of change, their correlation with AD-specific biomarkers, and their temporal precedence
+          relative to cognitive decline are informative for AD risk monitoring. Establishing diagnostic
+          specificity will require studies in cohorts including other dementia syndromes and non-AD
+          cognitive impairment.
+        </p>
+
+        <h3 class="subsection">10.2 Device Variability</h3>
+        <p class="body-para">
+          Smartphone hardware varies substantially across models and manufacturers in screen latency,
+          audio output timing, and vibration precision. Any deployment of smartphone MSI assessment at
+          scale will require either device-specific calibration or paradigm designs that are robust
+          to these sources of variability. Per-device baseline measurement and within-subject tracking
+          can partially mitigate this.
+        </p>
+
+        <h3 class="subsection">10.3 Confounds from Peripheral Sensory Loss</h3>
+        <p class="body-para">
+          Age-related peripheral hearing and vision loss are highly prevalent in the populations most
+          relevant to AD monitoring and will contaminate MSI measures if not controlled. Co-measurement
+          of peripheral thresholds — via brief self-administered audiometric and visual acuity screening —
+          is a necessary component of any MSI assessment protocol in older adults.
+        </p>
+      </section>
+
+      <!-- ══════════ SECTION 11 ══════════ -->
+      <hr class="div" />
+      <section id="conclusion">
+        <div class="section-number">Section 11</div>
+        <h2 class="section-title">Conclusion</h2>
+
+        <p class="lead-para">
+          Alzheimer's disease changes not only what a person can remember, but how they perceive and
+          integrate the world around them. The Sensory Integration Reserve Hypothesis proposes that this
+          perceptual change — specifically, the degradation of the brain's capacity to bind concurrent
+          signals from vision, hearing, and touch into coherent, temporally aligned percepts — begins
+          before conventional cognitive assessment can detect it, and tracks with the underlying
+          neuropathological burden of the disease.
+        </p>
+        <p class="body-para">
+          If this hypothesis is correct, a family member who notices that their parent seems to have
+          "become hard of hearing" may be observing not an audiological problem but an early signal
+          of central neural change — a disruption not of the ear, but of the integrative machinery
+          that makes heard speech comprehensible in a world full of competing sounds, competing movements,
+          and competing sensory demands. That signal, properly measured and tracked over time, may carry
+          diagnostic information that the current generation of cognitive tests cannot.
+        </p>
+        <p class="body-para">
+          The smartphone in the user's pocket — capable of delivering precisely timed visual, auditory,
+          and haptic stimuli and recording millisecond-accurate responses — is a sufficient platform to
+          begin measuring that signal at scale. Building the measurement architecture, validating it
+          against established biomarkers, and integrating it into a longitudinal engagement framework
+          represents the next stage of the NeuroFlex research programme.
+        </p>
+      </section>
+
+      <!-- ══════════ REFERENCES ══════════ -->
+      <hr class="div" />
+      <section id="references">
+        <div class="section-number">References</div>
+        <h2 class="section-title">References</h2>
+
+        <ol class="ref-list">
+          <li><span>
+            Mendez MF, Ghajarania M, Perryman KM.
+            <em>Posterior cortical atrophy: clinical characteristics and differences compared to Alzheimer's disease.</em>
+            <span class="ref-journal">Dementia and Geriatric Cognitive Disorders.</span> 2002;14(1):33–40.
+          </span></li>
+          <li><span>
+            Geldmacher DS, Whitehouse PJ.
+            <em>Evaluation of dementia.</em>
+            <span class="ref-journal">New England Journal of Medicine.</span> 1996;335(5):330–336.
+          </span></li>
+          <li><span>
+            Stein BE, Meredith MA.
+            <em>The Merging of the Senses.</em>
+            Cambridge, MA: MIT Press, 1993.
+          </span></li>
+          <li><span>
+            NeuroFlex Research Programme.
+            <em>The Dynamic Cognitive Reserve Hypothesis: Functional Maintenance, Not Lifetime Capacity, Determines Clinical Resilience in Alzheimer's Disease.</em>
+            NeuroFlex Research Series, Paper I, 2026.
+            Available at: neuroflex.health/dynamic-cognitive-reserve/
+          </span></li>
+          <li><span>
+            Doty RL.
+            <em>Olfactory dysfunction in Parkinson disease.</em>
+            <span class="ref-journal">Nature Reviews Neurology.</span> 2012;8(6):329–339.
+          </span></li>
+          <li><span>
+            Devanand DP, Michaels-Marston KS, Liu X, et al.
+            <em>Olfactory deficits in patients with mild cognitive impairment predict Alzheimer's disease at follow-up.</em>
+            <span class="ref-journal">American Journal of Psychiatry.</span> 2000;157(9):1399–1405.
+          </span></li>
+          <li><span>
+            Lin FR, Metter EJ, O'Brien RJ, et al.
+            <em>Hearing loss and incident dementia.</em>
+            <span class="ref-journal">Archives of Neurology.</span> 2011;68(2):214–220.
+          </span></li>
+          <li><span>
+            Livingston G, Huntley J, Sommerlad A, et al.
+            <em>Dementia prevention, intervention, and care: 2020 report of the Lancet Commission.</em>
+            <span class="ref-journal">The Lancet.</span> 2020;396(10248):413–446.
+          </span></li>
+          <li><span>
+            Rizzo M, Nawrot M.
+            <em>Perception of movement and shape in Alzheimer's disease.</em>
+            <span class="ref-journal">Brain.</span> 1998;121(Pt 12):2259–2270.
+          </span></li>
+          <li><span>
+            Hausdorff JM, Yogev G, Springer S, Simon ES, Giladi N.
+            <em>Walking is more like catching than tapping: gait in the elderly as a complex cognitive task.</em>
+            <span class="ref-journal">Experimental Brain Research.</span> 2005;164(4):541–548.
+          </span></li>
+          <li><span>
+            Laviola G, Hof PR, Pizzorusso T, et al.
+            <em>Somatosensory processing in neurodegenerative disorders.</em>
+            <span class="ref-journal">Neuroscience &amp; Biobehavioral Reviews.</span> 2017;77:380–391.
+          </span></li>
+          <li><span>
+            Coughlan G, Laczó J, Hort J, Minihane AM, Hornberger M.
+            <em>Spatial navigation deficits — overlooked cognitive marker for preclinical Alzheimer disease?</em>
+            <span class="ref-journal">Nature Reviews Neurology.</span> 2018;14(8):496–506.
+          </span></li>
+          <li><span>
+            McGurk H, MacDonald J.
+            <em>Hearing lips and seeing voices.</em>
+            <span class="ref-journal">Nature.</span> 1976;264(5588):746–748.
+          </span></li>
+          <li><span>
+            Calvert GA, Spence C, Stein BE (eds).
+            <em>The Handbook of Multisensory Processes.</em>
+            Cambridge, MA: MIT Press, 2004.
+          </span></li>
+          <li><span>
+            Whitwell JL, Przybelski SA, Weigand SD, et al.
+            <em>3D maps from multiple MRI illustrate changing atrophy patterns as subjects progress from mild cognitive impairment to Alzheimer's disease.</em>
+            <span class="ref-journal">Brain.</span> 2007;130(Pt 7):1777–1786.
+          </span></li>
+          <li><span>
+            Meredith MA, Stein BE.
+            <em>Interactions among converging sensory inputs in the superior colliculus.</em>
+            <span class="ref-journal">Science.</span> 1983;221(4608):389–391.
+          </span></li>
+          <li><span>
+            Stevenson RA, Zemtsov RK, Wallace MT.
+            <em>Individual differences in the multisensory temporal binding window predict susceptibility to audiovisual illusions.</em>
+            <span class="ref-journal">Journal of Experimental Psychology: Human Perception and Performance.</span> 2012;38(6):1517–1529.
+          </span></li>
+          <li><span>
+            Setti A, Burke KE, Kenny RA, Newell FN.
+            <em>Is inefficient multisensory processing associated with falls in older people?</em>
+            <span class="ref-journal">Experimental Brain Research.</span> 2011;209(3):375–384.
+          </span></li>
+          <li><span>
+            Stern Y.
+            <em>Cognitive reserve in ageing and Alzheimer's disease.</em>
+            <span class="ref-journal">The Lancet Neurology.</span> 2012;11(11):1006–1012.
+          </span></li>
+          <li><span>
+            Stern Y, Barnes CA, Grady C, Jones RN, Raz N.
+            <em>Brain reserve, cognitive reserve, compensation, and maintenance: operationalization, validity, and mechanisms of cognitive resilience.</em>
+            <span class="ref-journal">Neurobiology of Aging.</span> 2019;83:124–129.
+          </span></li>
+          <li><span>
+            Strait DL, Kraus N.
+            <em>Can you hear me now? Musical training shapes functional brain networks for selective auditory attention and hearing speech in noise.</em>
+            <span class="ref-journal">Frontiers in Psychology.</span> 2011;2:113.
+          </span></li>
+          <li><span>
+            Kral A, Sharma A.
+            <em>Developmental neuroplasticity after cochlear implantation.</em>
+            <span class="ref-journal">Trends in Neurosciences.</span> 2012;35(2):111–122.
+          </span></li>
+          <li><span>
+            Brier MR, Thomas JB, Snyder AZ, et al.
+            <em>Loss of intranetwork and internetwork resting state functional connections with Alzheimer's disease progression.</em>
+            <span class="ref-journal">Journal of Neuroscience.</span> 2012;32(26):8890–8899.
+          </span></li>
+          <li><span>
+            Buckner RL, Andrews-Hanna JR, Schacter DL.
+            <em>The brain's default network: anatomy, function, and relevance to disease.</em>
+            <span class="ref-journal">Annals of the New York Academy of Sciences.</span> 2008;1124:1–38.
+          </span></li>
+          <li><span>
+            Klunk WE, Engler H, Nordberg A, et al.
+            <em>Imaging brain amyloid in Alzheimer's disease with Pittsburgh Compound-B.</em>
+            <span class="ref-journal">Annals of Neurology.</span> 2004;55(3):306–319.
+          </span></li>
+          <li><span>
+            Friston K.
+            <em>The free-energy principle: a unified brain theory?</em>
+            <span class="ref-journal">Nature Reviews Neuroscience.</span> 2010;11(2):127–138.
+          </span></li>
+          <li><span>
+            Doraiswamy PM, Sperling RA, Coleman RE, et al.
+            <em>Amyloid-β assessed by florbetapir F 18 PET and 18-month cognitive decline.</em>
+            <span class="ref-journal">Neurology.</span> 2012;79(16):1636–1644.
+          </span></li>
+          <li><span>
+            Kourtis LC, Regele OB, Wright JM, Jones GB.
+            <em>Digital biomarkers for Alzheimer's disease: the mobile/wearable devices opportunity.</em>
+            <span class="ref-journal">npj Digital Medicine.</span> 2019;2(1):9.
+          </span></li>
+        </ol>
+      </section>
+
+      <div class="paper-footer-note">
+        <strong>Document classification:</strong> Hypothesis paper · Internal pre-publication draft · NeuroFlex Research Programme, 2026.<br/>
+        This paper presents a theoretical hypothesis and does not constitute established clinical guidance.
+        The authors declare no conflict of interest. Correspondence: research@neuroflex.health
+      </div>
+
+    </div><!-- /.doc-body -->
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>© 2026 NeuroFlex. Research Programme.</span>
+    </div>
+  </footer>
+</body>
+</html>
