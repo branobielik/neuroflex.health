@@ -1,43 +1,47 @@
 NeuroFlex — Unlisted Pages
 (Direct access only — not indexed, not publicly linked)
+Updated: 2026-06-24
 
 ========================================================
 SCIENTIFIC HYPOTHESES
 ========================================================
 
-Dynamic Cognitive Reserve Hypothesis
+Paper I: The Dynamic Cognitive Reserve Hypothesis
   https://neuroflex.health/dynamic-cognitive-reserve/
 
-Subclinical Multisensory Integration Decline (Biomarker Hypothesis)
+Paper II: Subclinical Multisensory Integration Decline as Early Biomarkers in AD
   https://neuroflex.health/multisensory-integration-hypothesis/
 
 ========================================================
 RESEARCH & STRATEGY DOCUMENTS
 ========================================================
 
-Research Programme Overview
+Research Programme Architecture
   https://neuroflex.health/research-programme/
 
-Behavioral Event Model v1
-  https://neuroflex.health/behavioral-event-model/
+Scientific Network & Competitor Positioning
+  https://neuroflex.health/scientific-network/
 
-State of the Art & Competitive Landscape
-  https://neuroflex.health/state-of-the-art/
-
-Grant Landscape Analysis
-  https://neuroflex.health/grant-landscape/
-
-Landscape Analysis
-  https://neuroflex.health/landscape-analysis/
-
-Methodological Challenges
-  https://neuroflex.health/methodological-challenges/
-
-Research Design
+Research Design Framework
   https://neuroflex.health/research-design/
 
-Scientific Network
-  https://neuroflex.health/scientific-network/
+Grant & Funding Landscape
+  https://neuroflex.health/grant-landscape/
+
+State of the Art & Competitive Landscape Analysis
+  https://neuroflex.health/state-of-the-art/
+
+Landscape Analysis (overview)
+  https://neuroflex.health/landscape-analysis/
+
+Methodological Challenges & Research Risks
+  https://neuroflex.health/methodological-challenges/
+
+Behavioral Event Model (v1)
+  https://neuroflex.health/behavioral-event-model/
+
+Behavioral Event Model — raw text
+  https://neuroflex.health/behavioral-event-model/NeuroFlex%20Behavioral%20Event%20Model%20v1.txt
 
 ========================================================
 ARTICLES
@@ -50,11 +54,17 @@ Why Women Bear a Disproportionate Burden of Alzheimer's Disease
   https://neuroflex.health/articles/sex-differences-alzheimers/
 
 ========================================================
-OTHER
+PUBLIC PAGES (reference)
 ========================================================
+
+Home
+  https://neuroflex.health/
 
 Mission Statement
   https://neuroflex.health/mission-statement/
+
+White Paper
+  https://neuroflex.health/white-paper/
 
 EULA
   https://neuroflex.health/eula/
