@@ -21,6 +21,7 @@ This repository contains only NeuroFlex web content moved from the LifeApps site
 - `/dynamic-cognitive-reserve/` — **Paper I: The Dynamic Cognitive Reserve Hypothesis** — hypothesis paper (unlisted)
 - `/multisensory-integration-hypothesis/` — **Paper II: The Sensory Integration Reserve Hypothesis** — hypothesis paper (unlisted)
 - `/articles/llm-in-science/` — **Article: Large Language Models as Research Infrastructure** — essay (unlisted)
+- `/articles/sex-differences-alzheimers/` — **Article: Why Women Bear a Disproportionate Burden of Alzheimer's Disease** — essay (unlisted)
 - `/eula/` — EULA placeholder
 - `/unlisted-pages.txt` — master list of all unlisted URLs
 

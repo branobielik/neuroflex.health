@@ -46,6 +46,9 @@ ARTICLES
 Large Language Models as Research Infrastructure
   https://neuroflex.health/articles/llm-in-science/
 
+Why Women Bear a Disproportionate Burden of Alzheimer's Disease
+  https://neuroflex.health/articles/sex-differences-alzheimers/
+
 ========================================================
 OTHER
 ========================================================
