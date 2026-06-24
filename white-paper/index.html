@@ -1,11 +1,75 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NeuroFlex White Paper</title>
-  <meta name="description" content="NeuroFlex white paper for longitudinal behavioral research and cognitive health." />
+  <title>White Paper — NeuroFlex</title>
+  <meta name="description" content="NeuroFlex White Paper: measuring digital behavioral biomarkers before symptoms of Alzheimer's disease appear. Research platform design, scientific hypotheses, and development roadmap." />
   <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .wp-wrap { max-width: 820px; margin: 0 auto; }
+    .wp-hero { padding: 72px 0 56px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 56px; }
+    .wp-hero h1 { font-size: clamp(1.9rem, 4vw, 2.8rem); color: #fff; margin: 0 0 18px; line-height: 1.12; font-weight: 800; }
+    .wp-hero-meta { display: flex; gap: 24px; flex-wrap: wrap; margin: 20px 0 0; }
+    .wp-hero-meta span { font-size: 0.82rem; color: #4a6fa5; }
+    .wp-hero-meta strong { color: #9fb3ff; }
+
+    .wp-toc { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.07); border-radius: 14px; padding: 24px 28px; margin-bottom: 56px; }
+    .wp-toc-label { font-size: 0.75rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #4a6fa5; margin: 0 0 14px; }
+    .wp-toc ol { margin: 0; padding-left: 1.3em; columns: 2; gap: 24px; }
+    .wp-toc li { margin-bottom: 7px; break-inside: avoid; }
+    .wp-toc a { color: #9fb3ff; text-decoration: none; font-size: 0.88rem; }
+    .wp-toc a:hover { text-decoration: underline; }
+    @media (max-width: 560px) { .wp-toc ol { columns: 1; } }
+
+    .wp-section { margin-bottom: 56px; scroll-margin-top: 80px; }
+    .wp-section > h2 {
+      font-size: 1.35rem; color: #fff; font-weight: 800;
+      margin: 0 0 6px; padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .wp-section-kicker { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #FBBF24; margin: 0 0 8px; }
+    .wp-section p { color: #aeb9e8; line-height: 1.8; margin: 0 0 16px; font-size: 0.96rem; }
+    .wp-section p:last-child { margin: 0; }
+    .wp-section ul, .wp-section ol { color: #aeb9e8; line-height: 1.8; padding-left: 1.5em; margin: 0 0 16px; font-size: 0.96rem; }
+    .wp-section li { margin-bottom: 6px; }
+    .wp-section a { color: #9fb3ff; }
+    .wp-section strong { color: #e7ecff; }
+
+    .wp-callout { border-left: 3px solid #60A5FA; background: rgba(96,165,250,0.07); border-radius: 0 12px 12px 0; padding: 18px 22px; margin: 24px 0; }
+    .wp-callout p { color: #93c5fd; margin: 0; font-size: 0.95rem; line-height: 1.7; }
+
+    .wp-highlight { border-left: 3px solid #FBBF24; background: rgba(251,191,36,0.07); border-radius: 0 12px 12px 0; padding: 18px 22px; margin: 24px 0; }
+    .wp-highlight p { color: #fde68a; margin: 0; font-size: 0.95rem; line-height: 1.7; }
+
+    .wp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+    @media (max-width: 600px) { .wp-grid { grid-template-columns: 1fr; } }
+    .wp-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 14px; padding: 20px 22px; }
+    .wp-card h3 { font-size: 0.95rem; color: #e7ecff; margin: 0 0 8px; font-weight: 700; }
+    .wp-card p { color: #6b7fa8; margin: 0; font-size: 0.87rem; line-height: 1.65; }
+
+    .wp-signal-grid { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0; }
+    .wp-signal { background: rgba(96,165,250,0.1); border: 1px solid rgba(96,165,250,0.2); border-radius: 999px; color: #93c5fd; font-size: 0.8rem; padding: 4px 12px; font-weight: 600; }
+
+    .wp-phases { display: flex; flex-direction: column; gap: 2px; margin: 24px 0; }
+    .wp-phase { display: grid; grid-template-columns: 100px 1fr; gap: 20px; padding: 18px 20px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; align-items: start; }
+    .wp-phase.active { border-color: rgba(251,191,36,0.3); background: rgba(251,191,36,0.04); }
+    .wp-phase-num { font-size: 0.75rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; padding-top: 3px; }
+    .wp-phase.active .wp-phase-num { color: #FBBF24; }
+    .wp-phase:not(.active) .wp-phase-num { color: #4a6fa5; }
+    .wp-phase h3 { font-size: 0.97rem; color: #e7ecff; margin: 0 0 6px; font-weight: 700; }
+    .wp-phase p { color: #6b7fa8; margin: 0; font-size: 0.87rem; line-height: 1.6; }
+
+    .wp-stat-row { display: flex; gap: 0; margin: 28px 0; border: 1px solid rgba(255,255,255,0.07); border-radius: 14px; overflow: hidden; }
+    .wp-stat { flex: 1; text-align: center; padding: 20px 12px; border-right: 1px solid rgba(255,255,255,0.07); }
+    .wp-stat:last-child { border-right: none; }
+    .wp-stat strong { display: block; font-size: 1.5rem; font-weight: 800; color: #fff; margin-bottom: 4px; }
+    .wp-stat span { font-size: 0.78rem; color: #4a6fa5; line-height: 1.3; display: block; }
+    @media (max-width: 560px) { .wp-stat-row { flex-direction: column; } .wp-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); } .wp-stat:last-child { border-bottom: none; } }
+
+    .wp-disclaimer { background: rgba(239,68,68,0.07); border: 1px solid rgba(239,68,68,0.2); border-radius: 12px; padding: 20px 24px; margin: 28px 0; }
+    .wp-disclaimer p { color: #fca5a5; margin: 0; font-size: 0.9rem; line-height: 1.7; }
+  </style>
 </head>
 <body class="neuro-site">
   <header class="site-header">
@@ -18,214 +82,382 @@
         <a href="../">Home</a>
         <a href="../research/">Research</a>
         <a href="../mission-statement/">Mission</a>
-        <a href="../eula/">EULA</a>
+        <a href="../eula/">Legal</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="doc-hero">
-      <div class="container">
-        <p class="doc-kicker">NeuroFlex White Paper · Version 1.0</p>
-        <h1>Building a longitudinal behavioral dataset for cognitive health research.</h1>
-        <p class="doc-lead">NeuroFlex begins as a cognitive wellness app, but its long-term research vision is to map behavioral trajectories over time and investigate whether specific patterns are associated with future cognitive outcomes.</p>
-        <div class="doc-actions">
-          <a class="btn btn-secondary" href="../">Back to NeuroFlex</a>
-        </div>
-      </div>
-    </section>
+    <div class="container">
+      <div class="wp-wrap">
 
-    <section class="section">
-      <div class="container">
-        <div class="doc-callout">
-          <p><strong>Scientific position:</strong> NeuroFlex does not claim to diagnose, predict, treat, or prevent Alzheimer's disease. The platform is designed to support wellness today and enable responsible future research into long-term behavioral change.</p>
-        </div>
-
-        <div class="doc-grid">
-          <article class="doc-card doc-card-strong">
-            <p class="mini-label">Core Thesis</p>
-            <h2>Data before models</h2>
-            <p>The most valuable asset is not a chatbot or a diagnostic claim. It is a structured longitudinal dataset that may allow future researchers to ask better questions about cognition, aging, and behavior.</p>
-          </article>
-          <article class="doc-card">
-            <p class="mini-label">Research Method</p>
-            <h2>Trajectory discovery</h2>
-            <p>NeuroFlex should not simply compare diagnosed and non-diagnosed users. Instead, it should characterize natural behavioral trajectories and later examine how they relate to clinical outcomes where available.</p>
-          </article>
-          <article class="doc-card">
-            <p class="mini-label">Product Role</p>
-            <h2>Wellness as observation</h2>
-            <p>Brain games, hydration, movement, social prompts, relaxation, and check-ins become low-friction ways to observe behavior over months and years.</p>
-          </article>
-        </div>
-
-        <div class="doc-strip">
-          <div class="doc-stat">
-            <strong>6</strong>
-            <span>wellness pillars</span>
-          </div>
-          <div class="doc-stat">
-            <strong>10</strong>
-            <span>behavioral event levels</span>
-          </div>
-          <div class="doc-stat">
-            <strong>3</strong>
-            <span>data collection tiers</span>
-          </div>
-          <div class="doc-stat">
-            <strong>Years</strong>
-            <span>not isolated test sessions</span>
+        <div class="wp-hero">
+          <p class="neuro-kicker">NeuroFlex White Paper · Version 2.0 · June 2026</p>
+          <h1>Measuring Digital Behavioral Biomarkers Before Symptoms of Alzheimer's Disease Appear</h1>
+          <p style="color:#aeb9e8; font-size:1.05rem; line-height:1.75; margin: 16px 0 0;">This document describes the scientific rationale, architectural design, research methodology, and development roadmap for the NeuroFlex platform — a cognitive wellness application and future longitudinal behavioral research infrastructure for early detection research in Alzheimer's disease.</p>
+          <div class="wp-hero-meta">
+            <span><strong>Version</strong> · 2.0</span>
+            <span><strong>Date</strong> · June 2026</span>
+            <span><strong>Status</strong> · Phase 1 — Wellness MVP (current)</span>
+            <span><strong>Contact</strong> · <a href="mailto:info@neuroflex.health" style="color:#9fb3ff;">info@neuroflex.health</a></span>
           </div>
         </div>
 
-        <section class="doc-section">
+        <div class="wp-toc">
+          <p class="wp-toc-label">Contents</p>
+          <ol>
+            <li><a href="#s1">Executive Summary</a></li>
+            <li><a href="#s2">The Problem: Late Diagnosis, Early Signals</a></li>
+            <li><a href="#s3">The Approach: Digital Behavioral Biomarkers</a></li>
+            <li><a href="#s4">Scientific Hypotheses</a></li>
+            <li><a href="#s5">Sex Differences and Stratification</a></li>
+            <li><a href="#s6">Platform Architecture</a></li>
+            <li><a href="#s7">Data Model and Event Architecture</a></li>
+            <li><a href="#s8">Research Methodology</a></li>
+            <li><a href="#s9">Privacy and Ethics Framework</a></li>
+            <li><a href="#s10">Development Roadmap</a></li>
+            <li><a href="#s11">Positioning and Related Work</a></li>
+            <li><a href="#s12">Limitations and Open Questions</a></li>
+            <li><a href="#s13">Vision and Next Steps</a></li>
+          </ol>
+        </div>
+
+        <div class="wp-disclaimer">
+          <p><strong>Scientific disclaimer.</strong> NeuroFlex is not a medical device. It is not intended to diagnose, predict, prevent, treat, or monitor any medical condition. The research direction described in this document is aspirational and pre-clinical. All future data collection will require separate ethics review, regulatory compliance, and explicit participant consent before activation.</p>
+        </div>
+
+        <!-- 1 -->
+        <div class="wp-section" id="s1">
+          <p class="wp-section-kicker">Section 1</p>
           <h2>Executive Summary</h2>
-          <p class="muted">NeuroFlex is a cognitive wellness platform designed to encourage healthy daily habits through brain training, hydration, movement, nutrition, social connection, and relaxation activities.</p>
-          <p>Its immediate objective is to support healthy lifestyles and cognitive engagement through enjoyable, low-friction daily interactions. Its long-term vision is to build a longitudinal behavioral dataset for future research into cognitive health, aging, and digital behavioral biomarkers.</p>
-          <p>The central scientific question is: can long-term patterns of everyday digital behavior reveal meaningful signals related to future cognitive outcomes?</p>
-        </section>
-
-        <section class="doc-section">
-          <h2>Why Longitudinal Behavior Matters</h2>
-          <p>Neurodegenerative conditions often begin years before conventional diagnosis. Traditional research focuses on clinical evaluation, neuropsychological tests, imaging, blood biomarkers, and genetics. These are essential, but they do not fully capture everyday behavior over long periods.</p>
-          <p>NeuroFlex explores a different layer: daily digital behavior. The platform observes how people engage, hesitate, learn, avoid, complete, return, and change over time.</p>
-        </section>
-
-        <section class="doc-section">
-          <h2>Research Hypothesis</h2>
-          <div class="doc-callout">
-            <p>Long-term digital behavioral patterns may contain measurable signals associated with future cognitive change. NeuroFlex does not assume these signals exist; it is designed to investigate whether they can be discovered and validated.</p>
+          <p>NeuroFlex is being developed as a two-layer platform: a free cognitive wellness application available today, and a longitudinal behavioral research infrastructure designed for tomorrow.</p>
+          <p>The core scientific question it is built to investigate is whether long-term patterns in everyday digital behavior contain measurable signals associated with pre-symptomatic cognitive change — specifically in the context of Alzheimer's disease (AD) and related dementias.</p>
+          <p>The platform collects behavioral data across six wellness domains — cognitive training, hydration, movement, nutrition, social connection, and relaxation — and is architecturally designed to preserve not just outcomes but the <em>process</em> of interaction: timing, hesitation, correction, avoidance, and change over time. These process-level signals are hypothesized to carry information that final scores or completion rates do not.</p>
+          <p>The current version (Phase 1) operates entirely offline, with no data collection. It establishes the user-facing product, the behavioral event architecture, and the participant experience that future research phases will build upon.</p>
+          <div class="wp-stat-row">
+            <div class="wp-stat"><strong>6</strong><span>wellness domains</span></div>
+            <div class="wp-stat"><strong>4</strong><span>development phases</span></div>
+            <div class="wp-stat"><strong>Years</strong><span>longitudinal horizon</span></div>
+            <div class="wp-stat"><strong>0</strong><span>data collected today</span></div>
           </div>
-        </section>
+        </div>
 
-        <section class="doc-section">
-          <h2>Wellness Pillars</h2>
-          <div class="doc-grid">
-            <article class="doc-card">
-              <h3>Train</h3>
-              <p>Memory, attention, reaction speed, pattern recognition, recall, and reasoning tasks.</p>
-            </article>
-            <article class="doc-card">
-              <h3>Drink</h3>
-              <p>Hydration reminders, completion patterns, response timing, and adherence behavior.</p>
-            </article>
-            <article class="doc-card">
-              <h3>Move</h3>
-              <p>Walking, stretching, balance, mobility, seated exercises, and sustainable physical activity.</p>
-            </article>
-            <article class="doc-card">
-              <h3>Eat</h3>
-              <p>Healthy habit tracking and simple nutrition support focused on low-pressure routines.</p>
-            </article>
-            <article class="doc-card">
-              <h3>Connect</h3>
-              <p>Social prompts, contact check-ins, meaningful interaction tracking, and isolation reduction.</p>
-            </article>
-            <article class="doc-card">
-              <h3>Relax</h3>
-              <p>Breathing, mindfulness prompts, relaxation exercises, and sleep-supportive routines.</p>
-            </article>
+        <!-- 2 -->
+        <div class="wp-section" id="s2">
+          <p class="wp-section-kicker">Section 2</p>
+          <h2>The Problem: Late Diagnosis, Early Signals</h2>
+          <p>Alzheimer's disease is the leading cause of dementia, affecting an estimated 55 million people worldwide, with numbers projected to reach 139 million by 2050 as populations age. Despite decades of research investment, clinical diagnosis typically occurs at a stage when significant neurodegeneration has already taken place.</p>
+          <p>The pathological process — amyloid plaque accumulation, tau neurofibrillary tangle formation, synaptic loss, and neuroinflammation — is now understood to begin 15–20 years before the onset of clinically detectable cognitive impairment. This pre-symptomatic window is increasingly recognized as the most important period for intervention, prevention research, and participant recruitment for clinical trials.</p>
+          <div class="wp-callout">
+            <p>The challenge is not that early signals do not exist. The challenge is that the methods currently used to detect them — PET imaging, cerebrospinal fluid analysis, plasma biomarkers — require clinical infrastructure that is inaccessible for large-scale, longitudinal, community-based observation. The field needs instruments that are scalable, low-friction, and capable of capturing change over years, not isolated sessions.</p>
           </div>
-        </section>
+          <p>Traditional cognitive assessments (MMSE, MoCA, neuropsychological batteries) are also limited in this context: they are administered infrequently, are subject to practice effects and examiner variability, and capture only a snapshot of performance at a single point in time. They do not capture how cognition changes — its trajectory — across the daily texture of a person's life.</p>
+          <p>NeuroFlex is designed around a different premise: that everyday digital interactions, measured consistently over time, may offer a complementary observational layer — one that is scalable, non-invasive, and capable of capturing longitudinal behavioral trajectories at a granularity that clinical assessments cannot reach.</p>
+        </div>
 
-        <section class="doc-section">
-          <h2>Behavioral Signals</h2>
-          <ul class="doc-pill-list">
-            <li>reaction time</li>
-            <li>reaction variability</li>
-            <li>hesitation time</li>
-            <li>correction frequency</li>
-            <li>learning trajectory</li>
-            <li>retention curve</li>
-            <li>completion rate</li>
-            <li>task postponement</li>
-            <li>activity avoidance</li>
-            <li>session fragmentation</li>
-            <li>social engagement</li>
-            <li>mood trend</li>
-            <li>self-perception</li>
-            <li>touch precision</li>
-            <li>routine stability</li>
+        <!-- 3 -->
+        <div class="wp-section" id="s3">
+          <p class="wp-section-kicker">Section 3</p>
+          <h2>The Approach: Digital Behavioral Biomarkers</h2>
+          <p>A digital biomarker is a physiological or behavioral measure collected through a digital device that can be used to explain, influence, or predict health-related outcomes. The field has expanded rapidly over the past decade, with research demonstrating measurable signals in keystroke dynamics, speech patterns, gait analysis, sleep patterns, and smartphone interaction behavior.</p>
+          <p>NeuroFlex focuses on behavioral biomarkers derived from structured application interactions: not passive background sensing, but purposeful engagement with cognitive tasks, wellness activities, and daily routine management. This approach offers several advantages:</p>
+          <ul>
+            <li><strong>Ecological validity:</strong> behavior is captured in naturalistic conditions, not in a clinical testing environment.</li>
+            <li><strong>Longitudinal density:</strong> daily interactions create a continuous behavioral time series across weeks, months, and years.</li>
+            <li><strong>Process capture:</strong> structured interactions preserve not just outcomes (did the user complete the task?) but process metadata (how long did they hesitate? how many corrections did they make? how did their performance change over repeated sessions?).</li>
+            <li><strong>Low participant burden:</strong> wellness activities provide intrinsic value to users, independent of research goals, supporting long-term engagement.</li>
           </ul>
-        </section>
+          <p>The hypothesis is not that any individual behavioral measurement predicts cognitive change. It is that <strong>trajectories</strong> — patterns of change across extended time periods, across multiple behavioral domains — may contain signal that would not be detectable in any single observation.</p>
+        </div>
 
-        <section class="doc-section">
-          <h2>Explicit and Implicit Data</h2>
-          <div class="doc-grid">
-            <article class="doc-card">
-              <h3>Explicit signals</h3>
-              <p>Direct user responses such as mood, energy, motivation, loneliness, perceived memory, focus, confidence, and perceived difficulty.</p>
-            </article>
-            <article class="doc-card">
-              <h3>Implicit signals</h3>
-              <p>Behavioral metadata generated during interaction: reaction times, pauses, navigation paths, abandonment behavior, correction frequency, and session timing.</p>
-            </article>
+        <!-- 4 -->
+        <div class="wp-section" id="s4">
+          <p class="wp-section-kicker">Section 4</p>
+          <h2>Scientific Hypotheses</h2>
+          <p>NeuroFlex is developing a series of formal, testable scientific hypotheses that the research programme is designed to investigate. Two are currently published as working hypothesis papers:</p>
+
+          <div class="wp-grid">
+            <div class="wp-card">
+              <h3>Hypothesis I: Dynamic Cognitive Reserve</h3>
+              <p>Cognitive reserve is not a static protective capacity but a dynamically maintained adaptive state. Loss of structured cognitive engagement may rapidly unmask previously compensated neuropathology — with measurable behavioral signatures detectable through longitudinal digital monitoring before clinical presentation.</p>
+            </div>
+            <div class="wp-card">
+              <h3>Hypothesis II: Multisensory Integration Decline</h3>
+              <p>Subclinical degradation of multisensory integration — the brain's capacity to combine signals across sensory modalities — may precede measurable cognitive decline in AD and represent a novel class of early digital biomarkers, detectable through structured cross-modal interaction tasks.</p>
+            </div>
           </div>
-        </section>
 
-        <section class="doc-section">
+          <p>Both hypotheses are formulated as falsifiable, testable propositions. Neither asserts that NeuroFlex will detect Alzheimer's disease. Both assert that specific behavioral patterns, measured longitudinally, may carry signal that warrants systematic investigation with appropriate research infrastructure and clinical ground truth.</p>
+          <div class="wp-highlight">
+            <p>The platform's research methodology is explicitly discovery-oriented, not confirmatory. The initial objective is to characterize natural behavioral trajectories and investigate whether they exhibit systematic structure. Clinical hypothesis testing and biomarker validation require subsequent prospective study designs with verified outcome data.</p>
+          </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="wp-section" id="s5">
+          <p class="wp-section-kicker">Section 5</p>
+          <h2>Sex Differences and Model Stratification</h2>
+          <p>Women account for approximately 60–65% of all Alzheimer's patients globally. For decades, this disparity was attributed primarily to differential longevity. Current evidence indicates a more complex biological picture involving at least five interacting mechanisms:</p>
+          <ul>
+            <li><strong>Estrogen and the menopausal transition:</strong> estrogen has documented neuroprotective and neuromodulatory effects. Perimenopausal estrogen decline is associated with measurable reductions in cerebral glucose metabolism — a marker closely linked to AD risk — years before cognitive change.</li>
+            <li><strong>Tau pathology:</strong> women show stronger associations between amyloid burden and tau accumulation; for equivalent amyloid load, women tend to develop more tau pathology, the biomarker most closely correlated with cognitive decline.</li>
+            <li><strong>Cognitive reserve dynamics:</strong> women may have higher verbal memory reserve in certain domains, masking pathology longer — leading to later diagnosis at more advanced disease stages and an apparently more rapid post-diagnosis decline.</li>
+            <li><strong>APOE ε4 interaction:</strong> the risk conferred by a single APOE ε4 allele appears to be substantially higher in women than in men.</li>
+            <li><strong>Neuroinflammation:</strong> sex differences in microglial activation and neuroinflammatory response may contribute to differential disease progression dynamics.</li>
+          </ul>
+          <p>These mechanisms have a direct consequence for AI-driven behavioral analysis: a model trained on sex-undifferentiated data may produce systematically biased predictions for both male and female participants. NeuroFlex is designed from the outset to treat sex as a primary modeling variable — not a covariate to be controlled for, but a structural feature of the prediction problem itself.</p>
+          <div class="wp-callout">
+            <p>The key open research question is whether behavioral trajectories under equivalent tau or amyloid pathological burden differ systematically between male and female participants. If they do — and there is biological reason to hypothesize that they might — then sex-stratified normative models for digital cognitive performance may be a prerequisite for equitable and accurate early detection.</p>
+          </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="wp-section" id="s6">
+          <p class="wp-section-kicker">Section 6</p>
+          <h2>Platform Architecture</h2>
+          <p>The NeuroFlex platform is structured around six wellness domains, each designed to generate structured behavioral observations across different cognitive, physical, and social dimensions:</p>
+          <div class="wp-grid">
+            <div class="wp-card">
+              <h3>Train</h3>
+              <p>Memory cards, number sequences, pattern recognition, and reaction tasks. Captures reaction time, hesitation, learning curves, error patterns, and retention across repeated sessions.</p>
+            </div>
+            <div class="wp-card">
+              <h3>Drink</h3>
+              <p>Hydration reminders and completion tracking. Captures routine adherence, response timing, and habit stability over time.</p>
+            </div>
+            <div class="wp-card">
+              <h3>Move</h3>
+              <p>Walking, stretching, balance, and seated exercise prompts. Captures activity completion, session timing, and engagement regularity.</p>
+            </div>
+            <div class="wp-card">
+              <h3>Eat</h3>
+              <p>Nutrition habit support. Captures routine consistency, postponement behavior, and adherence patterns.</p>
+            </div>
+            <div class="wp-card">
+              <h3>Connect</h3>
+              <p>Social prompts and interaction check-ins. Captures engagement with social activity, completion patterns, and potential social withdrawal signals.</p>
+            </div>
+            <div class="wp-card">
+              <h3>Relax</h3>
+              <p>Breathing exercises, mindfulness, and sleep-supportive routines. Captures stress response behavior and routine regularity.</p>
+            </div>
+          </div>
+          <p>The platform also includes a structured daily check-in system (Pulse, Compass, Wander, and Haven modules) capturing self-reported mood, energy, motivation, focus, stress, loneliness, confidence, memory perception, and perceived cognitive difficulty. These explicit self-report signals complement the implicit behavioral metadata captured during task interaction.</p>
+        </div>
+
+        <!-- 7 -->
+        <div class="wp-section" id="s7">
+          <p class="wp-section-kicker">Section 7</p>
+          <h2>Data Model and Behavioral Event Architecture</h2>
+          <p>The NeuroFlex behavioral event model is designed to ensure that data collected in Phase 1 (local, offline) can map cleanly into a future research-grade backend without architectural changes. The core principle is: <strong>never store only final scores. Store the process.</strong></p>
+          <p>The event model is structured across ten levels:</p>
+          <ul>
+            <li><strong>System events:</strong> app lifecycle signals.</li>
+            <li><strong>Navigation events:</strong> screen transitions, button interactions, invalid taps, repeated taps.</li>
+            <li><strong>Activity lifecycle:</strong> starts, completions, abandonments, retries, skips.</li>
+            <li><strong>Cognitive events:</strong> task-level behavioral metadata — timing, hesitation, error type, correction sequences.</li>
+            <li><strong>Emotional events:</strong> self-reported mood, energy, stress, loneliness, memory self-rating.</li>
+            <li><strong>Wellness events:</strong> domain-specific completion and engagement signals.</li>
+            <li><strong>Routine events:</strong> task creation, completion, postponement, and skip patterns.</li>
+            <li><strong>Notification events:</strong> scheduling, receipt, opening, dismissal, and action selection.</li>
+            <li><strong>Behavioral pattern events:</strong> challenge avoidance, difficulty adjustment, long pauses, return-after-gap signals.</li>
+            <li><strong>Consent events:</strong> research consent management, data export requests, data deletion.</li>
+          </ul>
+          <p>The derived metrics that can be computed from this event stream include:</p>
+          <div class="wp-signal-grid">
+            <span class="wp-signal">reaction time</span>
+            <span class="wp-signal">reaction variability</span>
+            <span class="wp-signal">hesitation duration</span>
+            <span class="wp-signal">learning curve slope</span>
+            <span class="wp-signal">retention curve</span>
+            <span class="wp-signal">first-error position</span>
+            <span class="wp-signal">correction rate</span>
+            <span class="wp-signal">task adherence rate</span>
+            <span class="wp-signal">postponement frequency</span>
+            <span class="wp-signal">abandonment rate</span>
+            <span class="wp-signal">confidence–performance gap</span>
+            <span class="wp-signal">usage time drift</span>
+            <span class="wp-signal">session fragmentation</span>
+            <span class="wp-signal">touch precision</span>
+            <span class="wp-signal">routine stability index</span>
+            <span class="wp-signal">social engagement trend</span>
+          </div>
+        </div>
+
+        <!-- 8 -->
+        <div class="wp-section" id="s8">
+          <p class="wp-section-kicker">Section 8</p>
           <h2>Research Methodology</h2>
-          <p>NeuroFlex should not start by labeling users as healthy or diagnosed. A user without diagnosis may still be experiencing early changes, may receive a diagnosis later, or may have other neurological or emotional factors.</p>
-          <div class="doc-timeline">
-            <div class="doc-step">
-              <h3>1. Collect broad behavioral data</h3>
-              <p class="muted">Observe diverse interactions across cognitive, emotional, wellness, social, motor, and routine domains.</p>
+          <p>NeuroFlex adopts a four-cohort research design:</p>
+          <ul>
+            <li><strong>Cohort A:</strong> participants with an existing Alzheimer's or dementia diagnosis.</li>
+            <li><strong>Cohort B:</strong> family members of diagnosed individuals — elevated genetic and environmental risk without current diagnosis.</li>
+            <li><strong>Cohort C:</strong> biomarker-positive individuals without clinical diagnosis — the pre-symptomatic population of primary research interest.</li>
+            <li><strong>Cohort D:</strong> general adult population without known risk factors — provides normative behavioral baseline data.</li>
+          </ul>
+          <p>This design avoids the methodological problem of training models only on diagnosed versus healthy populations. The research process is structured in four stages:</p>
+
+          <div class="wp-phases">
+            <div class="wp-phase">
+              <div class="wp-phase-num">Stage 1</div>
+              <div>
+                <h3>Broad behavioral data collection</h3>
+                <p>Observe diverse interactions across cognitive, emotional, wellness, social, and routine domains, without assuming specific disease-related labels.</p>
+              </div>
             </div>
-            <div class="doc-step">
-              <h3>2. Discover natural trajectories</h3>
-              <p class="muted">Use clustering, anomaly detection, and temporal modeling to characterize behavior without assuming a specific disease label.</p>
+            <div class="wp-phase">
+              <div class="wp-phase-num">Stage 2</div>
+              <div>
+                <h3>Trajectory characterization</h3>
+                <p>Apply clustering, anomaly detection, and temporal modeling to identify natural behavioral trajectory types — without imposing a priori disease labels.</p>
+              </div>
             </div>
-            <div class="doc-step">
-              <h3>3. Associate outcomes later</h3>
-              <p class="muted">Where future clinical outcomes become available, investigate whether specific trajectories are associated with those outcomes.</p>
+            <div class="wp-phase">
+              <div class="wp-phase-num">Stage 3</div>
+              <div>
+                <h3>Outcome association</h3>
+                <p>Where longitudinal clinical outcomes become available (through cohort follow-up, linkage with clinical partners, or self-reported diagnosis), investigate whether specific trajectory types are associated with those outcomes.</p>
+              </div>
             </div>
-            <div class="doc-step">
-              <h3>4. Validate independently</h3>
-              <p class="muted">Any meaningful findings require independent validation, peer-reviewed research, and clinical study.</p>
+            <div class="wp-phase">
+              <div class="wp-phase-num">Stage 4</div>
+              <div>
+                <h3>Independent validation</h3>
+                <p>Any meaningful associations require prospective replication in independent cohorts, peer-reviewed publication, and review by clinical partners before scientific claims can be made.</p>
+              </div>
             </div>
           </div>
-        </section>
 
-        <section class="doc-section">
+          <p>The ground truth strategy relies on integration with clinical partner data where available, supplemented by longitudinal self-report and, where possible, linkage to existing biomarker studies. The research is designed to be additive to — not a replacement for — established clinical and imaging biomarker programmes.</p>
+        </div>
+
+        <!-- 9 -->
+        <div class="wp-section" id="s9">
+          <p class="wp-section-kicker">Section 9</p>
+          <h2>Privacy and Ethics Framework</h2>
+          <p>Privacy is an architectural principle in NeuroFlex, not a compliance afterthought. The framework is designed to meet GDPR requirements and to be defensible under the standards of independent ethics review.</p>
+          <p><strong>Current version (Phase 1):</strong> entirely offline. No personal data is collected, transmitted, or stored outside the user's device. No analytics, no account creation, no identifiers.</p>
+          <p><strong>Future research phases:</strong> the following principles will govern any transition to data collection:</p>
+          <ul>
+            <li>Anonymous identifiers by default — no name, email, or government-issued ID required.</li>
+            <li>Layered, explicit, informed consent with the ability to withdraw at any time and request data deletion.</li>
+            <li>Separate consent for each data tier (Tier 1: core wellness events; Tier 2: detailed interaction metadata; Tier 3: advanced motor signals).</li>
+            <li>Independent ethics committee review before any research data collection activates.</li>
+            <li>Published, transparent data governance documentation.</li>
+            <li>No data sharing with commercial third parties under any circumstances.</li>
+          </ul>
+          <p>The research design explicitly excludes sensitive data categories (precise location, contact lists, camera, microphone, medical records) from default collection. Advanced motor data (Tier 3) requires separate, specific consent and is intended only for participants explicitly enrolled in clinical research partnerships.</p>
+          <div class="wp-callout">
+            <p>Participants who contribute data to NeuroFlex research are not users of a product that monetizes their attention. They are voluntary contributors to a scientific effort. The ethical and legal framework must reflect that distinction — and will be designed accordingly.</p>
+          </div>
+        </div>
+
+        <!-- 10 -->
+        <div class="wp-section" id="s10">
+          <p class="wp-section-kicker">Section 10</p>
           <h2>Development Roadmap</h2>
-          <div class="doc-grid">
-            <article class="doc-card">
-              <h3>Phase 1 · Wellness MVP</h3>
-              <p>Offline consumer app with games, schedules, reminders, wellness pillars, and local event-ready architecture.</p>
-            </article>
-            <article class="doc-card">
-              <h3>Phase 2 · Research Infrastructure</h3>
-              <p>Anonymous identifiers, consent management, cloud sync, secure storage, and event ingestion.</p>
-            </article>
-            <article class="doc-card">
-              <h3>Phase 3 · Longitudinal Dataset</h3>
-              <p>Large-scale participation, multi-year observations, research partnerships, and optional outcome tracking.</p>
-            </article>
-            <article class="doc-card">
-              <h3>Phase 4 · ML Research</h3>
-              <p>Behavioral clustering, trajectory discovery, anomaly detection, biomarker exploration, and publication.</p>
-            </article>
+          <div class="wp-phases">
+            <div class="wp-phase active">
+              <div class="wp-phase-num">Phase 1 · Now</div>
+              <div>
+                <h3>Wellness MVP</h3>
+                <p>Free offline Android application. Brain training games, daily habit reminders, alarm system, daily check-ins, and structured behavioral event architecture. No data collection. Establishes product experience, participant familiarity, and the event schema that future phases will use.</p>
+              </div>
+            </div>
+            <div class="wp-phase">
+              <div class="wp-phase-num">Phase 2</div>
+              <div>
+                <h3>Research Infrastructure</h3>
+                <p>Anonymous identifiers, layered consent management, secure cloud sync, behavioral event ingestion pipeline, and encrypted storage. Ethics committee approval required before activation. Research-grade data pipeline with privacy-first design and full GDPR compliance.</p>
+              </div>
+            </div>
+            <div class="wp-phase">
+              <div class="wp-phase-num">Phase 3</div>
+              <div>
+                <h3>Longitudinal Dataset Development</h3>
+                <p>Multi-cohort participant recruitment, multi-year observation, academic research partnerships, and integration with clinical biomarker programmes for ground truth development. Target: sufficiently powered observational dataset for trajectory characterization research.</p>
+              </div>
+            </div>
+            <div class="wp-phase">
+              <div class="wp-phase-num">Phase 4</div>
+              <div>
+                <h3>AI and Machine Learning Research</h3>
+                <p>Behavioral trajectory clustering and classification, anomaly detection for longitudinal change, sex-stratified model development, and exploration of associations between behavioral biomarker trajectories and cognitive outcomes. Peer-reviewed publication and independent validation required before scientific claims.</p>
+              </div>
+            </div>
           </div>
-        </section>
+        </div>
 
-        <section class="doc-section">
-          <h2>Vision Statement</h2>
-          <p>NeuroFlex seeks to transform everyday wellness interactions into a long-term scientific resource for understanding cognitive health and behavioral change.</p>
-          <p>The ultimate goal is not to promise answers, but to create the conditions necessary to discover them responsibly.</p>
-        </section>
+        <!-- 11 -->
+        <div class="wp-section" id="s11">
+          <p class="wp-section-kicker">Section 11</p>
+          <h2>Positioning and Related Work</h2>
+          <p>NeuroFlex occupies a specific position in the digital health landscape that is distinct from several existing platform categories:</p>
+          <div class="wp-grid">
+            <div class="wp-card">
+              <h3>vs. Large cohort studies (ADNI, BioFINDER, EPAD)</h3>
+              <p>These produce gold-standard clinical data but are expensive, infrequent, and not scalable for continuous longitudinal monitoring. NeuroFlex is designed to complement, not replace, these programmes.</p>
+            </div>
+            <div class="wp-card">
+              <h3>vs. Clinical assessment platforms (Altoida, Linus Health, Cogstate)</h3>
+              <p>These are designed for clinical deployment, require healthcare integration, and are typically not designed for sustained longitudinal observation at consumer scale. NeuroFlex targets the pre-clinical, community-based population.</p>
+            </div>
+            <div class="wp-card">
+              <h3>vs. Passive sensing platforms (Beiwe, RADAR-base)</h3>
+              <p>These capture background behavioral data (GPS, accelerometer, communication patterns) with limited active cognitive engagement. NeuroFlex captures structured, task-based behavioral events with richer cognitive metadata.</p>
+            </div>
+            <div class="wp-card">
+              <h3>vs. Digital biomarker research projects (RADAR-AD, LETHE, BioCog)</h3>
+              <p>These are academic research platforms not designed for consumer deployment. NeuroFlex uniquely combines consumer-grade product design with research-grade behavioral event capture.</p>
+            </div>
+          </div>
+          <p>The key differentiators that NeuroFlex offers relative to this landscape are: consumer-scale deployment potential; longitudinal depth (years, not weeks); dual-purpose design serving both participant wellness and research value; sex-stratified modeling by design; and a Personal Baseline architecture that treats each participant's own behavioral trajectory as the primary reference — not a population average.</p>
+        </div>
+
+        <!-- 12 -->
+        <div class="wp-section" id="s12">
+          <p class="wp-section-kicker">Section 12</p>
+          <h2>Limitations and Open Questions</h2>
+          <p>Intellectual honesty about the limitations of this approach is a scientific requirement, not an optional disclaimer. The following represent the most significant methodological challenges:</p>
+          <ul>
+            <li><strong>Engagement decay:</strong> sustained longitudinal participation is the platform's most significant operational challenge. The research value of NeuroFlex depends entirely on multi-year data. Strategies to support engagement without compromising scientific validity are a central design consideration.</li>
+            <li><strong>Healthy user bias:</strong> individuals who voluntarily use a wellness app may not be representative of the general population — or of the at-risk population — in ways that are difficult to fully characterize or correct for.</li>
+            <li><strong>Label uncertainty:</strong> the pre-symptomatic population (Cohort C) is by definition undiagnosed. Developing reliable ground truth for behavioral biomarker validation requires integration with clinical partner data.</li>
+            <li><strong>Confounding variables:</strong> behavioral trajectories are influenced by many factors (depression, medication, life events, digital literacy, screen fatigue) that are not uniquely attributable to cognitive change.</li>
+            <li><strong>Diagnostic delay bias:</strong> women's higher cognitive reserve may cause them to present for diagnosis later, at more advanced disease stages — which may systematically affect the behavioral data available for model training if not explicitly accounted for.</li>
+            <li><strong>Validation requirement:</strong> no behavioral biomarker finding from this platform will constitute scientific evidence without independent replication and peer review. NeuroFlex is a hypothesis-generation infrastructure, not a diagnostic system.</li>
+          </ul>
+          <p>The research design described in this document is explicitly constructed to minimize these biases where possible, acknowledge them where they cannot be eliminated, and structure the research outputs so that they are verifiable and replicable.</p>
+        </div>
+
+        <!-- 13 -->
+        <div class="wp-section" id="s13">
+          <p class="wp-section-kicker">Section 13</p>
+          <h2>Vision and Next Steps</h2>
+          <p>NeuroFlex is designed around a conviction: that the pre-symptomatic window of Alzheimer's disease is not unreachable. The signals are there. The question is whether we are measuring the right things, at the right granularity, over a long enough time period, in a way that is ethical, scalable, and scientifically defensible.</p>
+          <p>The immediate next steps are:</p>
+          <ul>
+            <li>Establishing the first academic research partnership with a neurologist or research group working in the AD biomarker space — ideally within the Slovak or Central European context, given proximity and existing relationships.</li>
+            <li>Completing Phase 1 development and beginning structured user feedback collection.</li>
+            <li>Initiating ethics committee consultation for the Phase 2 research infrastructure design.</li>
+            <li>Developing a formal research protocol for the first observational study, including power calculations and cohort design.</li>
+          </ul>
+          <div class="wp-highlight">
+            <p>The goal is not to promise answers. The goal is to build the conditions — the infrastructure, the longitudinal data, the scientific partnerships, and the methodological rigour — necessary to discover them responsibly. That work starts now, in Phase 1, with a free app that asks nothing from its users except their time and their willingness to stay cognitively engaged.</p>
+          </div>
+          <p>For collaboration enquiries, partnership discussions, or access to research documentation, contact us at <a href="mailto:info@neuroflex.health">info@neuroflex.health</a>.</p>
+        </div>
+
       </div>
-    </section>
+    </div>
   </main>
 
   <footer class="site-footer">
     <div class="container">
-      <p>&copy; <span id="year"></span> NeuroFlex · Cognitive wellness &amp; behavioral research</p>
+      <p>&copy; <span id="year"></span> NeuroFlex · Digital biomarkers &amp; cognitive health research</p>
       <p class="muted">Developed by NeuroFlex<sup>©</sup></p>
     </div>
   </footer>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>
