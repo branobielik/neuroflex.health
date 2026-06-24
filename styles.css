@@ -837,3 +837,42 @@ body {
     padding: 88px 0;
   }
 }
+
+/* ── Strategy page theme (Internal Working Documents) ─────────────────── */
+body.neuro-strategy {
+  background: #020c1e;
+}
+body.neuro-strategy .doc-hero {
+  background: linear-gradient(160deg, rgba(30,58,138,0.28) 0%, rgba(2,12,30,0) 60%);
+  border-bottom-color: rgba(59,130,246,0.2);
+}
+body.neuro-strategy .doc-kicker {
+  color: #3B82F6;
+}
+body.neuro-strategy .section-number {
+  color: #3B82F6;
+}
+body.neuro-strategy .toc .toc-label {
+  color: #3B82F6;
+}
+body.neuro-strategy .toc a {
+  color: #60A5FA;
+}
+body.neuro-strategy .insight {
+  background: rgba(59,130,246,0.05);
+  border-left-color: rgba(59,130,246,0.5);
+}
+body.neuro-strategy .insight p {
+  color: #93c5fd;
+}
+body.neuro-strategy .step-num {
+  background: rgba(59,130,246,0.12);
+  color: #3B82F6;
+}
+body.neuro-strategy .conclusion-box {
+  background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(120,104,243,0.06));
+  border-color: rgba(59,130,246,0.3);
+}
+body.neuro-strategy .conclusion-box blockquote {
+  border-left-color: #3B82F6;
+}

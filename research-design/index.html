@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="../styles.css" />
   <style>
     .doc-body { max-width: 860px; }
-    .section-number { font-size:0.68rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#00cfff; margin-bottom:0.3rem; }
+    .section-number { font-size:0.68rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#3B82F6; margin-bottom:0.3rem; }
     h2.section-title { font-size:1.35rem; margin:0 0 0.85rem; }
     h3.sub { font-size:1.05rem; margin:1.6rem 0 0.5rem; color:#c8dde8; }
     h4.sub4 { font-size:0.93rem; margin:1.1rem 0 0.3rem; color:#9ab8cc; }
@@ -17,13 +17,13 @@
     hr.div { border:none; border-top:1px solid rgba(255,255,255,0.07); margin:3rem 0; }
 
     /* Abstract */
-    .abstract-box { background:rgba(0,0,0,0.25); border:1px solid rgba(0,207,255,0.2); border-radius:14px; padding:1.4rem 1.6rem; margin:1.5rem 0 2rem; }
-    .abstract-box p.label { font-size:0.68rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#00cfff; margin:0 0 0.6rem; }
+    .abstract-box { background:rgba(0,0,0,0.25); border:1px solid rgba(59,130,246,0.2); border-radius:14px; padding:1.4rem 1.6rem; margin:1.5rem 0 2rem; }
+    .abstract-box p.label { font-size:0.68rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#3B82F6; margin:0 0 0.6rem; }
     .abstract-box p { font-size:0.88rem; color:#9ab8cc; line-height:1.72; margin:0 0 0.5rem; }
 
     /* TOC */
     .toc { background:rgba(0,0,0,0.2); border-radius:12px; padding:1.2rem 1.5rem; margin:1.5rem 0 2.5rem; }
-    .toc .toc-label { font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#00cfff; margin:0 0 0.75rem; }
+    .toc .toc-label { font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#3B82F6; margin:0 0 0.75rem; }
     .toc ol { margin:0; padding-left:1.3rem; display:flex; flex-direction:column; gap:0.3rem; }
     .toc li { font-size:0.88rem; color:#7a9ab5; }
     .toc a { color:#7ec8d8; text-decoration:none; }
@@ -32,7 +32,7 @@
     .toc ol ol li { font-size:0.82rem; color:#5a7a99; }
 
     /* Insight / gap */
-    .insight { background:rgba(0,207,255,0.05); border-left:3px solid rgba(0,207,255,0.5); border-radius:0 10px 10px 0; padding:0.9rem 1.2rem; margin:1.25rem 0; }
+    .insight { background:rgba(59,130,246,0.05); border-left:3px solid rgba(59,130,246,0.5); border-radius:0 10px 10px 0; padding:0.9rem 1.2rem; margin:1.25rem 0; }
     .insight p { font-size:0.88rem; color:#8cc8d8; line-height:1.65; margin:0; }
     .gap-box { background:rgba(255,179,71,0.05); border-left:3px solid rgba(255,179,71,0.5); border-radius:0 10px 10px 0; padding:0.9rem 1.2rem; margin:1.25rem 0; }
     .gap-box p { font-size:0.88rem; color:#c8a870; line-height:1.65; margin:0; }
@@ -52,31 +52,31 @@
 
     /* Sample size table */
     .ss-table { width:100%; border-collapse:collapse; font-size:0.84rem; margin:1rem 0; }
-    .ss-table th { text-align:left; padding:0.5rem 0.75rem; color:#00cfff; border-bottom:1px solid rgba(0,207,255,0.2); font-weight:600; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.05em; }
+    .ss-table th { text-align:left; padding:0.5rem 0.75rem; color:#3B82F6; border-bottom:1px solid rgba(59,130,246,0.2); font-weight:600; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.05em; }
     .ss-table td { padding:0.5rem 0.75rem; border-bottom:1px solid rgba(255,255,255,0.04); color:#8a9fb5; }
     .ss-table td strong { color:#c8dde8; }
     .ss-table tr:last-child td { border-bottom:none; }
-    .ss-table td.total { color:#00cfff; font-weight:700; }
+    .ss-table td.total { color:#3B82F6; font-weight:700; }
 
     /* Checkup module cards */
     .checkup-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1.25rem 0; }
     @media(max-width:640px){ .checkup-grid { grid-template-columns:1fr; } }
     .checkup-card { border-radius:14px; padding:1.1rem 1.2rem; }
     .pulse-card { background:rgba(255,100,130,0.06); border:1px solid rgba(255,100,130,0.2); }
-    .compass-card { background:rgba(0,207,255,0.05); border:1px solid rgba(0,207,255,0.2); }
+    .compass-card { background:rgba(59,130,246,0.05); border:1px solid rgba(59,130,246,0.2); }
     .wander-card { background:rgba(150,100,255,0.05); border:1px solid rgba(150,100,255,0.2); }
     .haven-card { background:rgba(80,200,80,0.05); border:1px solid rgba(80,200,80,0.2); }
     .checkup-card .ck-icon { font-size:1.4rem; margin-bottom:0.4rem; }
     .checkup-card h4 { margin:0 0 0.3rem; font-size:1rem; }
     .pulse-card h4 { color:#ff7eb3; }
-    .compass-card h4 { color:#00cfff; }
+    .compass-card h4 { color:#3B82F6; }
     .wander-card h4 { color:#a08aff; }
     .haven-card h4 { color:#55d68a; }
     .checkup-card p { font-size:0.83rem; color:#7a9ab5; line-height:1.65; margin:0 0 0.5rem; }
     .checkup-card .trait-tags { display:flex; flex-wrap:wrap; gap:0.3rem; margin-top:0.5rem; }
     .trait-tag { font-size:0.67rem; padding:0.15em 0.55em; border-radius:4px; font-weight:600; letter-spacing:0.05em; }
     .pulse-tag { background:rgba(255,100,130,0.12); color:#ff9ab8; }
-    .compass-tag { background:rgba(0,207,255,0.1); color:#5ab8cc; }
+    .compass-tag { background:rgba(59,130,246,0.1); color:#5ab8cc; }
     .wander-tag { background:rgba(150,100,255,0.1); color:#b0a0ff; }
     .haven-tag { background:rgba(80,200,80,0.1); color:#80c880; }
 
@@ -85,7 +85,7 @@
     .probe-block .pb-head { display:flex; align-items:flex-start; justify-content:space-between; gap:0.75rem; margin-bottom:0.6rem; flex-wrap:wrap; }
     .probe-block h4 { margin:0; font-size:0.93rem; color:#c8dde8; }
     .pb-tags { display:flex; gap:0.3rem; flex-wrap:wrap; }
-    .pb-tag { font-size:0.65rem; padding:0.15em 0.5em; border-radius:3px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; background:rgba(0,207,255,0.1); color:#5ab8cc; }
+    .pb-tag { font-size:0.65rem; padding:0.15em 0.5em; border-radius:3px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; background:rgba(59,130,246,0.1); color:#5ab8cc; }
     .probe-q { font-size:0.88rem; color:#a8c8d8; font-style:italic; margin:0 0 0.5rem; }
     .probe-options { display:flex; flex-direction:column; gap:0.2rem; }
     .probe-options span { font-size:0.82rem; color:#6a8aa0; padding-left:0.5rem; }
@@ -95,16 +95,16 @@
     /* Step list */
     .step-list { display:flex; flex-direction:column; gap:0.75rem; margin-top:1rem; }
     .step-item { display:flex; gap:0.85rem; align-items:flex-start; }
-    .step-num { min-width:1.6rem; height:1.6rem; background:rgba(0,207,255,0.12); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.72rem; font-weight:700; color:#00cfff; flex-shrink:0; margin-top:0.15rem; }
+    .step-num { min-width:1.6rem; height:1.6rem; background:rgba(59,130,246,0.12); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.72rem; font-weight:700; color:#3B82F6; flex-shrink:0; margin-top:0.15rem; }
     .step-item p { font-size:0.88rem; color:#8a9fb5; margin:0; line-height:1.65; }
     .step-item p strong { color:#a8c8d8; }
 
     /* Conclusion */
-    .conclusion-box { background:linear-gradient(135deg,rgba(0,207,255,0.07),rgba(120,104,243,0.06)); border:1px solid rgba(0,207,255,0.25); border-radius:16px; padding:1.75rem; margin:1.5rem 0; }
-    .conclusion-box blockquote { font-size:1rem; font-style:italic; color:#c8dde8; border-left:3px solid #00cfff; margin:0.75rem 0; padding-left:1.2rem; line-height:1.75; }
+    .conclusion-box { background:linear-gradient(135deg,rgba(59,130,246,0.07),rgba(120,104,243,0.06)); border:1px solid rgba(59,130,246,0.25); border-radius:16px; padding:1.75rem; margin:1.5rem 0; }
+    .conclusion-box blockquote { font-size:1rem; font-style:italic; color:#c8dde8; border-left:3px solid #3B82F6; margin:0.75rem 0; padding-left:1.2rem; line-height:1.75; }
   </style>
 </head>
-<body class="neuro-site">
+<body class="neuro-site neuro-strategy">
   <header class="site-header">
     <div class="container header-inner">
       <a href="../" class="brand brand-neuroflex">
@@ -649,7 +649,7 @@
           </div>
 
           <div class="conclusion-box">
-            <p style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#00cfff;margin:0 0 0.75rem;">Questions for the SAV Meeting</p>
+            <p style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#3B82F6;margin:0 0 0.75rem;">Questions for the SAV Meeting</p>
             <blockquote>What is the minimum clinical dataset required per participant for the behavioral data to be scientifically interpretable?</blockquote>
             <blockquote>Are there existing Slovak or Czech cohorts (Memory Clinic Bratislava, Masaryk University Brno, Czech National Cohort) to which NeuroFlex could be attached as a digital behavioral monitoring module?</blockquote>
             <blockquote>Is SAV's Institute of Neuroimmunology the appropriate scientific partner for a formal collaboration agreement, and what would that process look like?</blockquote>

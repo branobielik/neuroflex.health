@@ -4,63 +4,137 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Research — NeuroFlex</title>
-  <meta name="description" content="NeuroFlex research documents: scientific hypotheses, research strategy, methodology, funding landscape, and published articles." />
+  <meta name="description" content="NeuroFlex research documents: scientific hypotheses, research strategy, methodology, and published articles." />
   <link rel="stylesheet" href="../styles.css" />
   <style>
-    .research-hub { padding: 72px 0 80px; }
-    .research-hub-intro { max-width: 660px; margin-bottom: 64px; }
-    .research-hub-intro h1 { font-size: clamp(2rem, 4vw, 2.8rem); margin: 0 0 16px; color: #fff; }
-    .research-hub-intro p { color: #aeb9e8; font-size: 1.05rem; line-height: 1.7; margin: 0; }
+    /* ── Page shell ────────────────────────────────────────────────────── */
+    .rh-page { padding: 72px 0 100px; }
+    .rh-intro { max-width: 640px; margin-bottom: 56px; }
+    .rh-intro h1 { font-size: clamp(2rem, 4vw, 2.8rem); color: #fff; margin: 0 0 14px; font-weight: 800; }
+    .rh-intro p  { color: #aeb9e8; font-size: 1.02rem; line-height: 1.72; margin: 0; }
 
-    .research-section { margin-bottom: 56px; }
-    .research-section-label {
-      font-size: 0.72rem; font-weight: 800; letter-spacing: 0.12em;
-      text-transform: uppercase; color: #FBBF24; margin: 0 0 6px;
+    /* ── Category tab nav ──────────────────────────────────────────────── */
+    .rh-tab-bar {
+      display: flex; gap: 6px; flex-wrap: wrap;
+      margin-bottom: 52px;
+      position: sticky; top: 64px; z-index: 10;
+      background: rgba(3,10,34,0.92);
+      backdrop-filter: blur(8px);
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
-    .research-section-title {
-      font-size: 1.25rem; font-weight: 700; color: #fff;
-      margin: 0 0 20px; padding-bottom: 14px;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+    .rh-tab {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 7px 16px; border-radius: 999px; font-size: 0.83rem;
+      font-weight: 700; text-decoration: none; border: 1px solid transparent;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+      cursor: pointer; white-space: nowrap;
     }
+    .rh-tab-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
 
-    .doc-list { display: flex; flex-direction: column; gap: 2px; }
-    .doc-item {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: 16px;
-      padding: 18px 20px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 12px;
-      text-decoration: none;
-      transition: background 0.15s, border-color 0.15s;
-    }
-    .doc-item:hover { background: rgba(255,255,255,0.06); border-color: rgba(159,179,255,0.25); }
-    .doc-item-text strong {
-      display: block; color: #e7ecff; font-size: 0.97rem;
-      font-weight: 700; margin-bottom: 4px;
-    }
-    .doc-item-text span { color: #6b7fa8; font-size: 0.84rem; line-height: 1.5; }
-    .doc-arrow { color: #4a6fa5; font-size: 1.1rem; flex-shrink: 0; }
-    .doc-item:hover .doc-arrow { color: #9fb3ff; }
+    /* default (unselected) */
+    .rh-tab { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08); color: #6b7fa8; }
+    .rh-tab:hover { background: rgba(255,255,255,0.08); color: #aeb9e8; }
 
-    .doc-tag {
-      display: inline-block; font-size: 0.7rem; font-weight: 700;
-      letter-spacing: 0.06em; text-transform: uppercase;
-      padding: 2px 8px; border-radius: 999px; margin-bottom: 6px;
-    }
-    .tag-hypothesis { background: rgba(96,165,250,0.15); color: #60A5FA; }
-    .tag-strategy   { background: rgba(251,191,36,0.12); color: #FBBF24; }
-    .tag-article    { background: rgba(52,211,153,0.12); color: #34D399; }
+    /* hypothesis — blue */
+    .rh-tab[data-cat="hypotheses"].active,
+    .rh-tab[data-cat="hypotheses"]:hover { background: rgba(96,165,250,0.12); border-color: rgba(96,165,250,0.35); color: #93c5fd; }
+    .rh-tab[data-cat="hypotheses"] .rh-tab-dot { background: #60A5FA; }
 
-    .research-note {
-      margin-top: 56px; padding: 20px 24px;
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 14px; background: rgba(255,255,255,0.02);
+    /* articles — green */
+    .rh-tab[data-cat="articles"].active,
+    .rh-tab[data-cat="articles"]:hover { background: rgba(52,211,153,0.1); border-color: rgba(52,211,153,0.3); color: #6ee7b7; }
+    .rh-tab[data-cat="articles"] .rh-tab-dot { background: #34D399; }
+
+    /* strategy — amber */
+    .rh-tab[data-cat="strategy"].active,
+    .rh-tab[data-cat="strategy"]:hover { background: rgba(251,191,36,0.1); border-color: rgba(251,191,36,0.3); color: #fde68a; }
+    .rh-tab[data-cat="strategy"] .rh-tab-dot { background: #FBBF24; }
+
+    /* all */
+    .rh-tab[data-cat="all"].active { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.2); color: #e7ecff; }
+
+    /* ── Section blocks ────────────────────────────────────────────────── */
+    .rh-section { margin-bottom: 64px; scroll-margin-top: 130px; }
+    .rh-section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .rh-section-icon { width: 34px; height: 34px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .rh-section-icon-hyp  { background: rgba(96,165,250,0.15); }
+    .rh-section-icon-art  { background: rgba(52,211,153,0.12); }
+    .rh-section-icon-str  { background: rgba(251,191,36,0.10); }
+    .rh-section-meta { flex: 1; }
+    .rh-section-label { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; margin: 0 0 2px; }
+    .rh-section-label-hyp { color: #60A5FA; }
+    .rh-section-label-art { color: #34D399; }
+    .rh-section-label-str { color: #FBBF24; }
+    .rh-section-title { font-size: 1.1rem; font-weight: 700; color: #fff; margin: 0; }
+    .rh-count { font-size: 0.75rem; color: #4a6fa5; font-weight: 600; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 999px; padding: 2px 10px; }
+
+    /* ── Card grid for hypotheses & articles ───────────────────────────── */
+    .rh-card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 660px) { .rh-card-grid { grid-template-columns: 1fr; } }
+
+    .rh-card {
+      display: flex; flex-direction: column; justify-content: space-between;
+      padding: 22px 22px 18px; border-radius: 16px; text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+      position: relative; overflow: hidden;
     }
-    .research-note p { margin: 0; font-size: 0.88rem; color: #6b7fa8; line-height: 1.65; }
-    .research-note strong { color: #9fb3ff; }
+    .rh-card:hover { transform: translateY(-2px); }
+
+    /* hypothesis card */
+    .rh-card-hyp {
+      background: rgba(96,165,250,0.06);
+      border: 1px solid rgba(96,165,250,0.22);
+    }
+    .rh-card-hyp:hover { box-shadow: 0 8px 32px rgba(96,165,250,0.12); border-color: rgba(96,165,250,0.4); }
+
+    /* article card */
+    .rh-card-art {
+      background: rgba(52,211,153,0.05);
+      border: 1px solid rgba(52,211,153,0.18);
+    }
+    .rh-card-art:hover { box-shadow: 0 8px 32px rgba(52,211,153,0.1); border-color: rgba(52,211,153,0.35); }
+
+    .rh-card-badge {
+      display: inline-block; font-size: 0.67rem; font-weight: 800;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 3px 9px; border-radius: 999px; margin-bottom: 12px;
+    }
+    .rh-card-badge-hyp { background: rgba(96,165,250,0.18); color: #93c5fd; }
+    .rh-card-badge-art { background: rgba(52,211,153,0.15); color: #6ee7b7; }
+
+    .rh-card-title { font-size: 0.97rem; font-weight: 700; color: #e7ecff; margin: 0 0 10px; line-height: 1.4; }
+    .rh-card-desc  { font-size: 0.83rem; color: #6b7fa8; line-height: 1.6; margin: 0 0 16px; flex: 1; }
+    .rh-card-link  { font-size: 0.8rem; font-weight: 700; }
+    .rh-card-link-hyp { color: #60A5FA; }
+    .rh-card-link-art { color: #34D399; }
+
+    /* ── Row list for strategy docs ────────────────────────────────────── */
+    .rh-row-list { display: flex; flex-direction: column; gap: 3px; }
+    .rh-row {
+      display: grid; grid-template-columns: auto 1fr auto;
+      align-items: center; gap: 16px;
+      padding: 16px 18px; border-radius: 12px; text-decoration: none;
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.055);
+      transition: background 0.14s, border-color 0.14s;
+    }
+    .rh-row:hover { background: rgba(251,191,36,0.05); border-color: rgba(251,191,36,0.2); }
+    .rh-row-type {
+      font-size: 0.67rem; font-weight: 800; letter-spacing: 0.07em;
+      text-transform: uppercase; color: #FBBF24;
+      background: rgba(251,191,36,0.1); border: 1px solid rgba(251,191,36,0.2);
+      border-radius: 6px; padding: 2px 8px; white-space: nowrap;
+    }
+    .rh-row-body strong { display: block; font-size: 0.93rem; font-weight: 700; color: #dde5f0; margin-bottom: 2px; }
+    .rh-row-body span   { font-size: 0.8rem; color: #4a6fa5; line-height: 1.5; }
+    .rh-row-arrow { color: #3a5070; font-size: 1rem; }
+    .rh-row:hover .rh-row-arrow { color: #FBBF24; }
+
+    /* ── Collab note ───────────────────────────────────────────────────── */
+    .rh-note { margin-top: 56px; padding: 22px 26px; border: 1px solid rgba(255,255,255,0.07); border-radius: 14px; background: rgba(255,255,255,0.02); }
+    .rh-note p { margin: 0; font-size: 0.87rem; color: #6b7fa8; line-height: 1.7; }
+    .rh-note a { color: #9fb3ff; }
   </style>
 </head>
 <body class="neuro-site">
@@ -80,133 +154,167 @@
   </header>
 
   <main>
-    <div class="container research-hub">
+    <div class="container rh-page">
 
-      <div class="research-hub-intro">
+      <div class="rh-intro">
         <p class="neuro-kicker">NeuroFlex Research</p>
         <h1>Research Documents</h1>
-        <p>This page provides access to all NeuroFlex research and strategy documents — scientific hypotheses, internal working papers, and published articles. These documents are intended for collaborators, research partners, and institutional contacts.</p>
+        <p>Scientific hypotheses, published articles, and internal working papers — intended for collaborators, research partners, and institutional contacts.</p>
       </div>
 
-      <!-- ── Scientific Hypotheses ─────────────────────────────────────── -->
-      <div class="research-section">
-        <p class="research-section-label">Scientific Output</p>
-        <h2 class="research-section-title">Scientific Hypotheses</h2>
-        <div class="doc-list">
+      <!-- ── Tab nav ─────────────────────────────────────────────────── -->
+      <div class="rh-tab-bar" role="tablist">
+        <button class="rh-tab active" data-cat="all" role="tab" onclick="filterCat('all')">
+          <span class="rh-tab-dot" style="background:#9fb3ff"></span> All documents
+        </button>
+        <button class="rh-tab" data-cat="hypotheses" role="tab" onclick="filterCat('hypotheses')">
+          <span class="rh-tab-dot"></span> Scientific Hypotheses
+        </button>
+        <button class="rh-tab" data-cat="articles" role="tab" onclick="filterCat('articles')">
+          <span class="rh-tab-dot"></span> Articles
+        </button>
+        <button class="rh-tab" data-cat="strategy" role="tab" onclick="filterCat('strategy')">
+          <span class="rh-tab-dot"></span> Research &amp; Strategy
+        </button>
+      </div>
 
-          <a href="../dynamic-cognitive-reserve/" class="doc-item">
-            <div class="doc-item-text">
-              <span class="doc-tag tag-hypothesis">Hypothesis Paper · I</span>
-              <strong>The Dynamic Cognitive Reserve Hypothesis</strong>
-              <span>Cognitive reserve is not a static protective capacity but a dynamically maintained adaptive state. Loss of engagement may rapidly unmask previously compensated Alzheimer's neuropathology — with direct implications for digital biomarker research.</span>
+      <!-- ── Scientific Hypotheses ──────────────────────────────────── -->
+      <div class="rh-section" id="sec-hypotheses" data-section="hypotheses">
+        <div class="rh-section-header">
+          <div class="rh-section-icon rh-section-icon-hyp">🧬</div>
+          <div class="rh-section-meta">
+            <p class="rh-section-label rh-section-label-hyp">Scientific Output</p>
+            <h2 class="rh-section-title">Scientific Hypotheses</h2>
+          </div>
+          <span class="rh-count">2 papers</span>
+        </div>
+        <div class="rh-card-grid">
+
+          <a href="../dynamic-cognitive-reserve/" class="rh-card rh-card-hyp">
+            <div>
+              <span class="rh-card-badge rh-card-badge-hyp">Hypothesis · I</span>
+              <h3 class="rh-card-title">The Dynamic Cognitive Reserve Hypothesis</h3>
+              <p class="rh-card-desc">Cognitive reserve is not a static protective capacity but a dynamically maintained adaptive state. Loss of engagement may rapidly unmask previously compensated Alzheimer's neuropathology.</p>
             </div>
-            <span class="doc-arrow">→</span>
+            <span class="rh-card-link rh-card-link-hyp">Read paper →</span>
           </a>
 
-          <a href="../multisensory-integration-hypothesis/" class="doc-item">
-            <div class="doc-item-text">
-              <span class="doc-tag tag-hypothesis">Hypothesis Paper · II</span>
-              <strong>Subclinical Multisensory Integration Decline as an Early Biomarker in AD</strong>
-              <span>Degradation of the brain's capacity to combine signals across sensory modalities may precede measurable cognitive decline in Alzheimer's disease and represent a novel class of early digital biomarkers.</span>
+          <a href="../multisensory-integration-hypothesis/" class="rh-card rh-card-hyp">
+            <div>
+              <span class="rh-card-badge rh-card-badge-hyp">Hypothesis · II</span>
+              <h3 class="rh-card-title">Subclinical Multisensory Integration Decline as an Early Biomarker in AD</h3>
+              <p class="rh-card-desc">Degradation of the brain's capacity to combine signals across sensory modalities may precede measurable cognitive decline and represent a novel class of early digital biomarkers.</p>
             </div>
-            <span class="doc-arrow">→</span>
+            <span class="rh-card-link rh-card-link-hyp">Read paper →</span>
           </a>
 
         </div>
       </div>
 
-      <!-- ── Articles ──────────────────────────────────────────────────── -->
-      <div class="research-section">
-        <p class="research-section-label">Published Articles</p>
-        <h2 class="research-section-title">Articles</h2>
-        <div class="doc-list">
+      <!-- ── Articles ───────────────────────────────────────────────── -->
+      <div class="rh-section" id="sec-articles" data-section="articles">
+        <div class="rh-section-header">
+          <div class="rh-section-icon rh-section-icon-art">📄</div>
+          <div class="rh-section-meta">
+            <p class="rh-section-label rh-section-label-art">Published Articles</p>
+            <h2 class="rh-section-title">Articles</h2>
+          </div>
+          <span class="rh-count">2 articles</span>
+        </div>
+        <div class="rh-card-grid">
 
-          <a href="../articles/sex-differences-alzheimers/" class="doc-item">
-            <div class="doc-item-text">
-              <span class="doc-tag tag-article">Article · Neuroscience &amp; Epidemiology</span>
-              <strong>Why Women Bear a Disproportionate Burden of Alzheimer's Disease</strong>
-              <span>Women account for approximately two thirds of all Alzheimer's patients. This article examines the biological mechanisms behind the disparity — longevity, estrogen, tau pathology, cognitive reserve, APOE ε4, and neuroinflammation — and what it means for sex-stratified digital biomarker research.</span>
+          <a href="../articles/sex-differences-alzheimers/" class="rh-card rh-card-art">
+            <div>
+              <span class="rh-card-badge rh-card-badge-art">Neuroscience &amp; Epidemiology</span>
+              <h3 class="rh-card-title">Why Women Bear a Disproportionate Burden of Alzheimer's Disease</h3>
+              <p class="rh-card-desc">The biological mechanisms behind the sex disparity in AD — longevity, estrogen, tau, cognitive reserve, APOE ε4, and neuroinflammation — and implications for sex-stratified biomarker research.</p>
             </div>
-            <span class="doc-arrow">→</span>
+            <span class="rh-card-link rh-card-link-art">Read article →</span>
           </a>
 
-          <a href="../articles/llm-in-science/" class="doc-item">
-            <div class="doc-item-text">
-              <span class="doc-tag tag-article">Article · Artificial Intelligence</span>
-              <strong>Large Language Models as Research Infrastructure</strong>
-              <span>Why the next scientific breakthrough may depend on human–AI collaboration. An essay on LLMs as a new kind of research infrastructure for small scientific teams in medicine and neuroscience.</span>
+          <a href="../articles/llm-in-science/" class="rh-card rh-card-art">
+            <div>
+              <span class="rh-card-badge rh-card-badge-art">Artificial Intelligence</span>
+              <h3 class="rh-card-title">Large Language Models as Research Infrastructure</h3>
+              <p class="rh-card-desc">Why the next scientific breakthrough may depend on human–AI collaboration. LLMs as a new kind of research infrastructure for small scientific teams in medicine and neuroscience.</p>
             </div>
-            <span class="doc-arrow">→</span>
+            <span class="rh-card-link rh-card-link-art">Read article →</span>
           </a>
 
         </div>
       </div>
 
-      <!-- ── Research Strategy ─────────────────────────────────────────── -->
-      <div class="research-section">
-        <p class="research-section-label">Internal Working Documents</p>
-        <h2 class="research-section-title">Research &amp; Strategy</h2>
-        <div class="doc-list">
+      <!-- ── Research & Strategy ────────────────────────────────────── -->
+      <div class="rh-section" id="sec-strategy" data-section="strategy">
+        <div class="rh-section-header">
+          <div class="rh-section-icon rh-section-icon-str">📁</div>
+          <div class="rh-section-meta">
+            <p class="rh-section-label rh-section-label-str">Internal Working Documents</p>
+            <h2 class="rh-section-title">Research &amp; Strategy</h2>
+          </div>
+          <span class="rh-count">6 documents</span>
+        </div>
+        <div class="rh-row-list">
 
-          <a href="../research-programme/" class="doc-item">
-            <div class="doc-item-text">
-              <span class="doc-tag tag-strategy">Strategy</span>
+          <a href="../research-programme/" class="rh-row">
+            <span class="rh-row-type">Strategy</span>
+            <div class="rh-row-body">
               <strong>Research Programme Architecture</strong>
-              <span>Five-phase research programme structure, modular platform stack, seven-layer data collection architecture, reporting framework, and Personal Baseline as the core analytical concept.</span>
+              <span>Five-phase programme structure, modular platform stack, seven-layer data architecture, reporting framework, and Personal Baseline concept.</span>
             </div>
-            <span class="doc-arrow">→</span>
+            <span class="rh-row-arrow">→</span>
           </a>
 
-          <a href="../research-design/" class="doc-item">
-            <div class="doc-item-text">
-              <span class="doc-tag tag-strategy">Strategy</span>
+          <a href="../research-design/" class="rh-row">
+            <span class="rh-row-type">Strategy</span>
+            <div class="rh-row-body">
               <strong>Research Design Framework</strong>
-              <span>Four-cohort study design, ground truth strategy, sample size requirements, evidence thresholds, latent trait measurement framework, and the full behavioral probe library.</span>
+              <span>Four-cohort study design, ground truth strategy, sample size requirements, evidence thresholds, latent trait framework, and behavioral probe library.</span>
             </div>
-            <span class="doc-arrow">→</span>
+            <span class="rh-row-arrow">→</span>
           </a>
 
-          <a href="../methodological-challenges/" class="doc-item">
-            <div class="doc-item-text">
-              <span class="doc-tag tag-strategy">Strategy</span>
+          <a href="../methodological-challenges/" class="rh-row">
+            <span class="rh-row-type">Strategy</span>
+            <div class="rh-row-body">
               <strong>Methodological Challenges &amp; Research Risks</strong>
-              <span>Fifteen identified methodological risks — from healthy user bias and engagement decay to regulatory and retrospective consent challenges — with proposed mitigations and cohort design implications.</span>
+              <span>Fifteen identified methodological risks with proposed mitigations and cohort design implications.</span>
             </div>
-            <span class="doc-arrow">→</span>
+            <span class="rh-row-arrow">→</span>
           </a>
 
-          <a href="../state-of-the-art/" class="doc-item">
-            <div class="doc-item-text">
-              <span class="doc-tag tag-strategy">Analysis</span>
+          <a href="../state-of-the-art/" class="rh-row">
+            <span class="rh-row-type">Analysis</span>
+            <div class="rh-row-body">
               <strong>State of the Art &amp; Competitive Landscape</strong>
-              <span>Deep-dive into 20+ digital health platforms across five categories, critical gap analysis, NeuroFlex scientific rationale, validation partner strategy, and research gap statement for grant applications.</span>
+              <span>Deep-dive into 20+ digital health platforms, critical gap analysis, NeuroFlex scientific rationale, and validation partner strategy.</span>
             </div>
-            <span class="doc-arrow">→</span>
+            <span class="rh-row-arrow">→</span>
           </a>
 
-          <a href="../landscape-analysis/" class="doc-item">
-            <div class="doc-item-text">
-              <span class="doc-tag tag-strategy">Analysis</span>
+          <a href="../landscape-analysis/" class="rh-row">
+            <span class="rh-row-type">Analysis</span>
+            <div class="rh-row-body">
               <strong>Landscape Analysis of Digital Alzheimer's Research Platforms</strong>
-              <span>Systematic review of 35+ projects across five platform groups, comparative feature matrix, seven NeuroFlex differentiators, and positioning statement.</span>
+              <span>Systematic review of 35+ projects across five platform groups, comparative feature matrix, and seven NeuroFlex differentiators.</span>
             </div>
-            <span class="doc-arrow">→</span>
+            <span class="rh-row-arrow">→</span>
           </a>
 
-          <a href="../scientific-network/" class="doc-item">
-            <div class="doc-item-text">
-              <span class="doc-tag tag-strategy">Network</span>
+          <a href="../scientific-network/" class="rh-row">
+            <span class="rh-row-type">Network</span>
+            <div class="rh-row-body">
               <strong>Scientific Network &amp; Competitor Positioning</strong>
-              <span>Key researchers and institutions in the Alzheimer's digital biomarker space, competitor analysis (RADAR-AD, LETHE, DIMPLAD, BioCog), and NeuroFlex positioning relative to each.</span>
+              <span>Key researchers and institutions in the AD digital biomarker space, competitor analysis, and NeuroFlex positioning.</span>
             </div>
-            <span class="doc-arrow">→</span>
+            <span class="rh-row-arrow">→</span>
           </a>
 
         </div>
       </div>
 
-      <div class="research-note">
-        <p><strong>Note for collaborators.</strong> These documents represent NeuroFlex's current internal research thinking and are shared for the purpose of academic and institutional dialogue. They are working documents, not peer-reviewed publications, and will evolve as the project develops. Scientific hypotheses are marked as such and are formulated as testable, falsifiable propositions. For questions or collaboration enquiries, contact us via the <a href="../mission-statement/" style="color:#9fb3ff;">Mission</a> page.</p>
+      <div class="rh-note">
+        <p><strong>Note for collaborators.</strong> These documents represent NeuroFlex's current internal research thinking and are shared for academic and institutional dialogue. Working documents will evolve as the project develops. Hypotheses are formulated as testable, falsifiable propositions. For collaboration enquiries: <a href="mailto:info@neuroflex.health">info@neuroflex.health</a></p>
       </div>
 
     </div>
@@ -218,6 +326,24 @@
       <p class="muted">Developed by NeuroFlex<sup>©</sup></p>
     </div>
   </footer>
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function filterCat(cat) {
+      // Update tab states
+      document.querySelectorAll('.rh-tab').forEach(t => {
+        t.classList.toggle('active', t.dataset.cat === cat);
+      });
+      // Show/hide sections
+      document.querySelectorAll('.rh-section').forEach(s => {
+        if (cat === 'all') {
+          s.style.display = '';
+        } else {
+          s.style.display = s.dataset.section === cat ? '' : 'none';
+        }
+      });
+    }
+  </script>
 </body>
 </html>
