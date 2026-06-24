@@ -37,11 +37,6 @@ Landscape Analysis (overview)
 Methodological Challenges & Research Risks
   https://neuroflex.health/methodological-challenges/
 
-Behavioral Event Model (v1)
-  https://neuroflex.health/behavioral-event-model/
-
-Behavioral Event Model — raw text
-  https://neuroflex.health/behavioral-event-model/NeuroFlex%20Behavioral%20Event%20Model%20v1.txt
 
 ========================================================
 ARTICLES
