@@ -9,7 +9,7 @@ This repository contains only NeuroFlex web content moved from the LifeApps site
 - `/` — main landing page
 - `/mission-statement/` — mission statement
 - `/white-paper/` — research white paper
-- `/behavioral-event-model/` — behavioral event model v1 (unlisted)
+- `/behavioral-event-model/` — offline (internal only; not published)
 - `/state-of-the-art/` — state of the art & competitive landscape (unlisted)
 - `/grant-landscape/` — grant landscape analysis (unlisted)
 - `/landscape-analysis/` — landscape analysis (unlisted)
