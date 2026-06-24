@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Research — NeuroFlex</title>
+  <meta name="description" content="NeuroFlex research documents: scientific hypotheses, research strategy, methodology, funding landscape, and published articles." />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .research-hub { padding: 72px 0 80px; }
+    .research-hub-intro { max-width: 660px; margin-bottom: 64px; }
+    .research-hub-intro h1 { font-size: clamp(2rem, 4vw, 2.8rem); margin: 0 0 16px; color: #fff; }
+    .research-hub-intro p { color: #aeb9e8; font-size: 1.05rem; line-height: 1.7; margin: 0; }
+
+    .research-section { margin-bottom: 56px; }
+    .research-section-label {
+      font-size: 0.72rem; font-weight: 800; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #FBBF24; margin: 0 0 6px;
+    }
+    .research-section-title {
+      font-size: 1.25rem; font-weight: 700; color: #fff;
+      margin: 0 0 20px; padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .doc-list { display: flex; flex-direction: column; gap: 2px; }
+    .doc-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 20px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      text-decoration: none;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .doc-item:hover { background: rgba(255,255,255,0.06); border-color: rgba(159,179,255,0.25); }
+    .doc-item-text strong {
+      display: block; color: #e7ecff; font-size: 0.97rem;
+      font-weight: 700; margin-bottom: 4px;
+    }
+    .doc-item-text span { color: #6b7fa8; font-size: 0.84rem; line-height: 1.5; }
+    .doc-arrow { color: #4a6fa5; font-size: 1.1rem; flex-shrink: 0; }
+    .doc-item:hover .doc-arrow { color: #9fb3ff; }
+
+    .doc-tag {
+      display: inline-block; font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 2px 8px; border-radius: 999px; margin-bottom: 6px;
+    }
+    .tag-hypothesis { background: rgba(96,165,250,0.15); color: #60A5FA; }
+    .tag-strategy   { background: rgba(251,191,36,0.12); color: #FBBF24; }
+    .tag-article    { background: rgba(52,211,153,0.12); color: #34D399; }
+
+    .research-note {
+      margin-top: 56px; padding: 20px 24px;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px; background: rgba(255,255,255,0.02);
+    }
+    .research-note p { margin: 0; font-size: 0.88rem; color: #6b7fa8; line-height: 1.65; }
+    .research-note strong { color: #9fb3ff; }
+  </style>
+</head>
+<body class="neuro-site">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../" class="brand brand-neuroflex">
+        <img src="../assets/neuroflex-logo.png" alt="" />
+        <span>NeuroFlex<sup>&copy;</sup></span>
+      </a>
+      <nav class="nav">
+        <a href="../">Home</a>
+        <a href="../white-paper/">White Paper</a>
+        <a href="../mission-statement/">Mission</a>
+        <a href="../eula/">EULA</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container research-hub">
+
+      <div class="research-hub-intro">
+        <p class="neuro-kicker">NeuroFlex Research</p>
+        <h1>Research Documents</h1>
+        <p>This page provides access to all NeuroFlex research and strategy documents — scientific hypotheses, internal working papers, and published articles. These documents are intended for collaborators, research partners, and institutional contacts.</p>
+      </div>
+
+      <!-- ── Scientific Hypotheses ─────────────────────────────────────── -->
+      <div class="research-section">
+        <p class="research-section-label">Scientific Output</p>
+        <h2 class="research-section-title">Scientific Hypotheses</h2>
+        <div class="doc-list">
+
+          <a href="../dynamic-cognitive-reserve/" class="doc-item">
+            <div class="doc-item-text">
+              <span class="doc-tag tag-hypothesis">Hypothesis Paper · I</span>
+              <strong>The Dynamic Cognitive Reserve Hypothesis</strong>
+              <span>Cognitive reserve is not a static protective capacity but a dynamically maintained adaptive state. Loss of engagement may rapidly unmask previously compensated Alzheimer's neuropathology — with direct implications for digital biomarker research.</span>
+            </div>
+            <span class="doc-arrow">→</span>
+          </a>
+
+          <a href="../multisensory-integration-hypothesis/" class="doc-item">
+            <div class="doc-item-text">
+              <span class="doc-tag tag-hypothesis">Hypothesis Paper · II</span>
+              <strong>Subclinical Multisensory Integration Decline as an Early Biomarker in AD</strong>
+              <span>Degradation of the brain's capacity to combine signals across sensory modalities may precede measurable cognitive decline in Alzheimer's disease and represent a novel class of early digital biomarkers.</span>
+            </div>
+            <span class="doc-arrow">→</span>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- ── Articles ──────────────────────────────────────────────────── -->
+      <div class="research-section">
+        <p class="research-section-label">Published Articles</p>
+        <h2 class="research-section-title">Articles</h2>
+        <div class="doc-list">
+
+          <a href="../articles/sex-differences-alzheimers/" class="doc-item">
+            <div class="doc-item-text">
+              <span class="doc-tag tag-article">Article · Neuroscience &amp; Epidemiology</span>
+              <strong>Why Women Bear a Disproportionate Burden of Alzheimer's Disease</strong>
+              <span>Women account for approximately two thirds of all Alzheimer's patients. This article examines the biological mechanisms behind the disparity — longevity, estrogen, tau pathology, cognitive reserve, APOE ε4, and neuroinflammation — and what it means for sex-stratified digital biomarker research.</span>
+            </div>
+            <span class="doc-arrow">→</span>
+          </a>
+
+          <a href="../articles/llm-in-science/" class="doc-item">
+            <div class="doc-item-text">
+              <span class="doc-tag tag-article">Article · Artificial Intelligence</span>
+              <strong>Large Language Models as Research Infrastructure</strong>
+              <span>Why the next scientific breakthrough may depend on human–AI collaboration. An essay on LLMs as a new kind of research infrastructure for small scientific teams in medicine and neuroscience.</span>
+            </div>
+            <span class="doc-arrow">→</span>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- ── Research Strategy ─────────────────────────────────────────── -->
+      <div class="research-section">
+        <p class="research-section-label">Internal Working Documents</p>
+        <h2 class="research-section-title">Research &amp; Strategy</h2>
+        <div class="doc-list">
+
+          <a href="../research-programme/" class="doc-item">
+            <div class="doc-item-text">
+              <span class="doc-tag tag-strategy">Strategy</span>
+              <strong>Research Programme Architecture</strong>
+              <span>Five-phase research programme structure, modular platform stack, seven-layer data collection architecture, reporting framework, and Personal Baseline as the core analytical concept.</span>
+            </div>
+            <span class="doc-arrow">→</span>
+          </a>
+
+          <a href="../research-design/" class="doc-item">
+            <div class="doc-item-text">
+              <span class="doc-tag tag-strategy">Strategy</span>
+              <strong>Research Design Framework</strong>
+              <span>Four-cohort study design, ground truth strategy, sample size requirements, evidence thresholds, latent trait measurement framework, and the full behavioral probe library.</span>
+            </div>
+            <span class="doc-arrow">→</span>
+          </a>
+
+          <a href="../methodological-challenges/" class="doc-item">
+            <div class="doc-item-text">
+              <span class="doc-tag tag-strategy">Strategy</span>
+              <strong>Methodological Challenges &amp; Research Risks</strong>
+              <span>Fifteen identified methodological risks — from healthy user bias and engagement decay to regulatory and retrospective consent challenges — with proposed mitigations and cohort design implications.</span>
+            </div>
+            <span class="doc-arrow">→</span>
+          </a>
+
+          <a href="../state-of-the-art/" class="doc-item">
+            <div class="doc-item-text">
+              <span class="doc-tag tag-strategy">Analysis</span>
+              <strong>State of the Art &amp; Competitive Landscape</strong>
+              <span>Deep-dive into 20+ digital health platforms across five categories, critical gap analysis, NeuroFlex scientific rationale, validation partner strategy, and research gap statement for grant applications.</span>
+            </div>
+            <span class="doc-arrow">→</span>
+          </a>
+
+          <a href="../landscape-analysis/" class="doc-item">
+            <div class="doc-item-text">
+              <span class="doc-tag tag-strategy">Analysis</span>
+              <strong>Landscape Analysis of Digital Alzheimer's Research Platforms</strong>
+              <span>Systematic review of 35+ projects across five platform groups, comparative feature matrix, seven NeuroFlex differentiators, and positioning statement.</span>
+            </div>
+            <span class="doc-arrow">→</span>
+          </a>
+
+          <a href="../grant-landscape/" class="doc-item">
+            <div class="doc-item-text">
+              <span class="doc-tag tag-strategy">Funding</span>
+              <strong>Grant &amp; Funding Landscape</strong>
+              <span>All relevant Slovak and EU grant programmes accessible to a private company in digital health and AI research — with eligibility, timelines, and a five-phase application roadmap.</span>
+            </div>
+            <span class="doc-arrow">→</span>
+          </a>
+
+          <a href="../scientific-network/" class="doc-item">
+            <div class="doc-item-text">
+              <span class="doc-tag tag-strategy">Network</span>
+              <strong>Scientific Network &amp; Competitor Positioning</strong>
+              <span>Key researchers and institutions in the Alzheimer's digital biomarker space, competitor analysis (RADAR-AD, LETHE, DIMPLAD, BioCog), and NeuroFlex positioning relative to each.</span>
+            </div>
+            <span class="doc-arrow">→</span>
+          </a>
+
+          <a href="../behavioral-event-model/" class="doc-item">
+            <div class="doc-item-text">
+              <span class="doc-tag tag-strategy">Architecture</span>
+              <strong>Behavioral Event Model v1</strong>
+              <span>Structured event architecture for longitudinal behavioral research — MVP event envelope, data tiers, event levels, privacy rules, and example implementations.</span>
+            </div>
+            <span class="doc-arrow">→</span>
+          </a>
+
+        </div>
+      </div>
+
+      <div class="research-note">
+        <p><strong>Note for collaborators.</strong> These documents represent NeuroFlex's current internal research thinking and are shared for the purpose of academic and institutional dialogue. They are working documents, not peer-reviewed publications, and will evolve as the project develops. Scientific hypotheses are marked as such and are formulated as testable, falsifiable propositions. For questions or collaboration enquiries, contact us via the <a href="../mission-statement/" style="color:#9fb3ff;">Mission</a> page.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> NeuroFlex · Digital biomarkers &amp; cognitive health research</p>
+      <p class="muted">Developed by NeuroFlex<sup>©</sup></p>
+    </div>
+  </footer>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

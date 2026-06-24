@@ -3,9 +3,58 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NeuroFlex EULA</title>
-  <meta name="description" content="NeuroFlex end user license agreement placeholder." />
+  <title>Terms of Use &amp; EULA — NeuroFlex</title>
+  <meta name="description" content="NeuroFlex End User License Agreement and Terms of Use. Free, non-commercial cognitive wellness app. No personal data collected in the current version." />
   <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .legal-wrap { max-width: 760px; margin: 0 auto; padding: 72px 0 80px; }
+    .legal-hero { margin-bottom: 56px; }
+    .legal-hero h1 { font-size: clamp(1.85rem, 4vw, 2.6rem); color: #fff; margin: 0 0 14px; }
+    .legal-hero p { color: #6b7fa8; font-size: 0.92rem; }
+    .legal-hero-meta { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 12px; }
+    .legal-hero-meta span { font-size: 0.82rem; color: #4a6fa5; }
+    .legal-hero-meta strong { color: #9fb3ff; }
+
+    .legal-toc {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px; padding: 24px 28px; margin-bottom: 48px;
+    }
+    .legal-toc p { margin: 0 0 12px; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #4a6fa5; }
+    .legal-toc ol { margin: 0; padding-left: 1.3em; }
+    .legal-toc li { margin-bottom: 6px; }
+    .legal-toc a { color: #9fb3ff; text-decoration: none; font-size: 0.9rem; }
+    .legal-toc a:hover { text-decoration: underline; }
+
+    .legal-section { margin-bottom: 44px; scroll-margin-top: 80px; }
+    .legal-section h2 {
+      font-size: 1.2rem; color: #fff; margin: 0 0 14px;
+      padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.08);
+      counter-increment: section;
+    }
+    .legal-section p { color: #aeb9e8; line-height: 1.75; margin: 0 0 14px; font-size: 0.95rem; }
+    .legal-section p:last-child { margin: 0; }
+    .legal-section ul, .legal-section ol { color: #aeb9e8; line-height: 1.75; padding-left: 1.5em; margin: 0 0 14px; font-size: 0.95rem; }
+    .legal-section li { margin-bottom: 6px; }
+    .legal-section a { color: #9fb3ff; }
+
+    .legal-highlight {
+      background: rgba(251,191,36,0.08); border-left: 3px solid #FBBF24;
+      border-radius: 0 10px 10px 0; padding: 16px 20px; margin: 20px 0;
+    }
+    .legal-highlight p { color: #e7d8a0; font-size: 0.93rem; margin: 0; }
+
+    .legal-medical {
+      background: rgba(239,68,68,0.07); border: 1px solid rgba(239,68,68,0.2);
+      border-radius: 12px; padding: 20px 24px; margin: 20px 0;
+    }
+    .legal-medical p { color: #fca5a5; margin: 0; font-size: 0.93rem; }
+
+    .legal-footer-note {
+      margin-top: 48px; padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.85rem; color: #4a6fa5; line-height: 1.65;
+    }
+  </style>
 </head>
 <body class="neuro-site">
   <header class="site-header">
@@ -16,47 +65,182 @@
       </a>
       <nav class="nav">
         <a href="../">Home</a>
-        <a href="../mission-statement/">Mission</a>
+        <a href="../research/">Research</a>
         <a href="../white-paper/">White Paper</a>
+        <a href="../mission-statement/">Mission</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="doc-hero">
-      <div class="container">
-        <p class="doc-kicker">Legal</p>
-        <h1>End User License Agreement</h1>
-        <p class="doc-lead">This page is the public EULA entry point for NeuroFlex. Full legal wording is being finalized and will be published in the next update.</p>
-      </div>
-    </section>
+    <div class="container">
+      <div class="legal-wrap">
 
-    <section class="section">
-      <div class="container">
-        <div class="content-box">
-          <h2>Current scope</h2>
-          <ul>
-            <li>App name: NeuroFlex</li>
-            <li>Platform: Android</li>
-            <li>Publisher: NeuroFlex</li>
-            <li>Website: neuroflex.health</li>
-            <li>Status: EULA placeholder page</li>
-          </ul>
-          <p class="muted">NeuroFlex is intended for wellness, cognitive engagement, and future research exploration. It is not a medical device and does not replace professional healthcare advice.</p>
+        <div class="legal-hero">
+          <p class="neuro-kicker">Legal</p>
+          <h1>Terms of Use &amp; End User License Agreement</h1>
+          <p>Please read this document carefully before using the NeuroFlex application or website. By accessing or using NeuroFlex, you agree to the terms set out below.</p>
+          <div class="legal-hero-meta">
+            <span><strong>Version</strong> · 1.0 (Alpha)</span>
+            <span><strong>Effective</strong> · June 2026</span>
+            <span><strong>Applies to</strong> · Android application and neuroflex.health website</span>
+          </div>
         </div>
+
+        <div class="legal-toc">
+          <p>Contents</p>
+          <ol>
+            <li><a href="#s1">What NeuroFlex Is</a></li>
+            <li><a href="#s2">License Grant</a></li>
+            <li><a href="#s3">Permitted and Prohibited Use</a></li>
+            <li><a href="#s4">Data, Privacy, and Future Research</a></li>
+            <li><a href="#s5">Medical Disclaimer</a></li>
+            <li><a href="#s6">Intellectual Property</a></li>
+            <li><a href="#s7">No Warranty</a></li>
+            <li><a href="#s8">Limitation of Liability</a></li>
+            <li><a href="#s9">Changes to the App and These Terms</a></li>
+            <li><a href="#s10">Governing Law</a></li>
+            <li><a href="#s11">Contact</a></li>
+          </ol>
+        </div>
+
+        <!-- 1 -->
+        <div class="legal-section" id="s1">
+          <h2>1. What NeuroFlex Is</h2>
+          <p>NeuroFlex is a free, non-commercial cognitive wellness application currently in alpha development. It is designed to support healthy cognitive habits through brain training games, daily routine reminders, an alarm system, and simple wellness activities across six categories: Train, Drink, Move, Eat, Connect, and Relax.</p>
+          <p>NeuroFlex is also being designed with a long-term research direction in mind. The architecture is intended to support future longitudinal behavioral research into early digital biomarkers associated with cognitive decline — in particular Alzheimer's disease. This research direction is aspirational and subject to separate consent, ethics review, and institutional partnership agreements before any research data collection begins.</p>
+          <div class="legal-highlight">
+            <p>In the current version, NeuroFlex does not collect, transmit, or store any personal data. All information you enter or create in the app remains on your device. There are no user accounts, no cloud sync, and no analytics.</p>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="legal-section" id="s2">
+          <h2>2. License Grant</h2>
+          <p>Subject to your acceptance of these Terms, NeuroFlex grants you a personal, non-exclusive, non-transferable, revocable, royalty-free license to:</p>
+          <ul>
+            <li>download and install the NeuroFlex application on a device you own or control;</li>
+            <li>use the application for personal, non-commercial purposes.</li>
+          </ul>
+          <p>This license does not include any right to:</p>
+          <ul>
+            <li>copy, modify, distribute, sell, or sublicense the application or any part of it;</li>
+            <li>reverse-engineer, decompile, or disassemble the application, except as expressly permitted by applicable law;</li>
+            <li>use the application or its content for commercial purposes without prior written consent from NeuroFlex;</li>
+            <li>remove or alter any copyright, trademark, or other proprietary notices.</li>
+          </ul>
+          <p>This license is granted free of charge. NeuroFlex does not charge for the application and does not intend to do so in its current form.</p>
+        </div>
+
+        <!-- 3 -->
+        <div class="legal-section" id="s3">
+          <h2>3. Permitted and Prohibited Use</h2>
+          <p>You may use NeuroFlex to:</p>
+          <ul>
+            <li>engage in cognitive wellness activities for your own benefit;</li>
+            <li>share the application with others for their own personal, non-commercial use;</li>
+            <li>provide feedback on the application to NeuroFlex.</li>
+          </ul>
+          <p>You may not use NeuroFlex to:</p>
+          <ul>
+            <li>make clinical decisions about your own or another person's health;</li>
+            <li>substitute the application for professional medical advice, diagnosis, or treatment;</li>
+            <li>attempt to infer or diagnose a medical or psychiatric condition;</li>
+            <li>engage in any unlawful activity;</li>
+            <li>attempt to gain unauthorized access to any system or network.</li>
+          </ul>
+        </div>
+
+        <!-- 4 -->
+        <div class="legal-section" id="s4">
+          <h2>4. Data, Privacy, and Future Research</h2>
+          <p><strong>Current version.</strong> The current version of NeuroFlex does not collect any personal data. The application operates entirely offline on your device. No usage statistics, behavioral data, health information, or identifying information are transmitted anywhere.</p>
+          <p><strong>Future research direction.</strong> NeuroFlex is being designed with the long-term goal of supporting voluntary, consent-based behavioral research. If and when a research data collection component is introduced, it will:</p>
+          <ul>
+            <li>require separate, explicit, informed consent that you can withdraw at any time;</li>
+            <li>be subject to independent ethics review and, where applicable, regulatory approval;</li>
+            <li>use anonymous or pseudonymous identifiers — no name, email, or government ID will be required;</li>
+            <li>comply with the General Data Protection Regulation (GDPR) and applicable Slovak and EU law;</li>
+            <li>be described in full in an updated version of this document and a standalone Privacy Policy before activation.</li>
+          </ul>
+          <p>No research data collection is active in the current version. Agreeing to these Terms does not constitute consent to any future research participation.</p>
+          <p><strong>Website.</strong> The neuroflex.health website does not use cookies, tracking scripts, analytics services, or advertising technology. No information about your visit is collected or retained.</p>
+        </div>
+
+        <!-- 5 -->
+        <div class="legal-section" id="s5">
+          <h2>5. Medical Disclaimer</h2>
+          <div class="legal-medical">
+            <p>NeuroFlex is not a medical device. It is not intended to diagnose, predict, prevent, treat, monitor, or cure Alzheimer's disease, dementia, mild cognitive impairment, or any other medical or mental health condition. Nothing in the application or on this website constitutes medical advice. NeuroFlex does not replace consultation with a qualified healthcare professional. If you have concerns about your cognitive health, memory, or mental wellbeing, please consult a doctor or appropriate specialist.</p>
+          </div>
+          <p>The brain training games and wellness activities in NeuroFlex are designed to be cognitively engaging and enjoyable. They are not validated clinical instruments and their scores should not be interpreted as measures of cognitive function, cognitive decline, or disease risk.</p>
+          <p>If you or someone else is in immediate danger or experiencing a medical emergency, contact local emergency services immediately.</p>
+        </div>
+
+        <!-- 6 -->
+        <div class="legal-section" id="s6">
+          <h2>6. Intellectual Property</h2>
+          <p>All content in the NeuroFlex application and on the neuroflex.health website — including but not limited to the NeuroFlex name, logo, visual design, source code, written content, research documents, and scientific hypotheses — is the intellectual property of NeuroFlex and its contributors, and is protected by copyright and applicable intellectual property law.</p>
+          <p>Research documents and scientific hypotheses published on this website are shared for the purpose of academic and institutional dialogue. They may be cited with attribution in the standard academic format. They may not be reproduced, redistributed, or incorporated into other works without prior written permission.</p>
+          <p>The NeuroFlex name and logo may not be used in any context — including in publications, press releases, or marketing materials — without prior written consent.</p>
+        </div>
+
+        <!-- 7 -->
+        <div class="legal-section" id="s7">
+          <h2>7. No Warranty</h2>
+          <p>NeuroFlex is provided "as is" and "as available" without any warranty of any kind, express or implied. To the fullest extent permitted by law, NeuroFlex makes no representations or warranties regarding:</p>
+          <ul>
+            <li>the accuracy, completeness, or reliability of any content in the application or on the website;</li>
+            <li>the suitability of the application for any particular purpose;</li>
+            <li>the uninterrupted or error-free operation of the application;</li>
+            <li>the correction of any defects.</li>
+          </ul>
+          <p>The application is in active alpha development. Features may be incomplete, change without notice, or be temporarily unavailable.</p>
+        </div>
+
+        <!-- 8 -->
+        <div class="legal-section" id="s8">
+          <h2>8. Limitation of Liability</h2>
+          <p>To the fullest extent permitted by applicable law, NeuroFlex and its contributors shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of — or inability to use — the application or website, including but not limited to loss of data, loss of profits, or any harm resulting from reliance on the application's content.</p>
+          <p>NeuroFlex's total liability for any claim arising from or related to these Terms or your use of the application shall not exceed the amount you paid for the application (which is zero, as the application is free).</p>
+          <p>Nothing in these Terms limits liability for death or personal injury caused by negligence, fraud, or any other liability that cannot be excluded under applicable law.</p>
+        </div>
+
+        <!-- 9 -->
+        <div class="legal-section" id="s9">
+          <h2>9. Changes to the App and These Terms</h2>
+          <p>NeuroFlex is in active development. The application, its features, and these Terms may change at any time. We will update the effective date at the top of this document when material changes are made.</p>
+          <p>If you continue to use NeuroFlex after a change to these Terms is published, you are considered to have accepted the updated Terms. If you do not agree with any change, you may stop using the application and uninstall it from your device.</p>
+          <p>Any significant changes to data collection practices — particularly the introduction of any research data collection — will require fresh, explicit consent and will not be applied retroactively.</p>
+        </div>
+
+        <!-- 10 -->
+        <div class="legal-section" id="s10">
+          <h2>10. Governing Law</h2>
+          <p>These Terms are governed by the laws of the Slovak Republic. Any disputes arising from or related to these Terms or your use of NeuroFlex shall be subject to the exclusive jurisdiction of the competent courts of the Slovak Republic, unless mandatory consumer protection law in your country of residence requires otherwise.</p>
+        </div>
+
+        <!-- 11 -->
+        <div class="legal-section" id="s11">
+          <h2>11. Contact</h2>
+          <p>For questions about these Terms, collaboration enquiries, or any other matters related to NeuroFlex, please refer to the <a href="../mission-statement/">Mission Statement</a> page for context, or reach out through the contact details that will be published there as the project develops.</p>
+          <p>NeuroFlex is currently an independent research project in early development. We are building toward formal institutional partnerships, ethics review processes, and a proper legal entity structure. All correspondence will be treated with care and responded to in good faith.</p>
+        </div>
+
+        <div class="legal-footer-note">
+          These Terms constitute the entire agreement between you and NeuroFlex with respect to your use of the application and website, and supersede any prior agreements or understandings. If any provision of these Terms is found to be unenforceable, the remaining provisions shall continue in full force and effect.
+        </div>
+
       </div>
-    </section>
+    </div>
   </main>
 
   <footer class="site-footer">
     <div class="container">
-      <p>&copy; <span id="year"></span> NeuroFlex · Cognitive wellness &amp; behavioral research</p>
+      <p>&copy; <span id="year"></span> NeuroFlex · Digital biomarkers &amp; cognitive health research</p>
       <p class="muted">Developed by NeuroFlex<sup>©</sup></p>
     </div>
   </footer>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>
