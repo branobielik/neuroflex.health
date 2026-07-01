@@ -1,9 +1,20 @@
-NeuroFlex — Unlisted Pages
-(Direct access only — not indexed, not publicly linked)
-Updated: 2026-06-24
+NeuroFlex — Research / Offline Page Registry
+Updated: 2026-07-01
+
+Note:
+- Pages marked "Published in Research hub" are linked from:
+  https://neuroflex.health/research/
+- Many research documents still use noindex/nofollow because they are intended
+  for collaborators and institutional context, not broad SEO discovery.
+- Pages marked "Direct/internal only" are not shown in the Research hub.
+- Pages marked "Offline/removed" redirect away or are no longer public content.
+- Password gate is a lightweight static-site access gate, not server-side authentication.
+
+Internal Working Documents password:
+  Forth3t3amonly!
 
 ========================================================
-SCIENTIFIC HYPOTHESES
+PUBLISHED IN RESEARCH HUB — SCIENTIFIC HYPOTHESES
 ========================================================
 
 Paper I: The Dynamic Cognitive Reserve Hypothesis
@@ -13,20 +24,27 @@ Paper II: Subclinical Multisensory Integration Decline as Early Biomarkers in AD
   https://neuroflex.health/multisensory-integration-hypothesis/
 
 ========================================================
-RESEARCH & STRATEGY DOCUMENTS
+PUBLISHED IN RESEARCH HUB — ARTICLES
+========================================================
+
+Why Women Bear a Disproportionate Burden of Alzheimer's Disease
+  https://neuroflex.health/articles/sex-differences-alzheimers/
+
+Large Language Models as Research Infrastructure
+  https://neuroflex.health/articles/llm-in-science/
+
+========================================================
+PASSWORD-GATED IN RESEARCH HUB — INTERNAL WORKING DOCUMENTS
 ========================================================
 
 Research Programme Architecture
   https://neuroflex.health/research-programme/
 
-Scientific Network & Competitor Positioning
-  https://neuroflex.health/scientific-network/
-
 Research Design Framework
   https://neuroflex.health/research-design/
 
-Grant & Funding Landscape
-  https://neuroflex.health/grant-landscape/
+Methodological Challenges & Research Risks
+  https://neuroflex.health/methodological-challenges/
 
 State of the Art & Competitive Landscape Analysis
   https://neuroflex.health/state-of-the-art/
@@ -34,32 +52,17 @@ State of the Art & Competitive Landscape Analysis
 Landscape Analysis (overview)
   https://neuroflex.health/landscape-analysis/
 
-Methodological Challenges & Research Risks
-  https://neuroflex.health/methodological-challenges/
+Scientific Network & Competitor Positioning
+  https://neuroflex.health/scientific-network/
 
-
-========================================================
-ARTICLES
-========================================================
-
-Large Language Models as Research Infrastructure
-  https://neuroflex.health/articles/llm-in-science/
-
-Why Women Bear a Disproportionate Burden of Alzheimer's Disease
-  https://neuroflex.health/articles/sex-differences-alzheimers/
+Grant & Funding Landscape
+  https://neuroflex.health/grant-landscape/
 
 ========================================================
-PUBLIC PAGES (reference)
+OFFLINE / REMOVED
 ========================================================
 
-Home
-  https://neuroflex.health/
-
-Mission Statement
-  https://neuroflex.health/mission-statement/
-
-White Paper
-  https://neuroflex.health/white-paper/
-
-EULA
-  https://neuroflex.health/eula/
+Behavioral Event Model
+  https://neuroflex.health/behavioral-event-model/
+  Status: offline stub; noindex/nofollow; redirects to home.
+  Reason: removed from public static site because it contained implementation-level code.

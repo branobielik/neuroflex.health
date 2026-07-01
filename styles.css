@@ -952,3 +952,75 @@ body .neuro-section-header p { font-size: 1.18rem; }
 @media (min-width: 1400px) {
   .container { width: min(1240px, 90%); }
 }
+
+/* ── Internal working document access gate ───────────────────────────────── */
+html.nf-protect-pending body > main:not(.nf-access-screen),
+html.nf-protect-pending body > footer {
+  display: none !important;
+}
+
+.nf-access-screen {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: calc(100vh - 64px);
+  padding: 72px 24px;
+}
+
+.nf-access-card {
+  background: rgba(15,23,42,0.82);
+  border: 1px solid rgba(251,191,36,0.24);
+  border-radius: 24px;
+  box-shadow: 0 28px 90px rgba(0,0,0,0.32);
+  max-width: 560px;
+  padding: 34px;
+  text-align: left;
+  width: min(560px, 100%);
+}
+
+.nf-access-card h1 {
+  color: #fff;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1;
+  margin: 0 0 14px;
+}
+
+.nf-access-card p {
+  color: #CBD5E1;
+  line-height: 1.75;
+}
+
+.nf-access-form {
+  display: flex;
+  gap: 10px;
+  margin: 24px 0 10px;
+}
+
+.nf-access-form input {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 999px;
+  color: #fff;
+  flex: 1;
+  font: inherit;
+  min-width: 0;
+  padding: 11px 16px;
+}
+
+.nf-access-error {
+  color: #fca5a5 !important;
+  font-weight: 700;
+  margin: 10px 0 0;
+}
+
+.nf-access-note {
+  color: #64748B !important;
+  font-size: 0.9rem;
+  margin: 18px 0 0;
+}
+
+@media (max-width: 560px) {
+  .nf-access-form {
+    flex-direction: column;
+  }
+}

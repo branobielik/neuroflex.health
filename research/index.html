@@ -6,6 +6,7 @@
   <title>Research — NeuroFlex</title>
   <meta name="description" content="NeuroFlex research documents: scientific hypotheses, research strategy, methodology, and published articles." />
   <link rel="stylesheet" href="../styles.css" />
+  <script defer src="../protected-access.js"></script>
   <style>
     /* ── Page shell ────────────────────────────────────────────────────── */
     .rh-page { padding: 72px 0 100px; }
@@ -130,6 +131,30 @@
     .rh-row-body span   { font-size: 0.8rem; color: #4a6fa5; line-height: 1.5; }
     .rh-row-arrow { color: #3a5070; font-size: 1rem; }
     .rh-row:hover .rh-row-arrow { color: #FBBF24; }
+    .rh-row-list.is-locked { display: none; }
+
+    .rh-protected-gate {
+      background: rgba(15,23,42,0.72);
+      border: 1px solid rgba(251,191,36,0.22);
+      border-radius: 18px;
+      padding: 24px;
+    }
+    .rh-protected-gate.is-unlocked { display: none; }
+    .rh-protected-gate h3 { color: #fff; font-size: 1.12rem; margin: 0 0 8px; }
+    .rh-protected-gate p { color: #94a3b8; line-height: 1.7; margin: 0; }
+    .rh-protected-form { display: flex; gap: 10px; margin-top: 18px; max-width: 520px; }
+    .rh-protected-form input {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 999px;
+      color: #fff;
+      flex: 1;
+      font: inherit;
+      min-width: 0;
+      padding: 11px 16px;
+    }
+    .rh-protected-error { color: #fca5a5 !important; font-weight: 700; margin-top: 10px !important; }
+    @media (max-width: 560px) { .rh-protected-form { flex-direction: column; } }
 
     /* ── Collab note ───────────────────────────────────────────────────── */
     .rh-note { margin-top: 56px; padding: 22px 26px; border: 1px solid rgba(255,255,255,0.07); border-radius: 14px; background: rgba(255,255,255,0.02); }
@@ -252,9 +277,19 @@
             <p class="rh-section-label rh-section-label-str">Internal Working Documents</p>
             <h2 class="rh-section-title">Research &amp; Strategy</h2>
           </div>
-          <span class="rh-count">6 documents</span>
+          <span class="rh-count">7 documents</span>
         </div>
-        <div class="rh-row-list">
+        <div class="rh-protected-gate" id="strategyGate">
+          <h3>Password required</h3>
+          <p>This section contains internal NeuroFlex working documents for collaborators and institutional contacts.</p>
+          <form class="rh-protected-form" id="strategyPasswordForm">
+            <input type="password" id="strategyPassword" autocomplete="current-password" placeholder="Enter password" aria-label="Password" />
+            <button class="btn" type="submit">Unlock documents</button>
+          </form>
+          <p class="rh-protected-error" id="strategyPasswordError" hidden>Incorrect password.</p>
+        </div>
+
+        <div class="rh-row-list is-locked" id="strategyList">
 
           <a href="../research-programme/" class="rh-row">
             <span class="rh-row-type">Strategy</span>
@@ -310,6 +345,15 @@
             <span class="rh-row-arrow">→</span>
           </a>
 
+          <a href="../grant-landscape/" class="rh-row">
+            <span class="rh-row-type">Funding</span>
+            <div class="rh-row-body">
+              <strong>Grant &amp; Funding Landscape</strong>
+              <span>Funding routes, institutional grant options, and partnership implications for NeuroFlex's research programme.</span>
+            </div>
+            <span class="rh-row-arrow">→</span>
+          </a>
+
         </div>
       </div>
 
@@ -329,6 +373,36 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    function revealStrategyDocs() {
+      document.getElementById('strategyGate')?.classList.add('is-unlocked');
+      document.getElementById('strategyList')?.classList.remove('is-locked');
+    }
+
+    function initStrategyGate() {
+      if (!window.NeuroFlexAccess) {
+        document.addEventListener('DOMContentLoaded', initStrategyGate, { once: true });
+        return;
+      }
+      if (window.NeuroFlexAccess.hasAccess()) {
+        revealStrategyDocs();
+        return;
+      }
+      const form = document.getElementById('strategyPasswordForm');
+      const input = document.getElementById('strategyPassword');
+      const error = document.getElementById('strategyPasswordError');
+      form?.addEventListener('submit', function (event) {
+        event.preventDefault();
+        if (window.NeuroFlexAccess.checkPassword(input.value)) {
+          revealStrategyDocs();
+          return;
+        }
+        error.hidden = false;
+        input.select();
+      });
+    }
+
+    initStrategyGate();
 
     function filterCat(cat) {
       // Update tab states
