@@ -891,6 +891,7 @@ body.neuro-strategy .conclusion-box blockquote {
 body .doc-body { max-width: 960px; }
 body .wp-wrap { max-width: 960px; }
 body .article-wrap { max-width: 860px; }
+body .legal-wrap { max-width: 900px; }
 
 /* ── Scientific papers & strategy documents (dark theme) ──────────────────── */
 body p.body-para { font-size: 1.05rem; line-height: 1.8; }
@@ -925,6 +926,17 @@ body .art-body h3 { font-size: 1.25rem; }
 body .art-callout p,
 body .art-hypothesis p { font-size: 1.04rem; line-height: 1.72; }
 body .art-references ol { font-size: 0.95rem; line-height: 1.75; }
+
+/* ── Legal page ───────────────────────────────────────────────────────────── */
+body .legal-hero p { font-size: 1.08rem; line-height: 1.75; }
+body .legal-hero-meta span { font-size: 0.95rem; }
+body .legal-toc a { font-size: 1rem; }
+body .legal-section h2 { font-size: 1.5rem; }
+body .legal-section p,
+body .legal-section li { font-size: 1.05rem; line-height: 1.8; }
+body .legal-highlight p,
+body .legal-medical p { font-size: 1.02rem; line-height: 1.75; }
+body .legal-footer-note { font-size: 0.98rem; line-height: 1.75; }
 
 /* ── Shared content pages (landing, research hub, mission, legal) ─────────── */
 body .content-box p,
