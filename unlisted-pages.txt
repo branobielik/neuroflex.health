@@ -1,5 +1,5 @@
 NeuroFlex — Research / Offline Page Registry
-Updated: 2026-07-01
+Updated: 2026-07-01 (article added)
 
 Note:
 - Pages marked "Published in Research hub" are linked from:
@@ -26,6 +26,9 @@ Paper II: Subclinical Multisensory Integration Decline as Early Biomarkers in AD
 ========================================================
 PUBLISHED IN RESEARCH HUB — ARTICLES
 ========================================================
+
+Snapshots Diagnose. Trajectories Explain.
+  https://neuroflex.health/articles/snapshots-vs-trajectories/
 
 Why Women Bear a Disproportionate Burden of Alzheimer's Disease
   https://neuroflex.health/articles/sex-differences-alzheimers/

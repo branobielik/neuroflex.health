@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Snapshots Diagnose. Trajectories Explain. — NeuroFlex</title>
+  <meta name="description" content="Why longitudinal behavioral data may matter more than one-time cognitive tests for early detection of Alzheimer's disease — and what that means for how digital biomarker research should be designed." />
+  <link rel="stylesheet" href="../../styles.css" />
+  <style>
+    /* ── Article Light Theme ─────────────────────────────────────────────── */
+    html, body { background: #F1F5F9; color: #1E293B; }
+    .site-header { background: rgba(3,10,34,0.96); border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 0 20px 80px; }
+
+    .art-hero { padding: 72px 0 48px; border-bottom: 1px solid #E2E8F0; margin-bottom: 48px; }
+    .art-category { color: #2563EB; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; margin: 0 0 16px; }
+    .art-hero h1 { font-size: clamp(1.85rem, 4.2vw, 2.75rem); line-height: 1.1; color: #0F172A; margin: 0 0 20px; font-weight: 800; }
+    .art-lead { font-size: 1.15rem; line-height: 1.7; color: #475569; margin: 0 0 28px; }
+    .art-meta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .art-meta-item { font-size: 0.85rem; color: #64748B; }
+    .art-meta-label { font-weight: 700; color: #334155; }
+    .art-tag { display: inline-block; background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 999px; color: #1D4ED8; font-size: 0.76rem; font-weight: 700; padding: 4px 10px; letter-spacing: 0.04em; }
+
+    .art-body { font-size: 1.04rem; line-height: 1.82; color: #1E293B; }
+    .art-body h2 { font-size: 1.5rem; font-weight: 800; color: #0F172A; margin: 52px 0 14px; }
+    .art-body h3 { font-size: 1.12rem; font-weight: 700; color: #1E293B; margin: 30px 0 10px; }
+    .art-body p { margin: 0 0 22px; }
+    .art-body a { color: #2563EB; text-decoration: underline; }
+    .art-body ul, .art-body ol { margin: 0 0 22px; padding-left: 1.6em; }
+    .art-body li { margin-bottom: 8px; }
+    sup.ref { font-size: 0.72em; color: #2563EB; font-style: normal; vertical-align: super; }
+    sup.ref a { color: #2563EB; text-decoration: none; font-weight: 700; }
+    sup.ref a:hover { text-decoration: underline; }
+
+    .art-quote { border-left: 4px solid #2563EB; background: #EFF6FF; border-radius: 0 12px 12px 0; padding: 20px 24px; margin: 36px 0; }
+    .art-quote p { font-size: 1.18rem; font-style: italic; color: #1E40AF; margin: 0; line-height: 1.65; }
+
+    .art-callout { background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 16px; padding: 24px 28px; margin: 36px 0; box-shadow: 0 1px 6px rgba(0,0,0,0.04); }
+    .art-callout-label { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #2563EB; margin: 0 0 10px; }
+    .art-callout p { color: #334155; margin: 0; font-size: 0.97rem; line-height: 1.7; }
+
+    .art-hypothesis { background: #FFFBEB; border: 1px solid #FDE68A; border-radius: 16px; padding: 24px 28px; margin: 36px 0; }
+    .art-hypothesis-label { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #92400E; margin: 0 0 10px; }
+    .art-hypothesis p { color: #78350F; margin: 0; font-size: 0.97rem; line-height: 1.7; }
+
+    .art-divider { border: none; border-top: 1px solid #E2E8F0; margin: 52px 0; }
+
+    .art-references { background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 16px; padding: 28px; margin-top: 52px; }
+    .art-references h2 { font-size: 1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #475569; margin: 0 0 20px; }
+    .art-references ol { margin: 0; padding-left: 1.4em; font-size: 0.88rem; color: #475569; line-height: 1.7; }
+    .art-references li { margin-bottom: 12px; }
+    .art-references a { color: #2563EB; }
+
+    .art-footer-note { margin-top: 48px; padding-top: 28px; border-top: 1px solid #E2E8F0; font-size: 0.86rem; color: #94A3B8; line-height: 1.65; }
+
+    .art-readmore { background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 20px; padding: 32px; margin-top: 52px; }
+    .art-readmore h3 { font-size: 0.75rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #64748B; margin: 0 0 20px; }
+    .art-readmore-links { display: flex; flex-direction: column; gap: 12px; }
+    .art-readmore-link { display: flex; align-items: flex-start; gap: 12px; text-decoration: none; padding: 12px; border-radius: 12px; transition: background 0.15s; }
+    .art-readmore-link:hover { background: #F1F5F9; }
+    .art-readmore-link-icon { flex-shrink: 0; width: 36px; height: 36px; border-radius: 10px; background: #EFF6FF; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+    .art-readmore-link-text strong { display: block; font-size: 0.92rem; font-weight: 700; color: #1E293B; margin-bottom: 2px; }
+    .art-readmore-link-text span { font-size: 0.81rem; color: #64748B; }
+
+    .site-footer { background: #0F172A; color: #94A3B8; border-top: 1px solid rgba(255,255,255,0.06); }
+    .site-footer a { color: #94A3B8; text-decoration: none; }
+
+    @media (max-width: 640px) {
+      .art-hero { padding: 48px 0 36px; }
+      .art-body h2 { font-size: 1.3rem; margin-top: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../../" class="brand brand-neuroflex">
+        <img src="../../assets/neuroflex-logo.png" alt="NeuroFlex" />
+        <span>NeuroFlex<sup>©</sup></span>
+      </a>
+      <nav class="nav">
+        <a href="../../">Home</a>
+        <a href="../../research/">Research</a>
+        <a href="../../white-paper/">White Paper</a>
+        <a href="../../eula/">Legal</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="article-wrap">
+
+      <header class="art-hero">
+        <p class="art-category">Perspective &nbsp;·&nbsp; Digital Biomarkers &amp; Methodology</p>
+        <h1>Snapshots Diagnose. Trajectories Explain.</h1>
+        <p class="art-lead">
+          Imagine measuring your blood pressure once in your life and treating that single number as a permanent description of your cardiovascular health. It sounds absurd. Yet this is close to how cognitive testing is still practiced today — and it may be the reason the earliest signs of Alzheimer's disease keep slipping past us.
+        </p>
+        <div class="art-meta">
+          <span class="art-meta-item"><span class="art-meta-label">Published</span> · July 2026</span>
+          <span class="art-meta-item"><span class="art-meta-label">Reading time</span> · ~8 min</span>
+          <span class="art-tag">Unlisted · Internal</span>
+        </div>
+      </header>
+
+      <article class="art-body">
+
+        <h2>A Thought Experiment</h2>
+
+        <p>
+          Nobody would accept a single blood pressure reading, taken once, as a lifetime cardiovascular profile. Nobody would measure resting heart rate on one quiet afternoon and treat it as a permanent description of cardiac health. We understand, intuitively, that physiological systems fluctuate — and that meaningful signal lives in the pattern of change over time, not in any single measurement.
+        </p>
+
+        <p>
+          Cognitive testing is, in many clinical and research settings, still built around the opposite assumption. A person sits down, completes a standardized test — the MMSE, the MoCA, a neuropsychological battery — receives a score, and goes home. That score is compared against a population norm, not against the person's own history. It is a snapshot, taken under artificial conditions, on a single day that may or may not be representative of anything.
+        </p>
+
+        <h2>The Limits of the Single-Timepoint Test</h2>
+
+        <p>
+          The methodological problems with one-time cognitive assessment are well documented, even if they are not always foregrounded in clinical practice. Performance on standardized cognitive tests is sensitive to sleep quality, mood, time of day, test anxiety, and — critically — practice effects from prior exposure to similar tasks, which can mask genuine decline or inflate apparent improvement on repeat testing.<sup class="ref"><a href="#ref1">[1]</a></sup>
+        </p>
+
+        <p>
+          More fundamentally, a single test administered once or even annually cannot distinguish a stable low performer from someone who is actively declining but happened to have a good day. Research on intra-individual variability — how much a person's own performance fluctuates from occasion to occasion — has shown that this variability is not simply noise to be averaged away. It is itself a signal, and increased short-term variability has been linked to underlying neurological change, sometimes appearing before decline is detectable in mean test scores.<sup class="ref"><a href="#ref2">[2]</a></sup>
+        </p>
+
+        <div class="art-callout">
+          <p class="art-callout-label">The Core Problem</p>
+          <p>
+            A test score answers the question "how did this person perform today, compared to other people their age?" It does not answer the question that matters most for early detection: "how has this person changed, compared to themselves, over the last two years?" Those are fundamentally different questions, and only one of them requires longitudinal data.
+          </p>
+        </div>
+
+        <h2>What Changes Are We Actually Missing?</h2>
+
+        <p>
+          The concept of subjective cognitive decline — self-perceived worsening of memory or thinking ability in the absence of abnormal performance on standard tests — has become an important research focus precisely because it captures something that discrete testing misses. People frequently notice change in themselves well before that change is measurable on a single administered test, and a meaningful proportion of individuals reporting such decline go on to show objective impairment years later.<sup class="ref"><a href="#ref3">[3]</a></sup>
+        </p>
+
+        <p>
+          What might that early change actually look like, before it is large enough to register on a standardized score? Plausibly, something like this:
+        </p>
+
+        <ul>
+          <li>Slightly longer hesitation before making everyday decisions.</li>
+          <li>A gradual narrowing of routine — doing the same things, the same way, more often.</li>
+          <li>Reduced initiative to try something unfamiliar or effortful.</li>
+          <li>Subtle withdrawal from social interaction that is easy to attribute to other causes.</li>
+          <li>Small, cumulative drift in the timing and consistency of daily habits.</li>
+        </ul>
+
+        <p>
+          None of these, observed once, means anything. Everyone has an off week. But a consistent drift across many such small signals, sustained over months, is a different kind of information entirely — and it is exactly the kind of information that a single clinical visit, by design, cannot capture.
+        </p>
+
+        <h2>From Passive Behavior to Longitudinal Signal</h2>
+
+        <p>
+          This is the premise behind the growing field of digital biomarkers: physiological or behavioral measures, collected through smartphones, wearables, or other digital devices, that can be tracked continuously rather than at scheduled intervals.<sup class="ref"><a href="#ref4">[4]</a></sup> Instead of a single test administered once a year, digital tools can in principle observe reaction time, typing rhythm, app engagement, movement patterns, and routine stability as an ongoing stream — capturing not a score, but a trajectory.
+        </p>
+
+        <p>
+          Reviews of home-based and remote monitoring approaches for cognitive impairment have converged on a similar conclusion: passive, repeated, ecologically valid measurement may detect functionally meaningful change earlier than periodic clinical testing, precisely because it is sensitive to the accumulation of small deviations from a person's own baseline rather than to deviation from a population average.<sup class="ref"><a href="#ref5">[5]</a></sup>
+        </p>
+
+        <div class="art-quote">
+          <p>
+            Medicine often measures snapshots. The next generation of behavioral research may need to measure trajectories instead.
+          </p>
+        </div>
+
+        <h2>Why Machine Learning Needs Trajectories, Not Points</h2>
+
+        <p>
+          This shift matters even more once machine learning enters the picture. Statistical and machine learning methods for disease progression modeling — approaches that reconstruct the likely sequence and timing of biomarker changes across a population — have shown that the *order and pace* at which measures change over time carries information that a single cross-sectional snapshot structurally cannot contain.<sup class="ref"><a href="#ref6">[6]</a></sup> A model trained to recognize patterns in how people change is answering a different, and arguably more clinically useful, question than a model trained to classify a single test score.
+        </p>
+
+        <p>
+          Longitudinal, repeated-measurement designs — sometimes called measurement-burst designs in the psychological literature — were developed specifically to separate stable individual differences from within-person change over time, and to do so with enough temporal resolution to detect the latter before it becomes clinically obvious.<sup class="ref"><a href="#ref7">[7]</a></sup> Digital tools make this kind of design dramatically more feasible at scale than it has ever been with in-clinic assessment alone.
+        </p>
+
+        <div class="art-hypothesis">
+          <p class="art-hypothesis-label">An Open Research Question</p>
+          <p>
+            If the earliest behavioral signature of cognitive decline is a gradual trajectory rather than a discrete threshold crossing, then research infrastructure built around annual or biannual testing may be structurally unable to detect it — not because the signal doesn't exist, but because the sampling rate is too low to see it. This raises a practical question for the field: how much everyday behavioral data, collected how frequently, over how long a period, is actually required before a meaningful trajectory becomes visible?
+          </p>
+        </div>
+
+        <h2>What This Means for NeuroFlex</h2>
+
+        <p>
+          This is one of the questions we are exploring through NeuroFlex. Rather than treating brain games, daily routines, and habit tracking purely as isolated wellness activities, the underlying architecture is designed to preserve the process of interaction over time — timing, hesitation, consistency, drift — so that, with appropriate consent and research infrastructure, a person's own behavioral trajectory can eventually be compared against their own history, not just against a population norm.
+        </p>
+
+        <p>
+          None of this replaces clinical diagnosis, biomarker testing, or the judgment of a qualified physician. What it may offer, if the underlying hypothesis holds, is an additional layer of observation — one built for detecting change over time rather than performance at a single moment.
+        </p>
+
+        <hr class="art-divider" />
+
+        <div class="art-quote">
+          <p>
+            Snapshots diagnose. Trajectories explain.
+          </p>
+        </div>
+
+        <p>
+          Perhaps the next meaningful breakthrough in early Alzheimer's detection will not come from a better one-time test. Perhaps it will come from asking a more patient question — not "how did this person perform today?" but "how has this person changed?"
+        </p>
+
+        <hr class="art-divider" />
+
+        <div class="art-references">
+          <h2>References</h2>
+          <ol>
+            <li id="ref1">
+              Duff K. (2012). Evidence-based indicators of neuropsychological change in the individual patient: relevant concepts and methods. <em>Archives of Clinical Neuropsychology</em>, 27(3), 248–261. <a href="https://doi.org/10.1093/arclin/acr120" target="_blank" rel="noopener">doi:10.1093/arclin/acr120</a>
+            </li>
+            <li id="ref2">
+              MacDonald SWS, Nyberg L, Bäckman L. (2006). Intra-individual variability in behavior: links to brain structure, neurotransmission, and neuronal activity. <em>Trends in Neurosciences</em>, 29(8), 474–480. <a href="https://doi.org/10.1016/j.tins.2006.06.011" target="_blank" rel="noopener">doi:10.1016/j.tins.2006.06.011</a>
+            </li>
+            <li id="ref3">
+              Jessen F, Amariglio RE, van Boxtel M, et al. (2014). A conceptual framework for research on subjective cognitive decline in preclinical Alzheimer's disease. <em>Alzheimer's &amp; Dementia</em>, 10(6), 844–852. <a href="https://doi.org/10.1016/j.jalz.2014.01.001" target="_blank" rel="noopener">doi:10.1016/j.jalz.2014.01.001</a>
+            </li>
+            <li id="ref4">
+              Kourtis LC, Regele OB, Wright JM, Jones GB. (2019). Digital biomarkers for Alzheimer's disease: the mobile/wearable devices opportunity. <em>npj Digital Medicine</em>, 2, 9. <a href="https://doi.org/10.1038/s41746-019-0084-2" target="_blank" rel="noopener">doi:10.1038/s41746-019-0084-2</a>
+            </li>
+            <li id="ref5">
+              Piau A, Wild K, Mattek N, Kaye J. (2019). Current state of digital biomarker technologies for real-life, home-based monitoring of cognitive function for mild cognitive impairment to mild Alzheimer disease and implications for clinical care. <em>Journal of Medical Internet Research</em>, 21(8), e12785. <a href="https://doi.org/10.2196/12785" target="_blank" rel="noopener">doi:10.2196/12785</a>
+            </li>
+            <li id="ref6">
+              Young AL, Marinescu RV, Oxtoby NP, et al. (2018). Uncovering the heterogeneity and temporal complexity of neurodegenerative diseases with Subtype and Stage Inference. <em>Nature Communications</em>, 9, 4273. <a href="https://doi.org/10.1038/s41467-018-05892-0" target="_blank" rel="noopener">doi:10.1038/s41467-018-05892-0</a>
+            </li>
+            <li id="ref7">
+              Sliwinski MJ. (2008). Measurement-burst designs for social health research. <em>Social and Personality Psychology Compass</em>, 2(1), 245–261. <a href="https://doi.org/10.1111/j.1751-9004.2007.00043.x" target="_blank" rel="noopener">doi:10.1111/j.1751-9004.2007.00043.x</a>
+            </li>
+          </ol>
+        </div>
+
+        <div class="art-footer-note">
+          <strong>Disclosure.</strong> This article reflects independent editorial analysis and is intended as a research perspective, not a clinical recommendation. No external funding was received. The views expressed are those of the author and do not constitute medical or clinical advice. NeuroFlex is not a diagnostic tool. All cited studies are referenced to their original publications; readers are encouraged to consult the primary literature for methodological detail.
+        </div>
+
+        <div class="art-readmore">
+          <h3>Related Reading</h3>
+          <div class="art-readmore-links">
+            <a href="../sex-differences-alzheimers/" class="art-readmore-link">
+              <div class="art-readmore-link-icon">♀</div>
+              <div class="art-readmore-link-text">
+                <strong>Why Women Bear a Disproportionate Burden of Alzheimer's Disease</strong>
+                <span>Research Article · Neuroscience &amp; Epidemiology</span>
+              </div>
+            </a>
+            <a href="../llm-in-science/" class="art-readmore-link">
+              <div class="art-readmore-link-icon">🤖</div>
+              <div class="art-readmore-link-text">
+                <strong>Large Language Models as Research Infrastructure</strong>
+                <span>Research Article · Artificial Intelligence</span>
+              </div>
+            </a>
+            <a href="../../dynamic-cognitive-reserve/" class="art-readmore-link">
+              <div class="art-readmore-link-icon">🧠</div>
+              <div class="art-readmore-link-text">
+                <strong>The Dynamic Cognitive Reserve Hypothesis</strong>
+                <span>Scientific Hypothesis · NeuroFlex Research</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+      </article>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p style="margin:0; font-size:0.88rem;">
+      © 2026 NeuroFlex<sup style="font-size:0.6em; color:#FBBF24;">©</sup> · Internal Article · Not for public distribution
+      &ensp;·&ensp;
+      <a href="../../privacy/">Privacy</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -18,12 +18,14 @@ This repository contains only NeuroFlex web content moved from the LifeApps site
 - `/research-design/` — research design (unlisted)
 - `/research-programme/` — research programme (unlisted)
 - `/scientific-network/` — scientific network (unlisted)
+- `/research/` — Research hub; scientific hypotheses and articles are listed here, and "Research & Strategy" internal working documents are behind a password gate
 - `/dynamic-cognitive-reserve/` — **Paper I: The Dynamic Cognitive Reserve Hypothesis** — hypothesis paper (unlisted)
 - `/multisensory-integration-hypothesis/` — **Paper II: The Sensory Integration Reserve Hypothesis** — hypothesis paper (unlisted)
+- `/articles/snapshots-vs-trajectories/` — **Article: Snapshots Diagnose. Trajectories Explain.** — perspective on longitudinal vs. one-time cognitive testing (unlisted)
 - `/articles/llm-in-science/` — **Article: Large Language Models as Research Infrastructure** — essay (unlisted)
 - `/articles/sex-differences-alzheimers/` — **Article: Why Women Bear a Disproportionate Burden of Alzheimer's Disease** — essay (unlisted)
 - `/eula/` — EULA placeholder
-- `/unlisted-pages.txt` — master list of all unlisted URLs
+- `/unlisted-pages.txt` — master list of all unlisted URLs, including the internal-documents password
 
 ## GitHub Pages setup
 
